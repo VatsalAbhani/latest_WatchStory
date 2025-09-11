@@ -1,13 +1,10 @@
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import Placeholder from "./Placeholder";
 
 export default function Checkout() {
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
+    <Layout>
       <Placeholder title="Checkout" description="Enquiry mode available if payments are not ready." />
-      <Footer />
-    </div>
+    </Layout>
   );
 }
