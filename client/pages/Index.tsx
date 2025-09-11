@@ -6,6 +6,7 @@ import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import TitleSequence from "@/components/TitleSequence";
 
 export default function Index() {
   const { typedText } = useStory();
@@ -20,7 +21,7 @@ export default function Index() {
       <section className="relative min-h-[92vh] flex items-center">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon))_0%,transparent_60%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)))]" />
         <div className="ws-container text-center">
-          <h1 className="font-title text-4xl md:text-6xl lg:text-7xl tracking-tight">{typedText}<span className="ws-cursor">▌</span></h1>
+          <TitleSequence text={"WatchStory\nEvery Watch Has a Story"} className="tracking-tight" />
           <p className="mt-4 text-offwhite/70 max-w-2xl mx-auto">Curated, authenticated, and told with care.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/sell" className="ws-button-primary">Sell a Watch</Link>

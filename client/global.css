@@ -151,4 +151,34 @@
   .ws-container { @apply container px-6 md:px-8; }
   .ws-button-primary { @apply inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-medium shadow-sm hover:brightness-110 transition; }
   .ws-button-secondary { @apply inline-flex items-center justify-center rounded-md border border-platinum/30 px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/30 transition; }
+
+  /* Terminal Industries-like title sequence animation */
+  .ti-title-sequence {
+    display: inline-block;
+    font-family: var(--font-primary, Inter, ui-sans-serif, system-ui, sans-serif);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: -0.02em;
+    white-space: pre-wrap;
+    color: hsl(var(--foreground));
+    font-size: min(5.729vw, 146.666px);
+  }
+  .ti-line { display: block; }
+  .ti-char-wrapper { display: inline-block; overflow: hidden; }
+  .ti-char {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: ti-reveal-letter var(--ti-duration, 0.9s) var(--ti-ease, cubic-bezier(0,0,.58,1)) forwards;
+    animation-delay: calc(var(--ti-index) * var(--ti-stagger, 0.04s) + var(--ti-start-delay, 0s));
+    will-change: transform, opacity;
+  }
+  @keyframes ti-reveal-letter {
+    0% { transform: translateY(100%); opacity: 0; }
+    60% { transform: translateY(-2px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ti-char { animation: none; transform: none; opacity: 1; }
+  }
 }
