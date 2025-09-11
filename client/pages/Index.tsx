@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useStory } from "@/state/story";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { FEATURED, POSTS } from "@/lib/data";
@@ -9,8 +8,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import TitleSequence from "@/components/TitleSequence";
 
 export default function Index() {
-  const { typedText } = useStory();
-
   useEffect(() => {
     document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
   }, []);
