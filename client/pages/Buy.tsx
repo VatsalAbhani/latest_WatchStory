@@ -1,5 +1,4 @@
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import ProductCard from "@/components/ProductCard";
 import { FEATURED } from "@/lib/data";
 import { useEffect } from "react";
@@ -10,8 +9,7 @@ export default function Buy() {
   }, []);
 
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
+    <Layout>
       <section className="ws-container py-16">
         <h1 className="font-title text-4xl">Shop Watches</h1>
         <p className="text-offwhite/70 mt-3">Discover the chapter that belongs on your wrist.</p>
@@ -19,7 +17,6 @@ export default function Buy() {
           {FEATURED.map((p) => <ProductCard key={p.id} product={p} />)}
         </div>
       </section>
-      <Footer />
-    </div>
+    </Layout>
   );
 }
