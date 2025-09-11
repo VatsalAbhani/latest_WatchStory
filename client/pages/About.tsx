@@ -1,13 +1,10 @@
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import Placeholder from "./Placeholder";
 
 export default function About() {
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
+    <Layout>
       <Placeholder title="About" description="Minimal brand story and trust badges." />
-      <Footer />
-    </div>
+    </Layout>
   );
 }
