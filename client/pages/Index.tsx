@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useStory } from "@/state/story";
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
@@ -16,9 +15,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
-
+    <Layout>
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon))_0%,transparent_60%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)))]" />
@@ -80,8 +77,6 @@ export default function Index() {
           {POSTS.slice(0, 3).map((post) => <BlogCard key={post.id} post={post} />)}
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }
