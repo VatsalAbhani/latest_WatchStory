@@ -1,5 +1,4 @@
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 
 export default function Sell() {
@@ -8,8 +7,7 @@ export default function Sell() {
   }, []);
 
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
+    <Layout>
       <section className="ws-container py-16">
         <h1 className="font-title text-4xl">Sell your watch</h1>
         <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p>
@@ -32,8 +30,7 @@ export default function Sell() {
       <section className="ws-container pb-24">
         <SellForm />
       </section>
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 
