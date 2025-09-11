@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        platinum: "hsl(var(--brand-platinum))",
+        gold: "hsl(var(--brand-gold))",
+        onyx: "hsl(var(--brand-onyx))",
+        carbon: "hsl(var(--brand-carbon))",
+        offwhite: "hsl(var(--brand-offwhite))",
+        deepgreen: "hsl(var(--brand-deep-green))",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,100 +1,105 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /**
-   * Tailwind CSS theme
-   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
-   * A different format will require also updating the theme in tailwind.config.ts.
-  */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand palette in HSL (Tailwind expects HSL vars) */
+    /* Onyx #0B0E11 */
+    --background: 210 22% 6%;
+    --foreground: 60 8% 95%; /* Off-white #F5F5F2 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Carbon #111315 surfaces */
+    --card: 210 10% 7%;
+    --card-foreground: 60 8% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 10% 7%;
+    --popover-foreground: 60 8% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Champagne gold as primary */
+    --primary: 42 46% 56%; /* #C2A35A */
+    --primary-foreground: 210 22% 6%; /* Onyx for text on gold */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary subtle surfaces (platinum tint for borders etc.) */
+    --secondary: 0 0% 75%; /* Platinum #C0C0C0 */
+    --secondary-foreground: 210 22% 6%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 10% 12%;
+    --muted-foreground: 0 0% 80%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent reuses gold for hover accents */
+    --accent: 42 46% 56%;
+    --accent-foreground: 210 22% 6%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 22% 6%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 10% 18%; /* subtle borders */
+    --input: 210 10% 18%;
+    --ring: 42 46% 56%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Sidebar (not used heavily, keep in theme) */
+    --sidebar-background: 210 10% 7%;
+    --sidebar-foreground: 60 8% 95%;
+    --sidebar-primary: 42 46% 56%;
+    --sidebar-primary-foreground: 210 22% 6%;
+    --sidebar-accent: 210 10% 12%;
+    --sidebar-accent-foreground: 60 8% 95%;
+    --sidebar-border: 210 10% 18%;
+    --sidebar-ring: 42 46% 56%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Brand extras */
+    --brand-deep-green: 169 50% 11%; /* #0E2A25 */
+    --brand-carbon: 210 10% 7%;
+    --brand-onyx: 210 22% 6%;
+    --brand-gold: 42 46% 56%;
+    --brand-platinum: 0 0% 75%;
+    --brand-offwhite: 60 8% 95%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Keep similar but slightly deeper for dark mode */
+    --background: 210 22% 5%;
+    --foreground: 60 8% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 12% 6%;
+    --card-foreground: 60 8% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 12% 6%;
+    --popover-foreground: 60 8% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 42 46% 56%;
+    --primary-foreground: 210 22% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 75%;
+    --secondary-foreground: 210 22% 6%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 12% 12%;
+    --muted-foreground: 0 0% 82%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 42 46% 56%;
+    --accent-foreground: 210 22% 6%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 60 8% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 210 12% 16%;
+    --input: 210 12% 16%;
+    --ring: 42 46% 56%;
+
+    --sidebar-background: 210 12% 6%;
+    --sidebar-foreground: 60 8% 95%;
+    --sidebar-primary: 42 46% 56%;
+    --sidebar-primary-foreground: 210 22% 6%;
+    --sidebar-accent: 210 12% 12%;
+    --sidebar-accent-foreground: 60 8% 95%;
+    --sidebar-border: 210 12% 16%;
+    --sidebar-ring: 42 46% 56%;
   }
 }
 
@@ -103,7 +108,47 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI,
+      Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(
+        1000px 300px at 50% -10%, hsl(var(--brand-gold)/0.06) 0%, transparent 60%
+      ),
+      radial-gradient(800px 400px at 100% 0%, hsl(var(--brand-deep-green)/0.08) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-title {
+    font-family: "Cormorant Garamond", ui-serif, Georgia, Cambria, Times, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Typewriter cursor */
+@keyframes ws-cursor-blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+.ws-cursor { animation: ws-cursor-blink 0.8s steps(2, end) infinite; }
+
+/* Film grain overlay utility */
+.ws-grain:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0.08'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+}
+
+/****************
+  Components
+*****************/
+@layer components {
+  .ws-container { @apply container px-6 md:px-8; }
+  .ws-button-primary { @apply inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-medium shadow-sm hover:brightness-110 transition; }
+  .ws-button-secondary { @apply inline-flex items-center justify-center rounded-md border border-platinum/30 px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/30 transition; }
 }

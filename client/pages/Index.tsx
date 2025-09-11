@@ -1,62 +1,87 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useStory } from "@/state/story";
+import TerminalStoryBar from "@/components/TerminalStoryBar";
+import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
+import { FEATURED, POSTS } from "@/lib/data";
+import ProductCard from "@/components/ProductCard";
+import BlogCard from "@/components/BlogCard";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
+  const { typedText } = useStory();
+
   useEffect(() => {
-    fetchDemo();
+    document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
   }, []);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+    <div className="ws-grain">
+      <TerminalStoryBar />
+
+      {/* Hero */}
+      <section className="relative min-h-[92vh] flex items-center">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon))_0%,transparent_60%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)))]" />
+        <div className="ws-container text-center">
+          <h1 className="font-title text-4xl md:text-6xl lg:text-7xl tracking-tight">{typedText}<span className="ws-cursor">▌</span></h1>
+          <p className="mt-4 text-offwhite/70 max-w-2xl mx-auto">Curated, authenticated, and told with care.</p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link to="/sell" className="ws-button-primary">Sell a Watch</Link>
+            <Link to="/buy" className="ws-button-secondary">Buy a Watch</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust strips */}
+      <section className="ws-container mt-24 grid md:grid-cols-3 gap-6">
+        <div className="border rounded-lg p-6 bg-card/60">
+          <h3 className="font-title text-2xl">Provenance matters</h3>
+          <p className="text-offwhite/70 mt-2">We track ownership and service history to preserve the narrative.</p>
+        </div>
+        <div className="border rounded-lg p-6 bg-card/60">
+          <h3 className="font-title text-2xl">Authenticated & verified</h3>
+          <p className="text-offwhite/70 mt-2">Materials, movement, and reference are checked by specialists.</p>
+        </div>
+        <div className="border rounded-lg p-6 bg-card/60">
+          <h3 className="font-title text-2xl">Fair offers, fast payouts</h3>
+          <p className="text-offwhite/70 mt-2">Transparent pricing and insured shipping worldwide.</p>
+        </div>
+      </section>
+
+      {/* Featured Stories */}
+      <section className="ws-container mt-24">
+        <div className="flex items-end justify-between">
+          <h2 className="font-title text-3xl">Featured Stories</h2>
+          <Link to="/buy" className="text-gold">View all →</Link>
+        </div>
+
+        <div className="relative mt-6">
+          <Carousel opts={{ align: "start" }}>
+            <CarouselContent>
+              {FEATURED.map((p) => (
+                <CarouselItem key={p.id} className="basis-full sm:basis-1/2 lg:basis-1/3">
+                  <ProductCard product={p} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="border-border bg-card/80" />
+            <CarouselNext className="border-border bg-card/80" />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* From the Journal */}
+      <section className="ws-container mt-24 mb-24">
+        <div className="flex items-end justify-between">
+          <h2 className="font-title text-3xl">From the Journal</h2>
+          <Link to="/blog" className="text-gold">Read more →</Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6 mt-6">
+          {POSTS.slice(0, 3).map((post) => <BlogCard key={post.id} post={post} />)}
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
