@@ -1,13 +1,10 @@
-import TerminalStoryBar from "@/components/TerminalStoryBar";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 import Placeholder from "./Placeholder";
 
 export default function WatchDetail() {
   return (
-    <div className="ws-grain">
-      <TerminalStoryBar />
+    <Layout>
       <Placeholder title="Watch Detail" description="Immersive macro hero, story, condition, specs, and gallery." />
-      <Footer />
-    </div>
+    </Layout>
   );
 }
