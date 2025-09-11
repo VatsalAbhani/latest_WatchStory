@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
+import CyclingLines from "@/components/CyclingLines";
 
 export default function Sell() {
   useEffect(() => {
@@ -11,6 +12,21 @@ export default function Sell() {
       <section className="ws-container py-16">
         <h1 className="font-title text-4xl">Sell your watch</h1>
         <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p>
+        {/* Cycling lines config: change any of these values as needed */}
+        <CyclingLines
+          className="mt-4 text-xl text-gold/90"
+          lines={[
+            "Get instant payment",
+            "Free insured shipping",
+            "Expert authentication",
+            "Fair, market-based offers",
+            "Offer within 24 hours",
+          ]}
+          cycleIntervalSec={2.5}   /* interval between lines */
+          perLetterDurationSec={1} /* per-letter animation speed */
+          easing="ease-in-out"     /* easing function */
+          letterStaggerSec={0.04}
+        />
         <div className="mt-10 grid md:grid-cols-3 gap-6">
           <div className="border rounded-lg p-6 bg-card/60">
             <h3 className="font-title text-2xl">Evaluation</h3>
