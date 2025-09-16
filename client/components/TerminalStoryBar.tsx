@@ -5,21 +5,154 @@ import { useCart } from "@/state/cart";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+
+// function MenuLink({ to, text }: { to: string; text: string }) {
+//   const containerRef = useRef<HTMLDivElement>(null);
+//   const timelineRef = useRef<gsap.core.Timeline>();
+
+//   useEffect(() => {
+//     const tl = gsap.timeline({ paused: true });
+
+//     tl.to(containerRef.current?.querySelector('.text-roll-original'), {
+//       y: "-100%",
+//       duration: 0.3,
+//       ease: "sine.out",
+//     })
+//       .to(containerRef.current?.querySelector('.text-roll-hover'), {
+//         y: "0%",
+//         duration: 0.3,
+//         ease: "sine.in",
+//       }, 0)
+//       .to(containerRef.current?.querySelector('.underline'), {
+//         scaleX: 1,
+//         duration: 0.25,
+//         ease: "power2.out",
+//       }, 0.05);
+
+//     timelineRef.current = tl;
+
+//     return () => {
+//       tl.kill();
+//     };
+//   }, []);
+
+//   const handleMouseEnter = () => {
+//     timelineRef.current?.play();
+//   };
+
+//   const handleMouseLeave = () => {
+//     timelineRef.current?.reverse();
+//   };
+
+//   return (
+//     <NavLink
+//       to={to}
+//       className={({ isActive }) =>
+//         cn(
+//           "relative block text-sm transition-colors",
+//           isActive && "text-gold"
+//         )
+//       }
+//       onMouseEnter={handleMouseEnter}
+//       onMouseLeave={handleMouseLeave}
+//     >
+//       <div ref={containerRef} className="text-roll-container">
+//         <span className="text-roll text-roll-original">{text}</span>
+//         <span className="text-roll text-roll-hover">{text}</span>
+//         <span className="underline"></span> {/* Place ONLY inside here */}
+//       </div>
+//     </NavLink>
+//   );
+// }
+
+
+
+
+function MenuLink({ to, text }: { to: string; text: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    const underline = containerRef.current?.querySelector('.underline');
+    if (underline) {
+      gsap.set(underline, { transformOrigin: "left center" });
+      gsap.to(underline, { scaleX: 1, duration: 0.2, ease: "power2.out" });
+    }
+    // Animate text
+    gsap.to(containerRef.current?.querySelector('.text-roll-original'), {
+      y: "-100%",
+      duration: 0.3,
+      ease: "sine.out",
+    });
+    gsap.to(containerRef.current?.querySelector('.text-roll-hover'), {
+      y: "0%",
+      duration: 0.3,
+      ease: "sine.in",
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const underline = containerRef.current?.querySelector('.underline');
+    if (underline) {
+      gsap.set(underline, { transformOrigin: "right center" });
+      gsap.to(underline, { scaleX: 0, duration: 0.2, ease: "power2.in" });
+    }
+    // Animate text back
+    gsap.to(containerRef.current?.querySelector('.text-roll-original'), {
+      y: "0%",
+      duration: 0.3,
+      ease: "sine.in",
+    });
+    gsap.to(containerRef.current?.querySelector('.text-roll-hover'), {
+      y: "100%",
+      duration: 0.3,
+      ease: "sine.out",
+    });
+  };
+
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        cn(
+          "relative block text-sm transition-colors",
+          isActive && "text-gold"
+        )
+      }
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div ref={containerRef} className="text-roll-container">
+        <span className="text-roll text-roll-original">{text}</span>
+        <span className="text-roll text-roll-hover">{text}</span>
+        <span className="underline"></span>
+      </div>
+    </NavLink>
+  );
+}
+
+
+
+
+
+
+
+
 
 export default function TerminalStoryBar() {
   const { typedText, dots, currentLineIndex, toggleSound, soundOn } = useStory();
   const { count } = useCart();
 
   const Nav = () => (
-    <nav className="hidden md:flex items-center gap-6 text-sm">
-      <NavLink to="/buy" className={({isActive}) => cn("hover:text-gold", isActive && "text-gold")}>Buy</NavLink>
-      <NavLink to="/sell" className={({isActive}) => cn("hover:text-gold", isActive && "text-gold")}>Sell</NavLink>
-      <NavLink to="/blog" className={({isActive}) => cn("hover:text-gold", isActive && "text-gold")}>Blog</NavLink>
-      <NavLink to="/about" className={({isActive}) => cn("hover:text-gold", isActive && "text-gold")}>About</NavLink>
-      <Link to="/cart" className="relative">
-        <ShoppingCart className="h-5 w-5" />
-        <span aria-label="cart count" className="absolute -right-2 -top-1 rounded-full bg-gold text-onyx text-[10px] px-1.5 py-0.5">{count}</span>
+    <nav className="hidden md:flex items-center gap-6">
+      <MenuLink to="/buy" text="Buy" />
+      <MenuLink to="/sell" text="Sell" />
+      <MenuLink to="/blog" text="Blog" />
+      <MenuLink to="/about" text="About" />
+      <Link to="/cart" className="relative ml-6">
+        <ShoppingCart className="h-5 w-5 hover:text-gold transition" />
+        <span aria-label="cart count" className="absolute -right-2 -top-1 rounded-full bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5">{count}</span>
       </Link>
     </nav>
   );

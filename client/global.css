@@ -144,6 +144,53 @@
   mix-blend-mode: soft-light;
 }
 
+/* Base style for the rolling text animation */
+/* Enhanced text roll container */
+.text-roll-container {
+  overflow: hidden;
+  position: relative;
+  height: 1.4em; /* Use em for better scaling with font size */
+  display: inline-block;
+  line-height: 1.28;
+  vertical-align: middle;  /* Prevent baseline issues */
+}
+
+.text-roll {
+  display: block;
+  transition: transform 0.1s ease;
+}
+
+.text-roll-original {
+  transform: translateY(0%);
+}
+
+.text-roll-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%); /* Start hidden below */
+  color: hsl(var(--brand-gold));
+}
+
+
+.underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: hsl(var(--brand-gold));
+  display: block;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s ease-in-out(.8,0,.5,1.5);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+
 /****************
   Components
 *****************/
