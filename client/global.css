@@ -1,3 +1,5 @@
+
+
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
@@ -9,6 +11,7 @@
   :root {
     /* Brand palette in HSL (Tailwind expects HSL vars) */
     /* Onyx #0B0E11 */
+    /* --background: 40 25% 9%; */
     --background: 210 22% 6%;
     --foreground: 60 8% 95%; /* Off-white #F5F5F2 */
 
@@ -188,6 +191,22 @@
   pointer-events: none;
 }
 
+/* global.css */
+
+
+.watch-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.watch-slide {
+  flex: none;
+  width: 100vw;  /* Full viewport width per slide */
+}
+
+
+
 
 
 
@@ -229,3 +248,4 @@
     .ti-char { animation: none; transform: none; opacity: 1; }
   }
 }
+

@@ -1,3 +1,4 @@
+// index.tsx
 import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
@@ -5,11 +6,102 @@ import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import TitleSequence from "@/components/TitleSequence";
+import TypewriterHeading from "@/components/TypewriterHeading";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MagneticButton from "@/components/MagneticButton";
+import JournalSection from "@/components/JournalSection";
+import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
+import TestHorizontalScroll from "@/components/TestHorizontalScroll";
+import BrandsShowcase from "@/components/BrandsShowcase";
 
 gsap.registerPlugin(ScrollTrigger);
+
+
+
+// Add this data (you can move to your data file later)
+const TRUSTED_BRANDS = [
+  {
+    id: '1',
+    name: 'Rolex',
+    logoUrl: '/images/brands/rolex-logo.png',
+    description: 'A crown for every achievement. Swiss luxury watchmaking since 1905.',
+    established: '1905',
+    country: 'Switzerland'
+  },
+  {
+    id: '2', 
+    name: 'Patek Philippe',
+    logoUrl: '/images/brands/patek-philippe-logo.png',
+    description: 'You never actually own a Patek Philippe. You merely look after it.',
+    established: '1839',
+    country: 'Switzerland'
+  },
+  {
+    id: '3',
+    name: 'Audemars Piguet',
+    logoUrl: '/images/brands/audemars-piguet-logo.png', 
+    description: 'To break the rules, you must first master them.',
+    established: '1875',
+    country: 'Switzerland'
+  },
+  {
+    id: '4',
+    name: 'Omega',
+    logoUrl: '/images/brands/omega-logo.png',
+    description: 'Official timekeeper of the Olympics and chosen for lunar missions.',
+    established: '1848',
+    country: 'Switzerland'
+  },
+  // Add more brands...
+];
+
+
+
+const manyWatches = [
+  // Original featured watches
+  ...FEATURED.map(w => ({
+    id: w.id,
+    name: `${w.brand} ${w.model}`,
+    brand: w.brand,
+    price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
+    imageUrl: w.images.primary,
+    slug: w.slug,
+    year: String(w.year),
+    movement: 'Automatic',
+    reference: w.ref,
+    condition: 'Excellent',
+  })),
+  // Duplicate set A
+  ...FEATURED.map((w, i) => ({
+    id: `${w.id}-dupA`,
+    name: `${w.brand} ${w.model}`,
+    brand: w.brand,
+    price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
+    imageUrl: w.images.primary,
+    slug: `${w.slug}-dupA`,
+    year: String(w.year),
+    movement: 'Automatic',
+    reference: w.ref,
+    condition: 'Excellent',
+  })),
+  // Duplicate set B
+  ...FEATURED.map((w, i) => ({
+    id: `${w.id}-dupB`,
+    name: `${w.brand} ${w.model}`,
+    brand: w.brand,
+    price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
+    imageUrl: w.images.primary,
+    slug: `${w.slug}-dupB`,
+    year: String(w.year),
+    movement: 'Automatic',
+    reference: w.ref,
+    condition: 'Excellent',
+  })),
+];
+
+
+
 
 export default function Index() {
   useEffect(() => {
@@ -64,37 +156,94 @@ export default function Index() {
       }
     );
     
-    // Parallax effect for the hero background
-    gsap.to(".parallax-bg", {
-      y: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
+    // Parallax temporarily disabled to avoid conflicts with horizontal pinning
 
   }, []);
 
   return (
     <Layout>
-      {/* Hero */}
+      {/* Hero
       <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
         <div className="parallax-bg"></div>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
         <div className="ws-container text-center relative z-10">
-          <TitleSequence
-            text={"WatchStory\nCurated, authenticated, and told with care."}
-            className="tracking-tight"
+          <TypewriterHeading
+            lines={[
+              "Welcome to WatchStory",
+              "What are you looking for?"
+            ]}
+            charsPerSecond={25}
+            pauseBetweenLines={1.5}
+            className="text-center font-title text-4xl text-offwhite/90"
+            triggerOnScroll={false}
+            loop={true}
           />
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/sell" className="ws-button-primary">Sell a Watch</Link>
             <Link to="/buy" className="ws-button-secondary">Buy a Watch</Link>
           </div>
         </div>
-      </section>
+      </section> */}
+
+
+      {/* Hero */}
+<section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
+  <div className="parallax-bg"></div>
+  <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
+  <div className="ws-container text-center relative z-10">
+    <TypewriterHeading
+      lines={[
+        "Welcome to WatchStory",
+        "What are you looking for?"
+      ]}
+      charsPerSecond={25}
+      pauseBetweenLines={1.5}
+      className="text-center font-title text-4xl text-offwhite/90"
+      triggerOnScroll={false}
+      loop={true}
+    />
+    
+    {/* Enhanced Magnetic Buttons */}
+    <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
+      <MagneticButton 
+        href="/sell" 
+        variant="primary"
+        className="group"
+      >
+        <span className="flex items-center gap-3">
+          Sell a Watch
+          <svg 
+            className="w-4 h-4 transform transition-transform group-hover:translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </span>
+      </MagneticButton>
+      
+      <MagneticButton 
+        href="/buy" 
+        variant="secondary"
+        className="group"
+      >
+        <span className="flex items-center gap-3">
+          Buy a Watch
+          <svg 
+            className="w-4 h-4 transform transition-transform group-hover:translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </span>
+      </MagneticButton>
+    </div>
+  </div>
+</section>
+
 
       {/* Trust strips */}
       <section className="ws-container mt-24 grid md:grid-cols-3 gap-6 trust-section">
@@ -112,10 +261,17 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Featured Stories */}
-      <section className="ws-container mt-24 featured-stories-container">
+      {/* Featured Stories
+      <section className="ws-container mt-24">
         <div className="flex items-end justify-between">
-          <h2 className="font-title text-3xl">Featured Stories</h2>
+          <TypewriterHeading
+            lines={["Featured Stories"]}
+            charsPerSecond={30}
+            showDots={false}
+            loop={false}
+            triggerOnScroll={true}
+            className="font-title text-3xl"
+          />
           <Link to="/buy" className="text-gold">View all →</Link>
         </div>
 
@@ -132,18 +288,51 @@ export default function Index() {
             <CarouselNext className="border-border bg-card/80" />
           </Carousel>
         </div>
-      </section>
+      </section> */}
 
-      {/* From the Journal */}
-      <section className="ws-container mt-24 mb-24 journal-section">
+
+{/* Featured Stories - Full Screen Horizontal Showcase */}
+
+
+<HorizontalWatchShowcase watches={manyWatches} />
+
+
+
+{/* <div style={{ height: '100vh' }} /> spacer to allow scroll */}
+{/* Brands we work with display */}
+
+<BrandsShowcase brands={TRUSTED_BRANDS} />
+
+
+
+      {/* From the Journal
+      <section className="ws-container mt-24 mb-24">
         <div className="flex items-end justify-between">
-          <h2 className="font-title text-3xl">From the Journal</h2>
+          <TypewriterHeading
+            lines={["From the Journal"]}
+            charsPerSecond={30}
+            showDots={false}
+            loop={false}
+            triggerOnScroll={true}
+            className="font-title text-3xl"
+          />
           <Link to="/blog" className="text-gold">Read more →</Link>
         </div>
         <div className="grid md:grid-cols-3 gap-6 mt-6">
-          {POSTS.slice(0, 3).map((post) => <BlogCard key={post.id} post={post} />)}
+          {POSTS.slice(0, 3).map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
-      </section>
+      </section> */}
+
+
+
+      {/* From the Journal */}
+<JournalSection 
+  posts={POSTS.slice(0, 3)} 
+  showFeatured={true}
+/>
+
     </Layout>
   );
 }
