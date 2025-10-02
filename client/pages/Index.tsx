@@ -15,6 +15,12 @@ import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 
+//
+
+import DriftingWatches from "@/components/DriftingWatches"; // <-- NEW IMPORT
+
+//
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -65,7 +71,7 @@ const manyWatches = [
     name: `${w.brand} ${w.model}`,
     brand: w.brand,
     price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-    imageUrl: w.images.primary,
+    imageUrl: w.images.urls[0], // Use the first image
     slug: w.slug,
     year: String(w.year),
     movement: 'Automatic',
@@ -78,7 +84,7 @@ const manyWatches = [
     name: `${w.brand} ${w.model}`,
     brand: w.brand,
     price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-    imageUrl: w.images.primary,
+    imageUrl: w.images.urls[0], // Use the first image
     slug: `${w.slug}-dupA`,
     year: String(w.year),
     movement: 'Automatic',
@@ -91,7 +97,7 @@ const manyWatches = [
     name: `${w.brand} ${w.model}`,
     brand: w.brand,
     price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-    imageUrl: w.images.primary,
+    imageUrl: w.images.urls[0], // Use the first image
     slug: `${w.slug}-dupB`,
     year: String(w.year),
     movement: 'Automatic',
@@ -188,6 +194,16 @@ export default function Index() {
 
       {/* Hero */}
 <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
+  
+
+  {/*  */}
+
+  {/*  */}
+          {/* The DriftingWatches component is added here as a subtle background */}
+          <DriftingWatches /> 
+  
+
+   {/*  */}
   <div className="parallax-bg"></div>
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
   <div className="ws-container text-center relative z-10">
@@ -248,16 +264,16 @@ export default function Index() {
       {/* Trust strips */}
       <section className="ws-container mt-24 grid md:grid-cols-3 gap-6 trust-section">
         <div className="border rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title text-2xl">Provenance matters</h3>
-          <p className="text-offwhite/70 mt-2">We track ownership and service history to preserve the narrative.</p>
+          <h3 className="font-title font-bold text-2xl">Provenance matters</h3>
+          <p className="font-sans text-offwhite/70 mt-2">ggggWe track ownership and service history to preserve the narrative.</p>
         </div>
         <div className="border rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title text-2xl">Authenticated & verified</h3>
-          <p className="text-offwhite/70 mt-2">Materials, movement, and reference are checked by specialists.</p>
+          <h3 className="font-title font-bold text-2xl">Authenticated & verified</h3>
+          <p className="font-sans text-offwhite/70 mt-2">ggggMaterials, movement, and reference are checked by specialists.</p>
         </div>
         <div className="border rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title text-2xl">Fair offers, fast payouts</h3>
-          <p className="text-offwhite/70 mt-2">Transparent pricing and insured shipping worldwide.</p>
+          <h3 className="font-title font-bold text-2xl">Fair offers, fast payouts</h3>
+          <p className="font-sans text-offwhite/70 mt-2">ggggTransparent pricing and insured shipping worldwide.</p>
         </div>
       </section>
 
@@ -332,6 +348,11 @@ export default function Index() {
   posts={POSTS.slice(0, 3)} 
   showFeatured={true}
 />
+
+
+
+
+
 
     </Layout>
   );

@@ -1,3 +1,5 @@
+// client/lib/data.ts
+
 export type Product = {
   id: string;
   brand: string;
@@ -8,7 +10,7 @@ export type Product = {
   currency: string;
   availability: "in_stock" | "reserved" | "sold";
   story: string;
-  images: { primary: string; secondary?: string };
+  images: { urls: string[] }; // UPDATED: Changed to an array of URLs
   slug: string;
 };
 
@@ -24,8 +26,7 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "An honest diver with full set and service history.",
     images: {
-      primary: "/placeholder.svg",
-      secondary: "/placeholder.svg",
+      urls: ["/placeholder.svg", "/public/WatchBackground.png", "/placeholder.svg"], // UPDATED: Multi-image array
     },
     slug: "rolex-submariner-126610ln",
   },
@@ -39,7 +40,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "Iconic tapisserie in superb condition.",
-    images: { primary: "/placeholder.svg" },
+    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] }, // UPDATED
     slug: "ap-royal-oak-15510st",
   },
   {
@@ -52,9 +53,106 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "reserved",
     story: "Thin as a whisper, presence like a bell.",
-    images: { primary: "/placeholder.svg" },
+    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] }, // UPDATED
     slug: "patek-nautilus-5711",
   },
+  // --- Start of new watch added ---
+  {
+    id: "p4",
+    brand: "Cartier",
+    model: "Tank Must",
+    ref: "WSTA0059",
+    year: 2023,
+    price: 3600,
+    currency: "USD",
+    availability: "in_stock",
+    story: "A modern classic with elegant proportions and a quick-change strap system.",
+    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    slug: "cartier-tank-must-wsta0059",
+  },
+  // --- End of new watch added ---
+
+    // --- Start of new watch added ---
+    {
+      id: "p4",
+      brand: "Cartier",
+      model: "Tank Must",
+      ref: "WSTA0059",
+      year: 2023,
+      price: 3600,
+      currency: "USD",
+      availability: "in_stock",
+      story: "A modern classic with elegant proportions and a quick-change strap system.",
+      images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+      slug: "cartier-tank-must-wsta0059",
+    },
+    // --- End of new watch added ---
+
+      // --- Start of new watch added ---
+  {
+    id: "p4",
+    brand: "Cartier",
+    model: "Tank Must",
+    ref: "WSTA0059",
+    year: 2023,
+    price: 3600,
+    currency: "USD",
+    availability: "in_stock",
+    story: "A modern classic with elegant proportions and a quick-change strap system.",
+    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    slug: "cartier-tank-must-wsta0059",
+  },
+  // --- End of new watch added ---
+
+        // --- Start of new watch added ---
+        {
+          id: "p4",
+          brand: "Cartier",
+          model: "Tank Must",
+          ref: "WSTA0059",
+          year: 2023,
+          price: 3600,
+          currency: "USD",
+          availability: "in_stock",
+          story: "A modern classic with elegant proportions and a quick-change strap system.",
+          images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+          slug: "cartier-tank-must-wsta0059",
+        },
+        // --- End of new watch added ---
+
+
+              // --- Start of new watch added ---
+  {
+    id: "p4",
+    brand: "Cartier",
+    model: "Tank Must",
+    ref: "WSTA0059",
+    year: 2023,
+    price: 3600,
+    currency: "USD",
+    availability: "in_stock",
+    story: "A modern classic with elegant proportions and a quick-change strap system.",
+    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    slug: "cartier-tank-must-wsta0059",
+  },
+  // --- End of new watch added ---
+
+
+        // --- Start of new watch added ---
+        {
+          id: "p4",
+          brand: "Cartier",
+          model: "Tank Must",
+          ref: "WSTA0059",
+          year: 2023,
+          price: 3600,
+          currency: "USD",
+          availability: "in_stock",
+          story: "A modern classic with elegant proportions and a quick-change strap system.",
+          images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+          slug: "cartier-tank-must-wsta0059",
+        },
+        // --- End of new watch added ---
 ];
 
 export type Article = {

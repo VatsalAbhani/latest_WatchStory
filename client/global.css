@@ -1,7 +1,9 @@
-
-
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+/* 1. Import Bricolage Grotesque from Google Fonts (Body Text) */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..50,200..800&display=swap');
+
+/* NOTE: Cooper Std Black is loaded via the <link> tag in index.html, not here. 
+The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
 @tailwind base;
 @tailwind components;
@@ -112,8 +114,8 @@
   }
 
   html {
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI,
-      Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    /* Set the primary font to Bricolage Grotesque for all general text */
+    font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   body {
@@ -126,8 +128,11 @@
     background-attachment: fixed;
   }
 
+  /* Font for headings (now using the Adobe font-family name) */
   h1, h2, h3, .font-title {
-    font-family: "Cormorant Garamond", ui-serif, Georgia, Cambria, Times, serif;
+    /* Use the exact font-family name provided by Adobe Fonts */
+    font-family: 'cooper-black-std', serif;
+    font-weight: 800; /* Use a heavy weight */
     letter-spacing: -0.01em;
   }
 }
@@ -191,6 +196,7 @@
   pointer-events: none;
 }
 
+
 /* global.css */
 
 
@@ -221,7 +227,7 @@
   /* Terminal Industries-like title sequence animation */
   .ti-title-sequence {
     display: inline-block;
-    font-family: var(--font-primary, Inter, ui-sans-serif, system-ui, sans-serif);
+    font-family: var(--font-primary, "Satoshi", ui-sans-serif, system-ui, sans-serif);
     font-weight: 400;
     line-height: .95;
     letter-spacing: -0.02em;
@@ -248,4 +254,3 @@
     .ti-char { animation: none; transform: none; opacity: 1; }
   }
 }
-

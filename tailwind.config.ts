@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme"; // Import default theme
 
 export default {
   darkMode: ["class"],
@@ -13,6 +14,13 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        // Cooper Black for titles/headings
+        title: ['"cooper-black-std"', ...defaultTheme.fontFamily.serif],
+        // Bricolage Grotesque for sans-serif (body text)
+        sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
+      },
+      
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

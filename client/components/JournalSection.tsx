@@ -77,7 +77,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
             triggerOnScroll={true}
             className="font-title text-3xl md:text-4xl"
           />
-          <p className="text-offwhite/70 mt-4 max-w-2xl">
+          <p className="font-sans text-offwhite/70 mt-4 max-w-2xl">
             Explore the artistry, heritage, and stories behind the world's finest timepieces. 
             Our curated insights into horology, craftsmanship, and watch culture.
           </p>

@@ -649,16 +649,16 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       <div className="absolute top-0 left-0 right-0 z-30 p-8 md:p-12">
         <div className="flex items-start justify-between">
           <div className="max-w-md">
-            <TypewriterHeading
+            <TypewriterHeading 
               lines={["Featured Stories"]}
               charsPerSecond={40}
               showDots={false}
               loop={false}
               triggerOnScroll={false}
-              className="font-title text-4xl md:text-5xl text-offwhite mb-4"
+              className="font-title font-bold text-4xl md:text-5xl text-offwhite mb-4"
             />
-            <p className="text-offwhite/70 text-lg leading-relaxed">
-              Discover exceptional timepieces from the world's most prestigious watchmakers. 
+            <p className="font-sans text-offwhite/70 text-lg leading-relaxed">
+              ggggDiscover exceptional timepieces from the world's most prestigious watchmakers. 
               Each watch tells a unique story of craftsmanship and heritage.
             </p>
           </div>

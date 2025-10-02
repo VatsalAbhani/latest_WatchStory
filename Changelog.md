@@ -27,3 +27,9 @@ Template for future entries:
 - Why: rationale/context
 - Affected: list of key files/dirs
 - Notes: any follow-ups, migrations, or risks
+
+## 2025-10-01 – Replace Inter with Satoshi (Fontshare)
+- What changed: Import Satoshi from Fontshare and set it as the base UI font via `--font-primary` and `html { font-family }`. Updated components using `var(--font-primary)` fallbacks.
+- Why: Typography update to align with brand direction.
+- Affected: `client/global.css`
+- Notes: Display font `Cormorant Garamond` unchanged for headings (`.font-title`). Source: Fontshare Satoshi (`https://www.fontshare.com/?q=Satoshi`).

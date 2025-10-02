@@ -22,6 +22,15 @@ import { CartProvider } from "@/state/cart";
 import { useState } from "react";
 import IntroSplash from "@/components/IntroSplash";
 
+
+
+
+//
+
+// import DriftingWatches from '@/components/DriftingWatches';
+
+//
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -54,6 +63,14 @@ const App = () => {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+
+                {/* Drifting Watches */}
+                {/* <Route path="/drifting-watches" element={<DriftingWatches />} /> */}
+
+                {/* <DriftingWatches /> */}
+
+
+                {/* */}
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
