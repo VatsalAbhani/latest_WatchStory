@@ -33,3 +33,9 @@ Template for future entries:
 - Why: Typography update to align with brand direction.
 - Affected: `client/global.css`
 - Notes: Display font `Cormorant Garamond` unchanged for headings (`.font-title`). Source: Fontshare Satoshi (`https://www.fontshare.com/?q=Satoshi`).
+ 
+## 2025-10-02 – Fix nested useEffect cleanup in Layout
+- What changed: Adjust `useEffect` in `client/components/Layout.tsx` to return a single cleanup function instead of a function that returns another cleanup. Removed nested return and used a single `setTimeout` inside the cleanup.
+- Why: Resolve TypeScript error “Argument of type '() => () => () => void' is not assignable to parameter of type 'EffectCallback'”. React `useEffect` must return `void` or a single destructor function.
+- Affected: `client/components/Layout.tsx`
+- Notes: No behavior change; timing preserved (300ms delay) before killing `ScrollTrigger`s and resetting scroll.

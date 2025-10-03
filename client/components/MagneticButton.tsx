@@ -18,31 +18,31 @@ export default function MagneticButton({
   className = '' 
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const magneticRef = useRef<HTMLDivElement>(null);
+  // const magneticRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const button = buttonRef.current;
-    const magnetic = magneticRef.current;
+    // const magnetic = magneticRef.current;
     const text = textRef.current;
     const underline = underlineRef.current;
 
-    if (!button || !magnetic || !text || !underline) return;
+    if (!button || !text || !underline) return;
 
     // Magnetic effect with GSAP quickTo for performance
-    const xTo = gsap.quickTo(magnetic, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-    const yTo = gsap.quickTo(magnetic, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+    // const xTo = gsap.quickTo(magnetic, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+    // const yTo = gsap.quickTo(magnetic, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { height, width, left, top } = button.getBoundingClientRect();
-      const x = clientX - (left + width / 2);
-      const y = clientY - (top + height / 2);
+    // const handleMouseMove = (e: MouseEvent) => {
+    //   const { clientX, clientY } = e;
+    //   const { height, width, left, top } = button.getBoundingClientRect();
+    //   const x = clientX - (left + width / 2);
+    //   const y = clientY - (top + height / 2);
       
-      xTo(x * 0.35);
-      yTo(y * 0.35);
-    };
+    //   xTo(x * 0.35);
+    //   yTo(y * 0.35);
+    // };
 
     const handleMouseEnter = () => {
       // Text reveal animation
@@ -71,8 +71,8 @@ export default function MagneticButton({
 
     const handleMouseLeave = () => {
       // Reset magnetic position
-      xTo(0);
-      yTo(0);
+      // xTo(0);
+      // yTo(0);
 
       // Reset text
       gsap.to(text, {
@@ -96,12 +96,12 @@ export default function MagneticButton({
       });
     };
 
-    button.addEventListener('mousemove', handleMouseMove);
+    // button.addEventListener('mousemove', handleMouseMove);
     button.addEventListener('mouseenter', handleMouseEnter);
     button.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      button.removeEventListener('mousemove', handleMouseMove);
+      // button.removeEventListener('mousemove', handleMouseMove);
       button.removeEventListener('mouseenter', handleMouseEnter);
       button.removeEventListener('mouseleave', handleMouseLeave);
     };
@@ -127,7 +127,8 @@ export default function MagneticButton({
       onClick={onClick}
       className={baseClasses}
     >
-      <div ref={magneticRef} className="relative px-8 py-4">
+      {/* <div ref={magneticRef} className="relative px-8 py-4"> */}
+      <div className="relative px-8 py-4">
         {/* Background gradient that appears on hover */}
         <div className={`
           absolute inset-0 opacity-0 transition-opacity duration-500
@@ -140,6 +141,7 @@ export default function MagneticButton({
         {/* Text with slide-up effect */}
         <span 
           ref={textRef}
+          // Removed magnetic transform class (it was transform translate-y-0 anyway, but clean up is good)
           className="relative z-10 block transform translate-y-0"
         >
           {children}

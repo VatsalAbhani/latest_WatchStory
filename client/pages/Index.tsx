@@ -6,7 +6,8 @@ import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import TypewriterHeading from "@/components/TypewriterHeading";
+// Removed: import TypewriterHeading from "@/components/TypewriterHeading";
+import StaggeredCyclingHeading from "@/components/StaggeredCyclingHeading"; // <-- ADDED
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticButton from "@/components/MagneticButton";
@@ -207,16 +208,13 @@ export default function Index() {
   <div className="parallax-bg"></div>
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
   <div className="ws-container text-center relative z-10">
-    <TypewriterHeading
+  <StaggeredCyclingHeading // <-- REPLACED COMPONENT
       lines={[
         "Welcome to WatchStory",
         "What are you looking for?"
       ]}
-      charsPerSecond={25}
-      pauseBetweenLines={1.5}
+      cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
       className="text-center font-title text-4xl text-offwhite/90"
-      triggerOnScroll={false}
-      loop={true}
     />
     
     {/* Enhanced Magnetic Buttons */}

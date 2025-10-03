@@ -26,7 +26,7 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "An honest diver with full set and service history.",
     images: {
-      urls: ["/placeholder.svg", "/public/WatchBackground.png", "/placeholder.svg"], // UPDATED: Multi-image array
+      urls: ["/placeholder.svg", "/WatchBackground.png", "/placeholder.svg"], // UPDATED: Multi-image array
     },
     slug: "rolex-submariner-126610ln",
   },
@@ -40,7 +40,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "Iconic tapisserie in superb condition.",
-    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] }, // UPDATED
+    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] }, // UPDATED
     slug: "ap-royal-oak-15510st",
   },
   {
@@ -53,7 +53,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "reserved",
     story: "Thin as a whisper, presence like a bell.",
-    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] }, // UPDATED
+    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] }, // UPDATED
     slug: "patek-nautilus-5711",
   },
   // --- Start of new watch added ---
@@ -67,7 +67,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
     slug: "cartier-tank-must-wsta0059",
   },
   // --- End of new watch added ---
@@ -83,7 +83,7 @@ export const FEATURED: Product[] = [
       currency: "USD",
       availability: "in_stock",
       story: "A modern classic with elegant proportions and a quick-change strap system.",
-      images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+      images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
       slug: "cartier-tank-must-wsta0059",
     },
     // --- End of new watch added ---
@@ -99,7 +99,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
     slug: "cartier-tank-must-wsta0059",
   },
   // --- End of new watch added ---
@@ -115,7 +115,7 @@ export const FEATURED: Product[] = [
           currency: "USD",
           availability: "in_stock",
           story: "A modern classic with elegant proportions and a quick-change strap system.",
-          images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+          images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
           slug: "cartier-tank-must-wsta0059",
         },
         // --- End of new watch added ---
@@ -132,7 +132,7 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
     slug: "cartier-tank-must-wsta0059",
   },
   // --- End of new watch added ---
@@ -149,7 +149,7 @@ export const FEATURED: Product[] = [
           currency: "USD",
           availability: "in_stock",
           story: "A modern classic with elegant proportions and a quick-change strap system.",
-          images: { urls: ["/placeholder.svg", "/public/WatchBackground.png"] },
+          images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
           slug: "cartier-tank-must-wsta0059",
         },
         // --- End of new watch added ---

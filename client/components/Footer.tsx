@@ -142,7 +142,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="py-6 text-center text-xs text-offwhite/50">
-        © {new Date().getFullYear()} WatchStory. Every watch has a story.
+        © {new Date().getFullYear()} WatchStory. Every watch tells a story.
       </div>
     </footer>
   );
