@@ -62,7 +62,7 @@ export default function MagneticButton({
       // Subtle glow effect
       gsap.to(button, {
         boxShadow: variant === 'primary' 
-          ? '0 0 30px rgba(212, 175, 55, 0.4)' 
+          ? '0 0 30px rgba(86, 14, 14, 0.8)' 
           : '0 0 20px rgba(240, 238, 234, 0.2)',
         duration: 0.4,
         ease: "power2.out"

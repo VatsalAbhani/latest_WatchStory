@@ -16,6 +16,8 @@ import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 
+
+
 //
 
 import DriftingWatches from "@/components/DriftingWatches"; // <-- NEW IMPORT
@@ -210,11 +212,12 @@ export default function Index() {
   <div className="ws-container text-center relative z-10">
   <StaggeredCyclingHeading // <-- REPLACED COMPONENT
       lines={[
-        "Welcome to WatchStory",
+        // "Welcome to WatchStory",
+        "Every Watch Tells A Story",
         "What are you looking for?"
       ]}
       cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-      className="text-center font-title text-4xl text-offwhite/90"
+      className="text-center font-title text-6xl text-offwhite/90"
     />
     
     {/* Enhanced Magnetic Buttons */}
@@ -260,16 +263,16 @@ export default function Index() {
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-24 grid md:grid-cols-3 gap-6 trust-section">
-        <div className="border rounded-lg p-6 bg-card/60 trust-strip">
+      <section className="ws-container mt-24 grid md:grid-cols-3 gap-6 trust-section ">
+        <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
           <h3 className="font-title font-bold text-2xl">Provenance matters</h3>
           <p className="font-sans text-offwhite/70 mt-2">ggggWe track ownership and service history to preserve the narrative.</p>
         </div>
-        <div className="border rounded-lg p-6 bg-card/60 trust-strip">
+        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
           <h3 className="font-title font-bold text-2xl">Authenticated & verified</h3>
           <p className="font-sans text-offwhite/70 mt-2">ggggMaterials, movement, and reference are checked by specialists.</p>
         </div>
-        <div className="border rounded-lg p-6 bg-card/60 trust-strip">
+        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
           <h3 className="font-title font-bold text-2xl">Fair offers, fast payouts</h3>
           <p className="font-sans text-offwhite/70 mt-2">ggggTransparent pricing and insured shipping worldwide.</p>
         </div>

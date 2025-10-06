@@ -48,8 +48,12 @@ export default function MagneticBlogCard({
     if (!card || !image || !overlay || !content || !title || !excerpt || !meta || !glow) return;
 
     // Magnetic effect with performance optimization
-    const xTo = gsap.quickTo(card, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-    const yTo = gsap.quickTo(card, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+    // const xTo = gsap.quickTo(card, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+    // const yTo = gsap.quickTo(card, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+
+
+    const xTo = gsap.quickTo(card, "x", { duration: 0.6, ease: "power2.out" }); 
+    const yTo = gsap.quickTo(card, "y", { duration: 0.6, ease: "power2.out" });
 
     // Initial state setup
     gsap.set([title, excerpt, meta], { y: 20, opacity: 0 });
@@ -72,7 +76,7 @@ export default function MagneticBlogCard({
       
       // Card elevation and glow
       tl.to(card, {
-        scale: 1.02,
+        // scale: 1.02,
         rotationY: 2,
         rotationX: 1,
         duration: 0.6,
@@ -80,7 +84,7 @@ export default function MagneticBlogCard({
       })
       // Image zoom with overlay reveal
       .to(image, {
-        scale: 1.1,
+        // scale: 1.1,
         duration: 1.2,
         ease: "power3.out"
       }, 0)
@@ -126,14 +130,14 @@ export default function MagneticBlogCard({
 
       // Reverse animations
       tl.to(card, {
-        scale: 1,
+        // scale: 1,
         rotationY: 0,
         rotationX: 0,
         duration: 0.5,
         ease: "power2.out"
       })
       .to(image, {
-        scale: 1,
+        // scale: 1,
         duration: 0.8,
         ease: "power2.out"
       }, 0)
@@ -150,7 +154,7 @@ export default function MagneticBlogCard({
         ease: "power2.out"
       }, 0)
       .to(glow, {
-        scale: 0.8,
+        // scale: 0.8,
         opacity: 0,
         duration: 0.6,
         ease: "power2.out"
@@ -213,7 +217,7 @@ export default function MagneticBlogCard({
         />
         
         {/* Image container */}
-        <div className="relative h-64 md:h-72 overflow-hidden rounded-lg">
+        <div className="relative h-64 md:h-72 overflow-hidden rounded-lg will-change-transform">
           <div 
             ref={imageRef}
             className="w-full h-full bg-cover bg-center"

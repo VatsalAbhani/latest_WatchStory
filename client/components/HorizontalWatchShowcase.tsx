@@ -116,7 +116,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
   return (
     <section 
       ref={containerRef} 
-      className="relative h-screen w-full overflow-hidden"
+      className="relative overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
@@ -134,17 +134,20 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
               triggerOnScroll={false}
               className="font-title font-bold text-4xl md:text-5xl text-offwhite mb-4"
             />
-            <p className="font-sans text-offwhite/70 text-lg leading-relaxed">
-              ggggDiscover exceptional timepieces from the world's most prestigious watchmakers. 
+            {/* <p className="font-sans text-offwhite/70 text-sm leading-relaxed">
+              Discover exceptional timepieces from the world's most prestigious watchmakers. 
               Each watch tells a unique story of craftsmanship and heritage.
-            </p>
+            </p> */}
           </div>
+
           
           <MagneticButton 
             href="/buy" 
             variant="secondary"
             className="hidden md:block"
           >
+
+
             <span className="flex items-center gap-2">
               View Collection
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,6 +156,10 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
             </span>
           </MagneticButton>
         </div>
+        {/* <p className="font-sans text-offwhite/70 text-sm leading-relaxed">
+              Discover exceptional timepieces from the world's most prestigious watchmakers. 
+              Each watch tells a unique story of craftsmanship and heritage.
+            </p> */}
       </div>
 
       <div 
@@ -168,13 +175,13 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
           <div
             key={watch.id}
             ref={el => (el ? (slidesRef.current[i] = el) : null)}
-            className="watch-slide flex-none w-[90vw] md:w-[60vw] lg:w-[50vw] h-full flex items-center justify-center px-6 md:px-10"
+            className="watch-slide flex-none w-[90vw] md:w-[60vw] lg:w-[50vw] flex items-center justify-center px-6 md:px-10"
           >
             <Link 
               to={`/buy/${watch.slug}`}
-              className="group block w-full max-w-6xl mx-auto"
+              className="group block w-full max-w-4xl mx-auto"
             >
-              <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center h-full py-20">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-32 pb-20">
                 <div className="relative">
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
@@ -204,10 +211,10 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                     <div className="text-gold text-lg font-semibold tracking-wide">
                       {watch.brand}
                     </div>
-                    <h2 className="font-title text-4xl md:text-6xl text-offwhite leading-tight">
+                    <h2 className="font-title text-3xl md:text-5xl text-offwhite leading-tight">
                       {watch.name}
                     </h2>
-                    <div className="text-2xl md:text-3xl text-offwhite font-light">
+                    <div className="text-1xl md:text-2xl text-offwhite font-light">
                       {watch.price}
                     </div>
                   </div>
@@ -216,12 +223,14 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                     <MagneticButton 
                       href={`/buy/${watch.slug}`} 
                       variant="primary"
+                      className="text-sm"
                     >
-                      View Details
+                      Details
                     </MagneticButton>
                     <MagneticButton 
                       href="/contact" 
                       variant="secondary"
+                      className="text-sm"
                     >
                       Inquire
                     </MagneticButton>
@@ -236,17 +245,17 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       <div className="absolute bottom-0 left-0 right-0 z-30 p-8 md:p-12">
         <div className="flex items-center justify-between">
           <div className="flex-1 max-w-xs">
-            <div className="h-px bg-offwhite/20 relative">
+            {/* <div className="h-px bg-offwhite/20 relative">
               <div 
                 ref={progressRef}
                 className="h-full bg-gold origin-left scale-x-0"
               />
-            </div>
+            </div> */}
           </div>
 
-          <div className="text-offwhite/70 font-mono text-lg ml-8">
+          {/* <div className="text-offwhite/70 font-mono text-lg ml-8">
             <span ref={counterRef}>01</span>/<span ref={totalRef}>00</span>
-          </div>
+          </div> */}
 
           <div className="hidden md:flex items-center gap-3 text-offwhite/50 text-sm">
             <span>Scroll to explore</span>

@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return () => {
         // Kill all triggers with a slight delay to allow state to settle.
         setTimeout(() => {
-            ScrollTrigger.getAll().forEach(t => t.kill());
+            // ScrollTrigger.getAll().forEach(t => t.kill());
             // Force browser scroll position back to top when navigating away
             window.scrollTo(0, 0);
         }, 300);

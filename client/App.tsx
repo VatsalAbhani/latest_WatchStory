@@ -21,7 +21,7 @@ import { StoryProvider } from "@/state/story";
 import { CartProvider } from "@/state/cart";
 import { useState } from "react";
 import IntroSplash from "@/components/IntroSplash";
-
+// import CursorGlow from "@/components/CursorGlow"; // <-- NEW IMPORT
 
 
 
@@ -49,6 +49,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        {/* <CursorGlow /> <-- COMPONENT ADDED HERE */}
         <BrowserRouter>
           <CartProvider>
             <StoryProvider>
