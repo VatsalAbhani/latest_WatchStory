@@ -17,6 +17,9 @@ export default {
       fontFamily: {
         // Cooper Black for titles/headings
         title: ['"cooper-black-std"', ...defaultTheme.fontFamily.serif],
+
+
+
         // Bricolage Grotesque for sans-serif (body text)
         // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
 

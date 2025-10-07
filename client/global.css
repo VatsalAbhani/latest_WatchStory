@@ -11,8 +11,9 @@
 
 @font-face {
   font-family: 'Kenau Sans Serif';
-  src: url('/fonts/kenao/Kenau-Regular.woff2') format('woff2'),
-       url('/fonts/kenao/Kenau-Regular.woff') format('woff');
+  /* src: url('/fonts/kenao/Kenau-Regular.woff2') format('woff2'), */
+  src: url('/fonts/Kenao.otf') format('opentype');
+       /* url('/fonts/kenao/Kenau-Regular.woff') format('woff'); */
   font-weight: 400;
   font-style: normal;
   font-display: swap;

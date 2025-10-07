@@ -29,7 +29,7 @@ export default function BrandsShowcase({ brands }) {
 
     // Infinite marquee tween (never paused)
     animationRef.current = gsap.to({}, {
-      duration: 30,
+      duration: 5,
       ease: "none",
       repeat: -1,
       onUpdate() {
