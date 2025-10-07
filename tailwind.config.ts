@@ -18,7 +18,10 @@ export default {
         // Cooper Black for titles/headings
         title: ['"cooper-black-std"', ...defaultTheme.fontFamily.serif],
         // Bricolage Grotesque for sans-serif (body text)
-        sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
+        // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
+
+        // Kenau Sans Serif for sans-serif (body text)
+        sans: ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
       },
       
       colors: {

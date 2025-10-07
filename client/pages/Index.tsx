@@ -213,8 +213,11 @@ export default function Index() {
   <StaggeredCyclingHeading // <-- REPLACED COMPONENT
       lines={[
         // "Welcome to WatchStory",
-        "Every Watch Tells A Story",
-        "What are you looking for?"
+        // "Every Watch Tells A Story",
+        // "What are you looking for?"
+
+        "WatchStory",
+        "More Than Time, A Story on Your Wrist"
       ]}
       cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
       className="text-center font-title text-6xl text-offwhite/90"

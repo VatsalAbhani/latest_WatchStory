@@ -2,6 +2,24 @@
 /* 1. Import Bricolage Grotesque from Google Fonts (Body Text) */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..50,200..800&display=swap');
 
+
+/* 1. REPLACE: Bricolage Grotesque font import 
+   ACTION REQUIRED: Since 'KENAO' is a commercial font, you must purchase the 'Webfont' license, 
+   download the files (e.g., .woff2), and place them in a folder like `public/fonts/kenao`.
+   Then, use the following @font-face declaration for the files you purchased.
+*/
+
+@font-face {
+  font-family: 'Kenau Sans Serif';
+  src: url('/fonts/kenao/Kenau-Regular.woff2') format('woff2'),
+       url('/fonts/kenao/Kenau-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 /* NOTE: Cooper Std Black is loaded via the <link> tag in index.html, not here. 
 The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
@@ -127,7 +145,10 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
   html {
     /* Set the primary font to Bricolage Grotesque for all general text */
-    font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+    font-family: 'Kenau Sans Serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  
   }
 
   body {
