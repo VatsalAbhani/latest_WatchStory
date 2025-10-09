@@ -91,7 +91,8 @@ export default function TerminalStoryBar() {
   );
 
   return (
-    <div className="sticky top-0 z-50 bg-card/90 backdrop-blur">
+    // backdrop-blur    bg-[#F6F4F0]
+    <div className="sticky top-0 z-50 bg-white text-black">
       <div className="ws-container relative h-10 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-mono group">
           <span className="text-sm tracking-tight">WatchStory_</span>

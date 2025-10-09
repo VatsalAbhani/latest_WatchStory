@@ -82,31 +82,31 @@ const manyWatches = [
     condition: 'Excellent',
   })),
   // Duplicate set A
-  ...FEATURED.map((w, i) => ({
-    id: `${w.id}-dupA`,
-    name: `${w.brand} ${w.model}`,
-    brand: w.brand,
-    price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-    imageUrl: w.images.urls[0], // Use the first image
-    slug: `${w.slug}-dupA`,
-    year: String(w.year),
-    movement: 'Automatic',
-    reference: w.ref,
-    condition: 'Excellent',
-  })),
+  // ...FEATURED.map((w, i) => ({
+  //   id: `${w.id}-dupA`,
+  //   name: `${w.brand} ${w.model}`,
+  //   brand: w.brand,
+  //   price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
+  //   imageUrl: w.images.urls[0], // Use the first image
+  //   slug: `${w.slug}-dupA`,
+  //   year: String(w.year),
+  //   movement: 'Automatic',
+  //   reference: w.ref,
+  //   condition: 'Excellent',
+  // })),
   // Duplicate set B
-  ...FEATURED.map((w, i) => ({
-    id: `${w.id}-dupB`,
-    name: `${w.brand} ${w.model}`,
-    brand: w.brand,
-    price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-    imageUrl: w.images.urls[0], // Use the first image
-    slug: `${w.slug}-dupB`,
-    year: String(w.year),
-    movement: 'Automatic',
-    reference: w.ref,
-    condition: 'Excellent',
-  })),
+  // ...FEATURED.map((w, i) => ({
+  //   id: `${w.id}-dupB`,
+  //   name: `${w.brand} ${w.model}`,
+  //   brand: w.brand,
+  //   price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
+  //   imageUrl: w.images.urls[0], // Use the first image
+  //   slug: `${w.slug}-dupB`,
+  //   year: String(w.year),
+  //   movement: 'Automatic',
+  //   reference: w.ref,
+  //   condition: 'Excellent',
+  // })),
 ];
 
 
@@ -201,14 +201,27 @@ export default function Index() {
 
   {/*  */}
 
+
+  {/* 1. New Background Image (uploaded by user) */}
+  <div className="absolute inset-0 -z-20">
+    <img 
+      src="/WATCHSTORY (8).png" // Path to the uploaded image in the public directory
+      alt="Luxury watch background"
+      // opacity-60
+      className="w-full h-full object-cover" // object-cover for full coverage, opacity to make text readable
+    />
+  </div>
+
+
+
   {/*  */}
           {/* The DriftingWatches component is added here as a subtle background */}
-          <DriftingWatches /> 
+          {/* <DriftingWatches />  */}
   
 
    {/*  */}
   <div className="parallax-bg"></div>
-  <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
+  {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
   <div className="ws-container text-center relative z-10">
   <StaggeredCyclingHeading // <-- REPLACED COMPONENT
       lines={[
@@ -217,12 +230,24 @@ export default function Index() {
         // "What are you looking for?"
 
         "WatchStory",
-        "More Than Time, A Story on Your Wrist"
+  
+        // "More Than Time, A Story on Your Wrist"
       ]}
       cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
       className="text-center font-title text-6xl text-offwhite/90"
     />
-    
+     <StaggeredCyclingHeading // <-- REPLACED COMPONENT
+      lines={[
+        // "Welcome to WatchStory",
+        // "Every Watch Tells A Story",
+        // "What are you looking for?"
+
+        "More Than Time",
+        "A Story on Your Wrist"
+      ]}
+      cycleIntervalSec={3.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
+      className="mt-10 text-center font-title text-2xl text-offwhite/90"
+    />
     {/* Enhanced Magnetic Buttons */}
     <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
       <MagneticButton 
@@ -260,7 +285,12 @@ export default function Index() {
           </svg>
         </span>
       </MagneticButton>
+
+
+      
     </div>
+
+   
   </div>
 </section>
 
@@ -366,3 +396,5 @@ export default function Index() {
     </Layout>
   );
 }
+
+

@@ -29,77 +29,78 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 @tailwind utilities;
 
 @layer base {
+
+
+  /* Force text colors */
+  *, *::before, *::after {
+    color: hsl(210 22% 10%);
+  }
+  
+  /* Specific element overrides */
+  p, span, div, h1, h2, h3, h4, h5, h6 {
+    color: hsl(210 22% 10%) !important;
+  }
+
+
+
+
   :root {
     /* Brand palette in HSL (Tailwind expects HSL vars) */
-    /* Onyx #0B0E11 */
-    /* --background: 40 25% 9%; */
-    --background: 210 22% 6%;
-    --foreground: 60 8% 95%; /* Off-white #F5F5F2 */
+    /* --- START LIGHT MODE SCHEME (Background: #f6f4f0, Foreground: Dark) --- */
+    --background: 40 25% 95%; /* Requested: #f6f4f0 */
+    --foreground: 210 22% 10%; /* Dark text */
 
-    /* Carbon #111315 surfaces */
-    --card: 210 10% 7%;
-    --card-foreground: 60 8% 95%;
+    --card: 40 25% 93%; 
+    --card-foreground: 210 22% 10%;
 
-    --popover: 210 10% 7%;
-    --popover-foreground: 60 8% 95%;
+    --popover: 40 25% 93%;
+    --popover-foreground: 210 22% 10%;
 
-    /* Champagne gold as primary */
-    /* --primary: 42 46% 56%; #C2A35A */
-    /* Deep red color */
+    /* Primary/Accent (Red/Gold remains the accent color) */
     --primary: 0 72% 20%; 
-    /* --primary-foreground: 210 22% 6%; Onyx for text on gold */
+    --primary-foreground: 60 8% 95%; /* Light text on primary */
 
-    /* Off-white for text on primary */
-    --primary-foreground: 60 8% 95%;
+    /* Secondary subtle surfaces */
+    --secondary: 210 10% 80%; 
+    --secondary-foreground: 210 22% 10%;
+
+    --muted: 210 10% 85%;
+    --muted-foreground: 210 22% 15%;
+
+    --accent: 0 72% 20%; 
+    --accent-foreground: 210 22% 10%;
     
-
-    /* Secondary subtle surfaces (platinum tint for borders etc.) */
-    --secondary: 0 0% 75%; /* Platinum #C0C0C0 */
-    --secondary-foreground: 210 22% 6%;
-
-    --muted: 210 10% 12%;
-    --muted-foreground: 0 0% 80%;
-
-    /* Accent reuses gold for hover accents */
-    /* --accent: 42 46% 56%;
-    --accent-foreground: 210 22% 6%; */
-
-    /* Accent reuses primary/gold for hover accents */
-    --accent: 0 72% 20%; /* Updated from 42 46% 56% */
-    --accent-foreground: 210 22% 6%;
-    
-
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 22% 6%;
+    --destructive-foreground: 60 8% 95%;
 
-    --border: 210 10% 18%; /* subtle borders */
-    --input: 210 10% 18%;
-    /* --ring: 42 46% 56%; */
-    --ring: 0 72% 20%; /* Updated from 42 46% 56% */
+    --border: 210 10% 80%; /* Light border/input colors */
+    --input: 210 10% 80%;
+    --ring: 0 72% 20%; 
 
     --radius: 0.5rem;
 
-    /* Sidebar (not used heavily, keep in theme) */
-    --sidebar-background: 210 10% 7%;
-    --sidebar-foreground: 60 8% 95%;
-    --sidebar-primary: 0 72% 20%; /* Updated from 42 46% 56% */
-    --sidebar-primary-foreground: 210 22% 6%;
-    --sidebar-accent: 210 10% 12%;
-    --sidebar-accent-foreground: 60 8% 95%;
-    --sidebar-border: 210 10% 18%;
-    --sidebar-ring: 0 72% 20%; /* Updated from 42 46% 56% */
+    /* Sidebar */
+    --sidebar-background: 40 25% 95%;
+    --sidebar-foreground: 210 22% 10%;
+    --sidebar-primary: 0 72% 20%; 
+    --sidebar-primary-foreground: 210 22% 10%;
+    --sidebar-accent: 40 25% 90%;
+    --sidebar-accent-foreground: 210 22% 10%;
+    --sidebar-border: 210 10% 80%;
+    --sidebar-ring: 0 72% 20%; 
 
     /* Brand extras */
-    --brand-deep-green: 169 50% 11%; /* #0E2A25 */
+    --brand-deep-green: 169 50% 11%; 
     --brand-carbon: 210 10% 7%;
     --brand-onyx: 210 22% 6%;
-    --brand-gold: 0 72% 20%; /* Updated from 42 46% 56% */
+    --brand-gold: 0 72% 20%; 
     --brand-platinum: 0 0% 75%;
-    --brand-offwhite: 60 8% 95%;
+    --brand-offwhite: 40 25% 95%;
+    /* --- END LIGHT MODE SCHEME --- */
   }
 
   .dark {
-    /* Keep similar but slightly deeper for dark mode */
+    /* Keep the original dark mode scheme for the toggle */
     --background: 210 22% 5%;
     --foreground: 60 8% 95%;
 
@@ -109,7 +110,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --popover: 210 12% 6%;
     --popover-foreground: 60 8% 95%;
 
-    --primary: 0 72% 20%; /* Updated from 42 46% 56% */
+    --primary: 0 72% 20%; 
     --primary-foreground: 210 22% 6%;
 
     --secondary: 0 0% 75%;
@@ -118,7 +119,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --muted: 210 12% 12%;
     --muted-foreground: 0 0% 82%;
 
-    --accent: 0 72% 20%; /* Updated from 42 46% 56% */
+    --accent: 0 72% 20%; 
     --accent-foreground: 210 22% 6%;
 
     --destructive: 0 63% 31%;
@@ -126,16 +127,16 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
     --border: 210 12% 16%;
     --input: 210 12% 16%;
-    --ring: 0 72% 20%; /* Updated from 42 46% 56% */
+    --ring: 0 72% 20%; 
 
     --sidebar-background: 210 12% 6%;
     --sidebar-foreground: 60 8% 95%;
-    --sidebar-primary: 0 72% 20%; /* Updated from 42 46% 56% */
+    --sidebar-primary: 0 72% 20%; 
     --sidebar-primary-foreground: 210 22% 6%;
     --sidebar-accent: 210 12% 12%;
     --sidebar-accent-foreground: 60 8% 95%;
     --sidebar-border: 210 12% 16%;
-    --sidebar-ring: 0 72% 20%; /* Updated from 42 46% 56% */
+    --sidebar-ring: 0 72% 20%; 
   }
 }
 
@@ -145,28 +146,24 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
   }
 
   html {
-    /* Set the primary font to Bricolage Grotesque for all general text */
-    /* font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
     font-family: 'Kenau Sans Serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-  
   }
 
   body {
     @apply bg-background text-foreground antialiased;
+    /* Adjusted background gradients for the new light mode: use darker gold/carbon accents on a light body */
     background-image: radial-gradient(
-        1000px 300px at 50% -10%, hsl(var(--brand-gold)/0.06) 0%, transparent 60%
+        1000px 300px at 50% -10%, hsl(var(--brand-gold)/0.1) 0%, transparent 60%
       ),
-      radial-gradient(800px 400px at 100% 0%, hsl(var(--brand-deep-green)/0.08) 0%, transparent 60%),
+      radial-gradient(800px 400px at 100% 0%, hsl(var(--brand-carbon)/0.02) 0%, transparent 60%),
       linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
     background-attachment: fixed;
   }
 
   /* Font for headings (now using the Adobe font-family name) */
   h1, h2, h3, .font-title {
-    /* Use the exact font-family name provided by Adobe Fonts */
     font-family: 'cooper-black-std', serif;
-    font-weight: 800; /* Use a heavy weight */
+    font-weight: 800; 
     letter-spacing: -0.01em;
   }
 }
@@ -181,7 +178,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0.08'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0.08'/%3E%3C/feComponentTransfer%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.4;
   mix-blend-mode: soft-light;
 }

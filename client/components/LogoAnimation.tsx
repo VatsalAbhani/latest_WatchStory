@@ -41,8 +41,8 @@ export default function LogoAnimation() {
       <div className="flex items-center gap-2 font-mono group">
         <span className="logo-part-1 text-sm tracking-tight">Watch</span>
         <span className="logo-part-2 text-sm tracking-tight">Story</span>
-        <span className="logo-underscore text-sm tracking-tight opacity-0">_</span>
-        <span className="logo-sparkles h-4 w-4 text-gold opacity-0 scale-0">✨</span>
+        {/* <span className="logo-underscore text-sm tracking-tight opacity-0">_</span>
+        <span className="logo-sparkles h-4 w-4 text-gold opacity-0 scale-0">✨</span> */}
       </div>
     </div>
   );

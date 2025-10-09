@@ -8,14 +8,26 @@ import WatchModal, { SelectedWatch } from './WatchModal';
 
 // Placeholder: Replace these with the actual paths to your unique watch images
 const watchImages = [
-    '/watch-1.png', // Assuming you added this file to /public
-    '/watch-2.jpg', // Assuming you added this file to /public
-    '/watch-3.png',
-    '/watch-4.jpg',
-    '/watch-5.png',
-    '/watch-6.jpg',
-    '/watch-7.png',
-    '/watch-8.jpg',
+    '/Rolex-1.svg', // Assuming you added this file to /public
+    '/AP-1.svg', // Assuming you added this file to /public
+    '/RM-1.svg',
+    '/RM-2.svg',
+    '/RM-3.svg',
+    '/RM-4.svg',
+    '/Patek-1.svg',
+    '/Patek-2.svg',
+    '/Patek-3.svg',
+    '/Patek-4.svg',
+    '/Patek-5.svg', // Assuming you added this file to /public
+    '/Patek-6.svg', // Assuming you added this file to /public
+    '/Patek-7.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
+    '/Rolex-1.svg',
   ];
   
   // --- END: MODIFIED SECTION ---
@@ -44,10 +56,10 @@ export default function DriftingWatches() {
       img.dataset.index = i.toString();
       img.style.position = 'absolute';
       // Set fixed, small size for the drifting elements
-      img.style.width = '100px'; 
-      img.style.height = '100px';
+      img.style.width = '200px'; 
+      img.style.height = '200px';
       img.style.objectFit = 'cover';
-      img.style.opacity = '0.3'; 
+      img.style.opacity = '0.9'; 
       img.style.cursor = 'pointer';
       
       // Random initial position, scale, and rotation for visual variety

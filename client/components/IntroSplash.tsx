@@ -47,9 +47,9 @@ export default function IntroSplash({ onComplete }: IntroSplashProps) {
     >
       <div className="flex items-center gap-2 font-mono group">
         <span className="logo-part-1 text-4xl tracking-tight text-white">Watch</span>
-        <span className="logo-part-2 text-4xl tracking-tight text-white">Story</span>
-        <span className="logo-underscore text-4xl tracking-tight text-white opacity-0">_</span>
-        <span className="logo-sparkles h-6 w-6 text-gold opacity-0 scale-0">✨</span>
+        {/* <span className="logo-part-2 text-4xl tracking-tight text-white">Story</span> */}
+        {/* <span className="logo-underscore text-4xl tracking-tight text-white opacity-0">_</span>
+        <span className="logo-sparkles h-6 w-6 text-gold opacity-0 scale-0">✨</span> */}
       </div>
     </div>
   );

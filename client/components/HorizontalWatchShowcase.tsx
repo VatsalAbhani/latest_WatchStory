@@ -40,10 +40,8 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
 
     if (!container || !track || slides.length === 0) return;
 
-    // --- FIX 1: Clear existing triggers and force scroll to top on mount ---
+    // Clear existing triggers to prevent conflicts on hot reload or navigation.
     ScrollTrigger.getAll().forEach(t => t.kill());
-    // Use window.scrollTo for a hard scroll reset (needed for re-entering from another page)
-    window.scrollTo(0, container.offsetTop); 
     // ---------------------------------------------------------------------
 
     const total = totalRef.current;
@@ -70,6 +68,13 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
         pinSpacing: true,
         scrub: 1,
         end: `+=${distanceToScroll}`,
+                // --- START FIX: Force scroll position to the start of the pinned section ---
+                onRefreshInit: (self) => { 
+                  // This ensures the page starts at the beginning of the pinned scroll space
+                  // even if the browser attempts to restore an old scroll position.
+                  window.scrollTo(0, self.start); 
+                },
+                // --- END FIX ---
         onUpdate(self) {
           const progressBar = progressRef.current;
           if (progressBar) {

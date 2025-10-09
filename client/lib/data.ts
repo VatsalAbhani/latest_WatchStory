@@ -88,71 +88,14 @@ export const FEATURED: Product[] = [
     },
     // --- End of new watch added ---
 
-      // --- Start of new watch added ---
-  {
-    id: "p4",
-    brand: "Cartier",
-    model: "Tank Must",
-    ref: "WSTA0059",
-    year: 2023,
-    price: 3600,
-    currency: "USD",
-    availability: "in_stock",
-    story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
-    slug: "cartier-tank-must-wsta0059",
-  },
-  // --- End of new watch added ---
-
-        // --- Start of new watch added ---
-        {
-          id: "p4",
-          brand: "Cartier",
-          model: "Tank Must",
-          ref: "WSTA0059",
-          year: 2023,
-          price: 3600,
-          currency: "USD",
-          availability: "in_stock",
-          story: "A modern classic with elegant proportions and a quick-change strap system.",
-          images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
-          slug: "cartier-tank-must-wsta0059",
-        },
-        // --- End of new watch added ---
 
 
-              // --- Start of new watch added ---
-  {
-    id: "p4",
-    brand: "Cartier",
-    model: "Tank Must",
-    ref: "WSTA0059",
-    year: 2023,
-    price: 3600,
-    currency: "USD",
-    availability: "in_stock",
-    story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
-    slug: "cartier-tank-must-wsta0059",
-  },
-  // --- End of new watch added ---
 
 
-        // --- Start of new watch added ---
-        {
-          id: "p4",
-          brand: "Cartier",
-          model: "Tank Must",
-          ref: "WSTA0059",
-          year: 2023,
-          price: 3600,
-          currency: "USD",
-          availability: "in_stock",
-          story: "A modern classic with elegant proportions and a quick-change strap system.",
-          images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
-          slug: "cartier-tank-must-wsta0059",
-        },
-        // --- End of new watch added ---
+
+
+
+
 ];
 
 export type Article = {
