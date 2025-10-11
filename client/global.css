@@ -47,7 +47,10 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
   :root {
     /* Brand palette in HSL (Tailwind expects HSL vars) */
     /* --- START LIGHT MODE SCHEME (Background: #f6f4f0, Foreground: Dark) --- */
-    --background: 40 25% 95%; /* Requested: #f6f4f0 */
+    /* Requested: #f6f4f0 */
+    /* --background: 40 25% 95%; */
+
+    --background: 348 100% 100%;
     --foreground: 210 22% 10%; /* Dark text */
 
     --card: 40 25% 93%; 

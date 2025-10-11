@@ -8,6 +8,12 @@ Conventions:
 - Note affected files/dirs and rationale
 - Use present tense, concise bullets
 
+## 2025-01-15 – Fix missing cn utility import in Index.tsx
+- What changed: Add missing `import { cn } from "@/lib/utils"` to `client/pages/Index.tsx` to resolve "Cannot find name 'cn'" error
+- Why: The `cn` utility function is used for conditional className composition but wasn't imported
+- Affected: `client/pages/Index.tsx`
+- Notes: Fixes TypeScript compilation error in the HomeWatchCarousel component
+
 ## 2025-09-16 – Developer workflow docs and contribution guide
 - What changed: Document how to run the project locally with PNPM (dev, build, start, test, typecheck) and add `CONTRIBUTING.md` with setup, quality checks, commit/PR, routing, and coding guidelines
 - Why: Ensure consistent local setup and contribution practices; reduce onboarding friction

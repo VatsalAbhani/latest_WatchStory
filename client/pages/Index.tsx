@@ -1,11 +1,12 @@
 // index.tsx
-import { useEffect } from "react";
+import { useEffect , useRef, useState} from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 // Removed: import TypewriterHeading from "@/components/TypewriterHeading";
 import StaggeredCyclingHeading from "@/components/StaggeredCyclingHeading"; // <-- ADDED
 import { gsap } from "gsap";
@@ -25,6 +26,117 @@ import DriftingWatches from "@/components/DriftingWatches"; // <-- NEW IMPORT
 //
 
 gsap.registerPlugin(ScrollTrigger);
+
+
+
+
+
+// new trial anmiation for the background --------------------------------------------------------------------------------------
+
+
+
+
+
+// const CYCLE_IMAGES = [
+//   '/bg-1.png', // Rolex Daytona
+//   '/bg-2.png', // Patek Nautilus
+//   // Fallback/generic watch composite (if needed, although small crops are better)
+//   // '/WatchBackground.png',
+//   '/bg-3.png', // Repeat
+//   '/bg-4.png',
+//   '/bg-5.png',
+//   '/AP-1.svg',
+// ];
+
+// interface HomeWatchCarouselProps {
+//   initialOffset: number; // MODIFIED: Use offset instead of initialImage string
+
+//   className: string;
+// }
+
+// function HomeWatchCarousel({   initialOffset, className }: HomeWatchCarouselProps) {
+//   const imgRef = useRef<HTMLImageElement>(null);
+// // MODIFIED: Start the index at the unique offset
+//   const [imageIndex, setImageIndex] = useState(initialOffset % CYCLE_IMAGES.length); 
+
+//   useEffect(() => {
+//     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 }); // Cycle every ~3 seconds
+//     const image = imgRef.current;
+//     if (!image) return;
+
+//     // Initial setup: Use the correct starting image
+//     // image.src = initialImage;
+
+//     const cycleAnimation = () => {
+//       // Advance index, wrapping back to 0
+//       setImageIndex(prev => (prev + 1) % CYCLE_IMAGES.length);
+//     };
+
+//     tl.to(image, {
+//       opacity: 0,
+//       duration: 0.5,
+//       ease: 'power2.in',
+//     })
+//     .add(cycleAnimation) // Change image source (React state change)
+//     .to(image, {
+//       opacity: 1,
+//       duration: 0.5,
+//       ease: 'power2.out',
+//     });
+
+//     return () => {
+//       tl.kill();
+//     };
+//   }, [initialOffset]);
+
+//   useEffect(() => {
+//     // This effect runs whenever imageIndex changes (triggered by the GSAP timeline)
+//     if (imgRef.current) {
+//       imgRef.current.src = CYCLE_IMAGES[imageIndex];
+//     }
+//   }, [imageIndex]);
+
+//   return (
+//     <div className={cn("absolute w-full h-full", className)}>
+//       <img
+//         ref={imgRef}
+//         // MODIFIED: Use the correct image from the initial index
+//         src={CYCLE_IMAGES[imageIndex]} 
+//         alt="Animated Luxury Watch"
+//         className="w-full h-full object-cover absolute"
+//       />
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -203,14 +315,62 @@ export default function Index() {
 
 
   {/* 1. New Background Image (uploaded by user) */}
-  <div className="absolute inset-0 -z-20">
+  <div className="absolute inset-0 -z-30">
     <img 
-      src="/WATCHSTORY (8).png" // Path to the uploaded image in the public directory
+      src="/WATCHSTORY (9).png" // Path to the uploaded image in the public directory
       alt="Luxury watch background"
       // opacity-60
       className="w-full h-full object-cover" // object-cover for full coverage, opacity to make text readable
     />
   </div>
+
+
+
+
+
+
+
+
+
+
+{/* 2. Four Independent Watch Carousels (Positioned over the watches in the static image) */}
+        
+        {/* Watch 1: Leftmost (e.g., Cartier Panthère) */}
+        {/* <HomeWatchCarousel
+          initialOffset={0}
+          className="left-[-10%] top-1/2 w-[35%] h-[80%] -translate-y-1/2" 
+        /> */}
+        
+        {/* Watch 2: Second from Left (e.g., Richard Mille) */}
+        {/* <HomeWatchCarousel
+          initialOffset={1} // Start at index 1 (Patek)
+          className="left-[10%] top-1/2 w-[35%] h-[80%] -translate-y-1/2"
+        /> */}
+
+        {/* Watch 3: Second from Right (e.g., Audemars Piguet) */}
+        {/* <HomeWatchCarousel
+          initialOffset={2} // Start at index 2 (RM-1.svg)
+          className="right-[10%] top-1/2  w-[35%] h-[80%] -translate-y-1/2"
+        /> */}
+
+        {/* Watch 4: Rightmost (e.g., Cartier Crash) */}
+        {/* <HomeWatchCarousel
+          initialOffset={3} // Start at index 3 (RM-2.svg)
+          className="right-[-10%] top-1/2 w-[35%] h-[70%] -translate-y-1/2" 
+        /> */}
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

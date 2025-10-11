@@ -57,7 +57,7 @@ function MenuLink({ to, text }: { to: string; text: string }) {
       to={to}
       className={({ isActive }) =>
         cn(
-          "relative block text-sm transition-colors",
+          "relative block text-base font-bold transition-colors",
           isActive && "text-gold"
         )
       }
@@ -92,14 +92,17 @@ export default function TerminalStoryBar() {
 
   return (
     // backdrop-blur    bg-[#F6F4F0]
-    <div className="sticky top-0 z-50 bg-white text-black">
-      <div className="ws-container relative h-10 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-mono group">
-          <span className="text-sm tracking-tight">WatchStory_</span>
-          {/* <Sparkles className="h-4 w-4 text-gold group-hover:scale-110 transition-transform" /> */}
+    <div className=" top-0 z-50 bg-white text-black">
+      <div className="ws-container relative h-28 flex items-center justify-between px-0">
+        <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
+        {/* <img src="/F-1.svg" alt="WatchStory Logo" className="h-[150px] w-auto px-0" /> */}
+
+        <img src="/Logo.svg" alt="WatchStory Logo" className="h-56 w-auto"  />
+
+
         </Link>
 
-
+        {/* @apply container px-6 md:px-8; } */}
 
 
         {/* Centering Container */}

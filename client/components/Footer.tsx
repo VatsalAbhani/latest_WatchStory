@@ -382,9 +382,7 @@ function MenuLink({ to, text }: { to: string; text: string }) {
 export default function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <DriftingWatches /> 
-      </div>
+
 
       <div className="ws-container py-12 grid md:grid-cols-4 gap-8 text-sm relative z-10">
         <div>
