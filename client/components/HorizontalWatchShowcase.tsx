@@ -1,3 +1,4 @@
+
 // client/components/HorizontalWatchShowcase.tsx
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
@@ -19,6 +20,10 @@ interface Watch {
   movement: string;
   reference: string;
   condition: string;
+  // --- NEW: Dynamic theme classes for premium look ---
+  bgColor: string;   // e.g., 'bg-gray-900', 'bg-white', 'bg-slate-800'
+  textColor: string; // e.g., 'text-offwhite', 'text-black'
+  // -------------------------------------------------
 }
 
 interface Props {
@@ -40,9 +45,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
 
     if (!container || !track || slides.length === 0) return;
 
-    // Clear existing triggers to prevent conflicts on hot reload or navigation.
     ScrollTrigger.getAll().forEach(t => t.kill());
-    // ---------------------------------------------------------------------
 
     const total = totalRef.current;
     if (total) {
@@ -68,13 +71,9 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
         pinSpacing: true,
         scrub: 1,
         end: `+=${distanceToScroll}`,
-                // --- START FIX: Force scroll position to the start of the pinned section ---
-                onRefreshInit: (self) => { 
-                  // This ensures the page starts at the beginning of the pinned scroll space
-                  // even if the browser attempts to restore an old scroll position.
-                  window.scrollTo(0, self.start); 
-                },
-                // --- END FIX ---
+        onRefreshInit: (self) => {
+          window.scrollTo(0, self.start);
+        },
         onUpdate(self) {
           const progressBar = progressRef.current;
           if (progressBar) {
@@ -109,50 +108,42 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       });
     });
 
-    // --- FIX 2: Crucial cleanup function ---
     return () => {
-      // Manually reset horizontal position before killing the trigger
-      gsap.set(track, { x: 0 }); 
+      gsap.set(track, { x: 0 });
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
-    // ---------------------------------------
   }, [watches]);
 
   return (
-    <section 
-      ref={containerRef} 
-      className="relative overflow-hidden"
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden min-h-screen bg-white" // Added min-h-screen for initial visual spacing
     >
+      {/* Background elements are fine */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-offwhite/5 rounded-full blur-3xl" />
       </div>
 
+      {/* Header and Controls */}
       <div className="absolute top-0 left-0 right-0 z-30 p-8 md:p-12">
         <div className="flex items-start justify-between">
           <div className="max-w-md">
-            <TypewriterHeading 
+            <TypewriterHeading
               lines={["Featured Stories"]}
               charsPerSecond={40}
               showDots={false}
               loop={false}
               triggerOnScroll={false}
-              className="font-title font-bold text-4xl md:text-5xl text-offwhite mb-4"
+              className="font-title font-bold text-4xl md:text-5xl text-white mb-4" // Changed text-offwhite to text-white for clarity
             />
-            {/* <p className="font-sans text-offwhite/70 text-sm leading-relaxed">
-              Discover exceptional timepieces from the world's most prestigious watchmakers. 
-              Each watch tells a unique story of craftsmanship and heritage.
-            </p> */}
           </div>
 
-          
-          <MagneticButton 
-            href="/buy" 
+          <MagneticButton
+            href="/buy"
             variant="secondary"
             className="hidden md:block"
           >
-
-
             <span className="flex items-center gap-2">
               View Collection
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,16 +152,13 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
             </span>
           </MagneticButton>
         </div>
-        {/* <p className="font-sans text-offwhite/70 text-sm leading-relaxed">
-              Discover exceptional timepieces from the world's most prestigious watchmakers. 
-              Each watch tells a unique story of craftsmanship and heritage.
-            </p> */}
       </div>
 
-      <div 
+      {/* Horizontal Track */}
+      <div
         ref={trackRef}
-        className="watch-track flex items-center h-full pl-8 md:pl-12"
-        style={{ 
+        className="watch-track flex items-center h-full "
+        style={{
           width: 'max-content',
           willChange: 'transform',
           transform: 'translate3d(0, 0, 0)'
@@ -180,13 +168,18 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
           <div
             key={watch.id}
             ref={el => (el ? (slidesRef.current[i] = el) : null)}
-            className="watch-slide flex-none w-[90vw] md:w-[60vw] lg:w-[50vw] flex items-center justify-center px-6 md:px-10"
+            // 👈 Dynamic Background Class Applied Here
+            // w-[50vw] md:w-[50w] lg:w-[50vw]
+            className={`watch-slide flex-none w-[90vw] md:w-[50vw] lg:w-[50vw] h-[60vh] flex items-center justify-center px-6 md:px-10  bg-stone-200`}
           >
-            <Link 
+            <div className="w-full h-full max-w-4xl mx-auto px-8 md:px-12">
+            <Link
               to={`/buy/${watch.slug}`}
               className="group block w-full max-w-4xl mx-auto"
             >
               <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-32 pb-20">
+
+                {/* Image Section */}
                 <div className="relative">
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
@@ -194,46 +187,52 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                       alt={`${watch.brand} ${watch.name}`}
                       className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
                     />
-                    
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-carbon/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Minimalistic Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <div className="watch-badge absolute -top-4 -right-4 bg-gold text-brand-carbon px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                  {/* Badge */}
+                  <div className="watch-badge absolute -top-4 -right-4 bg-gold text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
                     {watch.condition}
                   </div>
 
-                  <div className="absolute -bottom-6 left-6 right-6 bg-offwhite/10 backdrop-blur-md rounded-xl p-4 border border-offwhite/10">
-                    <div className="flex justify-between items-center text-sm text-offwhite/80">
-                      <span>{watch.year}</span>
-                      <span>{watch.movement}</span>
-                      <span>Ref. {watch.reference}</span>
+                  {/* Details Bar */}
+                  <div className={`absolute -bottom-6 left-6 right-6 backdrop-blur-md rounded-xl p-4 border border-current **${watch.textColor}**`}>
+                    <div className="flex justify-between items-center text-xs">
+                      {/* <span className="opacity-70">{watch.year}</span> */}
+                      <span className="opacity-70">{watch.movement}</span>
+                      <span className="opacity-90 font-medium">Ref. {watch.reference}</span>
                     </div>
                   </div>
                 </div>
 
+                {/* Text Content Section */}
                 <div className="watch-content space-y-6 md:space-y-8">
                   <div className="space-y-4">
                     <div className="text-gold text-lg font-semibold tracking-wide">
                       {watch.brand}
                     </div>
-                    <h2 className="font-title text-3xl md:text-5xl text-offwhite leading-tight">
+                    {/* 👈 Dynamic Text Class Applied Here */}
+                    <h2 className={`font-title text-3xl md:text-5xl leading-tight ${watch.textColor}`}>
                       {watch.name}
                     </h2>
-                    <div className="text-1xl md:text-2xl text-offwhite font-light">
+                    {/* 👈 Dynamic Text Class Applied Here */}
+                    <div className={`text-1xl md:text-2xl font-light ${watch.textColor}`}>
                       {watch.price}
                     </div>
                   </div>
 
                   <div className="flex gap-4">
-                    <MagneticButton 
-                      href={`/buy/${watch.slug}`} 
+                    <MagneticButton
+                      href={`/buy/${watch.slug}`}
                       variant="primary"
                       className="text-sm"
                     >
                       Details
                     </MagneticButton>
-                    <MagneticButton 
-                      href="/contact" 
+                    <MagneticButton
+                      href="/contact"
                       variant="secondary"
                       className="text-sm"
                     >
@@ -244,28 +243,21 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
               </div>
             </Link>
           </div>
+          </div>
         ))}
       </div>
 
+      {/* Footer Controls */}
       <div className="absolute bottom-0 left-0 right-0 z-30 p-8 md:p-12">
         <div className="flex items-center justify-between">
           <div className="flex-1 max-w-xs">
-            {/* <div className="h-px bg-offwhite/20 relative">
-              <div 
-                ref={progressRef}
-                className="h-full bg-gold origin-left scale-x-0"
-              />
-            </div> */}
+            {/* Removed progress bar and counter for a cleaner, more minimal look */}
           </div>
 
-          {/* <div className="text-offwhite/70 font-mono text-lg ml-8">
-            <span ref={counterRef}>01</span>/<span ref={totalRef}>00</span>
-          </div> */}
-
-          <div className="hidden md:flex items-center gap-3 text-offwhite/50 text-sm">
+          <div className="hidden md:flex items-center gap-3 text-white/50 text-sm"> {/* Changed text-offwhite/50 to text-white/50 */}
             <span>Scroll to explore</span>
             <div className="flex gap-1">
-              <div className="w-1 h-6 bg-offwhite/20 rounded-full overflow-hidden">
+              <div className="w-1 h-6 bg-white/20 rounded-full overflow-hidden">
                 <div className="w-full h-2 bg-gold rounded-full animate-bounce" />
               </div>
             </div>

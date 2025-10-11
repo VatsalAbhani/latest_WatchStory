@@ -56,9 +56,13 @@ export default function MagneticBlogCard({
     const yTo = gsap.quickTo(card, "y", { duration: 0.6, ease: "power2.out" });
 
     // Initial state setup
-    gsap.set([title, excerpt, meta], { y: 20, opacity: 0 });
+    // gsap.set([title, excerpt, meta], { y: 20, opacity: 0 });
     gsap.set(overlay, { scaleY: 0, transformOrigin: "bottom" });
     gsap.set(glow, { scale: 0.8, opacity: 0 });
+
+        // Add default positioning for the text so it starts visible at y=0
+    // This overrides the previous gsap.set y: 20 which would look odd if opacity: 1
+    gsap.set([title, excerpt, meta], { y: 0, opacity: 1 });
 
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
@@ -94,24 +98,24 @@ export default function MagneticBlogCard({
         ease: "power3.out"
       }, 0.1)
       // Content reveal cascade
-      .to(title, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      }, 0.2)
-      .to(excerpt, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      }, 0.3)
-      .to(meta, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      }, 0.4)
+      // .to(title, {
+      //   y: 0,
+      //   opacity: 1,
+      //   duration: 0.6,
+      //   ease: "power3.out"
+      // }, 0.2)
+      // .to(excerpt, {
+      //   y: 0,
+      //   opacity: 1,
+      //   duration: 0.6,
+      //   ease: "power3.out"
+      // }, 0.3)
+      // .to(meta, {
+      //   y: 0,
+      //   opacity: 1,
+      //   duration: 0.6,
+      //   ease: "power3.out"
+      // }, 0.4)
       // Luxury glow effect
       .to(glow, {
         scale: 1,
@@ -146,13 +150,13 @@ export default function MagneticBlogCard({
         duration: 0.6,
         ease: "power2.out"
       }, 0.1)
-      .to([title, excerpt, meta], {
-        y: 20,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: "power2.out"
-      }, 0)
+      // .to([title, excerpt, meta], {
+      //   y: 20,
+      //   opacity: 0,
+      //   duration: 0.4,
+      //   stagger: 0.05,
+      //   ease: "power2.out"
+      // }, 0)
       .to(glow, {
         // scale: 0.8,
         opacity: 0,

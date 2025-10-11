@@ -8,6 +8,12 @@ Conventions:
 - Note affected files/dirs and rationale
 - Use present tense, concise bullets
 
+## 2025-01-15 – Fix missing Watch interface properties in Index.tsx
+- What changed: Add missing `bgColor` and `textColor` properties to `manyWatches` array in `client/pages/Index.tsx` to match the `Watch` interface expected by `HorizontalWatchShowcase` component
+- Why: The `HorizontalWatchShowcase` component requires `bgColor` and `textColor` properties for dynamic theming, but the data mapping was missing these required fields
+- Affected: `client/pages/Index.tsx`
+- Notes: Fixed TypeScript error "Type is missing properties: bgColor, textColor" by adding `bgColor: 'bg-black'` and `textColor: 'text-offwhite'` to the watch objects
+
 ## 2025-01-15 – Fix missing cn utility import in Index.tsx
 - What changed: Add missing `import { cn } from "@/lib/utils"` to `client/pages/Index.tsx` to resolve "Cannot find name 'cn'" error
 - Why: The `cn` utility function is used for conditional className composition but wasn't imported

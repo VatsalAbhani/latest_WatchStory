@@ -1,5 +1,5 @@
 // index.tsx
-import { useEffect , useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { FEATURED, POSTS } from "@/lib/data";
@@ -28,6 +28,56 @@ import DriftingWatches from "@/components/DriftingWatches"; // <-- NEW IMPORT
 gsap.registerPlugin(ScrollTrigger);
 
 
+// 1. DEFINE BACKGROUND IMAGES (using your original and new ones)
+const BACKGROUND_IMAGES = [
+  '/WATCHSTORY (9).png', // Your original static image
+  '/bg_2.png',           // New image 1
+  '/bg_3.png',           // New image 2
+];
+
+
+
+// 2. SIMPLE BACKGROUND CAROUSEL COMPONENT
+interface SimpleBackgroundCarouselProps {
+  images: string[];
+  intervalMs?: number;
+}
+
+function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroundCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, intervalMs);
+
+    return () => clearInterval(intervalId);
+  }, [images.length, intervalMs]);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 -z-30 overflow-hidden">
+      {/* Simple fade transition between images */}
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <img
+            src={image}
+            alt={`Luxury Watch Background ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+      
+      {/* Subtle overlay for text readability */}
+      <div className="absolute inset-0 z-10" />
+    </div>
+  );
+}
 
 
 
@@ -133,27 +183,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-
-
-
-
-
-
-
 // Add this data (you can move to your data file later)
 const TRUSTED_BRANDS = [
   {
     id: '1',
     name: 'Rolex',
-    logoUrl: '/images/brands/rolex-logo.png',
+    logoUrl: '/rolex-logo.svg',
     description: 'A crown for every achievement. Swiss luxury watchmaking since 1905.',
     established: '1905',
     country: 'Switzerland'
   },
   {
-    id: '2', 
+    id: '2',
     name: 'Patek Philippe',
-    logoUrl: '/images/brands/patek-philippe-logo.png',
+    logoUrl: '/patek-logo.svg',
     description: 'You never actually own a Patek Philippe. You merely look after it.',
     established: '1839',
     country: 'Switzerland'
@@ -161,7 +204,7 @@ const TRUSTED_BRANDS = [
   {
     id: '3',
     name: 'Audemars Piguet',
-    logoUrl: '/images/brands/audemars-piguet-logo.png', 
+    logoUrl: '/AP-logo.svg',
     description: 'To break the rules, you must first master them.',
     established: '1875',
     country: 'Switzerland'
@@ -169,7 +212,7 @@ const TRUSTED_BRANDS = [
   {
     id: '4',
     name: 'Omega',
-    logoUrl: '/images/brands/omega-logo.png',
+    logoUrl: '/omega-4.svg',
     description: 'Official timekeeper of the Olympics and chosen for lunar missions.',
     established: '1848',
     country: 'Switzerland'
@@ -183,7 +226,8 @@ const manyWatches = [
   // Original featured watches
   ...FEATURED.map(w => ({
     id: w.id,
-    name: `${w.brand} ${w.model}`,
+    //${w.brand}
+    name: ` ${w.model}`,
     brand: w.brand,
     price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
     imageUrl: w.images.urls[0], // Use the first image
@@ -192,33 +236,10 @@ const manyWatches = [
     movement: 'Automatic',
     reference: w.ref,
     condition: 'Excellent',
+    bgColor: 'bg-black',
+    textColor: 'text-offwhite',
   })),
-  // Duplicate set A
-  // ...FEATURED.map((w, i) => ({
-  //   id: `${w.id}-dupA`,
-  //   name: `${w.brand} ${w.model}`,
-  //   brand: w.brand,
-  //   price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-  //   imageUrl: w.images.urls[0], // Use the first image
-  //   slug: `${w.slug}-dupA`,
-  //   year: String(w.year),
-  //   movement: 'Automatic',
-  //   reference: w.ref,
-  //   condition: 'Excellent',
-  // })),
-  // Duplicate set B
-  // ...FEATURED.map((w, i) => ({
-  //   id: `${w.id}-dupB`,
-  //   name: `${w.brand} ${w.model}`,
-  //   brand: w.brand,
-  //   price: `${w.currency === 'USD' ? '$' : ''}${w.price.toLocaleString()}`,
-  //   imageUrl: w.images.urls[0], // Use the first image
-  //   slug: `${w.slug}-dupB`,
-  //   year: String(w.year),
-  //   movement: 'Automatic',
-  //   reference: w.ref,
-  //   condition: 'Excellent',
-  // })),
+
 ];
 
 
@@ -276,53 +297,32 @@ export default function Index() {
         }
       }
     );
-    
+
     // Parallax temporarily disabled to avoid conflicts with horizontal pinning
 
   }, []);
 
   return (
     <Layout>
-      {/* Hero
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
-        <div className="parallax-bg"></div>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" />
-        <div className="ws-container text-center relative z-10">
-          <TypewriterHeading
-            lines={[
-              "Welcome to WatchStory",
-              "What are you looking for?"
-            ]}
-            charsPerSecond={25}
-            pauseBetweenLines={1.5}
-            className="text-center font-title text-4xl text-offwhite/90"
-            triggerOnScroll={false}
-            loop={true}
-          />
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/sell" className="ws-button-primary">Sell a Watch</Link>
-            <Link to="/buy" className="ws-button-secondary">Buy a Watch</Link>
-          </div>
-        </div>
-      </section> */}
+
 
 
       {/* Hero */}
-<section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
-  
-
-  {/*  */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
 
 
-  {/* 1. New Background Image (uploaded by user) */}
-  <div className="absolute inset-0 -z-30">
+        {/*  */}
+
+
+        {/* 1. New Background Image (uploaded by user) */}
+        {/* <div className="absolute inset-0 -z-30">
     <img 
       src="/WATCHSTORY (9).png" // Path to the uploaded image in the public directory
       alt="Luxury watch background"
       // opacity-60
       className="w-full h-full object-cover" // object-cover for full coverage, opacity to make text readable
     />
-  </div>
+  </div> */}
 
 
 
@@ -333,14 +333,14 @@ export default function Index() {
 
 
 
-{/* 2. Four Independent Watch Carousels (Positioned over the watches in the static image) */}
-        
+        {/* 2. Four Independent Watch Carousels (Positioned over the watches in the static image) */}
+
         {/* Watch 1: Leftmost (e.g., Cartier Panthère) */}
         {/* <HomeWatchCarousel
           initialOffset={0}
           className="left-[-10%] top-1/2 w-[35%] h-[80%] -translate-y-1/2" 
         /> */}
-        
+
         {/* Watch 2: Second from Left (e.g., Richard Mille) */}
         {/* <HomeWatchCarousel
           initialOffset={1} // Start at index 1 (Patek)
@@ -358,7 +358,6 @@ export default function Index() {
           initialOffset={3} // Start at index 3 (RM-2.svg)
           className="right-[-10%] top-1/2 w-[35%] h-[70%] -translate-y-1/2" 
         /> */}
-  
 
 
 
@@ -374,85 +373,92 @@ export default function Index() {
 
 
 
-  {/*  */}
-          {/* The DriftingWatches component is added here as a subtle background */}
-          {/* <DriftingWatches />  */}
-  
 
-   {/*  */}
-  <div className="parallax-bg"></div>
-  {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
-  <div className="ws-container text-center relative z-10">
-  <StaggeredCyclingHeading // <-- REPLACED COMPONENT
-      lines={[
-        // "Welcome to WatchStory",
-        // "Every Watch Tells A Story",
-        // "What are you looking for?"
-
-        "WatchStory",
-  
-        // "More Than Time, A Story on Your Wrist"
-      ]}
-      cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-      className="text-center font-title text-6xl text-offwhite/90"
-    />
-     <StaggeredCyclingHeading // <-- REPLACED COMPONENT
-      lines={[
-        // "Welcome to WatchStory",
-        // "Every Watch Tells A Story",
-        // "What are you looking for?"
-
-        "More Than Time",
-        "A Story on Your Wrist"
-      ]}
-      cycleIntervalSec={3.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-      className="mt-10 text-center font-title text-2xl text-offwhite/90"
-    />
-    {/* Enhanced Magnetic Buttons */}
-    <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
-      <MagneticButton 
-        href="/sell" 
-        variant="primary"
-        className="group"
-      >
-        <span className="font-sans flex items-center gap-3">
-          Sell a Watch
-          <svg 
-            className="w-4 h-4 transform transition-transform group-hover:translate-x-1" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </span>
-      </MagneticButton>
-      
-      <MagneticButton 
-        href="/buy" 
-        variant="secondary"
-        className="group"
-      >
-        <span className="font-sans flex items-center gap-3">
-          Buy a Watch
-          <svg 
-            className="w-4 h-4 transform transition-transform group-hover:translate-x-1" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </span>
-      </MagneticButton>
+        {/*  */}
+        {/* The DriftingWatches component is added here as a subtle background */}
+        {/* <DriftingWatches />  */}
 
 
-      
-    </div>
 
-   
-  </div>
-</section>
+        {/* 3. INTEGRATE BACKGROUND CAROUSEL */}
+        <SimpleBackgroundCarousel images={BACKGROUND_IMAGES} intervalMs={5000} />
+
+
+
+        {/*  */}
+        {/* <div className="parallax-bg"></div> */}
+        {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
+        <div className="ws-container text-center relative z-10">
+          <StaggeredCyclingHeading // <-- REPLACED COMPONENT
+            lines={[
+              // "Welcome to WatchStory",
+              // "Every Watch Tells A Story",
+              // "What are you looking for?"
+
+              "WatchStory",
+
+              // "More Than Time, A Story on Your Wrist"
+            ]}
+            cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
+            className="text-center font-title text-6xl text-offwhite/90"
+          />
+          <StaggeredCyclingHeading // <-- REPLACED COMPONENT
+            lines={[
+              // "Welcome to WatchStory",
+              // "Every Watch Tells A Story",
+              // "What are you looking for?"
+
+              "More Than Time",
+              "A Story on Your Wrist"
+            ]}
+            cycleIntervalSec={3.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
+            className="mt-10 text-center font-title text-2xl text-offwhite/90"
+          />
+          {/* Enhanced Magnetic Buttons */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
+            <MagneticButton
+              href="/sell"
+              variant="primary"
+              className="group"
+            >
+              <span className="font-sans flex items-center gap-3">
+                Sell a Watch
+                <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </MagneticButton>
+
+            <MagneticButton
+              href="/buy"
+              variant="secondary"
+              className="group"
+            >
+              <span className="font-sans flex items-center gap-3">
+                Buy a Watch
+                <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+            </MagneticButton>
+
+
+
+          </div>
+
+
+        </div>
+      </section>
 
 
       {/* Trust strips */}
@@ -506,17 +512,17 @@ export default function Index() {
       </section> */}
 
 
-{/* Featured Stories - Full Screen Horizontal Showcase */}
+      {/* Featured Stories - Full Screen Horizontal Showcase */}
 
 
-<HorizontalWatchShowcase watches={manyWatches} />
+      <HorizontalWatchShowcase watches={manyWatches} />
 
 
 
-{/* <div style={{ height: '100vh' }} /> spacer to allow scroll */}
-{/* Brands we work with display */}
+      {/* <div style={{ height: '100vh' }} /> spacer to allow scroll */}
+      {/* Brands we work with display */}
 
-<BrandsShowcase brands={TRUSTED_BRANDS} />
+      <BrandsShowcase brands={TRUSTED_BRANDS} />
 
 
 
@@ -543,10 +549,10 @@ export default function Index() {
 
 
       {/* From the Journal */}
-<JournalSection 
-  posts={POSTS.slice(0, 3)} 
-  showFeatured={true}
-/>
+      <JournalSection
+        posts={POSTS.slice(0, 3)}
+        showFeatured={true}
+      />
 
 
 

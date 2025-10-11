@@ -12,6 +12,8 @@ export type Product = {
   story: string;
   images: { urls: string[] }; // UPDATED: Changed to an array of URLs
   slug: string;
+  bgColor: string;
+  textColor: string;
 };
 
 export const FEATURED: Product[] = [
@@ -26,9 +28,18 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "An honest diver with full set and service history.",
     images: {
-      urls: ["/placeholder.svg", "/WatchBackground.png", "/placeholder.svg"], // UPDATED: Multi-image array
+      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
     },
     slug: "rolex-submariner-126610ln",
+
+    // bgColor: 'bg-zinc-900',  // Deep, dark charcoal
+    // textColor: 'text-white', // Bright white text
+
+    // bgColor: 'bg-neutral-800', // Muted dark background
+    // textColor: 'text-offwhite', // Off-white/light text
+
+    bgColor: 'bg-stone-200', // Light, subtle stone grey
+    textColor: 'text-offwhite', // High-contrast black text
   },
   {
     id: "p2",
@@ -40,8 +51,14 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "Iconic tapisserie in superb condition.",
-    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] }, // UPDATED
-    slug: "ap-royal-oak-15510st",
+    images: {
+      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+    },
+        slug: "ap-royal-oak-15510st",
+
+        bgColor: 'bg-zinc-900',  // Deep, dark charcoal
+        textColor: 'text-white', // Bright white text
+    
   },
   {
     id: "p3",
@@ -53,8 +70,13 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "reserved",
     story: "Thin as a whisper, presence like a bell.",
-    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] }, // UPDATED
-    slug: "patek-nautilus-5711",
+    images: {
+      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+    },
+        slug: "patek-nautilus-5711",
+
+    bgColor: 'bg-stone-200', // Light, subtle stone grey
+    textColor: 'text-black', // High-contrast black text
   },
   // --- Start of new watch added ---
   {
@@ -67,8 +89,13 @@ export const FEATURED: Product[] = [
     currency: "USD",
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
-    images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
+    images: {
+      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+    },
     slug: "cartier-tank-must-wsta0059",
+
+    bgColor: 'bg-stone-200', // Light, subtle stone grey
+    textColor: 'text-black', // High-contrast black text
   },
   // --- End of new watch added ---
 
@@ -83,8 +110,13 @@ export const FEATURED: Product[] = [
       currency: "USD",
       availability: "in_stock",
       story: "A modern classic with elegant proportions and a quick-change strap system.",
-      images: { urls: ["/placeholder.svg", "/WatchBackground.png"] },
+      images: {
+        urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      },
       slug: "cartier-tank-must-wsta0059",
+
+      bgColor: 'bg-stone-200', // Light, subtle stone grey
+      textColor: 'text-black', // High-contrast black text
     },
     // --- End of new watch added ---
 
