@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import Sell from "./pages/Sell";
 import Buy from "./pages/Buy";
 import BlogIndex from "./pages/BlogIndex";
-import BlogArticle from "./pages/BlogArticle";
+// import BlogArticle from "./pages/BlogArticle";
 import WatchDetail from "./pages/WatchDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
@@ -59,7 +59,7 @@ const App = () => {
                 <Route path="/buy" element={<Buy />} />
                 <Route path="/watch/:slug" element={<WatchDetail />} />
                 <Route path="/blog" element={<BlogIndex />} />
-                <Route path="/blog/:slug" element={<BlogArticle />} />
+                {/* <Route path="/blog/:slug" element={<BlogArticle />} /> */}
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/about" element={<About />} />

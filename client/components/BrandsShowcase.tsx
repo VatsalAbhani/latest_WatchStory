@@ -91,8 +91,7 @@ export default function BrandsShowcase({ brands }) {
         className="font-title text-4xl md:text-5xl text-offwhite mb-4"
       />
       <p className="font-sans text-offwhite/70 text-lg leading-relaxed">
-        Partnering with the world's most prestigious watchmakers. 
-        Each brand represents decades of horological excellence and craftsmanship.
+        Not affiliated with these brands.
       </p>
     </div>
   </div>

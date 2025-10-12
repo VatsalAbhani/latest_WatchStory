@@ -202,7 +202,7 @@ export default function MagneticBlogCard({
   const publishedDate = post.publishedAt;
 
   return (
-    <Link to={`/blog/${post.slug}`} className="block">
+    <Link to={`/blog`} className="block">
       <article 
         ref={cardRef}
         className={`

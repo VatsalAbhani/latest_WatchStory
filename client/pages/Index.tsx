@@ -217,7 +217,16 @@ const TRUSTED_BRANDS = [
     established: '1848',
     country: 'Switzerland'
   },
+  {
+    id: '4',
+    name: 'Cartier',
+    logoUrl: '/cartier-logo.png',
+    description: 'Official timekeeper of the Olympics and chosen for lunar missions.',
+    established: '1848',
+    country: 'Switzerland'
+  },
   // Add more brands...
+  
 ];
 
 
