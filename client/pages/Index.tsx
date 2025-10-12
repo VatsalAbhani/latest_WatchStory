@@ -430,7 +430,7 @@ export default function Index() {
               variant="primary"
               className="group"
             >
-              <span className="font-sans flex items-center gap-3">
+              <span className="font-sans flex items-center gap-2 pr-2">
                 Sell a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
@@ -448,7 +448,7 @@ export default function Index() {
               variant="secondary"
               className="group"
             >
-              <span className="font-sans flex items-center gap-3">
+              <span className="font-sans flex items-center gap-2 pr-2">
                 Buy a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
@@ -471,7 +471,7 @@ export default function Index() {
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-24 grid md:grid-cols-3 gap-6 trust-section ">
+      <section className="ws-container mt-24 mb-8 grid md:grid-cols-3 gap-6 trust-section ">
         {/* <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
           <h3 className="font-title font-bold text-2xl">Provenance matters</h3>
           <p className="font-sans text-offwhite/70 mt-2">We track ownership and service history to preserve the narrative.</p>

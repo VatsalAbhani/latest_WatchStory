@@ -90,27 +90,35 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       }
     });
 
+    const mainScrollTrigger = tween.scrollTrigger; // <-- FIX: Capture the main ScrollTrigger instance
+    const slideTriggers: ScrollTrigger[] = []; // <-- NEW: Array to hold slide triggers
+
+
+
     // Animate text in each slide
     slides.forEach(slide => {
       const animEls = slide.querySelectorAll<HTMLElement>('.anim');
       if (!animEls.length) return;
-      gsap.from(animEls, {
-        y: -130,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'elastic.out(1,0.4)',
-        stagger: 0.1,
-        scrollTrigger: {
-          containerAnimation: tween,
-          trigger: slide,
-          start: 'left center',
-        }
+      const st = ScrollTrigger.create({
+        containerAnimation: tween,
+        trigger: slide,
+        start: 'left center',
+        animation: gsap.from(animEls, {
+          y: -130,
+          opacity: 0,
+          duration: 1.5,
+          ease: 'elastic.out(1,0.4)',
+          stagger: 0.1,
+        })
       });
+      slideTriggers.push(st); // <-- CAPTURE IT
     });
 
     return () => {
       gsap.set(track, { x: 0 });
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      // FIX: Kill only the component's triggers
+      if (mainScrollTrigger) mainScrollTrigger.kill();
+      slideTriggers.forEach(t => t.kill());
     };
   }, [watches]);
 
@@ -142,13 +150,21 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
           <MagneticButton
             href="/buy"
             variant="secondary"
-            className="hidden md:block"
+            className="group"
           >
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 pr-2">
               View Collection
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              {/* <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              </svg> */}
             </span>
           </MagneticButton>
         </div>
@@ -170,7 +186,9 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
             ref={el => (el ? (slidesRef.current[i] = el) : null)}
             // 👈 Dynamic Background Class Applied Here
             // w-[50vw] md:w-[50w] lg:w-[50vw]
-            className={`watch-slide flex-none w-[90vw] md:w-[50vw] lg:w-[50vw] h-[60vh] flex items-center justify-center px-6 md:px-10  bg-stone-200`}
+            className={
+              `watch-slide flex-none w-[90vw] md:w-[50vw] lg:w-[50vw] h-[65vh] flex items-center justify-center px-6 md:px-10  bg-stone-200`
+            }
           >
             <div className="w-full h-full max-w-4xl mx-auto px-8 md:px-12">
             <Link

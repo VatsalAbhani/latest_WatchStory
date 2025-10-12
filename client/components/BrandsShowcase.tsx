@@ -78,7 +78,7 @@ export default function BrandsShowcase({ brands }) {
   }, [brands]);
 
   return (
-<section className="relative overflow-hidden py-16 bg-gray-400">
+<section className="relative overflow-hidden py-16 bg-gray-100">
   {/* Fixed Header at top with z-index to remain above carousel */}
   <div className="absolute top-0 left-0 right-0 z-30 p-8 md:p-12">
     <div className="max-w-lg">
@@ -98,16 +98,16 @@ export default function BrandsShowcase({ brands }) {
 
 
 
-    <section className="relative overflow-hidden py-8 bg-gray-400 mt-32">
+    <section className="relative overflow-hidden py-8 bg-gray-100 mt-32">
       <div
         ref={trackRef}
-        className="flex select-auto cursor-grab items-center space-x-8"
+        className="flex select-auto cursor-grab items-center space-x-24"
         style={{ willChange: "transform" }}
       >
         {brands.map((brand) => (
           <div
             key={brand.id}
-            className="flex-shrink-0 w-40 h-24 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            className="flex-shrink-0 w-18 h-24 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
           >
             <img
               src={brand.logoUrl}
