@@ -193,12 +193,27 @@ export default function Buy() {
     sortOption: "none",
   });
 
-  // 2. HANDLER TO UPDATE FILTERS
+  // 2. HANDLERS TO UPDATE FILTERS
   const handleSearchChange = (query: string) => {
     // This function receives the tag (e.g., "ROLEX") or the input text
     setFilters(prev => ({ 
         ...prev, 
         searchQuery: query // Updates the state, which re-renders BuyPageFilter with the new value
+    }));
+  };
+
+  const handleSortChange = (option: string) => {
+    setFilters(prev => ({ 
+        ...prev, 
+        sortOption: option
+    }));
+  };
+
+  const handleFilterChange = (key: string, value: string) => {
+    // General filter handler for future use
+    setFilters(prev => ({ 
+        ...prev, 
+        [key]: value
     }));
   };
 
@@ -298,11 +313,12 @@ export default function Buy() {
       <section className="ws-container">
         {/* PASS DOWN STATE AND HANDLER */}
         <BuyPageFilter 
-          
           searchQuery={filters.searchQuery}
-          productCount={filteredProducts.length} // Optional: display results count
-
-           onSearchChange={handleSearchChange} // <-- Passes the setter function
+          sortOption={filters.sortOption}
+          onSearchChange={handleSearchChange}
+          onSortChange={handleSortChange}
+          onFilterChange={handleFilterChange}
+          productCount={filteredProducts.length}
         />
       </section>
 

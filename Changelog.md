@@ -8,6 +8,18 @@ Conventions:
 - Note affected files/dirs and rationale
 - Use present tense, concise bullets
 
+## 2025-01-15 – Fix ref type mismatch in Footer.tsx AnimatedTextLink
+- What changed: Change `linkRef` type from `HTMLAnchorElement` to `HTMLDivElement` in `AnimatedTextLink` component
+- Why: The ref was being attached to `div` elements but typed for anchor elements, causing TypeScript error about incompatible ref types
+- Affected: `client/components/Footer.tsx`
+- Notes: Resolves TypeScript error "Type 'MutableRefObject<HTMLAnchorElement>' is not assignable to type 'LegacyRef<HTMLDivElement>'"
+
+## 2025-01-15 – Fix missing BuyPageFilter props in Buy.tsx
+- What changed: Add missing `sortOption`, `onSortChange`, and `onFilterChange` props to `BuyPageFilter` component in `client/pages/Buy.tsx` and implement corresponding handler functions
+- Why: The `BuyPageFilter` component interface requires these props for sorting and filtering functionality, but they were missing from the component usage
+- Affected: `client/pages/Buy.tsx`
+- Notes: Fixed TypeScript error "Type is missing properties: sortOption, onSortChange, onFilterChange" by adding the missing props and their handler functions
+
 ## 2025-01-15 – Fix missing Watch interface properties in Index.tsx
 - What changed: Add missing `bgColor` and `textColor` properties to `manyWatches` array in `client/pages/Index.tsx` to match the `Watch` interface expected by `HorizontalWatchShowcase` component
 - Why: The `HorizontalWatchShowcase` component requires `bgColor` and `textColor` properties for dynamic theming, but the data mapping was missing these required fields

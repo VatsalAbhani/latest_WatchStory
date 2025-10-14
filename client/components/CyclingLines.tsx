@@ -1,3 +1,5 @@
+// CyclingLines.tsx
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TitleSequence from "@/components/TitleSequence";
 import { cn } from "@/lib/utils";
@@ -41,13 +43,16 @@ export default function CyclingLines({
   const current = items[index] ?? "";
 
   return (
-    <div className={cn("inline-block", className)} aria-live="polite">
+    <div     
+    className={cn("inline-block py-4 leading-loose", className)} 
+
+    aria-live="polite">
       {/* Re-mount TitleSequence each cycle to retrigger animation */}
       <TitleSequence
         key={`${index}-${current}`}
         text={current}
         as="div"
-        className="tracking-tight"
+        className={cn("tracking-tight leading-tight", className)}
         duration={perLetterDurationSec}
         easing={easing}
         stagger={letterStaggerSec}

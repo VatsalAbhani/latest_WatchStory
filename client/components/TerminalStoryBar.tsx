@@ -11,6 +11,7 @@ import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 
 
+const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
 
 
 // Drastic performance boost for multi-element animation:
@@ -136,7 +137,8 @@ function MenuLink({ to, text }: { to: string; text: string }) {
       to={to}
       className={({ isActive }) =>
         cn(
-          "relative inline-block text-sm transition-colors",
+          "relative inline-block text-lg font-semibold transition-colors",
+          "tracking-wider",
           isActive && "text-gold"
         )
       }
@@ -167,7 +169,7 @@ export default function TerminalStoryBar() {
   const { count } = useCart();
 
   const Nav = () => (
-    <nav className="hidden md:flex items-center gap-6">
+    <nav className="font-sans md:flex items-center gap-6">
       <MenuLink to="/buy" text="Buy" />
       <MenuLink to="/sell" text="Sell" />
       <MenuLink to="/blog" text="Blog" />
@@ -206,6 +208,25 @@ export default function TerminalStoryBar() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Nav />
         </div>
+
+{/* FIX: Wrapped the image in an <a> tag with the WhatsApp deep link */}
+<a 
+          href="https://wa.me/971545056156" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          aria-label="WhatsApp Enquiry"
+          className="hover:opacity-80 transition-opacity" // Optional hover effect
+        >
+          <img 
+            src={WHATSAPP_ICON_SRC} 
+            alt="WhatsApp" 
+            className="w-10 h-10" 
+          />
+        </a>
+
+
+
+    
 
 
       </div>

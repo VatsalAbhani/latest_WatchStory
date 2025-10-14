@@ -398,20 +398,21 @@ export default function Index() {
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
         <div className="ws-container text-center relative z-10">
-          <StaggeredCyclingHeading // <-- REPLACED COMPONENT
+          {/* <StaggeredCyclingHeading // <-- REPLACED COMPONENT
             lines={[
               // "Welcome to WatchStory",
               // "Every Watch Tells A Story",
               // "What are you looking for?"
 
-              "WatchStory",
+              "WATCHSTORY",
+              
 
               // "More Than Time, A Story on Your Wrist"
             ]}
             cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-            className="text-center font-title text-6xl text-offwhite/90"
-          />
-          <StaggeredCyclingHeading // <-- REPLACED COMPONENT
+            className="text-center font-logo-sans text-6xl text-offwhite/90"
+          /> */}
+          {/* <StaggeredCyclingHeading // <-- REPLACED COMPONENT
             lines={[
               // "Welcome to WatchStory",
               // "Every Watch Tells A Story",
@@ -422,7 +423,21 @@ export default function Index() {
             ]}
             cycleIntervalSec={3.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
             className="mt-10 text-center font-title text-2xl text-offwhite/90"
-          />
+          /> */}
+
+
+
+
+          <h1 className="text-center font-sans text-sm sm:text-4xl lg:text-4xl text-offwhite/95 leading-tight">
+            More Than Time,
+          </h1>
+          <h2 className="mt-4 text-center font-sans text-3xl sm:text-4xl lg:text-4xl text-offwhite/80">
+            A Story on Your Wrist
+          </h2>
+
+
+
+          
           {/* Enhanced Magnetic Buttons */}
           <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
             <MagneticButton
@@ -430,7 +445,7 @@ export default function Index() {
               variant="primary"
               className="group"
             >
-              <span className="font-sans flex items-center gap-2 pr-2">
+              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
                 Sell a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
@@ -448,7 +463,7 @@ export default function Index() {
               variant="secondary"
               className="group"
             >
-              <span className="font-sans flex items-center gap-2 pr-2">
+              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
                 Buy a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"

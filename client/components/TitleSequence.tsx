@@ -35,6 +35,10 @@ export default function TitleSequence({
         ["--ti-duration" as any]: `${duration}s`,
         ["--ti-ease" as any]: easing,
         ["--ti-start-delay" as any]: `${startDelay}s`,
+        overflow: 'visible',
+        lineHeight: '1.4',
+        paddingTop: '0.1em',
+        paddingBottom: '0.2em', // Extra space for descenders
       }}
     >
       {lines.map((line, lineIndex) => {

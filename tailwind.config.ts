@@ -24,7 +24,9 @@ export default {
         // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
 
         // Kenau Sans Serif for sans-serif (body text)
-        sans: ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
+        sans: ['Baskervville', ...defaultTheme.fontFamily.sans],
+
+        "logo-sans": ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
       },
       
       colors: {

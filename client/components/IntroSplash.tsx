@@ -1,3 +1,47 @@
+// import React, { useRef, useEffect } from "react";
+// import { gsap } from "gsap"; // GSAP is no longer necessary, but kept for imports consistency
+
+// interface IntroSplashProps {
+//   onComplete: () => void;
+// }
+
+// export default function IntroSplash({ onComplete }: IntroSplashProps) {
+//   // We use the same time delay (3000ms or 3 seconds) as your video fallback for consistency.
+//   const DISPLAY_DURATION_MS = 3000;
+
+//   useEffect(() => {
+//     // Set a timer to automatically complete the splash screen after 3 seconds
+//     const timer = setTimeout(onComplete, DISPLAY_DURATION_MS);
+    
+//     // Cleanup function to clear the timer if the component unmounts early
+//     return () => {
+//       clearTimeout(timer);
+//       // Clean up any GSAP tweens just in case
+//       // gsap.killTweensOf('img'); 
+//     };
+
+//   // The dependency array only needs onComplete
+//   }, [onComplete]); 
+  
+//   return (
+//     <div
+//       className="flex items-center justify-center min-h-screen bg-white"
+//     >
+//       <img
+//         // Using Logo.svg as the source since bg_logo_splash.svg wasn't provided,
+//         // and Logo.svg is a provided asset.
+//         src="/Logo.svg"
+//         alt="Animated Logo Splash"
+//         // Control the size of the image
+//         className="w-full h-full max-w-lg max-h-lg object-contain"
+//         // Optional: Add a subtle fade-in animation using GSAP if needed, 
+//         // but for now, we rely only on the timer.
+//       />
+//     </div>
+//   );
+// }
+
+
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
@@ -6,51 +50,43 @@ interface IntroSplashProps {
 }
 
 export default function IntroSplash({ onComplete }: IntroSplashProps) {
-  const logoRef = useRef(null);
-  
+  const imgRef = useRef(null); // Ref to target the image for animation
+  // Duration for how long the full splash screen is visible
+  const DISPLAY_DURATION_MS = 3000;
+  // Animation duration
+  const ANIM_DURATION_S = 1.0; 
+
   useEffect(() => {
-    const tl = gsap.timeline({ onComplete: onComplete });
-    
-    // Animate the "Watch" part of the logo
-    tl.fromTo(
-      ".logo-part-1",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+    // 1. Image Entrance Animation (Fade-in and slight scale up)
+    gsap.fromTo(
+      imgRef.current,
+      { opacity: 0, scale: 0.95, y: 10 },
+      { opacity: 1, scale: 1, y: 0, duration: ANIM_DURATION_S, ease: "power2.out" }
     );
+
+    // 2. Timer to complete the splash
+    const timer = setTimeout(onComplete, DISPLAY_DURATION_MS);
     
-    // Animate the "Story" part, staggered to appear after "Watch"
-    tl.fromTo(
-      ".logo-part-2",
-      { x: -30, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
-      "-=0.4"
-    );
-    
-    // Animate the underscore and final sparkle effect
-    tl.to(
-      ".logo-underscore",
-      { opacity: 1, duration: 0.3, ease: "power2.in" },
-      "-=0.2"
-    );
-    tl.to(
-      ".logo-sparkles",
-      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" },
-      "-=0.1"
-    );
-    
-  }, [onComplete]);
+    // 3. Cleanup function
+    return () => {
+      clearTimeout(timer);
+      // IMPORTANT: Kill the GSAP tween on cleanup to prevent memory leaks or conflicts
+      gsap.killTweensOf(imgRef.current);
+    };
+
+  // The dependency array only needs onComplete
+  }, [onComplete]); 
   
   return (
     <div
-      ref={logoRef}
-      className="flex items-center justify-center min-h-screen bg-black"
+      className="flex items-center justify-center min-h-screen bg-white"
     >
-      <div className="flex items-center gap-2 font-mono group">
-        <span className="logo-part-1 text-4xl tracking-tight text-white">Watch</span>
-        {/* <span className="logo-part-2 text-4xl tracking-tight text-white">Story</span> */}
-        {/* <span className="logo-underscore text-4xl tracking-tight text-white opacity-0">_</span>
-        <span className="logo-sparkles h-6 w-6 text-gold opacity-0 scale-0">✨</span> */}
-      </div>
+      <img
+        ref={imgRef} // Attach ref here
+        src="/Logo.svg"
+        alt="Animated Logo Splash"
+        className="h-60 w-auto max-w-lg max-h-lg object-contain"
+      />
     </div>
   );
 }

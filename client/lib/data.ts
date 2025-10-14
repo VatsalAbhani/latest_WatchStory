@@ -20,7 +20,7 @@ export const FEATURED: Product[] = [
   {
     id: "p1",
     brand: "Rolex",
-    model: "Submariner Date",
+    model: "Datejust 41",
     ref: "126610LN",
     year: 2022,
     price: 13450,
@@ -28,7 +28,7 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "An honest diver with full set and service history.",
     images: {
-      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/rolex-datejust.avif", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
     },
     slug: "rolex-submariner-126610ln",
 
@@ -43,8 +43,8 @@ export const FEATURED: Product[] = [
   },
   {
     id: "p2",
-    brand: "Audemars Piguet",
-    model: "Royal Oak",
+    brand: "Rolex",
+    model: "Lady-Datejust",
     ref: "15510ST",
     year: 2021,
     price: 48200,
@@ -52,7 +52,7 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "Iconic tapisserie in superb condition.",
     images: {
-      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/rolex-ladydatejust.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
     },
         slug: "ap-royal-oak-15510st",
 
@@ -62,8 +62,8 @@ export const FEATURED: Product[] = [
   },
   {
     id: "p3",
-    brand: "Patek Philippe",
-    model: "Nautilus",
+    brand: "Rolex",
+    model: "GMT-Master II",
     ref: "5711/1A",
     year: 2018,
     price: 118000,
@@ -71,7 +71,7 @@ export const FEATURED: Product[] = [
     availability: "reserved",
     story: "Thin as a whisper, presence like a bell.",
     images: {
-      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/rolex-gmt-master2.avif", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
     },
         slug: "patek-nautilus-5711",
 
@@ -81,8 +81,8 @@ export const FEATURED: Product[] = [
   // --- Start of new watch added ---
   {
     id: "p4",
-    brand: "Cartier",
-    model: "Tank Must",
+    brand: "Patek Philippe",
+    model: "Aquanaut 5167R-001",
     ref: "WSTA0059",
     year: 2023,
     price: 3600,
@@ -90,7 +90,7 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
     images: {
-      urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/patek-aquanaut.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
     },
     slug: "cartier-tank-must-wsta0059",
 
@@ -102,8 +102,8 @@ export const FEATURED: Product[] = [
     // --- Start of new watch added ---
     {
       id: "p4",
-      brand: "Cartier",
-      model: "Tank Must",
+      brand: "Audemars Piguet",
+      model: "Royal Oak Selfwinding",
       ref: "WSTA0059",
       year: 2023,
       price: 3600,
@@ -111,7 +111,7 @@ export const FEATURED: Product[] = [
       availability: "in_stock",
       story: "A modern classic with elegant proportions and a quick-change strap system.",
       images: {
-        urls: ["/Rolex-1.svg", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+        urls: ["/AP-royal.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
       },
       slug: "cartier-tank-must-wsta0059",
 

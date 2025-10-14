@@ -187,18 +187,18 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
             // 👈 Dynamic Background Class Applied Here
             // w-[50vw] md:w-[50w] lg:w-[50vw]
             className={
-              `watch-slide flex-none w-[90vw] md:w-[50vw] lg:w-[50vw] h-[65vh] flex items-center justify-center px-6 md:px-10  bg-stone-200`
+              `watch-slide flex-none w-[90vw] md:w-[60vw] lg:w-[60vw] h-[65vh] flex items-center justify-center`
             }
           >
-            <div className="w-full h-full max-w-4xl mx-auto px-8 md:px-12">
+            <div className="w-full h-full max-w-8xl mx-auto px-8 md:px-12 bg-stone-200">
             <Link
               to={`/buy/${watch.slug}`}
-              className="group block w-full max-w-4xl mx-auto"
+              className="group block w-full max-w-8xl mx-auto"
             >
-              <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-32 pb-20">
+              <div className="grid  md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
 
                 {/* Image Section */}
-                <div className="relative">
+                <div className="relative border border-black/10 rounded-2xl">
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
                       src={watch.imageUrl}
@@ -216,10 +216,10 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                   </div>
 
                   {/* Details Bar */}
-                  <div className={`absolute -bottom-6 left-6 right-6 backdrop-blur-md rounded-xl p-4 border border-current **${watch.textColor}**`}>
-                    <div className="flex justify-between items-center text-xs">
+                  <div className={`absolute -bottom-6 left-6 right-6 backdrop-blur-md rounded-xl p-4 border border-black/40`}>
+                    <div className="text-medium  text-center">
                       {/* <span className="opacity-70">{watch.year}</span> */}
-                      <span className="opacity-70">{watch.movement}</span>
+                      {/* <span className="opacity-70">{watch.movement}</span> */}
                       <span className="opacity-90 font-medium">Ref. {watch.reference}</span>
                     </div>
                   </div>
@@ -228,7 +228,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                 {/* Text Content Section */}
                 <div className="watch-content space-y-6 md:space-y-8">
                   <div className="space-y-4">
-                    <div className="text-gold text-lg font-semibold tracking-wide">
+                    <div className="font-sans text-gold text-lg font-semibold tracking-wide">
                       {watch.brand}
                     </div>
                     {/* 👈 Dynamic Text Class Applied Here */}
@@ -236,9 +236,9 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                       {watch.name}
                     </h2>
                     {/* 👈 Dynamic Text Class Applied Here */}
-                    <div className={`text-1xl md:text-2xl font-light ${watch.textColor}`}>
+                    {/* <div className={`font-sans text-1xl md:text-2xl font-light ${watch.textColor}`}>
                       {watch.price}
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="flex gap-4">

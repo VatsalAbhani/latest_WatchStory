@@ -1,24 +1,18 @@
 /** @import must precede all other statements */
 /* 1. Import Bricolage Grotesque from Google Fonts (Body Text) */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..50,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..50,200..800&display=swap'); */
 
 
-/* 1. REPLACE: Bricolage Grotesque font import 
-   ACTION REQUIRED: Since 'KENAO' is a commercial font, you must purchase the 'Webfont' license, 
-   download the files (e.g., .woff2), and place them in a folder like `public/fonts/kenao`.
-   Then, use the following @font-face declaration for the files you purchased.
-*/
-
+/* 2. RE-ADD @font-face declaration for Kenau Sans Serif (using local file) */
 @font-face {
   font-family: 'Kenau Sans Serif';
-  /* src: url('/fonts/kenao/Kenau-Regular.woff2') format('woff2'), */
   src: url('/fonts/Kenao.otf') format('opentype');
-       /* url('/fonts/kenao/Kenau-Regular.woff') format('woff'); */
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
 
 
 /* NOTE: Cooper Std Black is loaded via the <link> tag in index.html, not here. 
@@ -60,7 +54,8 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --popover-foreground: 210 22% 10%;
 
     /* Primary/Accent (Red/Gold remains the accent color) */
-    --primary: 0 72% 20%; 
+    /* --primary: 210 72% 90%;  */
+    --primary: 40 73% 30%;
     --primary-foreground: 60 8% 95%; /* Light text on primary */
 
     /* Secondary subtle surfaces */
@@ -70,7 +65,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --muted: 210 10% 85%;
     --muted-foreground: 210 22% 15%;
 
-    --accent: 0 72% 20%; 
+    --accent: 40 73% 30%; 
     --accent-foreground: 210 22% 10%;
     
     --destructive: 0 84% 60%;
@@ -78,25 +73,25 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
     --border: 210 10% 80%; /* Light border/input colors */
     --input: 210 10% 80%;
-    --ring: 0 72% 20%; 
+    --ring: 40 73% 30%; 
 
     --radius: 0.5rem;
 
     /* Sidebar */
     --sidebar-background: 40 25% 95%;
     --sidebar-foreground: 210 22% 10%;
-    --sidebar-primary: 0 72% 20%; 
+    --sidebar-primary: 40 73% 30%; 
     --sidebar-primary-foreground: 210 22% 10%;
     --sidebar-accent: 40 25% 90%;
     --sidebar-accent-foreground: 210 22% 10%;
     --sidebar-border: 210 10% 80%;
-    --sidebar-ring: 0 72% 20%; 
+    --sidebar-ring: 40 73% 30%; 
 
     /* Brand extras */
     --brand-deep-green: 169 50% 11%; 
     --brand-carbon: 210 10% 7%;
     --brand-onyx: 210 22% 6%;
-    --brand-gold: 0 72% 20%; 
+    --brand-gold: 40 73% 30%; 
     --brand-platinum: 0 0% 75%;
     --brand-offwhite: 40 25% 95%;
     /* --- END LIGHT MODE SCHEME --- */
@@ -113,7 +108,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --popover: 210 12% 6%;
     --popover-foreground: 60 8% 95%;
 
-    --primary: 0 72% 20%; 
+    --primary: 40 73% 30%; 
     --primary-foreground: 210 22% 6%;
 
     --secondary: 0 0% 75%;
@@ -122,7 +117,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     --muted: 210 12% 12%;
     --muted-foreground: 0 0% 82%;
 
-    --accent: 0 72% 20%; 
+    --accent: 40 73% 30%; 
     --accent-foreground: 210 22% 6%;
 
     --destructive: 0 63% 31%;
@@ -130,16 +125,16 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
     --border: 210 12% 16%;
     --input: 210 12% 16%;
-    --ring: 0 72% 20%; 
+    --ring: 40 73% 30%; 
 
     --sidebar-background: 210 12% 6%;
     --sidebar-foreground: 60 8% 95%;
-    --sidebar-primary: 0 72% 20%; 
+    --sidebar-primary: 40 73% 30%; 
     --sidebar-primary-foreground: 210 22% 6%;
     --sidebar-accent: 210 12% 12%;
     --sidebar-accent-foreground: 60 8% 95%;
     --sidebar-border: 210 12% 16%;
-    --sidebar-ring: 0 72% 20%; 
+    --sidebar-ring: 40 73% 30%; 
   }
 }
 
@@ -149,7 +144,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
   }
 
   html {
-    font-family: 'Kenau Sans Serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Baskervville', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   body {
