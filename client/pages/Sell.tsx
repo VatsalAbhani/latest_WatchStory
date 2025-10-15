@@ -342,10 +342,12 @@
 
 import Layout from "@/components/Layout";
 import { useEffect, useState, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import CyclingLines from "@/components/CyclingLines";
 import { cn } from "@/lib/utils"; // ADDED cn import for styling utility
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"; // ADDED ACCORDION IMPORTS
 import { AnimatedButton } from "@/components/AnimatedButton";
+import Seo from "@/components/Seo";
 
 // --- 1. UPDATED SHARED INTERFACE FOR DATA ---
 interface SellFormData {
@@ -367,6 +369,49 @@ interface SellFormData {
 
 // --- 2. API FETCH HELPER (URL Corrected for Public Endpoint) ---
 const API_BASE_URL = "http://127.0.0.1:8000";
+
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does the valuation process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once you submit your watch details, our specialists typically provide an initial offer within 24 to 48 hours. The final offer is confirmed after physical inspection and authentication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is shipping insured and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all shipping arranged by WatchStory is fully insured for the full market value of the watch, using secure, trackable methods. We provide detailed, prepaid shipping labels."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the authentication process work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every watch is meticulously inspected by our master watchmakers. We verify the movement, serial numbers, provenance (box and papers), and material integrity to guarantee authenticity before finalising the transaction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What payout methods are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We support several secure payout methods, including bank transfer, escrow services, and in-person cash transactions depending on your location and preference for speed and security."
+      }
+    }
+  ]
+}
+
+
+
 
 async function submitSellRequest(data: Partial<SellFormData>) {
   const payload = {
@@ -448,11 +493,19 @@ function SellPageFAQ() {
 
 export default function Sell() {
   useEffect(() => {
-    document.title = "Sell Your Luxury Watch | Fast Offers & Authentication — WatchStory";
+    // document.title = "Sell Your Luxury Watch | Fast Offers & Authentication — WatchStory";
   }, []);
 
   return (
     <Layout>
+        <Helmet>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(FAQ_SCHEMA)}} />
+        </Helmet>
+            <Seo
+        title="Sell Your Luxury Watch Fast in Dubai"
+        description="Get a fair, no-obligation offer in 24 hours to sell your Rolex or luxury timepiece in Dubai. Free insured shipping and expert valuation."
+        canonical="/sell"
+      />
       <section className="ws-container py-8">
         <h1 className="font-title text-4xl">Sell your watch</h1>
         {/* <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p> */}

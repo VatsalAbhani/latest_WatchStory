@@ -3,7 +3,8 @@ import { createServer } from "./index";
 import * as express from "express";
 
 const app = createServer();
-const port = process.env.PORT || 3000;
+// Use 8080 by default to match prerender wait-on and scripts
+const port = Number(process.env.PORT) || 8080;
 
 // In production, serve the built SPA files
 const __dirname = import.meta.dirname;
@@ -13,7 +14,8 @@ const distPath = path.join(__dirname, "../spa");
 app.use(express.static(distPath));
 
 // Handle React Router - serve index.html for all non-API routes
-app.get("*", (req, res) => {
+// Express 5 uses path-to-regexp v8; use a v8-compatible wildcard
+app.get(/.*/, (req, res) => {
   // Don't serve index.html for API routes
   if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
     return res.status(404).json({ error: "API endpoint not found" });

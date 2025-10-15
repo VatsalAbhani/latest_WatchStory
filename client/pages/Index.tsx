@@ -16,6 +16,7 @@ import JournalSection from "@/components/JournalSection";
 import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
+import Seo from "@/components/Seo";
 
 
 
@@ -256,7 +257,7 @@ const manyWatches = [
 
 export default function Index() {
   useEffect(() => {
-    document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
+    // document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
 
     // Animate the "Trust strips" on scroll
     gsap.fromTo(
@@ -314,7 +315,13 @@ export default function Index() {
   return (
     <Layout>
 
-
+        {/* 3. ADD SEO COMPONENT */}
+        <Seo
+          title="Buy & Sell Luxury Watches in Dubai"
+          description="WatchStory is Dubai's trusted platform to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
+          canonical="/"
+        />
+        {/* End SEO Component */}
 
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
@@ -434,6 +441,14 @@ export default function Index() {
           <h2 className="mt-4 text-center font-sans text-3xl sm:text-4xl lg:text-4xl text-offwhite/80">
             A Story on Your Wrist
           </h2>
+
+
+
+          {/* For SEO and website reach */}
+          <p className="text-center font-sans text-base text-gold mt-6 tracking-wide max-w-2xl mx-auto">
+            Dubai's trusted platform to **Buy and Sell** authenticated **luxury watches**.
+          </p>
+          {/* =========================================== */}
 
 
 

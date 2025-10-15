@@ -1,3 +1,8 @@
+## 2025-10-15
+
+- Align server default port with prerender to 8080 in `server/node-build.ts`.
+- Fix Express 5 wildcard route causing path-to-regexp error by replacing `"/*"` with `"(.*)"` for SPA fallback in `server/node-build.ts`.
+
 # Changelog – WatchStory
 
 This file records all notable changes to the project. Before making any change, review this log to understand prior decisions and constraints. After making changes, register them here in the most relevant section.
