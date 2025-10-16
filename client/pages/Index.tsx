@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
-import { FEATURED, POSTS } from "@/lib/data";
+// import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
+// --- MODIFICATION: Remove static import, add fetch function import ---
+import { FEATURED, Article, fetchLatestPosts } from "@/lib/data"; 
+// --------------------------------------------------------------------
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-// Removed: import TypewriterHeading from "@/components/TypewriterHeading";
 import StaggeredCyclingHeading from "@/components/StaggeredCyclingHeading"; // <-- ADDED
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -31,9 +33,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 1. DEFINE BACKGROUND IMAGES (using your original and new ones)
 const BACKGROUND_IMAGES = [
-  '/WATCHSTORY (9).png', // Your original static image
-  '/WATCHSTORY (13).png',           // New image 1
-  '/WATCHSTORY (12).png',           // New image 2
+  '/bg_1.png', // Your original static image
+  '/bg_2.png',           // New image 1
+  '/bg_3.png',           // New image 2
 ];
 
 
@@ -79,86 +81,6 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
     </div>
   );
 }
-
-
-
-// new trial anmiation for the background --------------------------------------------------------------------------------------
-
-
-
-
-
-// const CYCLE_IMAGES = [
-//   '/bg-1.png', // Rolex Daytona
-//   '/bg-2.png', // Patek Nautilus
-//   // Fallback/generic watch composite (if needed, although small crops are better)
-//   // '/WatchBackground.png',
-//   '/bg-3.png', // Repeat
-//   '/bg-4.png',
-//   '/bg-5.png',
-//   '/AP-1.svg',
-// ];
-
-// interface HomeWatchCarouselProps {
-//   initialOffset: number; // MODIFIED: Use offset instead of initialImage string
-
-//   className: string;
-// }
-
-// function HomeWatchCarousel({   initialOffset, className }: HomeWatchCarouselProps) {
-//   const imgRef = useRef<HTMLImageElement>(null);
-// // MODIFIED: Start the index at the unique offset
-//   const [imageIndex, setImageIndex] = useState(initialOffset % CYCLE_IMAGES.length); 
-
-//   useEffect(() => {
-//     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 }); // Cycle every ~3 seconds
-//     const image = imgRef.current;
-//     if (!image) return;
-
-//     // Initial setup: Use the correct starting image
-//     // image.src = initialImage;
-
-//     const cycleAnimation = () => {
-//       // Advance index, wrapping back to 0
-//       setImageIndex(prev => (prev + 1) % CYCLE_IMAGES.length);
-//     };
-
-//     tl.to(image, {
-//       opacity: 0,
-//       duration: 0.5,
-//       ease: 'power2.in',
-//     })
-//     .add(cycleAnimation) // Change image source (React state change)
-//     .to(image, {
-//       opacity: 1,
-//       duration: 0.5,
-//       ease: 'power2.out',
-//     });
-
-//     return () => {
-//       tl.kill();
-//     };
-//   }, [initialOffset]);
-
-//   useEffect(() => {
-//     // This effect runs whenever imageIndex changes (triggered by the GSAP timeline)
-//     if (imgRef.current) {
-//       imgRef.current.src = CYCLE_IMAGES[imageIndex];
-//     }
-//   }, [imageIndex]);
-
-//   return (
-//     <div className={cn("absolute w-full h-full", className)}>
-//       <img
-//         ref={imgRef}
-//         // MODIFIED: Use the correct image from the initial index
-//         src={CYCLE_IMAGES[imageIndex]} 
-//         alt="Animated Luxury Watch"
-//         className="w-full h-full object-cover absolute"
-//       />
-//     </div>
-//   );
-// }
 
 
 
@@ -256,8 +178,17 @@ const manyWatches = [
 
 
 export default function Index() {
+
+  // --- NEW STATE FOR BLOG POSTS ---
+  const [latestPosts, setLatestPosts] = useState<Article[]>([]);
+  const [isJournalLoading, setIsJournalLoading] = useState(true);
+  // ---------------------------------
+
+
   useEffect(() => {
     // document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
+
+
 
     // Animate the "Trust strips" on scroll
     gsap.fromTo(
@@ -310,6 +241,34 @@ export default function Index() {
 
     // Parallax temporarily disabled to avoid conflicts with horizontal pinning
 
+
+
+// --- NEW FETCH EFFECT ---
+const loadJournalPosts = async () => {
+  try {
+    // Fetch the top 3 posts (or however many you want to show)
+    const posts = await fetchLatestPosts(3); 
+    setLatestPosts(posts);
+  } catch (error) {
+    console.error("Failed to fetch journal posts:", error);
+  } finally {
+    setIsJournalLoading(false);
+  }
+};
+
+loadJournalPosts();
+
+
+
+
+
+
+
+
+
+
+
+
   }, []);
 
   return (
@@ -330,50 +289,10 @@ export default function Index() {
         {/*  */}
 
 
-        {/* 1. New Background Image (uploaded by user) */}
-        {/* <div className="absolute inset-0 -z-30">
-    <img 
-      src="/WATCHSTORY (9).png" // Path to the uploaded image in the public directory
-      alt="Luxury watch background"
-      // opacity-60
-      className="w-full h-full object-cover" // object-cover for full coverage, opacity to make text readable
-    />
-  </div> */}
 
 
 
 
-
-
-
-
-
-
-        {/* 2. Four Independent Watch Carousels (Positioned over the watches in the static image) */}
-
-        {/* Watch 1: Leftmost (e.g., Cartier Panthère) */}
-        {/* <HomeWatchCarousel
-          initialOffset={0}
-          className="left-[-10%] top-1/2 w-[35%] h-[80%] -translate-y-1/2" 
-        /> */}
-
-        {/* Watch 2: Second from Left (e.g., Richard Mille) */}
-        {/* <HomeWatchCarousel
-          initialOffset={1} // Start at index 1 (Patek)
-          className="left-[10%] top-1/2 w-[35%] h-[80%] -translate-y-1/2"
-        /> */}
-
-        {/* Watch 3: Second from Right (e.g., Audemars Piguet) */}
-        {/* <HomeWatchCarousel
-          initialOffset={2} // Start at index 2 (RM-1.svg)
-          className="right-[10%] top-1/2  w-[35%] h-[80%] -translate-y-1/2"
-        /> */}
-
-        {/* Watch 4: Rightmost (e.g., Cartier Crash) */}
-        {/* <HomeWatchCarousel
-          initialOffset={3} // Start at index 3 (RM-2.svg)
-          className="right-[-10%] top-1/2 w-[35%] h-[70%] -translate-y-1/2" 
-        /> */}
 
 
 
@@ -405,33 +324,7 @@ export default function Index() {
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
         <div className="ws-container text-center relative z-10">
-          {/* <StaggeredCyclingHeading // <-- REPLACED COMPONENT
-            lines={[
-              // "Welcome to WatchStory",
-              // "Every Watch Tells A Story",
-              // "What are you looking for?"
-
-              "WATCHSTORY",
-              
-
-              // "More Than Time, A Story on Your Wrist"
-            ]}
-            cycleIntervalSec={4.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-            className="text-center font-logo-sans text-6xl text-offwhite/90"
-          /> */}
-          {/* <StaggeredCyclingHeading // <-- REPLACED COMPONENT
-            lines={[
-              // "Welcome to WatchStory",
-              // "Every Watch Tells A Story",
-              // "What are you looking for?"
-
-              "More Than Time",
-              "A Story on Your Wrist"
-            ]}
-            cycleIntervalSec={3.0} // Adjusted to 4.0s for an entrance(0.8s), pause(2.6s), and exit(0.6s) cycle
-            className="mt-10 text-center font-title text-2xl text-offwhite/90"
-          /> */}
-
+          
 
 
 
@@ -446,6 +339,7 @@ export default function Index() {
 
           {/* For SEO and website reach */}
           <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
+            Buy & Sell Authentic Luxury Watches in Dubai
             Dubai's trusted platform to **Buy and Sell** authenticated **luxury watches**.
           </p>
           {/* =========================================== */}
@@ -501,54 +395,34 @@ export default function Index() {
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-24 mb-8 grid md:grid-cols-3 gap-6 trust-section ">
+      <section className="ws-container mt-24 mb-8 grid md:grid-cols-4 gap-6 trust-section ">
         {/* <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
           <h3 className="font-title font-bold text-2xl">Provenance matters</h3>
           <p className="font-sans text-offwhite/70 mt-2">We track ownership and service history to preserve the narrative.</p>
         </div> */}
-        {/* 1. 1-YEAR WARRANTY (UPDATED CONTENT) */}
+     
+        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
+          <h3 className="font-title font-bold text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
+          <p className="font-sans text-offwhite/70 mt-2">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
+        </div>
         <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
           <h3 className="font-title font-bold text-2xl">Warranty Included</h3>
-          <p className="font-sans text-offwhite/70 mt-2">Every watch is protected by our comprehensive 12-month mechanical and service warranty for peace of mind.</p>
+          <p className="font-sans text-offwhite/70 mt-4">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
         </div>
         <div className=" rounded-lg p-6 bg-card/60 trust-strip">
           <h3 className="font-title font-bold text-2xl">Authenticated & verified</h3>
-          <p className="font-sans text-offwhite/70 mt-2">Materials, movement, and reference are checked by specialists.</p>
+          <p className="font-sans text-offwhite/70 mt-4">Materials, movement, and reference are checked by specialists.</p>
         </div>
         <div className=" rounded-lg p-6 bg-card/60 trust-strip">
           <h3 className="font-title font-bold text-2xl">Fair offers, fast payouts</h3>
-          <p className="font-sans text-offwhite/70 mt-2">Transparent pricing and insured shipping worldwide.</p>
+          <p className="font-sans text-offwhite/70 mt-4">Transparent pricing and insured shipping worldwide.</p>
         </div>
+
+
+
+
       </section>
 
-      {/* Featured Stories
-      <section className="ws-container mt-24">
-        <div className="flex items-end justify-between">
-          <TypewriterHeading
-            lines={["Featured Stories"]}
-            charsPerSecond={30}
-            showDots={false}
-            loop={false}
-            triggerOnScroll={true}
-            className="font-title text-3xl"
-          />
-          <Link to="/buy" className="text-gold">View all →</Link>
-        </div>
-
-        <div className="relative mt-6">
-          <Carousel opts={{ align: "start" }}>
-            <CarouselContent>
-              {FEATURED.map((p) => (
-                <CarouselItem key={p.id} className="basis-full sm:basis-1/2 lg:basis-1/3">
-                  <ProductCard product={p} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="border-border bg-card/80" />
-            <CarouselNext className="border-border bg-card/80" />
-          </Carousel>
-        </div>
-      </section> */}
 
 
       {/* Featured Stories - Full Screen Horizontal Showcase */}
@@ -565,34 +439,21 @@ export default function Index() {
 
 
 
-      {/* From the Journal
-      <section className="ws-container mt-24 mb-24">
-        <div className="flex items-end justify-between">
-          <TypewriterHeading
-            lines={["From the Journal"]}
-            charsPerSecond={30}
-            showDots={false}
-            loop={false}
-            triggerOnScroll={true}
-            className="font-title text-3xl"
-          />
-          <Link to="/blog" className="text-gold">Read more →</Link>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6 mt-6">
-          {POSTS.slice(0, 3).map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
-      </section> */}
 
 
 
-      {/* From the Journal */}
-      <JournalSection
-        posts={POSTS.slice(0, 3)}
-        showFeatured={true}
-      />
-
+     {/* From the Journal */}
+      {/* Display loading state while fetching */}
+      {isJournalLoading ? (
+        <section className="ws-container mt-32 mb-24 relative text-center">
+          <p className="text-offwhite/50">Loading inspiring stories from the Journal...</p>
+        </section>
+      ) : (
+        <JournalSection
+          posts={latestPosts} // <-- USE THE DYNAMICALLY FETCHED STATE
+          showFeatured={true}
+        />
+      )}
 
 
 

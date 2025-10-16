@@ -506,11 +506,21 @@ export default function Sell() {
         description="Get a fair, no-obligation offer in 24 hours to sell your Rolex or luxury timepiece in Dubai. Free insured shipping and expert valuation."
         canonical="/sell"
       />
-      <section className="ws-container py-8">
-        <h1 className="font-title text-4xl">Sell your watch</h1>
+      <section className="ws-container py-8 mt-12">
+        <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
+          Sell your watch
+          </h1>
+
+          <h2 className="font-sans text-base text-offwhite/80 mt-2 max-w-4xl">
+          Sell Your Rolex, Audemars Piguet, Patek Philippe, or Richard Mille Watch in Dubai.
+        </h2>
+
+
+
+
         {/* <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p> */}
         <CyclingLines
-          className="mt-4 text-4xl font-sans"
+          className="mt-2 text-4xl font-sans"
           lines={[
             "Get instant payment",
             "Free insured shipping",

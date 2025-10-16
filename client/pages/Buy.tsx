@@ -146,19 +146,47 @@ export default function Buy() {
         <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4>
 
         {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
-        <h1 className="font-title text-5xl sm:text-6xl max-w-4xl">
+        <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
           Find your perfect luxury watch
         </h1>
-        <h2 className="font-sans text-2xl text-offwhite/80 mt-2 max-w-4xl">
-          Rolex, Audemars Piguet (AP), Patek Philippe, and Richard Mille models available in Dubai.
+
+        
+        <h2 className="font-sans text-base text-offwhite/80 mt-2 max-w-4xl">
+          Rolex, Audemars Piguet (AP), Patek Philippe, and Richard Mille (RM) models available in Dubai.
         </h2>
         {/* END MODIFIED H1/H2 BLOCK */}
         <p className="text-offwhite/70 mt-3 mb-8 max-w-xl">Every watch is fully authenticated and comes complete with our 12 month warranty</p>
       </section>
 
-      {/* 2. Filter/Search Bar Section */}
+{/* MODIFIED SECTION: Temporarily Display "Coming Soon" Message and Call to Action */}
+<section className="ws-container py-16 text-center bg-gray-100/80 rounded-lg my-8 shadow-2xl">
+      <h2 className="font-title text-3xl sm:text-4xl text-white mb-4">
+        We're Curating Our Collection! 🛠️
+      </h2>
+      <p className="font-sans text-lg text-offwhite/80 max-w-3xl mx-auto mb-6">
+        The full inventory of luxury watches will be displayed here soon. We're working hard to update our online catalogue.
+      </p>
+      
+      {/* Emphasize the WhatsApp Call to Action */}
+      <p className="font-sans text-xl !text-yellow-900 font-semibold max-w-4xl mx-auto mb-8">
+        Meanwhile, if you have a specific **Rolex, AP, or Patek Philippe** model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
+      </p>
+      
+      {/* You should replace #LINK_TO_WHATSAPP with your actual WhatsApp link */}
+      <a 
+        href="https://wa.me/971501234567"
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-block px-8 py-3 bg-green-500 text-white font-bold rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-xl"
+      >
+        Chat With Us on WhatsApp
+      </a>
+    </section>
+    {/* END MODIFIED SECTION */}
+
+{/* Product Search and Display ------------------------------------------
+
       <section className="ws-container">
-        {/* PASS DOWN STATE AND HANDLER */}
         <BuyPageFilter 
           searchQuery={filters.searchQuery}
           sortOption={filters.sortOption}
@@ -169,8 +197,8 @@ export default function Buy() {
         />
       </section>
 
-      {/* 3. Product Display Grid */}
-      <section className="ws-container pb-16">
+     
+      <section className="ws-container pb-16">  
         <div className="grid md:grid-cols-3 gap-6 mt-8 watch-grid-container">
           {filteredProducts.length > 0 ? (
             // RENDER THE FILTERED LIST
@@ -189,6 +217,10 @@ export default function Buy() {
           )}
         </div>
       </section>
+
+ */}
+
+      
     </Layout>
   );
 }
