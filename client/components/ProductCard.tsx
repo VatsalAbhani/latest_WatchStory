@@ -44,13 +44,16 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group bg-card/60 border rounded-lg overflow-hidden">
-      <div className="relative aspect-[4/3]">
+
+      {/* aspect-[16/9] will increase/decrease the image size in the Buy page */}
+      {/* aspect-[4/5] */}
+      <div className="relative aspect-[4/5]">
         {/* CAROUSEL IMPLEMENTATION */}
         <Carousel className="w-full h-full">
           <CarouselContent>
             {product.images.urls.map((image, index) => (
               <CarouselItem key={index}>
-                <div className="w-full h-full overflow-hidden">
+                <div className="w-full h-full overflow-hidden flex justify-center items-center">
                   <img
                     src={image}
                     alt={`${product.brand} ${product.model} - View ${index + 1}`}

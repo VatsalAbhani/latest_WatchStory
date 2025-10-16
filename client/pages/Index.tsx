@@ -445,7 +445,7 @@ export default function Index() {
 
 
           {/* For SEO and website reach */}
-          <p className="text-center font-sans text-base text-gold mt-6 tracking-wide max-w-2xl mx-auto">
+          <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
             Dubai's trusted platform to **Buy and Sell** authenticated **luxury watches**.
           </p>
           {/* =========================================== */}

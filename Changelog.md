@@ -1,3 +1,9 @@
+## 2025-01-15 – Fix X logo component type error in Footer.tsx
+- What changed: Create `XIcon` React component wrapper for imported SVG to resolve TypeScript error where string was not assignable to ElementType
+- Why: The `SocialLink` component expects a React component for the `Icon` prop, but `Xlogo` is an imported SVG string path
+- Affected: `client/components/Footer.tsx`
+- Notes: Fixed TypeScript error "Type 'string' is not assignable to type 'ElementType<any, keyof IntrinsicElements>'" by wrapping the SVG import in a React component
+
 ## 2025-10-15
 
 - Align server default port with prerender to 8080 in `server/node-build.ts`.

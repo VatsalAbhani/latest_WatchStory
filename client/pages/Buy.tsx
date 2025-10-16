@@ -1,5 +1,5 @@
 
-
+//Buy.tsx
 import Layout from "@/components/Layout";
 import ProductCard from "@/components/ProductCard";
 import BuyPageFilter from "@/components/BuyPageFilter";

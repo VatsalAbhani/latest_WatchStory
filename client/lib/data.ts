@@ -28,15 +28,12 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "An honest diver with full set and service history.",
     images: {
-      urls: ["/rolex-datejust.avif", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/Rolex/datejust/rolex-datejust.avif", 
+        "/Rolex/datejust/rolex-datejust-img2.webp",
+        "/Rolex/datejust/rolex-datejust-img3.webp"], // UPDATED: Multi-image array
     },
     slug: "rolex-submariner-126610ln",
 
-    // bgColor: 'bg-zinc-900',  // Deep, dark charcoal
-    // textColor: 'text-white', // Bright white text
-
-    // bgColor: 'bg-neutral-800', // Muted dark background
-    // textColor: 'text-offwhite', // Off-white/light text
 
     bgColor: 'bg-stone-200', // Light, subtle stone grey
     textColor: 'text-offwhite', // High-contrast black text
@@ -52,7 +49,9 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "Iconic tapisserie in superb condition.",
     images: {
-      urls: ["/rolex-ladydatejust.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/Rolex/ladydatejust/rolex-ladydatejust.png", 
+        "/Rolex/ladydatejust/rolex-ladydatejust-img2.webp", 
+        "/Rolex/ladydatejust/rolex-ladydatejust-img3.avif"], // UPDATED: Multi-image array
     },
         slug: "ap-royal-oak-15510st",
 
@@ -71,7 +70,9 @@ export const FEATURED: Product[] = [
     availability: "reserved",
     story: "Thin as a whisper, presence like a bell.",
     images: {
-      urls: ["/rolex-gmt-master2.avif", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/Rolex/gmt-master/rolex-gmt-master2.avif", 
+        "/Rolex/gmt-master/rolex-gmt-master2-img2.webp", 
+        "/Rolex/gmt-master/rolex-gmt-master2-img3.jpg"], // UPDATED: Multi-image array
     },
         slug: "patek-nautilus-5711",
 
@@ -90,7 +91,10 @@ export const FEATURED: Product[] = [
     availability: "in_stock",
     story: "A modern classic with elegant proportions and a quick-change strap system.",
     images: {
-      urls: ["/patek-aquanaut.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+      urls: ["/Patek/patek-aquanaut.png", 
+        "/Patek/patek-aquanaut-img2.avif", 
+        "/Patek/patek-aquanaut-img3.webp",
+        "/Patek/patek-aquanaut-img4.webp"], // UPDATED: Multi-image array
     },
     slug: "cartier-tank-must-wsta0059",
 
@@ -111,7 +115,9 @@ export const FEATURED: Product[] = [
       availability: "in_stock",
       story: "A modern classic with elegant proportions and a quick-change strap system.",
       images: {
-        urls: ["/AP-royal.png", "/watch-1.png", "/watch-2.jpg"], // UPDATED: Multi-image array
+        urls: ["/AP/AP-royal.png", 
+          "/AP/ap-royal-img2.avif", 
+          "/AP/ap-royal-img3.webp"], // UPDATED: Multi-image array
       },
       slug: "cartier-tank-must-wsta0059",
 
