@@ -32,8 +32,8 @@ gsap.registerPlugin(ScrollTrigger);
 // 1. DEFINE BACKGROUND IMAGES (using your original and new ones)
 const BACKGROUND_IMAGES = [
   '/WATCHSTORY (9).png', // Your original static image
-  '/bg_2.png',           // New image 1
-  '/bg_3.png',           // New image 2
+  '/WATCHSTORY (13).png',           // New image 1
+  '/WATCHSTORY (12).png',           // New image 2
 ];
 
 

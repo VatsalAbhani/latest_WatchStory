@@ -144,7 +144,15 @@ export default function Buy() {
       {/* 1. Hero/Title Section */}
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
         <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4>
-        <h1 className="font-title text-5xl sm:text-6xl max-w-4xl">Find your perfect watch</h1>
+
+        {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
+        <h1 className="font-title text-5xl sm:text-6xl max-w-4xl">
+          Find your perfect luxury watch
+        </h1>
+        <h2 className="font-sans text-2xl text-offwhite/80 mt-2 max-w-4xl">
+          Rolex, Audemars Piguet (AP), Patek Philippe, and Richard Mille models available in Dubai.
+        </h2>
+        {/* END MODIFIED H1/H2 BLOCK */}
         <p className="text-offwhite/70 mt-3 mb-8 max-w-xl">Every watch is fully authenticated and comes complete with our 12 month warranty</p>
       </section>
 
