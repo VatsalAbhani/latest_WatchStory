@@ -1,3 +1,9 @@
+## 2025-01-15 – Fix TypeScript union type issues in MagneticBlogCard.tsx
+- What changed: Replace dynamic Wrapper component with conditional rendering using proper Anchor and Link components separately
+- Why: TypeScript couldn't properly infer union types for the dynamic Wrapper component, causing type conflicts between LinkProps and anchor attributes
+- Affected: `client/components/MagneticBlogCard.tsx`
+- Notes: Fixed by using conditional rendering with properly typed Anchor component and separate Link component instead of dynamic wrapper
+
 ## 2025-01-15 – Fix X logo component type error in Footer.tsx
 - What changed: Create `XIcon` React component wrapper for imported SVG to resolve TypeScript error where string was not assignable to ElementType
 - Why: The `SocialLink` component expects a React component for the `Icon` prop, but `Xlogo` is an imported SVG string path

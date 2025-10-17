@@ -148,11 +148,89 @@ export type Article = {
   author?: string; // Add this field
   readingTime?: string; // Add this field
   // --------------------
+  // --- NEW: Add optional external URL property ---
+  externalUrl?: string;
+  // ----------------------------------------------
 };
 
 export const POSTS: Article[] = [
+ // --- NEW: External Blog Post Entry ---
+ {
+  id: "a1",
+  title: "Financial Times: Gen Z fuels fast-growing second-hand watch market",
+  brandTags: ["Gen Z"],
+  heroImage: "/blog-imgs/blog-a1.avif", // Use a generic image for now
+  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+  slug: "", // Leave blank or remove as it won't use a local route
+  publishedAt: "Nov 14 2024",
+  author: "Robin Swithinbank",
+  readingTime: "5 Min Read",
+  externalUrl: "https://www.ft.com/content/a831b315-886f-4b59-91a5-96fe352289ad",
+},
+
+// --- NEW: External Blog Post Entry ---
+{
+  id: "a2",
+  title: "How To Deal With Vintage Watch Dealers: Five Tips",
+  brandTags: ["Vintage", "Guide"],
+  heroImage: "/placeholder.svg", // Use a generic image for now
+  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+  slug: "", // Leave blank or remove as it won't use a local route
+  publishedAt: "2024-10-16",
+  author: "Fratello Watches",
+  readingTime: "7 min read",
+  externalUrl: "https://www.fratellowatches.com/how-to-deal-with-vintage-watch-dealers-five-tips-from-a-former-dealer-himself/",
+},
+
+
+
+// --- NEW: External Blog Post Entry ---
+{
+  id: "a3",
+  title: "The Story of The Audemars Piguet Star Wheel",
+  brandTags: ["AP", "Story"],
+  heroImage: "/placeholder.svg", // Use a generic image for now
+  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+  slug: "", // Leave blank or remove as it won't use a local route
+  publishedAt: "May 2022",
+  author: "Raj Chaudhuri",
+  readingTime: "26 Min Read",
+  externalUrl: "https://www.acollectedman.com/blogs/journal/story-of-the-audemars-piguet-star-wheel",
+},
+
+
+// --- NEW: External Blog Post Entry ---
+{
+  id: "a4",
+  title: "Collectability: Five Patek Philippe Watches for Under $5,000",
+  brandTags: ["Patek Philippe"],
+  heroImage: "/placeholder.svg", // Use a generic image for now
+  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+  slug: "", // Leave blank or remove as it won't use a local route
+  publishedAt: "May 2022",
+  author: "Collectability",
+  readingTime: "5:58 Min Video",
+  externalUrl: "https://www.youtube.com/watch?v=odHOm869EwQ",
+},
+
+// --- NEW: External Blog Post Entry ---
+{
+  id: "a5",
+  title: "Hodinkee: How the multi-million dollar sale of a single watch is helping save the planet.",
+  brandTags: ["Patek Philippe"],
+  heroImage: "/placeholder.svg", // Use a generic image for now
+  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+  slug: "", // Leave blank or remove as it won't use a local route
+  publishedAt: "May 2022",
+  author: "Logan Baker",
+  readingTime: "10 Min Read",
+  externalUrl: "https://www.hodinkee.com/articles/tiffany-blue-patek-philippe-nautilus-5711-phillips-zach-nature-conservancy",
+},
+
+
+
   {
-    id: "a1",
+    id: "a6",
     title: "Buying a Rolex in Dubai: What Matters",
     brandTags: ["Rolex"],
     heroImage: "/placeholder.svg",
@@ -163,7 +241,7 @@ export const POSTS: Article[] = [
     readingTime: "5 min read", // Add data here
   },
   {
-    id: "a2",
+    id: "a7",
     title: "Audemars Piguet: The Royal Oak Story",
     brandTags: ["AP"],
     heroImage: "/AP/ap-royal-img2.avif", // Use a valid image path if available
@@ -174,7 +252,7 @@ export const POSTS: Article[] = [
     readingTime: "8 min read",
   },
   {
-    id: "a3",
+    id: "a8",
     title: "Richard Mille Authentication Guide",
     brandTags: ["RM"],
     heroImage: "/placeholder.svg",
@@ -185,7 +263,7 @@ export const POSTS: Article[] = [
     readingTime: "4 min read",
   },
   {
-    id: "a4",
+    id: "a9",
     title: "Understanding Patek Philippe Reference Numbers",
     brandTags: ["Patek Philippe"],
     heroImage: "/Patek/nautilus/patek-nautilus-lady.avif",
@@ -195,6 +273,10 @@ export const POSTS: Article[] = [
     author: "WatchStory Research",
     readingTime: "6 min read",
   },
+
+  
+
+ 
 ];
 
 // --- NEW FUNCTION: Simulates an API call to fetch latest posts ---
@@ -208,7 +290,7 @@ export function fetchLatestPosts(count: number = 3): Promise<Article[]> {
   return new Promise((resolve) => {
     // Simulate network delay of 500ms
     setTimeout(() => {
-      resolve(POSTS.slice(0, count)); 
-    }, 500); 
+      resolve(POSTS.slice(0, count));
+    }, 500);
   });
 }
