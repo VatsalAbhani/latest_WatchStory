@@ -31,7 +31,7 @@ const SCRIPTS: Record<RouteKey, string[]> = {
     "What's yours?",
   ],
   sell: [
-    "Let's tell your watch’s story to the right collector.",
+    "Let's tell your watch's story to the right collector.",
     "Photograph the details; they speak.",
   ],
   buy: [
@@ -39,7 +39,7 @@ const SCRIPTS: Record<RouteKey, string[]> = {
     "Curated. Authenticated. Ready.",
   ],
   product: [
-    "This reference carries a legacy—let’s read it closely.",
+    "This reference carries a legacy—let's read it closely.",
   ],
   blog: [
     "Pour a coffee. Read the finer details.",
@@ -51,7 +51,7 @@ const SCRIPTS: Record<RouteKey, string[]> = {
     "Watchmaking is memory, told in steel and time.",
   ],
   contact: [
-    "Tell us your chapter; we’ll listen.",
+    "Tell us your chapter; we'll listen.",
   ],
 };
 
@@ -102,7 +102,7 @@ export function StoryProvider({ children }: { children: React.ReactNode }) {
       g.connect(ctx.destination);
       o.start();
       o.stop(ctx.currentTime + 0.03);
-    } catch {}
+    } catch { }
   }, [mute]);
 
   useEffect(() => {
