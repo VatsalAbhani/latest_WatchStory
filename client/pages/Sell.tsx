@@ -1,351 +1,10 @@
 
-
-// import Layout from "@/components/Layout";
-// import { useEffect, useState, useCallback } from "react";
-// import CyclingLines from "@/components/CyclingLines";
-// import { cn } from "@/lib/utils"; // ADDED cn import for styling utility
-
-// // --- 1. UPDATED SHARED INTERFACE FOR DATA ---
-// interface SellFormData {
-//   brand: string;
-//   model: string;
-//   reference: string;
-//   year: number | '';
-//   conditionNotes: string;
-//   // EXPANDED OPTIONS
-//   boxAndPapers: 'Yes' | 'No' | 'Only box' | 'Only papers';
-//   askingPrice: number | '';
-//   location: string;
-//   // DEFINED CONTACT OPTIONS
-//   contactMethod: 'Email' | 'Phone number' | 'WhatsApp';
-//   // NEW FIELD FOR CONTACT DETAIL
-//   contactDetail: string;
-//   preferredPayout: string;
-// }
-
-// // --- 2. API FETCH HELPER (URL Corrected for Public Endpoint) ---
-// const API_BASE_URL = "http://127.0.0.1:8000";
-
-// async function submitSellRequest(data: Partial<SellFormData>) {
-//   const payload = {
-//     brand: data.brand,
-//     model: data.model,
-//     asking_price: Number(data.askingPrice),
-//     condition: data.conditionNotes || 'Unspecified',
-
-//     // Consolidated all details into the description field
-//     description: `Ref: ${data.reference || 'N/A'}. Year: ${data.year || 'N/A'}. Papers: ${data.boxAndPapers}. Payout: ${data.preferredPayout}. Location: ${data.location || 'N/A'}. Contact: ${data.contactMethod}: ${data.contactDetail || 'N/A'}.`,
-//   };
-
-//   // Target the expected /public/sell-requests endpoint
-//   const res = await fetch(`${API_BASE_URL}/public/sell-requests`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(payload),
-//   });
-
-//   if (!res.ok) {
-//     const errorData = await res.json().catch(() => ({ detail: res.statusText }));
-//     throw new Error(errorData.detail || `HTTP error ${res.status}`);
-//   }
-
-//   return res.json();
-// }
-// // --- END API FETCH HELPER ---
-
-
-// export default function Sell() {
-//   useEffect(() => {
-//     document.title = "Sell Your Luxury Watch | Fast Offers & Authentication — WatchStory";
-//   }, []);
-
-//   return (
-//     <Layout>
-//       <section className="ws-container py-16">
-//         <h1 className="font-title text-4xl">Sell your watch</h1>
-//         <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p>
-//         <CyclingLines
-//           className="mt-4 text-xl text-gold/90"
-//           lines={[
-//             "Get instant payment",
-//             "Free insured shipping",
-//             "Expert authentication",
-//             "Fair, market-based offers",
-//             "Offer within 24 hours",
-//           ]}
-//           cycleIntervalSec={2.5}
-//           perLetterDurationSec={1}
-//           easing="ease-in-out"
-//           letterStaggerSec={0.04}
-//         />
-//         <div className="mt-10 grid md:grid-cols-3 gap-6">
-//           <div className="border rounded-lg p-6 bg-card/60">
-//             <h3 className="font-title text-2xl">Evaluation</h3>
-//             <p className="text-offwhite/70 mt-2">Transparent criteria and market-backed pricing.</p>
-//           </div>
-//           <div className="border rounded-lg p-6 bg-card/60">
-//             <h3 className="font-title text-2xl">Authentication</h3>
-//             <p className="text-offwhite/70 mt-2">Movement and materials verified by experts.</p>
-//           </div>
-//           <div className="border rounded-lg p-6 bg-card/60">
-//             <h3 className="font-title text-2xl">Fast payout</h3>
-//             <p className="text-offwhite/70 mt-2">Insured shipping and rapid settlement.</p>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className="ws-container pb-24">
-//         <SingleStepSellForm />
-//       </section>
-//     </Layout>
-//   );
-// }
-
-// // ====================================================================
-// // --- Utility Components (Updated to include cn utility) ---
-
-// function Field({ label, children, className }: { label: string; children: React.ReactNode; className?: string }) {
-//   return (
-//     <label className={cn("block", className)}>
-//       <div className="text-sm text-offwhite/70 mb-1">{label}</div>
-//       {children}
-//     </label>
-//   );
-// }
-
-// function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
-//   return <input {...props} className="w-full bg-transparent border px-3 py-2 rounded-md placeholder:text-offwhite/40" />
-// }
-// function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
-//   return <select {...props} className="w-full bg-transparent border px-3 py-2 rounded-md" />
-// }
-// function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
-//   return <textarea {...props} className="w-full min-h-24 bg-transparent border px-3 py-2 rounded-md" />
-// }
-
-// // ====================================================================
-// // --- SINGLE STEP FORM COMPONENT ---
-
-// function SingleStepSellForm() {
-//   const [loading, setLoading] = useState(false);
-//   const [formData, setFormData] = useState<Partial<SellFormData>>({
-//     brand: 'Rolex',
-//     model: '',
-//     reference: '',
-//     year: '',
-//     conditionNotes: '',
-//     boxAndPapers: 'Yes',
-//     askingPrice: '',
-//     location: '',
-//     contactMethod: 'Email',
-//     contactDetail: '', // Holds the conditional input value
-//     preferredPayout: 'Bank Transfer'
-//   });
-
-//   const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers') => {
-//     setFormData(prev => ({ ...prev, [field]: value }));
-//   }, []);
-
-//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     try {
-//       // Consolidated Validation
-//       if (!formData.brand || formData.brand === "") {
-//         throw new Error("Missing required field: Brand.");
-//       }
-//       if (!formData.model || formData.model === "") {
-//         throw new Error("Missing required field: Model.");
-//       }
-//       if (typeof formData.askingPrice !== 'number' || isNaN(formData.askingPrice) || formData.askingPrice <= 0) {
-//         throw new Error("Missing required field: Asking price (must be a number greater than 0).");
-//       }
-//       // Check that contact method is selected AND the detail field is filled
-//       if (!formData.contactMethod || !formData.contactDetail || formData.contactDetail === "") {
-//         throw new Error(`Missing required detail for the selected contact method (${formData.contactMethod}).`);
-//       }
-
-//       await submitSellRequest(formData);
-
-//       alert("Success! We've received your sell request. We will get back to you shortly.");
-
-//     } catch (error) {
-//       console.error("Submission failed:", error);
-//       alert(`Submission failed. Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const contactType = formData.contactMethod;
-//   const contactInputLabel =
-//     contactType === 'Email' ? 'Your Email' :
-//       contactType === 'Phone number' ? 'Your Phone Number' :
-//         'Your WhatsApp Number';
-//   const contactInputType = contactType === 'Email' ? 'email' : 'text';
-
-
-//   return (
-//     <div className="border rounded-xl bg-card/60">
-//       <div className="p-4 border-b flex items-center justify-between">
-//         <div className="text-sm text-offwhite/60">Submit your watch details</div>
-//       </div>
-//       <form className="p-6 grid md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
-
-//         {/* --- ROW 1: BRAND & MODEL --- */}
-//         <Field label="Brand">
-//           <Select
-//             required
-//             value={formData.brand}
-//             onChange={e => handleChange('brand', e.target.value)}
-//           >
-//             <option>Rolex</option>
-//             <option>Audemars Piguet</option>
-//             <option>Richard Mille</option>
-//             <option>Patek Philippe</option>
-//             <option>Cartier</option>
-//             <option>Other</option>
-//           </Select>
-//         </Field>
-//         <Field label="Model">
-//           <Input
-//             required
-//             placeholder="Submariner Date"
-//             value={formData.model || ''}
-//             onChange={e => handleChange('model', e.target.value)}
-//           />
-//         </Field>
-
-//         {/* --- ROW 2: REFERENCE & YEAR --- */}
-//         <Field label="Reference No.">
-//           <Input
-//             required
-//             placeholder="126610LN"
-//             value={formData.reference || ''}
-//             onChange={e => handleChange('reference', e.target.value)}
-//           />
-//         </Field>
-//         <Field label="Year">
-//           <Input
-//             type="number"
-//             placeholder="2022"
-//             required
-//             value={formData.year || ''}
-//             onChange={e => handleChange('year', Number(e.target.value))}
-//           />
-//         </Field>
-
-//         {/* --- ROW 3: BOX & PRICE --- */}
-//         <Field label="Box & Papers">
-//           <Select
-//             value={formData.boxAndPapers}
-//             onChange={e => handleChange('boxAndPapers', e.target.value as SellFormData['boxAndPapers'])}
-//           >
-//             <option>Yes</option>
-//             <option>No</option>
-//             {/* ADDED NEW OPTIONS */}
-//             <option>Only box</option>
-//             <option>Only papers</option>
-//           </Select>
-//         </Field>
-//         <Field label="Asking price (USD)">
-//           <Input
-//             type="number"
-//             placeholder="0"
-//             required
-//             value={formData.askingPrice || ''}
-//             onChange={e => handleChange('askingPrice', Number(e.target.value))}
-//           />
-//         </Field>
-
-//         {/* --- ROW 4: CONDITION NOTES (Full Width) --- */}
-//         <Field label="Condition notes" className="md:col-span-2">
-//           <Textarea
-//             placeholder="Surface wear, hairlines, etc."
-//             value={formData.conditionNotes || ''}
-//             onChange={e => handleChange('conditionNotes', e.target.value)}
-//           />
-//         </Field>
-
-//         {/* --- ROW 5: CONDITIONAL CONTACT INPUT --- */}
-//         <div className="md:col-span-2 grid md:grid-cols-2 gap-4">
-//           <Field label="Preferred Contact Method">
-//             <Select
-//               value={contactType}
-//               onChange={e => {
-//                 // 1. Update contactMethod type
-//                 handleChange('contactMethod', e.target.value as SellFormData['contactMethod']);
-//                 // 2. Clear existing detail when type changes
-//                 handleChange('contactDetail', '');
-//               }}
-//             >
-//               <option>Email</option>
-//               <option>Phone number</option>
-//               <option>WhatsApp</option>
-//             </Select>
-//           </Field>
-
-//           {/* CONDITIONAL CONTACT INPUT FIELD */}
-//           <Field label={contactInputLabel} key={contactType}> {/* Use key to reset component state */}
-//             <Input
-//               type={contactInputType}
-//               placeholder={contactType === 'Email' ? 'john.doe@mail.com' : 'e.g., +971 50 123 4567'}
-//               required
-//               value={formData.contactDetail || ''}
-//               onChange={e => handleChange('contactDetail', e.target.value)}
-//             />
-//           </Field>
-//         </div>
-
-//         {/* --- ROW 6: LOCATION & PAYOUT --- */}
-//         <Field label="Location">
-//           <Input
-//             placeholder="City, Country"
-//             value={formData.location || ''}
-//             onChange={e => handleChange('location', e.target.value)}
-//           />
-//         </Field>
-//         <Field label="Preferred payout">
-//           <Select
-//             value={formData.preferredPayout}
-//             onChange={e => handleChange('preferredPayout', e.target.value)}
-//           >
-//             <option>Bank Transfer</option>
-//             <option>Crypto</option>
-//             <option>Cash (in person)</option>
-//           </Select>
-//         </Field>
-
-//         {/* --- ROW 7: FILE UPLOAD (Full Width) --- */}
-//         <Field label="Upload photos" className="md:col-span-2">
-//           <Input type="file" accept="image/*" multiple className="block text-sm py-1" />
-//         </Field>
-
-//         {/* --- SUBMIT BUTTON --- */}
-//         <div className="md:col-span-2 flex justify-end pt-2">
-//           <button type="submit" className="ws-button-primary" disabled={loading}>
-//             {loading ? 'Submitting...' : 'Submit Request'}
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
-
-// // NOTE: All multi-step functions (StepOne, StepTwo, StepThree) have been completely removed,
-// // as requested, to clean up the file and use the new SingleStepSellForm component.
-
-
-
-
-
-
 import Layout from "@/components/Layout";
 import { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import CyclingLines from "@/components/CyclingLines";
 import { cn } from "@/lib/utils"; // ADDED cn import for styling utility
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"; // ADDED ACCORDION IMPORTS
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"; 
 import { AnimatedButton } from "@/components/AnimatedButton";
 import Seo from "@/components/Seo";
 
@@ -375,6 +34,7 @@ const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    // 1 
     {
       "@type": "Question",
       "name": "How long does the valuation process take?",
@@ -383,6 +43,7 @@ const FAQ_SCHEMA = {
         "text": "Once you submit your watch details, our specialists typically provide an initial offer within 24 to 48 hours. The final offer is confirmed after physical inspection and authentication."
       }
     },
+    // 2
     {
       "@type": "Question",
       "name": "Is shipping insured and how does it work?",
@@ -391,20 +52,56 @@ const FAQ_SCHEMA = {
         "text": "Yes, all shipping arranged by WatchStory is fully insured for the full market value of the watch, using secure, trackable methods. We provide detailed, prepaid shipping labels."
       }
     },
+    // 3
     {
       "@type": "Question",
       "name": "How does the authentication process work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every watch is meticulously inspected by our master watchmakers. We verify the movement, serial numbers, provenance (box and papers), and material integrity to guarantee authenticity before finalising the transaction."
+        "text": "Every watch is meticulously inspected by our master watchmakers. We verify the movement, serial numbers, provenance (box and papers), and material integrity to guarantee authenticity before finalizing the transaction. We specialize in authenticating Rolex, Audemars Piguet, and Patek Philippe references."
       }
     },
+    // 4
     {
       "@type": "Question",
       "name": "What payout methods are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "We support several secure payout methods, including bank transfer, escrow services, and in-person cash transactions depending on your location and preference for speed and security."
+      }
+    },
+
+    // 5
+
+    {
+      "@type": "Question",
+      "name": "What documentation is required to sell my watch (Box & Papers)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To achieve the best market price, we require your watch's original Box and Papers (provenance). We can still purchase watches without these, but valuation will be adjusted based on the missing history."
+      }
+    },
+
+        // 6
+
+        {
+          "@type": "Question",
+          "name": "Do you buy watches from outside of Dubai or the UAE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While we are specialists located in Dubai, we accept sell requests globally. We provide fully insured, prepaid shipping labels to securely transport your watch to our authentication center from anywhere in the world."
+          }
+        },
+
+
+            // 7
+
+    {
+      "@type": "Question",
+      "name": "How do you determine the final market price/valuation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our valuation process is entirely transparent. We analyze the current secondary market data, recent sales history for your specific reference number (SKU), the watch's condition grade, and the presence of original box and papers."
       }
     }
   ]
@@ -445,22 +142,44 @@ async function submitSellRequest(data: Partial<SellFormData>) {
 // --- NEW FAQ COMPONENT ---
 
 const FAQ_ITEMS = [
+  // 1
   {
     question: "How long does the valuation process take?",
     answer: "Once you submit your watch details, our specialists typically provide an initial offer within 24 to 48 hours. The final offer is confirmed after physical inspection and authentication."
   },
+  // 2
   {
     question: "Is shipping insured and how does it work?",
     answer: "Yes, all shipping arranged by WatchStory is fully insured for the full market value of the watch, using secure, trackable methods. We provide detailed, prepaid shipping labels."
   },
+  // 3
   {
     question: "How does the authentication process work?",
-    answer: "Every watch is meticulously inspected by our master watchmakers. We verify the movement, serial numbers, provenance (box and papers), and material integrity to guarantee authenticity before finalising the transaction."
+    answer: "Every watch is meticulously inspected by our master watchmakers. We verify the movement, serial numbers, provenance (box and papers), and material integrity to guarantee authenticity before finalizing the transaction. We specialize in authenticating Rolex, Audemars Piguet, and Patek Philippe references."
   },
+  // 4
   {
     question: "What payout methods are supported?",
     answer: "We support several secure payout methods, including bank transfer, escrow services, and in-person cash transactions depending on your location and preference for speed and security."
+  },
+  // 5
+
+  {
+    question: "What documentation is required to sell my watch (Box & Papers)?",
+    answer: "To achieve the best market price, we require your watch's original Box and Papers (provenance). We can still purchase watches without these, but valuation will be adjusted based on the missing history."
+  },
+  // 6
+
+  {
+    question: "Do you buy watches from outside of Dubai or the UAE?",
+    answer: "While we are specialists located in Dubai, we accept sell requests globally. We provide fully insured, prepaid shipping labels to securely transport your watch to our authentication center from anywhere in the world."
+  },
+  // 7
+  {
+    question: "How do you determine the final market price/valuation?",
+    answer: "Our valuation process is entirely transparent. We analyze the current secondary market data, recent sales history for your specific reference number (SKU), the watch's condition grade, and the presence of original box and papers."
   }
+  
 ];
 
 function SellPageFAQ() {

@@ -406,12 +406,12 @@ export default function Footer() {
             <div className="flex gap-4">
               <SocialLink 
                 Icon={Instagram} 
-                href="https://www.instagram.com/watchstory" 
+                href="https://www.instagram.com/watchstory.uae/" 
                 label="Instagram" 
               />
               <SocialLink 
                 Icon={XIcon} 
-                href="https://www.x.com/watchstory" 
+                href="https://x.com/WatchStoryUAE" 
                 label="X (Twitter)" 
               />
               <SocialLink 

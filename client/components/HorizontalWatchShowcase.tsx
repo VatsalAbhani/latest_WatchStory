@@ -192,7 +192,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
           >
             <div className="w-full h-full max-w-8xl mx-auto px-8 md:px-12 bg-stone-200">
             <Link
-              to={`/buy/${watch.slug}`}
+              to={`/watch/${watch.slug}`}
               className="group block w-full max-w-8xl mx-auto"
             >
               <div className="grid  md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
@@ -243,16 +243,18 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
 
                   <div className="flex gap-4">
                     <MagneticButton
-                      href={`/buy/${watch.slug}`}
+                      href={`/watch/${watch.slug}`}
                       variant="primary"
                       className="text-sm"
                     >
                       Details
                     </MagneticButton>
                     <MagneticButton
-                      href="/contact"
+                      href="https://wa.me/971501234567" 
                       variant="secondary"
                       className="text-sm"
+                      target="_blank" // <--- Recommended addition
+                      rel="noopener noreferrer" // <--- Recommended addition
                     >
                       Inquire
                     </MagneticButton>

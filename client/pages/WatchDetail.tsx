@@ -1,21 +1,29 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { FEATURED } from "@/lib/data"; // Used to simulate fetching data
+// Assuming FEATURED and Product type are imported from a consolidated data file
+import { FEATURED, Product } from "@/lib/data"; 
 import NotFound from "./NotFound";
 import Layout from "@/components/Layout";
 import { cn } from "@/lib/utils";
-// ... (Your other existing imports like ProductImageGallery, etc.)
 
-// --- SEO Imports ---
+// Component Imports
 import Seo from "@/components/Seo"; 
 import { Helmet } from "react-helmet-async"; 
-// -------------------
+import MagneticButton from "@/components/MagneticButton";
+import { useCart } from "@/state/cart";
+import { toast } from "sonner";
+// UI Component Imports
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Separator } from "@/components/ui/separator";
 
-// Find watch data (Placeholder implementation)
+// --- Data & Helper Functions (Kept from original file) ---
+
+// Find watch data (Placeholder implementation - fetches from local FEATURED array)
 const findWatchBySlug = (slug: string) => FEATURED.find((w) => w.slug === slug);
 
 // FUNCTION: Generates dynamic Product Schema JSON-LD
-const getProductSchema = (watch: typeof FEATURED[0], url: string) => {
+const getProductSchema = (watch: Product, url: string) => {
   return {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -41,42 +49,178 @@ const getProductSchema = (watch: typeof FEATURED[0], url: string) => {
     }
   };
 };
+
 // ----------------------------------------------------------------------
 
 
+// --- Local Components for Watch Detail Page ---
+
+function ProductImageGallery({ images }: { images: string[] }) {
+  if (images.length === 0) {
+    return <div className="h-96 bg-gray-200 flex items-center justify-center rounded-lg">Image Not Available</div>;
+  }
+  return (
+    <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+      <Carousel className="w-full h-full">
+        <CarouselContent>
+          {images.map((image, index) => (
+            <CarouselItem key={index}>
+              <div className="w-full h-full flex justify-center items-center bg-transparent">
+                <img
+                  src={image}
+                  alt={`View ${index + 1}`}
+                  className="object-contain w-full h-full max-h-[70vh]"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {images.length > 1 && (
+          <>
+            {/* Custom styled arrows */}
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-black/70" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-black/70" />
+          </>
+        )}
+      </Carousel>
+    </div>
+  );
+}
+
+function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
+  const { add } = useCart();
+  
+  const priceFmt = new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: watch.currency,
+  });
+
+  const handleAddToCart = () => {
+    add({
+      id: watch.id,
+      title: `${watch.brand} ${watch.model}`,
+      price: watch.price,
+      image: watch.images.urls[0],
+    });
+    // Use the imported toast component for a nice notification
+    toast.success(`${watch.brand} ${watch.model} added to cart!`);
+  };
+
+  // const handleInquire = () => {
+  //   // Navigate to the contact page, as you have a separate Contact.tsx file
+  //   window.location.href = '/contact';
+  // };
+
+  return (
+    <div className="md:sticky md:top-24 space-y-8 p-4 md:p-0">
+      
+      {/* Title and Price */}
+      <div>
+        <p className="text-gold font-semibold text-xl">{watch.brand}</p>
+        <h1 className="font-title text-4xl sm:text-5xl mt-1 leading-tight">{watch.model}</h1>
+        <p className="font-sans text-2xl font-bold text-foreground mt-4">{priceFmt.format(watch.price)}</p>
+      </div>
+
+      <Separator className="bg-border/50" />
+
+      {/* Description */}
+      <p className="text-offwhite/80 font-sans text-base leading-relaxed">{watch.story}</p>
+
+      {/* Call to Action Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        {/* <MagneticButton
+          onClick={handleAddToCart}
+          variant="primary"
+          className="flex-1 text-base font-extrabold"
+        >
+          Add to Cart
+        </MagneticButton> */}
+        <MagneticButton
+        href="https://wa.me/971501234567"
+          // onClick={handleInquire}
+          variant="secondary"
+          target="_blank" // <--- Recommended addition
+          rel="noopener noreferrer" // <--- Recommended addition
+          className="flex-1 text-base font-extrabold"
+        >
+          Discuss & Order It Now
+        </MagneticButton>
+      </div>
+
+      <Separator className="bg-border/50" />
+
+      {/* Specifications Table */}
+      <h2 className="font-title text-2xl">Specifications</h2>
+      <Table className="bg-card/60 border border-border/50 rounded-lg">
+        <TableBody>
+          {/* Reference */}
+          <TableRow className="hover:bg-transparent transition-colors">
+            <TableCell className="w-1/3 text-sm font-semibold text-offwhite/70">Reference No.</TableCell>
+            <TableCell className="w-2/3 text-sm text-foreground">{watch.ref}</TableCell>
+          </TableRow>
+          {/* Year */}
+          <TableRow className="hover:bg-transparent">
+            <TableCell className="text-sm font-semibold text-offwhite/70">Year</TableCell>
+            <TableCell className="text-sm text-foreground">{watch.year}</TableCell>
+          </TableRow>
+          {/* Condition */}
+          {/* <TableRow className="hover:bg-transparent">
+            <TableCell className="text-sm font-semibold text-offwhite/70">Condition</TableCell>
+            <TableCell className="text-sm text-foreground capitalize">{watch.condition}</TableCell>
+          </TableRow> */}
+          {/* Movement */}
+          {/* <TableRow className="hover:bg-transparent">
+            <TableCell className="text-sm font-semibold text-offwhite/70">Movement</TableCell>
+            <TableCell className="text-sm text-foreground">{watch.movement || 'Automatic'}</TableCell>
+          </TableRow> */}
+          {/* Availability */}
+          <TableRow className="hover:bg-transparent">
+            <TableCell className="text-sm font-semibold text-offwhite/70">Availability</TableCell>
+            <TableCell className={cn("text-sm font-medium capitalize", watch.availability === 'in_stock' ? 'text-green-500' : 'text-yellow-600')}>
+              {watch.availability.replace('_', ' ')}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
+
+// --- MAIN PAGE COMPONENT ---
+
 export default function WatchDetail() {
   const { slug } = useParams<{ slug: string }>();
+  // Retrieve the watch details from the FEATURED array using the URL slug
   const watch = findWatchBySlug(slug!);
   
-  // Early exit for 404
   if (!watch) {
     return <NotFound />;
   }
   
+  // Format price for SEO description
+  const priceFmt = new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: watch.currency,
+  });
+
   // Generate dynamic Schema and URL for Helmet
-  // !!! IMPORTANT: CHANGE DOMAIN TO YOUR LIVE DOMAIN !!!
-  const currentUrl = `https://yourdomain.com/watch/${slug}`; 
+  const currentUrl = `/watch/${slug}`; 
   const productSchema = getProductSchema(watch, currentUrl);
   const jsonLd = JSON.stringify(productSchema);
-
-  // useEffect: Ensure document.title manipulation is removed if it existed.
-  useEffect(() => {
-    // Keep this empty or use for local, non-SEO specific effects only.
-  }, []);
-
 
   return (
     <Layout>
       
       {/* 1. DYNAMIC META TAGS, TITLE, AND CANONICAL (SEO Component) */}
       <Seo 
-        title={`${watch.brand} ${watch.model} for Sale in Dubai`} 
-        description={`Buy the authenticated ${watch.brand} ${watch.model} watch in Dubai. Reference: ${watch.ref}. Includes 12-month warranty.`}
-        canonical={`/watch/${watch.slug}`}
+        title={`${watch.brand} ${watch.model} | Ref: ${watch.ref} for Sale in Dubai`} 
+        description={`Buy the authenticated ${watch.brand} ${watch.model} watch in Dubai. Reference: ${watch.ref}. Includes 12-month warranty. Price: ${watch.currency} ${watch.price.toLocaleString()}`}
+        canonical={currentUrl}
         ogTitle={`${watch.brand} ${watch.model} | WatchStory Dubai`}
       />
 
-      {/* 2. PRODUCT SCHEMA JSON-LD INJECTION (Best Practice) */}
+      {/* 2. PRODUCT SCHEMA JSON-LD INJECTION */}
       <Helmet>
         <script 
           type="application/ld+json" 
@@ -86,14 +230,24 @@ export default function WatchDetail() {
       {/* ------------------------------------------------------------- */}
 
 
-      {/* Main Content */}
-      <div className="ws-container pt-12">
-        {/* ... The rest of your WatchDetail component JSX goes here ... */}
+      {/* Main Content Grid: Image Gallery (left) and Details (right) */}
+      <div className="ws-container pt-12 pb-24">
         
-        {/* Placeholder if you are still building the detailed page content: */}
-        <p>Displaying details for: {watch.brand} {watch.model}</p> 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          
+          {/* Column 1: Image Gallery */}
+          <div className="order-2 md:order-1">
+            <ProductImageGallery images={watch.images.urls} />
+          </div>
 
+          {/* Column 2: Details and CTA */}
+          <div className="order-1 md:order-2">
+            <ProductDetailsAndSpecs watch={watch} />
+          </div>
+
+        </div>
       </div>
+      
     </Layout>
   );
 }

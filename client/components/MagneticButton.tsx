@@ -282,6 +282,9 @@ interface MagneticButtonProps {
     onClick?: () => void;
     variant?: 'primary' | 'secondary';
     className?: string;
+    // Forward common anchor attributes when used as a link
+    target?: string;
+    rel?: string;
 }
 
 export default function MagneticButton({ 
@@ -289,7 +292,9 @@ export default function MagneticButton({
     href, 
     onClick, 
     variant = 'primary',
-    className = '' 
+    className = '',
+    target,
+    rel,
 }: MagneticButtonProps) {
     const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null); 
     const originalTextRef = useRef<HTMLSpanElement>(null);
@@ -437,6 +442,7 @@ gsap.set(allChars, {
             href={href}
             onClick={onClick}
             className={baseClasses}
+            {...(href ? { target, rel } : {})}
         >
             {/* Main Padded Container is the event and layout target */}
             <div 

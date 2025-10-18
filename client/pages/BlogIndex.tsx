@@ -49,7 +49,7 @@ export default function BlogIndex() {
     <Layout>
       
       {/* Header/Hero Section */}
-      <section className="ws-container pt-16 pb-8">
+      <section className="ws-container pt-20 pb-4">
         <TypewriterHeading
           lines={["WatchStory Journal"]}
           charsPerSecond={30}
@@ -58,17 +58,17 @@ export default function BlogIndex() {
           triggerOnScroll={true}
           className="font-title text-5xl md:text-6xl text-offwhite/90"
         />
-        <p className="text-offwhite/70 mt-4 max-w-2xl">
+        {/* <p className="text-offwhite/70 mt-4 max-w-2xl">
           Explore the artistry, heritage, and stories behind the world's finest timepieces. 
           Curated insights into horology, craftsmanship, and watch culture.
-        </p>
+        </p> */}
       </section>
 
       {/* Filter and Search Bar Section */}
       <section className="ws-container py-8 border-b border-border/50">
         
         {/* Search Input */}
-        <div className="relative max-w-lg">
+        {/* <div className="relative max-w-lg">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-offwhite/50" />
           <Input
             type="text"
@@ -77,7 +77,7 @@ export default function BlogIndex() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-12 bg-card/60 border-border/60 text-base pl-10 placeholder:text-offwhite/50 focus-visible:ring-gold"
           />
-        </div>
+        </div> */}
 
         {/* Categories/Tags Filter */}
         <div className="mt-6">
@@ -121,7 +121,7 @@ export default function BlogIndex() {
 
       {/* Blog Post Grid */}
       <section className="ws-container pb-24 pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-20">
           
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post, index) => (
