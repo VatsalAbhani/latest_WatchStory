@@ -52,7 +52,7 @@ interface IntroSplashProps {
 export default function IntroSplash({ onComplete }: IntroSplashProps) {
   const imgRef = useRef(null); // Ref to target the image for animation
   // Duration for how long the full splash screen is visible
-  const DISPLAY_DURATION_MS = 3000;
+  const DISPLAY_DURATION_MS = 1000;
   // Animation duration
   const ANIM_DURATION_S = 1.0; 
 

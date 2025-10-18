@@ -13,3 +13,9 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+
+  # Universal redirect rule for Single Page Applications (SPAs)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
