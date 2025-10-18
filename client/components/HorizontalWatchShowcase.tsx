@@ -45,6 +45,19 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
 
     if (!container || !track || slides.length === 0) return;
 
+    // ------------------------------------------------------
+    // FIX: Disable scroll pinning/scrubbing on mobile (viewport width < 768px)
+    const MIN_DESKTOP_WIDTH = 768; 
+    if (window.innerWidth < MIN_DESKTOP_WIDTH) {
+        // On mobile, ensure the horizontal translation is reset (falls back to CSS layout)
+        gsap.set(track, { x: 0 });
+        // The rest of the effect is skipped for mobile for performance
+        return () => {
+          // No cleanup needed for disabled state
+        };
+    }
+    // ------------------------------------------------------
+
     ScrollTrigger.getAll().forEach(t => t.kill());
 
     const total = totalRef.current;
@@ -125,7 +138,8 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
   return (
     <section
       ref={containerRef}
-      className="relative overflow-hidden min-h-screen bg-white" // Added min-h-screen for initial visual spacing
+// MODIFIED: Allow horizontal scrolling on mobile, hide on desktop (where GSAP takes over)
+      className="relative overflow-hidden min-h-screen bg-white md:overflow-hidden" 
     >
       {/* Background elements are fine */}
       <div className="absolute inset-0">
@@ -173,7 +187,8 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       {/* Horizontal Track */}
       <div
         ref={trackRef}
-        className="watch-track flex items-center h-full "
+       // MODIFIED: Added utility classes to ensure native horizontal scrolling works on mobile
+        className="watch-track flex items-center h-full w-full overflow-x-scroll md:overflow-x-visible"
         style={{
           width: 'max-content',
           willChange: 'transform',

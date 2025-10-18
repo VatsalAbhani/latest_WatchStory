@@ -239,7 +239,7 @@ export default function Sell() {
 
         {/* <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p> */}
         <CyclingLines
-          className="mt-2 text-4xl font-sans"
+          className="mt-2 text-2xl sm:text-4xl font-sans"
           lines={[
             "Get instant payment",
             "Free insured shipping",

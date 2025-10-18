@@ -324,7 +324,7 @@ export default function Footer() {
           
           {/* 1. Logo/Branding */}
           <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
-            <img src="/Logo.svg" alt="WatchStory Logo" className="h-40 w-auto" />
+            <img src="/Logo.svg" alt="WatchStory Logo" className="h-16 sm:h-20 w-auto" />
           </Link>
 
           {/* 2. Email Signup Form (Covers most space) */}

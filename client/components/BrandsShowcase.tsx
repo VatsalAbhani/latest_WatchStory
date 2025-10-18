@@ -80,25 +80,25 @@ export default function BrandsShowcase({ brands }) {
   return (
 <section className="relative overflow-hidden py-16 bg-gray-100">
   {/* Fixed Header at top with z-index to remain above carousel */}
-  <div className="absolute top-0 left-0 right-0 z-30 p-8 md:p-12">
-    <div className="max-w-lg">
+  <div className="absolute top-0 left-0 right-0 z-30 p-4 md:p-12 text-center md:text-left">
+        <div className="max-w-lg mx-auto md:mx-0">
       <TypewriterHeading
         lines={["Brands We Trust"]}
         charsPerSecond={35}
         showDots={false}
         loop={false}
         triggerOnScroll={false}
-        className="font-title text-4xl md:text-5xl text-offwhite mb-4"
+        className="font-title text-3xl md:text-5xl text-offwhite mb-4"
       />
-      <p className="font-sans text-offwhite/70 text-lg leading-relaxed">
-        Not affiliated with these brands.
-      </p>
+      <p className="font-sans text-offwhite/70 text-base md:text-lg leading-relaxed">
+            Not affiliated with these brands.
+          </p>
     </div>
   </div>
 
 
 
-    <section className="relative overflow-hidden py-8 bg-gray-100 mt-32">
+    <section className="relative overflow-hidden py-8 bg-gray-100 mt-24 md:mt-32">
       <div
         ref={trackRef}
         className="flex select-auto cursor-grab items-center space-x-24"

@@ -36,9 +36,9 @@ export default function TerminalStoryBar() {
 
   return (
     <div className=" top-0 z-50 bg-white text-black">
-      <div className="ws-container relative h-28 flex items-center justify-between px-0">
+      <div className="ws-container relative h-16 sm:h-20 flex items-center justify-between px-0">
         <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
-          <img src="/Logo.svg" alt="WatchStory Logo" className="h-56 w-auto" />
+        <img src="/Logo.svg" alt="WatchStory Logo" className="h-10 sm:h-12 w-auto" />
         </Link>
 
         {/* Centering Container */}
