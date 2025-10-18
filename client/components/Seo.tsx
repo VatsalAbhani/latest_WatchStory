@@ -7,21 +7,25 @@ interface SeoProps {
   description?: string;
   canonical?: string;
   ogTitle?: string;
+  ogImage?: string;
 }
 
 const defaultTitle = "WatchStory | Luxury Watches in Dubai";
 const defaultDescription = "Dubai's trusted platform to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions for Rolex, AP, and more.";
-const domain = "https://www.watchstory.ae"; // **CHANGE THIS TO YOUR LIVE DOMAIN**
+const domain = "https://www.watchstory.ae"; //
+const defaultOgImage = `${domain}/bg_1.png`;
 
 export default function Seo({ 
   title, 
   description, 
   canonical, 
-  ogTitle 
+  ogTitle, 
+  ogImage
 }: SeoProps) {
   const finalTitle = title ? `${title} | WatchStory` : defaultTitle;
   const finalDescription = description || defaultDescription;
   const finalCanonical = canonical ? `${domain}${canonical}` : `${domain}/`;
+  const finalOgImage = ogImage || defaultOgImage;
 
   return (
     <Helmet>
@@ -36,9 +40,11 @@ export default function Seo({
       <meta property="og:description" content={finalDescription} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={finalCanonical} />
+      <meta property="og:image" content={finalOgImage} />
 
-      {/* Ensure the title in index.html is removed to prevent duplication */}
+      
 
     </Helmet>
   );
 }
+
