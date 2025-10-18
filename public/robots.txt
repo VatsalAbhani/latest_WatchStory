@@ -1,3 +1,7 @@
+# client/public/robots.txt - ADD THIS LINE
+
+Sitemap: https://www.watchstory.ae/sitemap.xml
+
 User-agent: Googlebot
 Allow: /
 
