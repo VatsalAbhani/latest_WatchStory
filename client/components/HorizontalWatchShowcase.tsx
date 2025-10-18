@@ -1,11 +1,18 @@
 
 // client/components/HorizontalWatchShowcase.tsx
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import TypewriterHeading from './TypewriterHeading';
 import MagneticButton from './MagneticButton';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious // Added Carousel Imports
+} from "@/components/ui/carousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +37,83 @@ interface Props {
   watches: Watch[];
 }
 
+
+const MIN_DESKTOP_WIDTH = 768; // Tailwind md breakpoint
+
+function SlideContent({ watch }: { watch: Watch }) {
+    // Extracted the common slide content into a reusable component
+    return (
+        <div className="w-full h-full max-w-8xl mx-auto px-8 md:px-12 bg-stone-200">
+            <Link
+              to={`/watch/${watch.slug}`}
+              className="group block w-full max-w-8xl mx-auto"
+            >
+              <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
+
+                {/* Image Section */}
+                <div className="relative border border-black/10 rounded-2xl">
+                  <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
+                    <img
+                      src={watch.imageUrl}
+                      alt={`${watch.brand} ${watch.name}`}
+                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                    />
+
+                    {/* Minimalistic Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Badge */}
+                  <div className="watch-badge absolute -top-4 -right-4 bg-gold text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                    {watch.condition}
+                  </div>
+
+                  {/* Details Bar */}
+                  <div className={`absolute -bottom-6 left-6 right-6 backdrop-blur-md rounded-xl p-4 border border-black/40`}>
+                    <div className="text-medium  text-center">
+                      <span className="opacity-90 font-medium">Ref. {watch.reference}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Text Content Section */}
+                <div className="watch-content space-y-6 md:space-y-8">
+                  <div className="space-y-4">
+                    <div className="font-sans text-gold text-lg font-semibold tracking-wide">
+                      {watch.brand}
+                    </div>
+                    <h2 className={`font-title text-3xl md:text-5xl leading-tight ${watch.textColor}`}>
+                      {watch.name}
+                    </h2>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <MagneticButton
+                      href={`/watch/${watch.slug}`}
+                      variant="primary"
+                      className="text-sm"
+                    >
+                      Details
+                    </MagneticButton>
+                    <MagneticButton
+                      href="https://wa.me/971501234567" 
+                      variant="secondary"
+                      className="text-sm"
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                    >
+                      Inquire
+                    </MagneticButton>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+    );
+}
+
+
+
 export default function HorizontalWatchShowcase({ watches }: Props) {
   const containerRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -37,26 +121,34 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
   const progressRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const totalRef = useRef<HTMLSpanElement>(null);
+  const [isMobile, setIsMobile] = useState(false); // New state to track mobile view
+
+
+  // Client-side check for mobile/desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < MIN_DESKTOP_WIDTH);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
     const track = trackRef.current;
+    slidesRef.current = slidesRef.current.filter(Boolean); // Clean up stale refs
     const slides = slidesRef.current;
+// Only set up GSAP/ScrollTrigger for Desktop views
+if (!container || !track || slides.length === 0 || isMobile) {
+  // Cleanup existing ScrollTriggers if switching to mobile view
+  ScrollTrigger.getAll().forEach(t => t.kill());
+  gsap.set(track, { x: 0 }); // Ensure horizontal offset is reset
+  return () => {};
+} 
 
-    if (!container || !track || slides.length === 0) return;
-
-    // ------------------------------------------------------
-    // FIX: Disable scroll pinning/scrubbing on mobile (viewport width < 768px)
-    const MIN_DESKTOP_WIDTH = 768; 
-    if (window.innerWidth < MIN_DESKTOP_WIDTH) {
-        // On mobile, ensure the horizontal translation is reset (falls back to CSS layout)
-        gsap.set(track, { x: 0 });
-        // The rest of the effect is skipped for mobile for performance
-        return () => {
-          // No cleanup needed for disabled state
-        };
-    }
-    // ------------------------------------------------------
+   
 
     ScrollTrigger.getAll().forEach(t => t.kill());
 
@@ -133,7 +225,58 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       if (mainScrollTrigger) mainScrollTrigger.kill();
       slideTriggers.forEach(t => t.kill());
     };
-  }, [watches]);
+  }, [watches, isMobile]);
+
+
+  // --- Conditional Render Start ---
+  
+  // Render Carousel for Mobile/Small Screens
+  if (isMobile) {
+    return (
+      <section className="ws-container relative py-16 bg-white overflow-hidden">
+        {/* Header (adjusted for static rendering on mobile) */}
+        <div className="flex items-start justify-between">
+          <div className="max-w-md">
+            <h1 className="font-title font-bold text-4xl text-black mb-4">
+              Featured Stories
+            </h1>
+          </div>
+          <MagneticButton
+            href="/buy"
+            variant="secondary"
+            className="group"
+          >
+            <span className="flex items-center gap-2 pr-2">
+              View Collection
+              <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </span>
+          </MagneticButton>
+        </div>
+
+        {/* Carousel Implementation */}
+        <Carousel className="w-full mt-8">
+          <CarouselContent>
+            {watches.map((watch, i) => (
+              <CarouselItem key={watch.id} className="pt-4">
+                {/* Use the SlideContent structure */}
+                <SlideContent watch={watch} /> 
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          {/* Navigation buttons are placed outside the slide content container */}
+          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-10 size-8" />
+          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-10 size-8" />
+        </Carousel>
+      </section>
+    );
+  } 
 
   return (
     <section
@@ -205,6 +348,10 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
               `watch-slide flex-none w-[90vw] md:w-[60vw] lg:w-[60vw] h-[65vh] flex items-center justify-center`
             }
           >
+            <SlideContent watch={watch} />
+
+
+{/*             
             <div className="w-full h-full max-w-8xl mx-auto px-8 md:px-12 bg-stone-200">
             <Link
               to={`/watch/${watch.slug}`}
@@ -212,7 +359,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
             >
               <div className="grid  md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
 
-                {/* Image Section */}
+                
                 <div className="relative border border-black/10 rounded-2xl">
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
@@ -221,39 +368,36 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                       className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
                     />
 
-                    {/* Minimalistic Hover Overlay */}
+                    
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  {/* Badge */}
+                  
                   <div className="watch-badge absolute -top-4 -right-4 bg-gold text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
                     {watch.condition}
                   </div>
 
-                  {/* Details Bar */}
+                 
                   <div className={`absolute -bottom-6 left-6 right-6 backdrop-blur-md rounded-xl p-4 border border-black/40`}>
                     <div className="text-medium  text-center">
-                      {/* <span className="opacity-70">{watch.year}</span> */}
-                      {/* <span className="opacity-70">{watch.movement}</span> */}
+
                       <span className="opacity-90 font-medium">Ref. {watch.reference}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Text Content Section */}
+                
                 <div className="watch-content space-y-6 md:space-y-8">
                   <div className="space-y-4">
                     <div className="font-sans text-gold text-lg font-semibold tracking-wide">
                       {watch.brand}
                     </div>
-                    {/* 👈 Dynamic Text Class Applied Here */}
+                    
                     <h2 className={`font-title text-3xl md:text-5xl leading-tight ${watch.textColor}`}>
                       {watch.name}
                     </h2>
-                    {/* 👈 Dynamic Text Class Applied Here */}
-                    {/* <div className={`font-sans text-1xl md:text-2xl font-light ${watch.textColor}`}>
-                      {watch.price}
-                    </div> */}
+                    
+
                   </div>
 
                   <div className="flex gap-4">
@@ -277,7 +421,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
                 </div>
               </div>
             </Link>
-          </div>
+          </div> */}
           </div>
         ))}
       </div>

@@ -283,7 +283,7 @@ loadJournalPosts();
         {/* End SEO Component */}
 
       {/* Hero */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden hero-section">
+      <section className="relative min-h-[60vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
 
 
         {/*  */}
