@@ -368,7 +368,18 @@ function SingleStepSellForm() {
       <div className="p-4 border-b font-sans flex items-center justify-between">
         <div className="text-xl text-offwhite/60">Submit your watch details</div>
       </div>
-      <form className="p-6 grid font-sans md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+      <form className="p-6 grid font-sans md:grid-cols-2 gap-4" onSubmit={handleSubmit}
+      name="sell-request-form"             // 1. Mandatory form name
+      data-netlify="true"                 // 2. Enable Netlify processing
+      netlify-honeypot="sell-bot-field"   // 3. Optional Honeypot name
+      
+      >
+
+{/* --- HIDDEN FIELDS FOR NETLIFY --- */}
+<input type="hidden" name="form-name" value="sell-request-form" />
+        <input type="hidden" name="sell-bot-field" />
+        {/* --- END HIDDEN FIELDS --- */}
+
 
         {/* --- ROW 1: BRAND & MODEL --- */}
         <Field label="Brand">
