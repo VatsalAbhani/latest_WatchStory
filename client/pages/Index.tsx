@@ -315,10 +315,10 @@ loadJournalPosts();
 
 
           {/* For SEO and website reach */}
-          {/* <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
+          <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
             Buy & Sell Authentic Luxury Watches in Dubai
-            Dubai's trusted platform to **Buy and Sell** authenticated **luxury watches**.
-          </p> */}
+            Dubai's trusted platform to Buy and Sell authenticated luxury watches.
+          </p>
           {/* =========================================== */}
 
 
