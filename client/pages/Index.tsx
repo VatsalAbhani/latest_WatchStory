@@ -71,7 +71,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain md:object-cover object-center inset-0 -z-30"
           />
         </div>
       ))}
@@ -285,30 +285,6 @@ loadJournalPosts();
       {/* Hero */}
       <section className="relative min-h-[60vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
 
-
-        {/*  */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         {/*  */}
         {/* The DriftingWatches component is added here as a subtle background */}
         {/* <DriftingWatches />  */}
@@ -328,27 +304,28 @@ loadJournalPosts();
 
 
 
-          <h1 className="text-center font-sans text-sm sm:text-4xl lg:text-4xl text-offwhite/95 leading-tight">
+          <h1 className="text-center font-sans text-sm sm:text-2xl lg:text-4xl  leading-tight z-30">
+          
             More Than Time,
           </h1>
-          <h2 className="mt-4 text-center font-sans text-3xl sm:text-4xl lg:text-4xl text-offwhite/80">
+          <h2 className="mt-4 text-center font-sans text-xl sm:text-2xl lg:text-4xl z-30">
             A Story on Your Wrist
           </h2>
 
 
 
           {/* For SEO and website reach */}
-          <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
+          {/* <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
             Buy & Sell Authentic Luxury Watches in Dubai
             Dubai's trusted platform to **Buy and Sell** authenticated **luxury watches**.
-          </p>
+          </p> */}
           {/* =========================================== */}
 
 
 
           
           {/* Enhanced Magnetic Buttons */}
-          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-8 justify-center items-center">
             <MagneticButton
               href="/sell"
               variant="primary"
@@ -395,31 +372,36 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-24 mb-8 grid md:grid-cols-4 gap-6 trust-section ">
-        {/* <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
-          <h3 className="font-title font-bold text-2xl">Provenance matters</h3>
-          <p className="font-sans text-offwhite/70 mt-2">We track ownership and service history to preserve the narrative.</p>
-        </div> */}
+      <section className="ws-container mt-12 mb-6 grid md:grid-cols-4 gap-6 trust-section ">
+
      
-        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title font-bold text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
-          <p className="font-sans text-offwhite/70 mt-2">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
+      <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+      <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
+          <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
         </div>
-        <div className=" rounded-lg p-6 bg-card/60 trust-strip bg-background">
-          <h3 className="font-title font-bold text-2xl">Warranty Included</h3>
-          <p className="font-sans text-offwhite/70 mt-4">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
-        </div>
-        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title font-bold text-2xl">Authenticated & verified</h3>
-          <p className="font-sans text-offwhite/70 mt-4">Materials, movement, and reference are checked by specialists.</p>
-        </div>
-        <div className=" rounded-lg p-6 bg-card/60 trust-strip">
-          <h3 className="font-title font-bold text-2xl">Fair offers, fast payouts</h3>
-          <p className="font-sans text-offwhite/70 mt-4">Transparent pricing and insured shipping worldwide.</p>
+ {/* Trust Strip 2 */}
+        {/* MODIFIED: Reduced padding (p-4) on mobile */}
+        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip bg-background">
+          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
+          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Warranty Included</h3>
+          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
         </div>
 
+ {/* Trust Strip 3 */}
+        {/* MODIFIED: Reduced padding (p-4) on mobile */}
+        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
+          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
+          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
+        </div>
 
-
+       {/* Trust Strip 4 */}
+        {/* MODIFIED: Reduced padding (p-4) on mobile */}
+        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
+          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
+          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
+        </div>
 
       </section>
 

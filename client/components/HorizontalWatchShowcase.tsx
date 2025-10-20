@@ -121,6 +121,7 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
   const progressRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const totalRef = useRef<HTMLSpanElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false); // New state to track mobile view
 
 
@@ -235,12 +236,27 @@ if (!container || !track || slides.length === 0 || isMobile) {
     return (
       <section className="ws-container relative py-16 bg-white overflow-hidden">
         {/* Header (adjusted for static rendering on mobile) */}
-        <div className="flex items-start justify-between">
-          <div className="max-w-md">
-            <h1 className="font-title font-bold text-4xl text-black mb-4">
-              Featured Stories
-            </h1>
-          </div>
+
+
+ {/* Header */}
+ {/* <div ref={headerRef} className="flex items-end justify-between mb-12"> */}
+        <div className="flex-1">
+          <TypewriterHeading
+            lines={["Featured Watches"]}
+            charsPerSecond={30}
+            showDots={false}
+            loop={false}
+            triggerOnScroll={true}
+            className="font-title text-2xl sm:text-3xl md:text-4xl"
+          />
+
+        {/* </div> */}
+
+
+
+
+
+
           <MagneticButton
             href="/buy"
             variant="secondary"

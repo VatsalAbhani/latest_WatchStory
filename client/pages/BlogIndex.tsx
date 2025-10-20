@@ -12,8 +12,9 @@ import { cn } from "@/lib/utils";
 
 // Mock available categories/tags for the filter section
 const ALL_CATEGORIES = [
-  "Rolex", "Audemars Piguet", "Patek Philippe", "Richard Mille", "Cartier",
-  "Horology History", "Investment Guides", "Authentication"
+"Rolex", "Audemars Piguet", "Patek Philippe", "Richard Mille", "Cartier",
+  "Horology History", "Investment Guides", "Authentication",
+  "Gen Z", "Vintage", "Guide"
 ];
 
 export default function BlogIndex() {
@@ -49,26 +50,42 @@ export default function BlogIndex() {
     <Layout>
       
       {/* Header/Hero Section */}
-      <section className="ws-container pt-20 pb-4">
+      {/* <section className="ws-container pt-20 pb-4">
         <TypewriterHeading
           lines={["WatchStory Journal"]}
           charsPerSecond={30}
           showDots={false}
           loop={false}
           triggerOnScroll={true}
-          className="font-title text-5xl md:text-6xl text-offwhite/90"
+          className="font-title text-3xl sm:text-5xl md:text-6xl"
         />
-        {/* <p className="text-offwhite/70 mt-4 max-w-2xl">
-          Explore the artistry, heritage, and stories behind the world's finest timepieces. 
-          Curated insights into horology, craftsmanship, and watch culture.
-        </p> */}
+
+      </section> */}
+
+
+
+      <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
+        {/* <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4> */}
+
+        {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
+        <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
+          WatchStory Journal
+        </h1>
+
+        
+
       </section>
 
+
+
       {/* Filter and Search Bar Section */}
-      <section className="ws-container py-8 border-b border-border/50">
+
+
+
+      {/* <section className="ws-container py-8 border-b border-border/50">
         
-        {/* Search Input */}
-        {/* <div className="relative max-w-lg">
+        Search Input
+        <div className="relative max-w-lg">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-offwhite/50" />
           <Input
             type="text"
@@ -77,14 +94,14 @@ export default function BlogIndex() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-12 bg-card/60 border-border/60 text-base pl-10 placeholder:text-offwhite/50 focus-visible:ring-gold"
           />
-        </div> */}
+        </div>
 
-        {/* Categories/Tags Filter */}
+        Categories/Tags Filter
         <div className="mt-6">
           <h3 className="text-sm text-offwhite/70 mb-3">FILTER BY TOPICS</h3>
           <div className="flex flex-wrap gap-2">
             
-            {/* All button */}
+            All button 
             <Badge
               onClick={() => { setSelectedCategory(null); setSearchQuery(''); }}
               className={cn(
@@ -97,7 +114,7 @@ export default function BlogIndex() {
               All Stories ({POSTS.length})
             </Badge>
 
-            {/* Category Buttons */}
+            Category Buttons
             {ALL_CATEGORIES.map((tag) => (
               <Badge
                 key={tag}
@@ -117,7 +134,9 @@ export default function BlogIndex() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+
 
       {/* Blog Post Grid */}
       <section className="ws-container pb-24 pt-8">

@@ -346,6 +346,7 @@ export default function MagneticButton({
 const allChars = [...originalSplit.chars, ...hoverSplit.chars];
 gsap.set(allChars, { 
     display: 'inline-block',
+    
     // Remove the problematic letterSpacing entirely
 });
         
@@ -424,7 +425,7 @@ gsap.set(allChars, {
     // The base classes remain the same
     const baseClasses = `
         relative cursor-pointer 
-        font-title text-lg tracking-wide
+        font-title text-base sm:text-lg tracking-wide
         transition-all duration-300 ease-out
         
         ${variant === 'primary' 
@@ -447,7 +448,7 @@ gsap.set(allChars, {
             {/* Main Padded Container is the event and layout target */}
             <div 
                 ref={contentRef} // <-- TARGET FOR HOVER EVENTS AND GSAP TWEENS
-                className="relative px-8 py-4 overflow-hidden" 
+                className="relative px-6 py-3 sm:px-8 sm:py-4 overflow-hidden" 
             > 
                 
                 {/* 1. Text Flip Container (Fixed height and overflow hidden is crucial) */}

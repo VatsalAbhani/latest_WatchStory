@@ -63,30 +63,31 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
       className="ws-container mt-32 mb-24 relative"
     >
       {/* Background decoration */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-gold/5 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-brand-carbon/10 rounded-full blur-3xl" />
-      
-      {/* Header */}
-      <div ref={headerRef} className="flex items-end justify-between mb-12">
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-offwhite/5 rounded-full blur-3xl" />
+      </div>
+
+
+{/* MODIFIED BLOCK: Removed absolute positioning, restored headerRef, added margin-bottom (mb-12) */}
+    <div ref={headerRef} className="flex items-end justify-between mb-12 relative z-10 pt-4 md:pt-0"> 
         <div className="flex-1">
           <TypewriterHeading
-            lines={["From the Journal"]}
-            charsPerSecond={30}
+            lines={["From the Journal"]} // Using the updated text
+            charsPerSecond={40}
             showDots={false}
             loop={false}
-            triggerOnScroll={true}
-            className="font-title text-3xl md:text-4xl"
+            triggerOnScroll={true} // Use true for JournalSection for GSAP trigger
+            // Using the optimized responsive text classes
+            className="font-title font-bold text-2xl sm:text-3xl md:text-4xl text-white mb-4" 
           />
-          {/* <p className="font-sans text-offwhite/70 mt-4 max-w-2xl">
-            Explore the artistry, heritage, and stories behind the world's finest timepieces. 
-            Our curated insights into horology, craftsmanship, and watch culture.
-          </p> */}
         </div>
         
         <MagneticButton 
           href="/blog" 
           variant="secondary"
-          className="group"
+          className="group hidden sm:flex"
+          // hidden sm:flex
         >
           <span className="flex items-center gap-2 pr-2">
             Read all stories
@@ -100,6 +101,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
                 </svg>
           </span>
         </MagneticButton>
+        
       </div>
       
       {/* Blog Grid */}
@@ -124,6 +126,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
       </div>
       
       {/* Mobile "Read More" Button */}
+      {/* md:hidden */}
       <div className="flex justify-center mt-12 md:hidden">
         <MagneticButton 
           href="/blog" 
