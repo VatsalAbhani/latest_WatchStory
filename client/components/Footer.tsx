@@ -303,16 +303,50 @@ export default function Footer() {
       // 1. Define loading state for the subscription form
       const [isSubscribing, setIsSubscribing] = useState(false);
 
-
+// --- NEW FUNCTION: AJAX Submission for Netlify Form ---
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+// ----------------------------------------------------
           // 2. Define a simple handler for the form
-    const handleSubscribe = (e) => {
+    const handleSubscribe = async (e) => {
       e.preventDefault();
       setIsSubscribing(true);
-      // Simulate an API call or submission process
-      setTimeout(() => {
-          alert("Subscribed!");
+
+      const form = e.target;
+        const emailInput = form.querySelector('input[name="email"]');
+        const email = emailInput ? emailInput.value : '';
+
+        if (!email) {
+          alert("Please enter a valid email address.");
           setIsSubscribing(false);
-      }, 1500);
+          return;
+      }
+      try {
+        // Netlify requires POST to the same URL the form is on,
+        // with a specific Content-Type for encoded data.
+        await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ 
+                "form-name": form.getAttribute("name"), 
+                "email": email 
+            })
+        });
+
+        alert("Subscribed successfully! Thank you for joining our Journal.");
+        if (emailInput) emailInput.value = ''; // Clear the input field
+
+    } catch (error) {
+        console.error("Netlify form submission failed:", error);
+        alert("Subscription failed. Please try again later.");
+    } finally {
+        setIsSubscribing(false);
+    }
+
+// ----------------------------------------------------------------------
   };
   return (
     <footer className="relative mt-24 overflow-hidden">
@@ -331,7 +365,12 @@ export default function Footer() {
           <form 
               className=" md:mt-0 mb-4 flex flex-col md:flex-1 md:max-w-xl lg:max-w-2xl" 
               onSubmit={handleSubscribe} // Use the new handler
+              name="email-subscription" // MANDATORY: Gives the form a name for Netlify
+              data-netlify="true"        // MANDATORY: Tells Netlify to process it
+              netlify-honeypot="bot-field"
               >
+                <input type="hidden" name="form-name" value="email-subscription" />
+                <input type="hidden" name="bot-field" />
             {/* NEW TEXT HEADER */}
             <div className="mb-4 font-sans font-extrabold text-offwhite/60 text-sm mb-2 md:text-left">Connect for Exclusive Updates</div>
 
@@ -342,6 +381,7 @@ export default function Footer() {
                 required 
                 placeholder="Enter your email" 
                 className="w-full bg-transparent border px-3 py-2 rounded-md placeholder:text-black/40 text-sm" 
+                name="email" // MANDATORY: Field name for Netlify
                 />
                 {/* <button className="ws-button-primary flex-shrink-0"> */}
                   {/* FIX: Reusing the AnimatedTextLink component here */}

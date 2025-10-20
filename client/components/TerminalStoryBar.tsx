@@ -42,7 +42,7 @@ export default function TerminalStoryBar() {
         </Link>
 
         {/* Centering Container */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           
           {/* --- REPLACED NAV STRUCTURE WITH UL/LI --- */}
           <ul className="flex items-center space-x-10 font-sans">
@@ -70,7 +70,7 @@ export default function TerminalStoryBar() {
           <img 
             src={WHATSAPP_ICON_SRC} 
             alt="WhatsApp" 
-            className="w-auto h-8 sm:h10"
+            className="w-8 h-8 sm:w-10 sm:h-10"
             // h-16 sm:h-40 w-auto 
           />
         </a>
