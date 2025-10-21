@@ -444,6 +444,9 @@ setLoading(true);
         {/* <input type="hidden" name="_redirect" value="/success" />  */}
         {/* --- END HIDDEN FIELDS --- */}
 
+        
+{/* Add the corrected redirect field */}
+<input type="hidden" name="_redirect" value="/success.html" />
 
         {/* --- ROW 1: BRAND & MODEL --- */}
         <Field label="Brand">
