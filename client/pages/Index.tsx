@@ -19,7 +19,7 @@ import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 import Seo from "@/components/Seo";
-import EmailSubscriptionModal from "@/components/EmailSubscriptionModal"; // <-- NEW IMPORT
+// import EmailSubscriptionModal from "@/components/EmailSubscriptionModal"; 
 
 
 
@@ -185,7 +185,7 @@ export default function Index() {
   const [isJournalLoading, setIsJournalLoading] = useState(true);
   // ---------------------------------
 // --- NEW STATE FOR MODAL ---
-const [showEmailModal, setShowEmailModal] = useState(true); // Control visibility
+// const [showEmailModal, setShowEmailModal] = useState(true); 
 // ---------------------------
 
   useEffect(() => {
@@ -278,12 +278,12 @@ loadJournalPosts();
     <Layout>
 
       {/* --- NEW: EMAIL SUBSCRIPTION MODAL --- */}
-      {showEmailModal && (
+      {/* {showEmailModal && (
         <EmailSubscriptionModal 
           open={showEmailModal} // Initial visibility flag
           onClose={() => setShowEmailModal(false)} // Callback to close/hide permanently
         />
-      )}
+      )} */}
       {/* ------------------------------------- */}
 
         {/* 3. ADD SEO COMPONENT */}
