@@ -212,6 +212,11 @@ function SellPageFAQ() {
 // --- MAIN PAGE COMPONENT ---
 
 export default function Sell() {
+
+
+
+
+
   useEffect(() => {
     // document.title = "Sell Your Luxury Watch | Fast Offers & Authentication — WatchStory";
   }, []);
@@ -305,6 +310,8 @@ function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   return <textarea {...props} className="w-full min-h-24 bg-transparent border px-3 py-2 rounded-md" name={props.name} />
 }
 
+
+
 // ====================================================================
 // --- SINGLE STEP FORM COMPONENT ---
 
@@ -320,7 +327,7 @@ function SingleStepSellForm() {
     askingPrice: '',
     location: '',
     contactMethod: 'Email',
-    contactDetail: '', // Holds the conditional input value
+    contactDetail: '',
     preferredPayout: 'Bank Transfer',
     'upload-photos': null,
   });
@@ -334,35 +341,37 @@ function SingleStepSellForm() {
 // ---------------------
 
 
-// Netlify-friendly submission handler (primarily for UI feedback)
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  // Let Netlify handle the actual form submission, which is non-JS
-  // This function only handles the visual 'loading' state.
-  
-  // Simple validation before allowing non-JS submit
-  if (
-      !formData.brand || 
-      !formData.model || 
-      !formData.reference || 
-      !formData.askingPrice || 
-      !formData.contactDetail
-    ) {
-      alert("Please fill in all required fields (Brand, Model, Reference, Asking Price, and Contact Detail).");
-      e.preventDefault(); // Stop the form submit if validation fails
-      return;
-  }
+// Netlify-friendly submission handler: Only for validation and setting loading state.
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    
+    // Simple validation before allowing native form submit
+    if (
+        !formData.brand || 
+        !formData.model || 
+        !formData.reference || 
+        !formData.askingPrice || 
+        !formData.contactDetail
+      ) {
+        alert("Please fill in all required fields (Brand, Model, Reference, Asking Price, and Contact Detail).");
+        e.preventDefault(); // Stop the form submit if validation fails
+        return;
+    }
 
-  // Set loading state for UI feedback only, until the page redirects to the success page
-  setLoading(true);
+// Set loading state for UI feedback. The page will redirect away after the POST is successful.
+setLoading(true);
 
-  // Note: The form will redirect to the success page defined in netlify.toml,
-  // so we don't need a success alert here.
-  // If you need custom success handling without redirection, you'd use fetch (like the previous version).
-  // For standard Netlify Forms, redirection is the default success mechanism.
-  
-  // We don't call e.preventDefault() here unless validation fails, 
-  // letting the browser handle the POST request to Netlify.
+// CRITICAL: We do NOT call e.preventDefault() here, allowing the browser to execute the native POST.
 };
+
+
+  
+    // ... (handleChange and contactType logic remains the same)
+  
+    // ---------------------
+    // *** MODIFIED SUBMISSION HANDLER ***
+    // This uses fetch (AJAX) to submit, and then manually redirects on success.
+  
+    
 
 
 
@@ -417,19 +426,22 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       <form 
       className="p-6 grid font-sans md:grid-cols-2 gap-4" 
       onSubmit={handleSubmit}
-      name="sell-watch-request"        // 1. Mandatory form name
-        method="POST"                    // 2. Mandatory method POST
-        data-netlify="true" 
-        // action="/success"           
-        data-netlify-redirect="/success"   // <--- REQUIRED CHANGE: Use this for redirect!
-        netlify-honeypot="sell-bot-field"  // 4. Optional Honeypot name
-        encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
+      name="sell-watch-request"        // 1. Mandatory form name for Netlify
+      method="POST"                    // 2. Mandatory method POST
+      data-netlify="true"              // 3. Enable Netlify processing
+      netlify-honeypot="sell-bot-field"  // 4. Honeypot
+      encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
+      action="/"
                        
       >
 
 {/* --- HIDDEN FIELDS FOR NETLIFY --- */}
 <input type="hidden" name="form-name" value="sell-watch-request" />
         <input type="hidden" name="sell-bot-field" />
+        
+        {/* --- CRITICAL FIX: HIDDEN REDIRECT FIELD --- */}
+        {/* Netlify honors this field to redirect after successful submission, bypassing the React router. */}
+        <input type="hidden" name="_redirect" value="/success" /> 
         {/* --- END HIDDEN FIELDS --- */}
 
 

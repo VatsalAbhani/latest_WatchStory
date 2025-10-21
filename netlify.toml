@@ -20,7 +20,7 @@
 [[redirects]]
   from = "/success"
   to = "/success.html"
-  status = 302
+  status = 200
 
 [[redirects]]
   from = "/*"
