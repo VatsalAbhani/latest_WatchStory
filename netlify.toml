@@ -17,7 +17,10 @@
   status = 200
   to = "/.netlify/functions/api/:splat"
 
-
+[[redirects]]
+  from = "/success"
+  to = "/success.html"
+  status = 200
 
 [[redirects]]
   from = "/*"
