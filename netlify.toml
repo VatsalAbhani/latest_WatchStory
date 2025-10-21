@@ -7,12 +7,8 @@
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
-  
-[[redirects]]
-  force = true
-  from = "/api/*"
-  status = 200
-  to = "/.netlify/functions/api/:splat"
+
+
 
   # --- NEW SUCCESS REDIRECT RULE ---
 # This rule tells Netlify's form handler where to redirect the user
@@ -22,6 +18,13 @@
   to = "/success.html"
   status = 200
 # ---------------------------------
+  
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
+
 
   # Universal redirect rule for Single Page Applications (SPAs)
 [[redirects]]
