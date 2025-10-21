@@ -24,10 +24,11 @@ interface SellFormData {
   // NEW FIELD FOR CONTACT DETAIL
   contactDetail: string;
   preferredPayout: string;
+  'upload-photos': FileList | null;
 }
 
 // --- 2. API FETCH HELPER (URL Corrected for Public Endpoint) ---
-const API_BASE_URL = "http://127.0.0.1:8000";
+// const API_BASE_URL = "http://127.0.0.1:8000";
 
 
 const FAQ_SCHEMA = {
@@ -110,31 +111,31 @@ const FAQ_SCHEMA = {
 
 
 
-async function submitSellRequest(data: Partial<SellFormData>) {
-  const payload = {
-    brand: data.brand,
-    model: data.model,
-    asking_price: Number(data.askingPrice),
-    condition: data.conditionNotes || 'Unspecified',
+// async function submitSellRequest(data: Partial<SellFormData>) {
+//   const payload = {
+//     brand: data.brand,
+//     model: data.model,
+//     asking_price: Number(data.askingPrice),
+//     condition: data.conditionNotes || 'Unspecified',
 
-    // Consolidated all details into the description field
-    description: `Ref: ${data.reference || 'N/A'}. Year: ${data.year || 'N/A'}. Papers: ${data.boxAndPapers}. Payout: ${data.preferredPayout}. Location: ${data.location || 'N/A'}. Contact: ${data.contactMethod}: ${data.contactDetail || 'N/A'}.`,
-  };
+//     // Consolidated all details into the description field
+//     description: `Ref: ${data.reference || 'N/A'}. Year: ${data.year || 'N/A'}. Papers: ${data.boxAndPapers}. Payout: ${data.preferredPayout}. Location: ${data.location || 'N/A'}. Contact: ${data.contactMethod}: ${data.contactDetail || 'N/A'}.`,
+//   };
 
-  // Target the expected /public/sell-requests endpoint
-  const res = await fetch(`${API_BASE_URL}/public/sell-requests`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+//   // Target the expected /public/sell-requests endpoint
+//   const res = await fetch(`${API_BASE_URL}/public/sell-requests`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(payload),
+//   });
 
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({ detail: res.statusText }));
-    throw new Error(errorData.detail || `HTTP error ${res.status}`);
-  }
+//   if (!res.ok) {
+//     const errorData = await res.json().catch(() => ({ detail: res.statusText }));
+//     throw new Error(errorData.detail || `HTTP error ${res.status}`);
+//   }
 
-  return res.json();
-}
+//   return res.json();
+// }
 // --- END API FETCH HELPER ---
 
 
@@ -292,13 +293,16 @@ function Field({ label, children, className }: { label: string; children: React.
 }
 
 function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
-  return <input {...props} className="w-full bg-transparent border px-3 py-2 rounded-md placeholder:text-offwhite/40" />
+  // IMPORTANT: Added 'name' prop to allow Netlify to capture the field value
+  return <input {...props} className="w-full bg-transparent border px-3 py-2 rounded-md placeholder:text-offwhite/40" name={props.name} />
 }
 function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
-  return <select {...props} className="w-full bg-transparent border px-3 py-2 rounded-md" />
+  // IMPORTANT: Added 'name' prop
+  return <select {...props} className="w-full bg-transparent border px-3 py-2 rounded-md" name={props.name} />
 }
 function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <textarea {...props} className="w-full min-h-24 bg-transparent border px-3 py-2 rounded-md" />
+  // IMPORTANT: Added 'name' prop
+  return <textarea {...props} className="w-full min-h-24 bg-transparent border px-3 py-2 rounded-md" name={props.name} />
 }
 
 // ====================================================================
@@ -317,43 +321,85 @@ function SingleStepSellForm() {
     location: '',
     contactMethod: 'Email',
     contactDetail: '', // Holds the conditional input value
-    preferredPayout: 'Bank Transfer'
+    preferredPayout: 'Bank Transfer',
+    'upload-photos': null,
   });
 
-  const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers') => {
+  const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers' | FileList | null) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      // Consolidated Validation
-      if (!formData.brand || formData.brand === "") {
-        throw new Error("Missing required field: Brand.");
-      }
-      if (!formData.model || formData.model === "") {
-        throw new Error("Missing required field: Model.");
-      }
-      if (typeof formData.askingPrice !== 'number' || isNaN(formData.askingPrice) || formData.askingPrice <= 0) {
-        throw new Error("Missing required field: Asking price (must be a number greater than 0).");
-      }
-      // Check that contact method is selected AND the detail field is filled
-      if (!formData.contactMethod || !formData.contactDetail || formData.contactDetail === "") {
-        throw new Error(`Missing required detail for the selected contact method (${formData.contactMethod}).`);
-      }
 
-      await submitSellRequest(formData);
 
-      alert("Success! We've received your sell request. We will get back to you shortly.");
+// ---------------------
 
-    } catch (error) {
-      console.error("Submission failed:", error);
-      alert(`Submission failed. Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+
+// Netlify-friendly submission handler (primarily for UI feedback)
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Let Netlify handle the actual form submission, which is non-JS
+  // This function only handles the visual 'loading' state.
+  
+  // Simple validation before allowing non-JS submit
+  if (
+      !formData.brand || 
+      !formData.model || 
+      !formData.reference || 
+      !formData.askingPrice || 
+      !formData.contactDetail
+    ) {
+      alert("Please fill in all required fields (Brand, Model, Reference, Asking Price, and Contact Detail).");
+      e.preventDefault(); // Stop the form submit if validation fails
+      return;
+  }
+
+  // Set loading state for UI feedback only, until the page redirects to the success page
+  setLoading(true);
+
+  // Note: The form will redirect to the success page defined in netlify.toml,
+  // so we don't need a success alert here.
+  // If you need custom success handling without redirection, you'd use fetch (like the previous version).
+  // For standard Netlify Forms, redirection is the default success mechanism.
+  
+  // We don't call e.preventDefault() here unless validation fails, 
+  // letting the browser handle the POST request to Netlify.
+};
+
+
+
+
+
+// ---------------------
+
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     // Consolidated Validation
+  //     if (!formData.brand || formData.brand === "") {
+  //       throw new Error("Missing required field: Brand.");
+  //     }
+  //     if (!formData.model || formData.model === "") {
+  //       throw new Error("Missing required field: Model.");
+  //     }
+  //     if (typeof formData.askingPrice !== 'number' || isNaN(formData.askingPrice) || formData.askingPrice <= 0) {
+  //       throw new Error("Missing required field: Asking price (must be a number greater than 0).");
+  //     }
+  //     // Check that contact method is selected AND the detail field is filled
+  //     if (!formData.contactMethod || !formData.contactDetail || formData.contactDetail === "") {
+  //       throw new Error(`Missing required detail for the selected contact method (${formData.contactMethod}).`);
+  //     }
+
+  //     await submitSellRequest(formData);
+
+  //     alert("Success! We've received your sell request. We will get back to you shortly.");
+
+  //   } catch (error) {
+  //     console.error("Submission failed:", error);
+  //     alert(`Submission failed. Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const contactType = formData.contactMethod;
   const contactInputLabel =
@@ -368,15 +414,19 @@ function SingleStepSellForm() {
       <div className="p-4 border-b font-sans flex items-center justify-between">
         <div className="text-xl text-offwhite/60">Submit your watch details</div>
       </div>
-      <form className="p-6 grid font-sans md:grid-cols-2 gap-4" onSubmit={handleSubmit}
-      name="sell-request-form"             // 1. Mandatory form name
-      data-netlify="true"                 // 2. Enable Netlify processing
-      netlify-honeypot="sell-bot-field"   // 3. Optional Honeypot name
-      
+      <form 
+      className="p-6 grid font-sans md:grid-cols-2 gap-4" 
+      onSubmit={handleSubmit}
+      name="sell-watch-request"        // 1. Mandatory form name
+        method="POST"                    // 2. Mandatory method POST
+        data-netlify="true"              // 3. Enable Netlify processing
+        netlify-honeypot="sell-bot-field"  // 4. Optional Honeypot name
+        encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
+        action="/success"                // 6. Redirect to a success page after submission (optional, configure in netlify.toml)
       >
 
 {/* --- HIDDEN FIELDS FOR NETLIFY --- */}
-<input type="hidden" name="form-name" value="sell-request-form" />
+<input type="hidden" name="form-name" value="sell-watch-request" />
         <input type="hidden" name="sell-bot-field" />
         {/* --- END HIDDEN FIELDS --- */}
 
@@ -385,6 +435,7 @@ function SingleStepSellForm() {
         <Field label="Brand">
           <Select
             required
+            name="brand" // Netlify requires the 'name' attribute
             value={formData.brand}
             onChange={e => handleChange('brand', e.target.value)}
           >
@@ -396,9 +447,12 @@ function SingleStepSellForm() {
             <option>Other</option>
           </Select>
         </Field>
+
+
         <Field label="Model">
           <Input
             required
+            name="model" // Netlify requires the 'name' attribute
             placeholder="Submariner Date"
             value={formData.model || ''}
             onChange={e => handleChange('model', e.target.value)}
@@ -409,14 +463,17 @@ function SingleStepSellForm() {
         <Field label="Reference No.">
           <Input
             required
+            name="reference" // Netlify requires the 'name' attribute
             placeholder="126610LN"
             value={formData.reference || ''}
             onChange={e => handleChange('reference', e.target.value)}
           />
         </Field>
+        
         <Field label="Year">
           <Input
             type="number"
+            name="year" // Netlify requires the 'name' attribute
             placeholder="2022"
             required
             value={formData.year || ''}
@@ -427,6 +484,7 @@ function SingleStepSellForm() {
         {/* --- ROW 3: BOX & PRICE --- */}
         <Field label="Box & Papers">
           <Select
+            name="boxAndPapers" // Netlify requires the 'name' attribute
             value={formData.boxAndPapers}
             onChange={e => handleChange('boxAndPapers', e.target.value as SellFormData['boxAndPapers'])}
           >
@@ -440,6 +498,7 @@ function SingleStepSellForm() {
         <Field label="Asking price (AED)">
           <Input
             type="number"
+            name="askingPrice" // Netlify requires the 'name' attribute
             placeholder="0"
             required
             value={formData.askingPrice || ''}
@@ -450,6 +509,7 @@ function SingleStepSellForm() {
         {/* --- ROW 4: CONDITION NOTES (Full Width) --- */}
         <Field label="Condition notes" className="md:col-span-2">
           <Textarea
+            name="conditionNotes" // Netlify requires the 'name' attribute
             placeholder="Surface wear, hairlines, etc."
             value={formData.conditionNotes || ''}
             onChange={e => handleChange('conditionNotes', e.target.value)}
@@ -460,6 +520,7 @@ function SingleStepSellForm() {
         <div className="md:col-span-2 grid md:grid-cols-2 gap-4">
           <Field label="Preferred Contact Method">
             <Select
+              name="contactMethod" // Netlify requires the 'name' attribute
               value={contactType}
               onChange={e => {
                 // 1. Update contactMethod type
@@ -478,6 +539,7 @@ function SingleStepSellForm() {
           <Field label={contactInputLabel} key={contactType}> {/* Use key to reset component state */}
             <Input
               type={contactInputType}
+              name="contactDetail" // Netlify requires the 'name' attribute
               placeholder={contactType === 'Email' ? 'john.doe@mail.com' : 'e.g., +971 50 123 4567'}
               required
               value={formData.contactDetail || ''}
@@ -489,6 +551,7 @@ function SingleStepSellForm() {
         {/* --- ROW 6: LOCATION & PAYOUT --- */}
         {/* <Field label="Location">
           <Input
+            name="location" // Netlify requires the 'name' attribute
             placeholder="City, Country"
             value={formData.location || ''}
             onChange={e => handleChange('location', e.target.value)}
@@ -496,6 +559,7 @@ function SingleStepSellForm() {
         {/* </Field>
         <Field label="Preferred ggg payout">
           <Select
+            name="preferredPayout" // Netlify requires the 'name' attribute
             value={formData.preferredPayout}
             onChange={e => handleChange('preferredPayout', e.target.value)}
           >
@@ -507,12 +571,20 @@ function SingleStepSellForm() {
 
         {/* --- ROW 7: FILE UPLOAD (Full Width) --- */}
         <Field label="Upload photos" className="md:col-span-2">
-          <Input type="file" accept="image/*" multiple className="block text-sm py-1" />
+          <Input 
+          type="file" 
+          accept="image/*" 
+          multiple 
+          name="upload-photos[]" // IMPORTANT: Netlify requires '[]' for multiple file upload fields
+          className="block text-sm py-1" 
+          onChange={e => handleChange('upload-photos', e.target.files)}
+          />
         </Field>
 
         {/* --- SUBMIT BUTTON --- */}
         <div className="md:col-span-2 flex justify-end pt-2">
           <AnimatedButton
+            type="submit" // MUST be type="submit" for Netlify to detect
             text="Submit Request"
             hoverText="Get Offer Now" // Optional: A slightly different hover text
             loading={loading}
