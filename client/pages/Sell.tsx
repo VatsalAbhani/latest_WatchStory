@@ -422,7 +422,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         data-netlify="true"              // 3. Enable Netlify processing
         netlify-honeypot="sell-bot-field"  // 4. Optional Honeypot name
         encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
-        action="/public/success.html"                // 6. Redirect to a success page after submission (optional, configure in netlify.toml)
+        action="/success/"                // 6. Redirect to a success page after submission (optional, configure in netlify.toml)
       >
 
 {/* --- HIDDEN FIELDS FOR NETLIFY --- */}

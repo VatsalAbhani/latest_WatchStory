@@ -10,15 +10,7 @@
 
 
 
-  # --- NEW SUCCESS REDIRECT RULE ---
-# This rule tells Netlify's form handler where to redirect the user
-# after a successful submission of the form with action="/success".
-[[redirects]]
-  from = "/success"
-  to = "/success.html"
-  status = 200
-# ---------------------------------
-  
+
 [[redirects]]
   force = true
   from = "/api/*"
@@ -26,7 +18,7 @@
   to = "/.netlify/functions/api/:splat"
 
 
-  # Universal redirect rule for Single Page Applications (SPAs)
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
