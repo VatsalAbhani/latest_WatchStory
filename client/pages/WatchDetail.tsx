@@ -136,7 +136,7 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
           Add to Cart
         </MagneticButton> */}
         <MagneticButton
-        href="https://wa.me/971501234567"
+        href="https://wa.me/971545056156"
           // onClick={handleInquire}
           variant="secondary"
           target="_blank" // <--- Recommended addition

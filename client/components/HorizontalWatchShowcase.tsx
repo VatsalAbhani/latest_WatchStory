@@ -96,7 +96,7 @@ function SlideContent({ watch }: { watch: Watch }) {
                       Details
                     </MagneticButton>
                     <MagneticButton
-                      href="https://wa.me/971501234567" 
+                      href="https://wa.me/971545056156" 
                       variant="secondary"
                       className="text-sm"
                       target="_blank" 

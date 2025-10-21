@@ -241,7 +241,7 @@ const handleMouseLeave = () => {
 return (
   <a 
     ref={linkRef}
-    href="https://wa.me/971501234567" // Example Dubai number
+    href="https://wa.me/971545056156" // Example Dubai number
     target="_blank" 
     rel="noreferrer" 
     // The entire <a> tag is the unified hover trigger
@@ -358,7 +358,7 @@ const encode = (data) => {
           
           {/* 1. Logo/Branding */}
           <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
-            <img src="/Logo.svg" alt="WatchStory Logo" className="h-16 sm:h-20 w-auto" />
+            <img src="/F1.png" alt="WatchStory Logo" className="h-16 sm:h-20 w-auto" />
           </Link>
 
           {/* 2. Email Signup Form (Covers most space) */}

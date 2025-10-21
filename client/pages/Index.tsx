@@ -19,6 +19,7 @@ import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 import Seo from "@/components/Seo";
+import EmailSubscriptionModal from "@/components/EmailSubscriptionModal"; // <-- NEW IMPORT
 
 
 
@@ -183,7 +184,9 @@ export default function Index() {
   const [latestPosts, setLatestPosts] = useState<Article[]>([]);
   const [isJournalLoading, setIsJournalLoading] = useState(true);
   // ---------------------------------
-
+// --- NEW STATE FOR MODAL ---
+const [showEmailModal, setShowEmailModal] = useState(true); // Control visibility
+// ---------------------------
 
   useEffect(() => {
     // document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
@@ -273,6 +276,15 @@ loadJournalPosts();
 
   return (
     <Layout>
+
+      {/* --- NEW: EMAIL SUBSCRIPTION MODAL --- */}
+      {showEmailModal && (
+        <EmailSubscriptionModal 
+          open={showEmailModal} // Initial visibility flag
+          onClose={() => setShowEmailModal(false)} // Callback to close/hide permanently
+        />
+      )}
+      {/* ------------------------------------- */}
 
         {/* 3. ADD SEO COMPONENT */}
         <Seo

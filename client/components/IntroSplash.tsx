@@ -83,10 +83,12 @@ export default function IntroSplash({ onComplete }: IntroSplashProps) {
     >
       <img
         ref={imgRef} // Attach ref here
-        src="/Logo.svg"
+        src="/F1.png"
         alt="Animated Logo Splash"
         className="h-60 w-auto max-w-lg max-h-lg object-contain"
       />
     </div>
+
+
   );
 }

@@ -169,12 +169,12 @@ export default function Buy() {
       
       {/* Emphasize the WhatsApp Call to Action */}
       <p className="font-sans text-xl !text-yellow-900 font-semibold max-w-4xl mx-auto mb-8">
-        Meanwhile, if you have a specific **Rolex, AP, or Patek Philippe** model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
+        Meanwhile, if you have a specific **Rolex, AP, RM, Cartier or Patek Philippe** model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
       </p>
       
       {/* You should replace #LINK_TO_WHATSAPP with your actual WhatsApp link */}
       <a 
-        href="https://wa.me/971501234567"
+        href="https://wa.me/971545056156"
         target="_blank" 
         rel="noopener noreferrer"
         className="inline-block px-8 py-3 bg-green-500 text-white font-bold rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-xl"
