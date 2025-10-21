@@ -419,10 +419,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       onSubmit={handleSubmit}
       name="sell-watch-request"        // 1. Mandatory form name
         method="POST"                    // 2. Mandatory method POST
-        data-netlify="true"              // 3. Enable Netlify processing
+        data-netlify="true" 
+        action="/success"              // 3. Enable Netlify processing
         netlify-honeypot="sell-bot-field"  // 4. Optional Honeypot name
         encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
-        action="/success/"                // 6. Redirect to a success page after submission (optional, configure in netlify.toml)
+                       // 6. Redirect to a success page after submission (optional, configure in netlify.toml)
       >
 
 {/* --- HIDDEN FIELDS FOR NETLIFY --- */}
