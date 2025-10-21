@@ -431,7 +431,7 @@ setLoading(true);
       data-netlify="true"              // 3. Enable Netlify processing
       netlify-honeypot="sell-bot-field"  // 4. Honeypot
       encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
-      action="/success"
+      action="/"
                        
       >
 
@@ -444,7 +444,7 @@ setLoading(true);
         {/* <input type="hidden" name="_redirect" value="/success" />  */}
         {/* --- END HIDDEN FIELDS --- */}
 
-        
+
 {/* Add the corrected redirect field */}
 <input type="hidden" name="_redirect" value="/success.html" />
 
