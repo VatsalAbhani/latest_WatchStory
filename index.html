@@ -74,20 +74,25 @@
 
   <body>
     
-    <form name="sell-request-form" data-netlify="true" netlify-honeypot="sell-bot-field" hidden>
-      <input type="hidden" name="form-name" value="sell-request-form" />
-      <input type="hidden" name="sell-bot-field" />
-      
+    <form name="sell-watch-request" netlify netlify-honeypot="sell-bot-field" hidden>
       <input type="text" name="brand" />
       <input type="text" name="model" />
       <input type="text" name="reference" />
       <input type="number" name="year" />
-      <select name="boxAndPapers"></select>
+  
+      <input type="text" name="boxAndPapers" />
       <input type="number" name="askingPrice" />
       <textarea name="conditionNotes"></textarea>
-      <select name="contactMethod"></select>
+  
+      <input type="text" name="contactMethod" />
       <input type="text" name="contactDetail" />
-      </form>
+      <input type="text" name="location" />
+      <input type="text" name="preferredPayout" />
+  
+      <input type="file" name="upload-photos[]" multiple />
+  
+      <input type="text" name="_redirect" />
+  </form>
 
     <form 
   name="email-subscription" 
