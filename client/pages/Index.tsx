@@ -77,7 +77,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full object-contain object-center inset-0 -z-30"
+            className="w-full h-full mt-16 sm:mt-0 object-contain object-center inset-0 -z-30"
             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
           />
         </div>
@@ -320,7 +320,7 @@ loadJournalPosts();
         {/*  */}
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
-        <div className="ws-container text-center relative z-10">
+        <div className="ws-container mb-56 sm:mb-0 text-center relative z-10">
           
 
 
@@ -395,7 +395,7 @@ loadJournalPosts();
       <div className="ws-container -mt-16 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
-          <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
+          <div className="flex flex-row gap-4 justify-center items-center">
             <MagneticButton
               href="/sell"
               variant="primary"
