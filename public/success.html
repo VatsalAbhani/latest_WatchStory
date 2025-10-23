@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Submission Successful</title>
@@ -10,7 +10,74 @@
 </head>
 <body>
     <h1>Thank You!</h1>
-    <p>We have successfully received your watch sell request. Our specialists will review it and get back to you within 24-48 hours.</p>
+    <p>We have successfully received your watch sell request. Our specialists will review it and get back to you shortly.</p>
     <p>You will be redirected to the homepage in 5 seconds, or click here to <a href="/" style="color: #d4af37;">return now</a>.</p>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submission Successful - WatchStory</title>
+    <meta http-equiv="refresh" content="5; url=/" /> 
+    <style>
+      /* Font import: Assumes Kenao.otf is in your public/fonts directory */
+      @font-face {
+        font-family: 'Kenao';
+        src: url('/fonts/Kenao.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        background-color: #0b0b0f; /* Dark background */
+        color: #f5f5f5; /* Off-white text */
+        font-family: sans-serif; 
+        text-align: center;
+        min-height: 100vh;
+        /* Center content vertically and horizontally */
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .content {
+        max-width: 600px;
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for elegance */
+        border-radius: 12px;
+      }
+      h1 {
+        font-family: 'Kenao', serif; /* Apply custom font */
+        font-size: 4rem;
+        color: #d4af37; /* Gold accent color */
+        margin-bottom: 20px;
+        line-height: 1.1;
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: rgba(245, 245, 245, 0.8);
+        margin-bottom: 25px;
+      }
+      a {
+        color: #d4af37;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>SUCCESS</h1>
+        <p>Thank you for submitting your watch details. We have successfully received your sell request.</p>
+        <p>Our specialists will review the information and will be in touch with a fair, no-obligation offer shortly.</p>
+        <p>You will be redirected to the homepage shortly, or click here to <a href="/">return now</a>.</p>
+    </div>
 </body>
 </html>
