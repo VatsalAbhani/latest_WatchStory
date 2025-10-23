@@ -72,7 +72,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full object-contain md:object-cover object-center inset-0 -z-30"
+            className="w-full h-full object-cover md:object-cover object-center inset-0 -z-30 bg-black"
           />
         </div>
       ))}

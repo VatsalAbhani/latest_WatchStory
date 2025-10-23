@@ -70,7 +70,7 @@ export default function TerminalStoryBar() {
           <img 
             src={WHATSAPP_ICON_SRC} 
             alt="WhatsApp" 
-            className="w-8 h-8 sm:w-10 sm:h-10"
+            className="mr-4 w-8 h-8 sm:w-10 sm:h-10"
             // h-16 sm:h-40 w-auto 
           />
         </a>
