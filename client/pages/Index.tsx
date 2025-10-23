@@ -2,12 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
-// import { FEATURED, POSTS } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import BlogCard from "@/components/BlogCard";
-// --- MODIFICATION: Remove static import, add fetch function import ---
 import { FEATURED, Article, fetchLatestPosts } from "@/lib/data"; 
-// --------------------------------------------------------------------
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import StaggeredCyclingHeading from "@/components/StaggeredCyclingHeading"; // <-- ADDED
@@ -20,7 +17,6 @@ import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 import Seo from "@/components/Seo";
 import { useIsMobile } from "@/hooks/use-mobile";
-// import EmailSubscriptionModal from "@/components/EmailSubscriptionModal"; 
 
 
 
@@ -77,7 +73,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full mt-16 sm:mt-0 object-contain object-center inset-0 -z-30"
+            className="w-full h-full mt-16 sm:mt-0 object-contain sm:object-cover object-center inset-0 -z-30"
             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
           />
         </div>
@@ -174,7 +170,7 @@ const manyWatches = [
     year: String(w.year),
     movement: 'Automatic',
     reference: w.ref,
-    condition: 'Excellent',
+    condition: 'Featured',
     bgColor: 'bg-black',
     textColor: 'text-offwhite',
   })),
@@ -196,12 +192,9 @@ const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
   const [latestPosts, setLatestPosts] = useState<Article[]>([]);
   const [isJournalLoading, setIsJournalLoading] = useState(true);
   // ---------------------------------
-// --- NEW STATE FOR MODAL ---
-// const [showEmailModal, setShowEmailModal] = useState(true); 
-// ---------------------------
 
   useEffect(() => {
-    // document.title = "WatchStory — Buy & Sell Luxury Watches | Every Watch Has a Story";
+
 
 
 
@@ -254,7 +247,7 @@ const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
       }
     );
 
-    // Parallax temporarily disabled to avoid conflicts with horizontal pinning
+   
 
 
 
@@ -289,14 +282,6 @@ loadJournalPosts();
   return (
     <Layout>
 
-      {/* --- NEW: EMAIL SUBSCRIPTION MODAL --- */}
-      {/* {showEmailModal && (
-        <EmailSubscriptionModal 
-          open={showEmailModal} // Initial visibility flag
-          onClose={() => setShowEmailModal(false)} // Callback to close/hide permanently
-        />
-      )} */}
-      {/* ------------------------------------- */}
 
         {/* 3. ADD SEO COMPONENT */}
         <Seo
@@ -320,7 +305,7 @@ loadJournalPosts();
         {/*  */}
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
-        <div className="ws-container mb-56 sm:mb-0 text-center relative z-10">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-10">
           
 
 
@@ -437,35 +422,35 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-12 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+      <section className="ws-container mt-24 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
 
      
-      <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+      <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
       <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
-          <p className="font-sans mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
+          <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
         </div>
  {/* Trust Strip 2 */}
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip bg-background">
+        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Warranty Included</h3>
-          <p className="font-sans  mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
+          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
         </div>
 
  {/* Trust Strip 3 */}
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
-          <p className="font-sans  mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
+          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
         </div>
 
        {/* Trust Strip 4 */}
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
+        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
-          <p className="font-sans  mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
+          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
         </div>
 
       </section>
@@ -479,7 +464,6 @@ loadJournalPosts();
 
 
 
-      {/* <div style={{ height: '100vh' }} /> spacer to allow scroll */}
       {/* Brands we work with display */}
 
       <BrandsShowcase brands={TRUSTED_BRANDS} />

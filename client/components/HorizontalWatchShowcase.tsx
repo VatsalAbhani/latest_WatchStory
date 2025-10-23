@@ -32,7 +32,9 @@ interface Watch {
   textColor: string; // e.g., 'text-offwhite', 'text-black'
   // -------------------------------------------------
 }
+// these watches (everything about this watches) can be changes from index.tsx 
 
+// ------------------------------------------------------------
 interface Props {
   watches: Watch[];
 }
@@ -44,10 +46,10 @@ function SlideContent({ watch }: { watch: Watch }) {
     // Extracted the common slide content into a reusable component
     return (
         <div className="w-full h-full max-w-8xl mx-auto px-8 md:px-12 bg-stone-200">
-            <Link
+            {/* <Link
               to={`/watch/${watch.slug}`}
               className="group block w-full max-w-8xl mx-auto"
-            >
+            > */}
               <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
 
                 {/* Image Section */}
@@ -95,6 +97,8 @@ function SlideContent({ watch }: { watch: Watch }) {
                     >
                       Details
                     </MagneticButton>
+
+
                     <MagneticButton
                       href="https://wa.me/971545056156" 
                       variant="secondary"
@@ -107,7 +111,7 @@ function SlideContent({ watch }: { watch: Watch }) {
                   </div>
                 </div>
               </div>
-            </Link>
+            {/* </Link> */}
           </div>
     );
 }
