@@ -19,6 +19,7 @@ import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
 import Seo from "@/components/Seo";
+import { useIsMobile } from "@/hooks/use-mobile";
 // import EmailSubscriptionModal from "@/components/EmailSubscriptionModal"; 
 
 
@@ -33,13 +34,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 // 1. DEFINE BACKGROUND IMAGES (using your original and new ones)
-const BACKGROUND_IMAGES = [
+const DESKTOP_IMAGES = [
   '/bg_1.png', // Your original static image
   '/bg_2.png',           // New image 1
   '/bg_3.png',           // New image 2
 ];
 
-
+const MOBILE_IMAGES = [
+  '/bg-mobile-1.png', // New mobile-optimized image 1
+  '/bg-mobile-2.png', // New mobile-optimized image 2
+  '/bg-mobile-3.png', // New mobile-optimized image 3
+];
 
 // 2. SIMPLE BACKGROUND CAROUSEL COMPONENT
 interface SimpleBackgroundCarouselProps {
@@ -72,7 +77,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full object-cover md:object-cover object-center inset-0 -z-30"
+            className="w-full h-full object-cover object-center inset-0 -z-30"
           />
         </div>
       ))}
@@ -179,6 +184,12 @@ const manyWatches = [
 
 
 export default function Index() {
+
+
+// --- NEW: Screen detection hook ---
+const isMobile = useIsMobile();
+const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
+// ------------------------------------
 
   // --- NEW STATE FOR BLOG POSTS ---
   const [latestPosts, setLatestPosts] = useState<Article[]>([]);
@@ -302,11 +313,8 @@ loadJournalPosts();
         {/* <DriftingWatches />  */}
 
 
-
-        {/* 3. INTEGRATE BACKGROUND CAROUSEL */}
-        <SimpleBackgroundCarousel images={BACKGROUND_IMAGES} intervalMs={5000} />
-
-
+{/* 3. INTEGRATE BACKGROUND CAROUSEL - Use conditional images here */}
+<SimpleBackgroundCarousel images={currentBackgroundImages} intervalMs={5000} />
 
         {/*  */}
         {/* <div className="parallax-bg"></div> */}
@@ -337,7 +345,7 @@ loadJournalPosts();
 
           
           {/* Enhanced Magnetic Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-8 justify-center items-center">
+          {/* <div className="mt-8 flex flex-col sm:flex-row gap-8 justify-center items-center">
             <MagneticButton
               href="/sell"
               variant="primary"
@@ -372,15 +380,59 @@ loadJournalPosts();
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </span>
-            </MagneticButton>
+            </MagneticButton> */}
 
 
 
-          </div>
+          {/* </div> */}
 
 
         </div>
       </section>
+
+      {/* --- START NEW BUTTON SECTION --- */}
+      <div className="ws-container -mt-16 sm:-mt-56 mb-16 relative z-30 flex justify-center">
+          {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
+          {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
+          <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
+            <MagneticButton
+              href="/sell"
+              variant="primary"
+              className="group flex-grow sm:flex-grow-0" // Add flex-grow to make buttons fill space on small screens
+            >
+              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
+                Sell a Watch
+                <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </MagneticButton>
+
+            <MagneticButton
+              href="/buy"
+              variant="secondary"
+              className="group flex-grow sm:flex-grow-0" // Add flex-grow here too
+            >
+              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
+                Buy a Watch
+                <svg
+                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+            </MagneticButton>
+          </div>
+      </div>
+      {/* --- END NEW BUTTON SECTION --- */}
 
 
       {/* Trust strips */}
