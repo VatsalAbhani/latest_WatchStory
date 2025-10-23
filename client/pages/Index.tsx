@@ -389,14 +389,14 @@ loadJournalPosts();
      
       <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
       <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
-          <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
+          <p className="font-sans mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
         </div>
  {/* Trust Strip 2 */}
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
         <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip bg-background">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Warranty Included</h3>
-          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
+          <p className="font-sans  mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
         </div>
 
  {/* Trust Strip 3 */}
@@ -404,7 +404,7 @@ loadJournalPosts();
         <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
-          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
+          <p className="font-sans  mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
         </div>
 
        {/* Trust Strip 4 */}
@@ -412,7 +412,7 @@ loadJournalPosts();
         <div className=" rounded-lg p-4 md:p-6 bg-card/60 trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
           <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
-          <p className="font-sans text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
+          <p className="font-sans  mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
         </div>
 
       </section>
