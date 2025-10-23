@@ -289,7 +289,7 @@ loadJournalPosts();
         {/* 3. ADD SEO COMPONENT */}
         <Seo
           title="Buy & Sell Luxury Watches in Dubai"
-          description="WatchStory is Dubai's trusted platform to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
+          description="WatchStory is Dubai's trusted watch shop to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
           canonical="/"
         />
         {/* End SEO Component */}

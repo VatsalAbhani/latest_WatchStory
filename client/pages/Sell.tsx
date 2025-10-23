@@ -842,7 +842,7 @@ export default function Sell() {
         </Helmet>
             <Seo
         title="Sell Your Luxury Watch Fast in Dubai"
-        description="Get a fair, no-obligation offer in 24 hours to sell your Rolex or luxury timepiece in Dubai. Free insured shipping and expert valuation."
+        description="Get a fair, no-obligation instant offer to sell your Rolex or luxury timepiece in Dubai. Free insured shipping and expert valuation."
         canonical="/sell"
       />
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
@@ -851,7 +851,7 @@ export default function Sell() {
           </h1>
 
           <h2 className="font-sans text-base text-offwhite/80 mt-2 max-w-4xl">
-          Sell Your Rolex, Audemars Piguet, Patek Philippe, or Richard Mille Watch in Dubai.
+          Sell Your Rolex, Audemars Piguet, Patek Philippe, Cartier or Richard Mille Watch in Dubai.
         </h2>
 
 
@@ -905,7 +905,7 @@ export default function Sell() {
 function Field({ label, children, className }: { label: string; children: React.ReactNode; className?: string }) {
   return (
     <label className={cn("block", className)}>
-      <div className="text-sm text-offwhite/70 mb-1">{label}</div>
+      <div className="text-sm text-offwhite/70 mb-1 font-bold">{label}</div>
       {children}
     </label>
   );
@@ -1033,7 +1033,7 @@ setLoading(true);
   return (
     <div className="border rounded-xl bg-card/60">
       <div className="p-4 border-b font-sans flex items-center justify-between">
-        <div className="text-xl text-offwhite/60">Submit your watch details</div>
+        <div className="text-xl font-bold text-offwhite/60">Submit your watch details</div>
       </div>
       <form 
       className="p-6 grid font-sans md:grid-cols-2 gap-4" 

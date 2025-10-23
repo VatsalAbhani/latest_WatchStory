@@ -76,7 +76,10 @@
     
     <form 
     name="sell-watch-request" 
-    netlify netlify-honeypot="sell-bot-field" hidden>
+    data-netlify="true" 
+    netlify-honeypot="sell-bot-field" 
+    action="/success"
+    hidden>
       <input type="text" name="brand" />
       <input type="text" name="model" />
       <input type="text" name="reference" />
@@ -95,8 +98,9 @@
   
       <!-- <input type="text" name="_redirect" /> -->
       
-      <input type="hidden" name="_redirect" value="/success.html" />
   </form>
+
+
 
     <form 
   name="email-subscription" 
