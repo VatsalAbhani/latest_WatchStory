@@ -431,7 +431,7 @@ setLoading(true);
       data-netlify="true"              // 3. Enable Netlify processing
       netlify-honeypot="sell-bot-field"  // 4. Honeypot
       encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
-      action="/success.html"
+      // action="/success.html"
                        
       >
 
