@@ -11,7 +11,7 @@ interface SeoProps {
 }
 
 const defaultTitle = "WatchStory | Luxury Watches in Dubai";
-const defaultDescription = "Dubai's trusted platform to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions for Rolex, AP, and more.";
+const defaultDescription = "Sell your luxury watch in Dubai for the best price. Trusted buyers for Rolex, Patek, AP, RM and Cartier. Get a fair quote, secure and immediate payment.";
 const domain = "https://www.watchstory.ae"; //
 const defaultOgImage = `${domain}/bg_1.png`;
 
