@@ -433,10 +433,11 @@ const encode = (data) => {
             <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
             <ul className="font-sans font-semibold space-y-2">
               {/* Using the standard component here */}
-              <li><AnimatedTextLink to="/buy" text="Authentication" /></li>
-              <li><AnimatedTextLink to="/sell" text="Insured Shipping" /></li>
-              <li><AnimatedTextLink to="/blog" text="Escrow & Trust" /></li>
-              <li><AnimatedTextLink to="/about" text="Privacy Policy" /></li>
+              <li><AnimatedTextLink to="/buy" text="100% Authenticity Guarantee" /></li>
+              <li><AnimatedTextLink to="/sell" text="12-Month Mechanical Warranty" /></li>
+              <li><AnimatedTextLink to="/blog" text="Secure Escrow Transactions" /></li>
+              <li><AnimatedTextLink to="/sell#valuation" text="Expert Valuation & Sourcing" /></li>
+              <li><AnimatedTextLink to="/about" text="Insured Global Shipping" /></li>
             </ul>
           </div>
           
@@ -474,9 +475,26 @@ const encode = (data) => {
         </div>
       </div>
 
-      <div className="py-6 text-center text-xs text-offwhite/50">
-        © {new Date().getFullYear()} WatchStory Trading LLC.
+      {/* === NEW LEGAL LINKS SECTION === */}
+      <div className="py-6 ws-container border-t border-offwhite/10">
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center text-xs text-offwhite/50">
+            {/* 1. Copyright Text (Order 2 on mobile, 1 on desktop) */}
+            <div className="order-2 sm:order-1 mt-3 sm:mt-0">
+                © {new Date().getFullYear()} WatchStory Trading LLC.
+            </div>
+            
+            {/* 2. Legal Links (Order 1 on mobile, 2 on desktop) */}
+            <div className="order-1 sm:order-2 flex gap-4 text-sm font-semibold">
+                <Link to="/privacy-policy" className="hover:text-gold transition-colors text-primary">
+                    Privacy Policy
+                </Link>
+                <Link to="/terms-conditions" className="hover:text-gold transition-colors text-primary">
+                    Terms & Conditions
+                </Link>
+            </div>
+        </div>
       </div>
+      {/* =============================== */}
     </footer>
   );
 }

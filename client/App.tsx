@@ -17,6 +17,8 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import { StoryProvider } from "@/state/story";
 import { CartProvider } from "@/state/cart";
 import { useState } from "react";
@@ -61,10 +63,13 @@ const App = () => {
                 <Route path="/watch/:slug" element={<WatchDetail />} />
                 <Route path="/blog" element={<BlogIndex />} />
                 {/* <Route path="/blog/:slug" element={<BlogArticle />} /> */}
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                {/* <Route path="/cart" element={<Cart />} /> */}
+                {/* <Route path="/checkout" element={<Checkout />} /> */}
+                {/* <Route path="/about" element={<About />} /> */}
+                {/* <Route path="/contact" element={<Contact />} /> */}
+
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-conditions" element={<TermsConditions />} />
 
                 {/* Drifting Watches */}
                 {/* <Route path="/drifting-watches" element={<DriftingWatches />} /> */}

@@ -888,6 +888,10 @@ export default function Sell() {
         </div> */}
       </section>
 
+
+
+
+
       {/* Sell Form */}
       <section className="ws-container pb-16">
         <SingleStepSellForm />
@@ -1212,6 +1216,38 @@ setLoading(true);
           />
         </div>
       </form>
+
+
+
+
+
+{/* === NEW SECTION: EXPERT VALUATION & SOURCING (Anchor Target) === */}
+{/* <section id="valuation" className="ws-container pt-8 pb-16">
+        <h3 className="font-title text-3xl text-gold mb-4">Expert Valuation & Sourcing: Get the Highest Market Value</h3>
+        
+        <p className="text-offwhite/70 max-w-4xl">
+          **Selling Your Watch in Dubai? Get a Fair, Transparent Offer.** At WatchStory, our valuation process is designed to ensure you receive the highest market-competitive price for your luxury timepiece. We don't rely on automated tools; our offers are based on genuine market expertise.
+        </p>
+        
+        <div className="mt-8">
+          <h4 className="font-sans font-bold text-lg text-offwhite mb-3">The WatchStory Valuation Advantage:</h4>
+          <ul className="list-disc list-inside text-offwhite/70 space-y-2 ml-4">
+            <li><strong>Condition & Provenance:</strong> The watch's physical state, service history, and the presence of original box and papers.</li>
+            <li><strong>Global Demand:</strong> Real-time analysis of auction results and private sales for your specific reference number.</li>
+            <li><strong>Local Market Fluctuations:</strong> Expertise in regional demand curves for brands like Rolex and Patek Philippe in the UAE.</li>
+          </ul>
+        </div>
+
+        <div className="mt-8">
+          <h4 className="font-sans font-bold text-lg text-offwhite mb-3">Sourcing Rare Timepieces:</h4>
+          <p className="text-offwhite/70 max-w-4xl">
+            Looking for a hard-to-find watch? Use our **Sourcing Request** service. Leverage our global network of trusted dealers and private collectors—right here in Dubai and worldwide—to find your specific model at a competitive price, hassle-free.
+          </p>
+        </div>
+      </section> */}
+      {/* ================================================================ */}
+
+
     </div>
   );
 }
