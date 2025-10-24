@@ -16,7 +16,7 @@ export default {
     extend: {
       fontFamily: {
         // Cooper Black for titles/headings
-        title: ['"cooper-black-std"', ...defaultTheme.fontFamily.serif],
+        title: ['Newsreader', ...defaultTheme.fontFamily.serif],
 
 
 
@@ -24,9 +24,9 @@ export default {
         // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
 
         // Kenau Sans Serif for sans-serif (body text)
-        sans: ['Baskervville', ...defaultTheme.fontFamily.sans],
+        sans: ['Newsreader', ...defaultTheme.fontFamily.sans],
 
-        "logo-sans": ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
+        // "logo-sans": ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
       },
       
       colors: {

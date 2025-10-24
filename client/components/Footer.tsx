@@ -432,12 +432,12 @@ const encode = (data) => {
           <div>
             <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
             <ul className="font-sans font-semibold space-y-2">
-              {/* Using the standard component here */}
-              <li><AnimatedTextLink to="/buy" text="100% Authenticity Guarantee" /></li>
-              <li><AnimatedTextLink to="/sell" text="12-Month Mechanical Warranty" /></li>
-              <li><AnimatedTextLink to="/blog" text="Secure Escrow Transactions" /></li>
+              {/* UPDATED LINK DESTINATIONS FOR CONSOLIDATED PAGES */}
+              <li><AnimatedTextLink to="/terms-conditions#authentication" text="100% Authenticity Guarantee" /></li>
+              <li><AnimatedTextLink to="/terms-conditions#warranty" text="12-Month Mechanical Warranty" /></li>
+              <li><AnimatedTextLink to="/terms-conditions#security" text="Secure Escrow Transactions" /></li>
               <li><AnimatedTextLink to="/sell#valuation" text="Expert Valuation & Sourcing" /></li>
-              <li><AnimatedTextLink to="/about" text="Insured Global Shipping" /></li>
+              <li><AnimatedTextLink to="/terms-conditions#security" text="Insured Global Shipping" /></li>
             </ul>
           </div>
           
@@ -480,7 +480,7 @@ const encode = (data) => {
         <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center text-xs text-offwhite/50">
             {/* 1. Copyright Text (Order 2 on mobile, 1 on desktop) */}
             <div className="order-2 sm:order-1 mt-3 sm:mt-0">
-                © {new Date().getFullYear()} WatchStory Trading LLC.
+                © {new Date().getFullYear()} WatchStory Trading LLC. All rights reserved.
             </div>
             
             {/* 2. Legal Links (Order 1 on mobile, 2 on desktop) */}

@@ -431,7 +431,7 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-24 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+      <section className="ws-container mt-48 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
 
      
       <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">

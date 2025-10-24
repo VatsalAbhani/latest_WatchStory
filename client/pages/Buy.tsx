@@ -161,7 +161,7 @@ export default function Buy() {
 {/* MODIFIED SECTION: Temporarily Display "Coming Soon" Message and Call to Action */}
 <section className="ws-container py-16 text-center bg-gray-100/80 rounded-lg my-8 shadow-2xl">
       <h2 className="font-title text-3xl sm:text-4xl text-white mb-4">
-        We're Curating Our Collection! 🛠️
+        We're Curating Our Collection!!
       </h2>
       <p className="font-sans text-lg text-offwhite/80 max-w-3xl mx-auto mb-6">
         The full inventory of luxury watches will be displayed here soon. We're working hard to update our online catalogue.

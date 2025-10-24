@@ -3,78 +3,136 @@ import Seo from "@/components/Seo";
 import React from 'react';
 
 export default function PrivacyPolicy() {
+  const currentYear = new Date().getFullYear();
+  const effectiveDate = "October 24, " + currentYear;
+  
   return (
     <Layout>
       <Seo
-        title="Privacy Policy"
-        description="Our Privacy Policy outlines how WatchStory Trading LLC collects, uses, protects, and handles your Personally Identifiable Information in connection with our services."
+        title="Privacy Policy | Data Collection and Security"
+        description="Our detailed Privacy Policy for WatchStory Trading LLC outlines how we handle, process, and protect your personal data for sales, sourcing, and authentication services in Dubai and internationally."
         canonical="/privacy-policy"
       />
       <div className="ws-container pt-16 pb-24 max-w-4xl mx-auto">
         <h1 className="font-title text-5xl mb-4 text-gold">Privacy Policy</h1>
         <p className="text-offwhite/70 text-sm mb-12">
-          Effective Date: October 24, {new Date().getFullYear()}
+          Effective Date: {effectiveDate}
         </p>
 
-        <section className="space-y-8 text-offwhite/80">
-          <p>
-            This Privacy Policy governs the manner in which **WatchStory Trading LLC** (referred to as "WatchStory", "we", "us", or "our") collects, uses, maintains, and discloses information collected from users (each, a "User") of the watchstory.com website ("Site"). This policy applies to the Site and all products and services offered by WatchStory Trading LLC.
-          </p>
-
-          {/* --- Section 1: Information Collection --- */}
+        <section className="space-y-10 text-offwhite/80">
+          
+          {/* --- INTRODUCTION --- */}
           <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">1. Information We Collect</h2>
-            <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, fill out a form, and in connection with other activities, services, features or resources we make available on our Site. We collect:</p>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">Introduction</h2>
+            <p className="font-sans">
+              **WatchStory Trading LLC** (Trading as WatchStory) ("We") are committed to protecting and respecting your privacy. This policy (together with our <a href="/terms-conditions" className="text-gold hover:underline">Terms & Conditions</a> and any other documents referred to on it) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us.
+            </p>
+            <p className="mt-3">
+              For the purpose of data governance, the data controller is **WatchStory Trading LLC**, operating in the Emirate of Dubai, United Arab Emirates.
+            </p>
+          </div>
+
+          {/* --- INFORMATION WE MAY COLLECT --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">1. Information We May Collect From You</h2>
+            <p>We may collect and process the following data about you:</p>
             <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
-              <li>**Identity and Contact Data:** Name, email address, phone number (especially WhatsApp for communication), and billing/shipping address.</li>
-              <li>**Transactional Data:** Details about payments to and from you, and other details of products and services you have purchased from us (including watch model, reference number, and price).</li>
-              <li>**Technical Data:** Internet protocol (IP) address, browser type and version, time zone setting and location, operating system, and platform.</li>
-              <li>**Image Data:** Photographs of watches uploaded for valuation or sale, which are used solely for authentication and marketing purposes.</li>
+              <li>**Identity & Registration Information:** Information provided when registering, subscribing to our service, posting material, or requesting services (e.g., name, contact detail, preferred method of contact).</li>
+              <li>**Correspondence Records:** If you contact us, we may keep a record of that correspondence for quality and legal purposes.</li>
+              <li>**Transactional Details:** Details of transactions you carry out through our site, including payment details, watch model, reference number, and fulfillment of your orders (e.g., shipping tracking).</li>
+              <li>**Usage Data:** Details of your visits to our site including, but not limited to, traffic data, location data, weblogs, and the resources that you access (see also IP Addresses and Cookies).</li>
+              <li>**Image Data:** Photographs of watches uploaded for valuation or sale, used solely for authentication and market assessment.</li>
             </ul>
-          </div>
-
-          {/* --- Section 2: How We Use Collected Information --- */}
-          <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">2. How We Use Collected Information</h2>
-            <p>WatchStory may collect and use Users' personal information for the following purposes:</p>
-            <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
-              <li>**To Process Transactions:** To fulfill and manage purchases, sales, and service requests (e.g., watch valuation and payment processing).</li>
-              <li>**To Improve Customer Service:** Information provided helps us respond to your customer service requests and support needs more efficiently, particularly concerning authentication and warranty claims.</li>
-              <li>**To Personalize User Experience:** To understand how our Users use the services and resources provided on our Site.</li>
-              <li>**To Send Periodic Emails:** We may use the email address to send User information and updates pertaining to their order, and occasionally company news or promotions, which you can opt-out of at any time.</li>
-            </ul>
-          </div>
-
-          {/* --- Section 3: Data Protection and Storage --- */}
-          <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">3. Data Protection and Storage</h2>
-            <p>
-              We adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our Site. All sensitive data exchanged between the Site and its Users happens over an SSL secured communication channel and is encrypted.
-            </p>
-            <p>
-              Your data may be stored on secure servers located within or outside the UAE, and we take all reasonable steps to ensure compliance with relevant data protection laws.
-            </p>
-          </div>
-
-          {/* --- Section 4: Sharing Your Personal Information --- */}
-          <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">4. Sharing Your Personal Information</h2>
-            <p>
-              We do not sell, trade, or rent Users' personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners, trusted affiliates, and advertisers for the purposes outlined above. We may use third-party service providers (e.g., shipping companies, payment processors, and certified watch authenticators) to help us operate our business and the Site or administer activities on our behalf.
-            </p>
           </div>
           
-          {/* --- Section 5: Contacting Us --- */}
+          {/* --- IP ADDRESSES --- */}
           <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">5. Contacting Us</h2>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">2. IP Addresses and Device Information</h2>
             <p>
-              If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:
+              We may collect information about your device, including your IP address, operating system, and browser type, for system administration and to report aggregated, non-identifiable information to our service providers and advertisers. This is statistical data about our users' browsing actions and patterns and does not identify any individual User.
+            </p>
+          </div>
+
+          {/* --- WHERE WE STORE YOUR PERSONAL DATA --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">3. Where We Store Your Personal Data</h2>
+            <p>
+              The data that we collect from you may be transferred to, and stored at, a secure destination outside the **United Arab Emirates (UAE)**. This may be for processing by staff who work for us or for one of our secure service providers (e.g., international shipping, cloud hosting).
+            </p>
+            <p className="mt-3">
+              By submitting your personal data, you agree to this transfer and processing. We will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this privacy policy and international best practices, including where applicable, GDPR principles for international transfers.
+            </p>
+            <p className="mt-3">
+              All information you provide to us is stored on secure servers. Any payment transactions will be encrypted using SSL technology. While we employ strict procedures to prevent unauthorized access, the transmission of information via the internet is not completely secure; any transmission is at your own risk.
+            </p>
+          </div>
+
+          {/* --- USES MADE OF THE INFORMATION --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">4. Uses Made of the Information</h2>
+            <p>We use information held about you in the following ways:</p>
+            <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
+              <li>**Service Presentation:** To ensure that content from our site is presented in the most effective manner for you and your device.</li>
+              <li>**Transactional Quoting:** To provide you with information, quotes, or services that you request from us (e.g., watch valuation and sourcing). Details of the watch you selected will be stored so we can return a written quote and send relevant offers.</li>
+              <li>**Contract Fulfillment:** To carry out our obligations arising from any contracts entered into between you and us (sales, purchases, and warranty).</li>
+              <li>**Marketing & Promotions:** To provide information about goods and services which we feel may interest you, where you have consented to be contacted for such purposes.</li>
+              <li>**Market Research:** To conduct internal market research on trends and demand for luxury watches in Dubai and internationally.</li>
+            </ul>
+          </div>
+
+          {/* --- COMMUNICATIONS BETWEEN US & THIRD PARTY RIGHTS --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">5. Disclosure of Your Information</h2>
+            <p>
+              We do not sell your personal data. We may disclose your personal information to third parties in the following limited circumstances:
+            </p>
+            <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
+              <li>**Watch Sourcing/Quoting:** If WatchStory does not have a supplier for a particular watch, we may pass your details on to a carefully selected, authorized third-party watch dealer so they can quote on price and availability (only with your express consent during the enquiry).</li>
+              <li>**Business Transactions:** In the event that we sell or buy any business or assets, in which case we may disclose your personal data to the prospective seller or buyer.</li>
+              <li>**Legal Compliance:** If we are under a duty to disclose or share your personal data to comply with any legal obligation under UAE law, or to protect the rights, property, or safety of WatchStory, our customers, or others (e.g., fraud protection).</li>
+              <li>**Group Entities:** To any member of our group, which means our subsidiaries, our ultimate holding company, and its subsidiaries, as necessary to provide goods and services to you.</li>
+            </ul>
+          </div>
+          
+          {/* --- YOUR RIGHTS --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">6. Your Rights and Marketing Preferences</h2>
+            <p>
+              You have the right to ask us not to process your personal data for marketing purposes. You can exercise this right at any time by contacting us directly or by clicking on the **unsubscribe link** displayed at the end of our email correspondence.
+            </p>
+            <p className="mt-3">
+              Our site may contain links to websites of our partner networks, advertisers, and affiliates. We do not accept any responsibility or liability for these external policies; please check their policies before submitting any personal data.
+            </p>
+          </div>
+
+          {/* --- COOKIES POLICY --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">7. Cookies Policy</h2>
+            <p>
+              We obtain information about your general internet usage by using "cookies" (small text files stored on your browser or hard drive). Cookies help us to improve our site, customize our service, and provide relevant offers tailored to your interests.
+            </p>
+            <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
+              <li>**Essential Cookies:** Some cookies are strictly necessary for the site to operate, enabling features like keeping items in your shopping basket.</li>
+              <li>**Functionality Cookies:** These allow us to remember your preferences and recognize you when you return to our site.</li>
+              <li>**Analytics Cookies:** These help us estimate our audience size and usage pattern.</li>
+            </ul>
+            <p className="mt-3">
+              **Consent:** By continuing to use our site, you agree to our use of cookies. You can block cookies by activating the setting on your browser which allows you to refuse the setting of all or some cookies. However, blocking essential cookies may prevent you from accessing parts of our site.
+            </p>
+          </div>
+
+          {/* --- CONTACT --- */}
+          <div>
+            <h2 className="font-title text-3xl mb-3 text-offwhite">8. Contact and Policy Changes</h2>
+            <p>
+              Any changes we may make to our privacy policy in the future will be posted on this page and, where appropriate, notified to you by e-mail.
+            </p>
+            <p className="mt-3">
+              Questions, comments, and requests regarding this privacy policy are welcomed and should be addressed to:
             </p>
             <p className="mt-2 font-bold">
-              WatchStory Trading LLC<br />
               Email: info@watchstory.com<br />
-              Phone: +971 54 505 6156 (WhatsApp preferred)<br />
-              Address: Dubai, United Arab Emirates
+              Address: WatchStory Trading LLC, Dubai, United Arab Emirates
             </p>
           </div>
         </section>
