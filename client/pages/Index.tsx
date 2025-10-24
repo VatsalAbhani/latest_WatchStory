@@ -108,14 +108,14 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
 
 
 
-
+// Brands we trust (iamges or logos)
 // Add this data (you can move to your data file later)
 const TRUSTED_BRANDS = [
   {
     id: '1',
     name: 'Rolex',
     logoUrl: '/rolex-logo.svg',
-    description: 'A crown for every achievement. Swiss luxury watchmaking since 1905.',
+    description: "A crown for every achievement. Swiss luxury watchmaking since 1905.",
     established: '1905',
     country: 'Switzerland'
   },
@@ -123,7 +123,7 @@ const TRUSTED_BRANDS = [
     id: '2',
     name: 'Patek Philippe',
     logoUrl: '/patek-logo.svg',
-    description: 'You never actually own a Patek Philippe. You merely look after it.',
+    description: "You never actually own a Patek Philippe. You merely look after it. Timeless, complication-driven Swiss horology.",
     established: '1839',
     country: 'Switzerland'
   },
@@ -131,7 +131,7 @@ const TRUSTED_BRANDS = [
     id: '3',
     name: 'Audemars Piguet',
     logoUrl: '/AP-logo.svg',
-    description: 'To break the rules, you must first master them.',
+    description: "To break the rules, you must first master them. Home of the iconic Royal Oak luxury sports watch.",
     established: '1875',
     country: 'Switzerland'
   },
@@ -139,19 +139,28 @@ const TRUSTED_BRANDS = [
     id: '4',
     name: 'Omega',
     logoUrl: '/omega-4.svg',
-    description: 'Official timekeeper of the Olympics and chosen for lunar missions.',
+    description: "The 'First Watch on the Moon' and Official Timekeeper of the Olympic Games since 1932. Known for the Speedmaster, Seamaster, and Master Chronometer technology.",
     established: '1848',
     country: 'Switzerland'
   },
   {
-    id: '4',
+    id: '5',
     name: 'Cartier',
     logoUrl: '/cartier-logo.png',
-    description: 'Official timekeeper of the Olympics and chosen for lunar missions.',
-    established: '1848',
+    description: "The 'Jeweller of Kings' and pioneer of the modern wristwatch (Santos, Tank). Iconic Art Deco designs defining timeless elegance.",
+    established: '1847',
     country: 'Switzerland'
   },
   // Add more brands...
+  // RM
+  {
+    id: '6',
+    name: 'Richard Mille',
+    logoUrl: '/rm-logo.svg',
+    description: "A 'Racing Machine on the Wrist.' Revolutionary luxury watches defined by extreme engineering, ultra-light TPT materials, and highly complex tourbillon movements.",
+    established: '2001',
+    country: 'Switzerland'
+  },
   
 ];
 

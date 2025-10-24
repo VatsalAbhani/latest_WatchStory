@@ -107,7 +107,7 @@ export default function BrandsShowcase({ brands }) {
         {brands.map((brand) => (
           <div
             key={brand.id}
-            className="flex-shrink-0 w-14 h-18 md:w-18 md:h-24 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            className="flex-shrink-0 w-16 h-18 md:w-18 md:h-24 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
           >
             <img
               src={brand.logoUrl}

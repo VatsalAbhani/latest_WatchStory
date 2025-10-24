@@ -16,6 +16,9 @@ export type Product = {
   textColor: string;
 };
 
+
+
+// Featured watches that are displayed on the home page...
 export const FEATURED: Product[] = [
   {
     id: "p1",
@@ -173,7 +176,7 @@ export const POSTS: Article[] = [
   id: "a2",
   title: "How To Deal With Vintage Watch Dealers: Five Tips",
   brandTags: ["Vintage", "Guide"],
-  heroImage: "/placeholder.svg", // Use a generic image for now
+  heroImage: "/blog-imgs/blog-a2.jpg", // Use a generic image for now
   excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
   slug: "", // Leave blank or remove as it won't use a local route
   publishedAt: "2024-10-16",
@@ -189,7 +192,7 @@ export const POSTS: Article[] = [
   id: "a3",
   title: "The Story of The Audemars Piguet Star Wheel",
   brandTags: ["AP", "Story"],
-  heroImage: "/placeholder.svg", // Use a generic image for now
+  heroImage: "/blog-imgs/blog-a3.webp", // Use a generic image for now
   excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
   slug: "", // Leave blank or remove as it won't use a local route
   publishedAt: "May 2022",
@@ -204,7 +207,7 @@ export const POSTS: Article[] = [
   id: "a4",
   title: "Collectability: Five Patek Philippe Watches for Under $5,000",
   brandTags: ["Patek Philippe"],
-  heroImage: "/placeholder.svg", // Use a generic image for now
+  heroImage: "/blog-imgs/blog-a4.jpg", // Use a generic image for now
   excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
   slug: "", // Leave blank or remove as it won't use a local route
   publishedAt: "May 2022",
@@ -218,7 +221,7 @@ export const POSTS: Article[] = [
   id: "a5",
   title: "Hodinkee: How the multi-million dollar sale of a single watch is helping save the planet.",
   brandTags: ["Patek Philippe"],
-  heroImage: "/placeholder.svg", // Use a generic image for now
+  heroImage: "/blog-imgs/blog-a5.avif", // Use a generic image for now
   excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
   slug: "", // Leave blank or remove as it won't use a local route
   publishedAt: "May 2022",
@@ -231,47 +234,55 @@ export const POSTS: Article[] = [
 
   {
     id: "a6",
-    title: "Buying a Rolex in Dubai: What Matters",
-    brandTags: ["Rolex"],
-    heroImage: "/placeholder.svg",
-    excerpt: "Market dynamics, authentication, and pricing—explained.",
-    slug: "buy-rolex-dubai-guide",
-    publishedAt: "2024-06-01",
-    author: "WatchStory Team", // Add data here
-    readingTime: "5 min read", // Add data here
+    title: "Must-Know Luxury Watch Brands",
+    brandTags: ["Rolex, Patek Philippe, AP"],
+    heroImage: "/blog-imgs/blog-a6.webp",
+    excerpt: "The Top 10+ Must-Know Luxury Watch Brands: The Mother of All Lists",
+    slug: "",
+    publishedAt: "2022",
+    author: "PrestigeTime", // Add data here
+    readingTime: "10 min read", // Add data here
+    externalUrl: "https://www.prestigetime.com/blog/must-know-luxury-watch-brands.html",
+    
   },
   {
     id: "a7",
-    title: "Audemars Piguet: The Royal Oak Story",
-    brandTags: ["AP"],
-    heroImage: "/AP/ap-royal-img2.avif", // Use a valid image path if available
-    excerpt: "Design, desirability, and detail. Why Genta's original design remains an icon.",
-    slug: "ap-royal-oak-story",
-    publishedAt: "2024-05-20",
-    author: "Gérald Dubois",
-    readingTime: "8 min read",
+    title: "Rolex: Excellence in the Making",
+    brandTags: ["Rolex"],
+    heroImage: "/blog-imgs/blog-a7.avif", // Use a valid image path if available
+    excerpt: "Watchmaking Skill, Excellent Workmanship",
+    slug: "",
+    publishedAt: "",
+    author: "Rolex Team",
+    readingTime: "15 min read",
+    externalUrl: "https://www.rolex.com/ar/watchmaking/excellence-in-the-making",
+    
   },
   {
     id: "a8",
-    title: "Richard Mille Authentication Guide",
-    brandTags: ["RM"],
-    heroImage: "/placeholder.svg",
-    excerpt: "Materials and movement tell the truth. Our specialists' tips for verifying genuine Mille.",
-    slug: "richard-mille-authentication-guide",
-    publishedAt: "2024-05-10",
-    author: "WatchStory Team",
-    readingTime: "4 min read",
+    title: "AP TALKS THE ROYAL OAK RD#5",
+    brandTags: ["AP"],
+    heroImage: "/blog-imgs/blog-a8.avif",
+    excerpt: "The Royal Oak “Jumbo” Extra-Thin Selfwinding Flying Tourbillon Chronograph",
+    slug: "",
+    publishedAt: "2025-10-01",
+    author: "Audemars Piguet Team",
+    readingTime: "10 min read",
+    externalUrl: "https://www.audemarspiguet.com/com/en/news/savoir-faire/aptalks-the-royal-oak-rd5.html",
+    
   },
   {
     id: "a9",
-    title: "Understanding Patek Philippe Reference Numbers",
+    title: "Patek Philippe: Taking care of your watch, Watch Care Recommendations",
     brandTags: ["Patek Philippe"],
-    heroImage: "/Patek/nautilus/patek-nautilus-lady.avif",
-    excerpt: "A deep dive into Patek's complex numbering system to help you identify rare models.",
-    slug: "patek-reference-guide",
-    publishedAt: "2024-04-15",
-    author: "WatchStory Research",
-    readingTime: "6 min read",
+    heroImage: "/blog-imgs/blog-a9.avif",
+    excerpt: "Taking care of your watch, Watch Care Recommendations",
+    slug: "",
+    publishedAt: "",
+    author: "Patek Philippe Team",
+    readingTime: "15 min read",
+    externalUrl: "https://www.patek.com/en/service/taking-care-of-your-watch/watch-care-recommendations",
+    
   },
 
   
