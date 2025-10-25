@@ -204,25 +204,31 @@ const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
 
   useEffect(() => {
 
+    ScrollTrigger.getAll().forEach(t => t.kill());
 
 
+// --- Trust strips Animation FIX ---
+        // Conditionally set animation properties
+        const animationProps = isMobile
+            ? { opacity: 1, duration: 0, stagger: 0 } // Instant visibility on mobile
+            : {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: ".trust-section",
+                    start: "top 80%",
+                    toggleActions: "play none none reverse",
+                },
+            };
 
-    // Animate the "Trust strips" on scroll
-    gsap.fromTo(
-      ".trust-strip",
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".trust-section",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+        // Animate the "Trust strips" on scroll (or instantly on mobile)
+        const trustStripsTween = gsap.fromTo(
+            ".trust-strip",
+            { y: 50, opacity: 0 },
+            animationProps
+        );
 
     // Animate the "Featured Stories" heading and carousel
     gsap.fromTo(
@@ -256,22 +262,29 @@ const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
       }
     );
 
-   
-
-
-
-// --- NEW FETCH EFFECT ---
-const loadJournalPosts = async () => {
-  try {
-    // Fetch the top 3 posts (or however many you want to show)
-    const posts = await fetchLatestPosts(3); 
-    setLatestPosts(posts);
-  } catch (error) {
-    console.error("Failed to fetch journal posts:", error);
-  } finally {
-    setIsJournalLoading(false);
-  }
+   // Return a cleanup function for all GSAP/ScrollTrigger instances
+   return () => {
+    // Kills the specific tween/trigger when the component re-renders or unmounts
+    trustStripsTween.kill();
+    ScrollTrigger.getAll().forEach(t => t.kill());
 };
+
+}, [isMobile]); 
+
+
+
+useEffect(() => {
+  const loadJournalPosts = async () => {
+    try {
+      // Fetch the top 3 posts
+      const posts = await fetchLatestPosts(3);
+      setLatestPosts(posts);
+    } catch (error) {
+      console.error("Failed to fetch journal posts:", error);
+    } finally {
+      setIsJournalLoading(false);
+    }
+  };  
 
 loadJournalPosts();
 
@@ -430,40 +443,25 @@ loadJournalPosts();
       {/* --- END NEW BUTTON SECTION --- */}
 
 
-      {/* Trust strips */}
-      <section className="ws-container mt-48 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
-
-     
-      <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
-      <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
-          <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
-        </div>
- {/* Trust Strip 2 */}
-        {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
-          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
-          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Warranty Included</h3>
-          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
-        </div>
-
- {/* Trust Strip 3 */}
-        {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
-          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
-          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
-          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
-        </div>
-
-       {/* Trust Strip 4 */}
-        {/* MODIFIED: Reduced padding (p-4) on mobile */}
-        <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
-          {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
-          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
-          <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
-        </div>
-
-      </section>
-
+     {/* Trust strips (FIXED: Animation logic applied via isMobile conditional in useEffect) */}
+     <section className="ws-container mt-48 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+            <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
+              <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
+              <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted platform to Buy and Sell authenticated luxury watches.</p>
+            </div>
+            <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
+              <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Warranty Included</h3>
+              <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Every watch is protected by our comprehensive 12-month mechanical and service warranty.</p>
+            </div>
+            <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
+              <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
+              <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
+            </div>
+            <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
+              <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
+              <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
+            </div>
+          </section>
 
 
       {/* Featured Stories - Full Screen Horizontal Showcase */}
