@@ -21,6 +21,7 @@ import { Separator } from "@/components/ui/separator";
 
 // Find watch data (Placeholder implementation - fetches from local FEATURED array)
 const findWatchBySlug = (slug: string) => FEATURED.find((w) => w.slug === slug);
+// const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
 
 // FUNCTION: Generates dynamic Product Schema JSON-LD
 const getProductSchema = (watch: Product, url: string) => {
@@ -95,21 +96,50 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
     currency: watch.currency,
   });
 
-  const handleAddToCart = () => {
-    add({
-      id: watch.id,
-      title: `${watch.brand} ${watch.model}`,
-      price: watch.price,
-      image: watch.images.urls[0],
-    });
-    // Use the imported toast component for a nice notification
-    toast.success(`${watch.brand} ${watch.model} added to cart!`);
-  };
+  // const handleAddToCart = () => {
+  //   add({
+  //     id: watch.id,
+  //     title: `${watch.brand} ${watch.model}`,
+  //     price: watch.price,
+  //     image: watch.images.urls[0],
+  //   });
+  //   // Use the imported toast component for a nice notification
+  //   toast.success(`${watch.brand} ${watch.model} added to cart!`);
+  // };
 
   // const handleInquire = () => {
   //   // Navigate to the contact page, as you have a separate Contact.tsx file
   //   window.location.href = '/contact';
   // };
+
+
+// Prepare data for the new "Détails" section
+  // Note: We are using placeholder values like 'Full Inclusions', 'Smoked Burgundy', and 'Titanium Case' 
+  // since these specific fields might not exist on your 'Product' type yet.
+  const detailsData = [
+    { label: "MECANISM", value: watch.movement || 'Automatic Movement', span: 1 },
+    { label: "SERIAL NUMBER", value: watch.ref, span: 1 }, // Using ref as a stand-in for serial
+    { label: "CONDITION", value: watch.condition || 'A', span: 1 },
+    { label: "INCLUSIONS", value: watch.inclusions || 'Full Inclusions', span: 1 },
+    { label: "COLOR", value: watch.color || 'Smoked Burgundy', span: 1 },
+    { label: "DELIVERY", value: 'Worldwide', span: 1 },
+    { label: "SIZE", value: watch.size || '39 mm', span: 1 },
+    { label: "MATERIAL", value: watch.material || 'Titanium Case', span: 1 },
+    { label: "CERTIFICATE", value: watch.certificate ? 'Yes' : 'No', span: 1 },
+  ];
+
+// Utility function to convert details array to rows of 3 columns
+const getDetailRows = (data: typeof detailsData) => {
+  const rows = [];
+  for (let i = 0; i < data.length; i += 3) {
+    rows.push(data.slice(i, i + 3));
+  }
+  return rows;
+};
+
+
+
+
 
   return (
     <div className="md:sticky md:top-24 space-y-8 p-4 md:p-0">
@@ -118,7 +148,10 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
       <div>
         <p className="text-gold font-semibold text-xl">{watch.brand}</p>
         <h1 className="font-title text-4xl sm:text-5xl mt-1 leading-tight">{watch.model}</h1>
-        <p className="font-sans text-2xl font-bold text-foreground mt-4">{priceFmt.format(watch.price)}</p>
+        
+        <p className="font-sans text-base font-semibold">{watch.ref}</p>
+        {/* <p className="font-sans text-2xl font-bold text-foreground mt-4">{priceFmt.format(watch.price)}</p> */}
+        <p className="font-sans text-2xl font-semibold text-foreground mt-4">Contact for Price</p>
       </div>
 
       <Separator className="bg-border/50" />
@@ -143,26 +176,60 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
           rel="noopener noreferrer" // <--- Recommended addition
           className="flex-1 text-base font-extrabold"
         >
-          Discuss & Order It Now
+          Discuss & Order It Now (WhatsApp)
+
+
         </MagneticButton>
+        
+
       </div>
 
       <Separator className="bg-border/50" />
 
+
+      {/* ========================================================= */}
+      {/* NEW: DETAILS SECTION (Mimics the uploaded image structure) */}
+      {/* ========================================================= */}
+      <div className="space-y-6">
+        <h2 className="font-title text-3xl pb-2 ">Details</h2>
+        
+        {/* Using a grid structure to mimic the 3-column layout */}
+        <div className="grid grid-cols-3 gap-y-6 gap-x-4">
+          {detailsData.map((item, index) => (
+            <div key={index} className="col-span-1">
+              {/* Label (Uppercase and slightly faded) */}
+              <p className="font-sans text-xs text-offwhite/70 uppercase tracking-wider mb-1">
+                {item.label}
+                {/* Optional Info Icon - not implemented here, but you'd add it next to the label */}
+              </p>
+              {/* Value (Bold and prominent) */}
+              <p className="font-sans text-base font-medium text-foreground leading-snug">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Separator className="bg-border/50" />
+      {/* ========================================================= */}
+      {/* END NEW SECTION */}
+      {/* ========================================================= */}
+
       {/* Specifications Table */}
-      <h2 className="font-title text-2xl">Specifications</h2>
+      {/* <h2 className="font-title text-2xl">Specifications</h2>
       <Table className="bg-card/60 border border-border/50 rounded-lg">
-        <TableBody>
+        <TableBody> */}
           {/* Reference */}
-          <TableRow className="hover:bg-transparent transition-colors">
+          {/* <TableRow className="hover:bg-transparent transition-colors">
             <TableCell className="w-1/3 text-sm font-semibold text-offwhite/70">Reference No.</TableCell>
             <TableCell className="w-2/3 text-sm text-foreground">{watch.ref}</TableCell>
-          </TableRow>
+          </TableRow> */}
           {/* Year */}
-          <TableRow className="hover:bg-transparent">
+          {/* <TableRow className="hover:bg-transparent">
             <TableCell className="text-sm font-semibold text-offwhite/70">Year</TableCell>
             <TableCell className="text-sm text-foreground">{watch.year}</TableCell>
-          </TableRow>
+          </TableRow> */}
           {/* Condition */}
           {/* <TableRow className="hover:bg-transparent">
             <TableCell className="text-sm font-semibold text-offwhite/70">Condition</TableCell>
@@ -174,14 +241,14 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
             <TableCell className="text-sm text-foreground">{watch.movement || 'Automatic'}</TableCell>
           </TableRow> */}
           {/* Availability */}
-          <TableRow className="hover:bg-transparent">
+          {/* <TableRow className="hover:bg-transparent">
             <TableCell className="text-sm font-semibold text-offwhite/70">Availability</TableCell>
             <TableCell className={cn("text-sm font-medium capitalize", watch.availability === 'in_stock' ? 'text-green-500' : 'text-yellow-600')}>
               {watch.availability.replace('_', ' ')}
             </TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table> */}
     </div>
   );
 }

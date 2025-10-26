@@ -14,6 +14,13 @@ export type Product = {
   slug: string;
   bgColor: string;
   textColor: string;
+  movement?: string;
+  condition?: string;
+  inclusions?: string;
+  color?: string;
+  size?: string;
+  material?: string;
+  certificate?: boolean;
 };
 
 
