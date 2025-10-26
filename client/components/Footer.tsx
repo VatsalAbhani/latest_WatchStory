@@ -413,7 +413,7 @@ const encode = (data) => {
         </div>
 
         {/* BOTTOM SECTION: LINKS GRID (3 Columns) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 gap-x-2 gap-y-4 text-sm">
           
           {/* Column 1: Explore */}
           <div>
@@ -433,9 +433,9 @@ const encode = (data) => {
             <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
             <ul className="font-sans font-semibold space-y-2">
               {/* UPDATED LINK DESTINATIONS FOR CONSOLIDATED PAGES */}
-              <li><AnimatedTextLink to="/terms-conditions#authentication" text="100% Authenticity Guarantee" /></li>
-              <li><AnimatedTextLink to="/terms-conditions#warranty" text="12-Month Mechanical Warranty" /></li>
-              <li><AnimatedTextLink to="/terms-conditions#security" text="Secure Escrow Transactions" /></li>
+              <li><AnimatedTextLink to="/terms-conditions#authentication" text="Authenticity Guarantee" /></li>
+              <li><AnimatedTextLink to="/terms-conditions#warranty" text="Mechanical Warranty" /></li>
+              {/* <li><AnimatedTextLink to="/terms-conditions#security" text="Secure Escrow Transactions" /></li> */}
               <li><AnimatedTextLink to="/sell#valuation" text="Expert Valuation & Sourcing" /></li>
               <li><AnimatedTextLink to="/terms-conditions#security" text="Insured Global Shipping" /></li>
             </ul>

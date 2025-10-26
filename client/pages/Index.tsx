@@ -37,9 +37,9 @@ const DESKTOP_IMAGES = [
 ];
 
 const MOBILE_IMAGES = [
-  '/bg-mobile-1.png', // New mobile-optimized image 1
-  '/bg-mobile-2.png', // New mobile-optimized image 2
-  '/bg-mobile-3.png', // New mobile-optimized image 3
+  '/g-1.png', // New mobile-optimized image 1
+  '/g-2.png', // New mobile-optimized image 2
+  '/g-3.png', // New mobile-optimized image 3
 ];
 
 // 2. SIMPLE BACKGROUND CAROUSEL COMPONENT
@@ -396,7 +396,12 @@ loadJournalPosts();
         {/*  */}
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-10">
+
+        <div className="absolute inset-0 z-10 backdrop-blur-[1px]" />
+
+
+
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-56">
           
 
 
@@ -468,7 +473,7 @@ loadJournalPosts();
       </section>
 
       {/* --- START NEW BUTTON SECTION --- */}
-      <div className="ws-container -mt-16 sm:-mt-56 mb-16 relative z-30 flex justify-center">
+      <div className="ws-container -mt-22 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
           <div className="flex flex-row gap-4 justify-center items-center">
@@ -513,7 +518,7 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-56 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+      <section className="ws-container mt-40 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
 
      
       <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">

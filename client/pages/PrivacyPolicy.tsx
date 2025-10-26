@@ -131,7 +131,7 @@ export default function PrivacyPolicy() {
               Questions, comments, and requests regarding this privacy policy are welcomed and should be addressed to:
             </p>
             <p className="mt-2 font-bold">
-              Email: info@watchstory.com<br />
+              Email: info@watchstory.ae<br />
               Address: WatchStory Trading LLC, Dubai, United Arab Emirates
             </p>
           </div>
