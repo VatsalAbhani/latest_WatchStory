@@ -397,7 +397,7 @@ loadJournalPosts();
         {/* <div className="parallax-bg"></div> */}
         {/* <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_50%_10%,hsl(var(--brand-carbon)/0.7)_0%,transparent_60%)]" /> */}
 
-        <div className="absolute inset-0 z-10 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 z-10" />
 
 
 
@@ -518,7 +518,7 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-40 mb-6 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+      <section className="ws-container mt-20 pb-20 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
 
      
       <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
