@@ -15,9 +15,12 @@ export type Product = {
   bgColor: string;
   textColor: string;
   movement?: string;
+  // Condition: Used or Brand New or Like New
   condition?: string;
-  inclusions?: string;
-  color?: string;
+  // inclusion (BOX): Full Inclusions (with box)  or without box
+  // inclusions == Box
+  box?: boolean;
+  dialcolor?: string;
   size?: string;
   material?: string;
   certificate?: boolean;
@@ -47,17 +50,23 @@ export const FEATURED: Product[] = [
 
     bgColor: 'bg-stone-200', // Light, subtle stone grey
     textColor: 'text-offwhite', // High-contrast black text
+    condition: 'Brand New',
+    dialcolor: 'Blue',
+    size: '41mm',
+    material: 'Stainless Steel & White Gold',
+    certificate: true,
+    box: true,
   },
   {
     id: "p2",
     brand: "Rolex",
     model: "Lady-Datejust",
-    ref: "279174",
+    ref: "278271",
     year: 2021,
     price: 48200,
     currency: "USD",
     availability: "in_stock",
-    story: "Rare Rolex Lady-Datejust with diamond-set dial. Certified pre-owned and available for immediate sale in Dubai.",
+    story: "Rolex Lady-Datejust with diamond-set dial. Certified pre-owned and available for immediate sale in Dubai.",
     images: {
       urls: ["/Rolex/ladydatejust/rolex-ladydatejust.png",
         "/Rolex/ladydatejust/rolex-ladydatejust-img2.webp",
@@ -67,7 +76,12 @@ export const FEATURED: Product[] = [
 
     bgColor: 'bg-zinc-900',  // Deep, dark charcoal
     textColor: 'text-white', // Bright white text
-
+    condition: 'Brand New',
+    dialcolor: 'White Mother of Pearl',
+    size: '31mm',
+    material: 'Rose Gold & Stainless Steel',
+    certificate: true,
+    box: true,
   },
   {
     id: "p3",
@@ -88,6 +102,14 @@ export const FEATURED: Product[] = [
 
     bgColor: 'bg-stone-200', // Light, subtle stone grey
     textColor: 'text-black', // High-contrast black text
+
+    condition: 'Brand New',
+
+    dialcolor: 'Black',
+    size: '40mm',
+    material: 'Stainless Steel & Ceramic',
+    certificate: true,
+    box: true,
   },
   // --- Start of new watch added ---
   {
@@ -110,6 +132,12 @@ export const FEATURED: Product[] = [
 
     bgColor: 'bg-stone-200', // Light, subtle stone grey
     textColor: 'text-black', // High-contrast black text
+
+    dialcolor: 'Chocolate',
+    size: '40mm',
+    material: 'Rose Gold',
+    certificate: true,
+    box: true,
   },
   // --- End of new watch added ---
 
@@ -133,6 +161,12 @@ export const FEATURED: Product[] = [
 
     bgColor: 'bg-stone-200', // Light, subtle stone grey
     textColor: 'text-black', // High-contrast black text
+
+    dialcolor: 'Blue',
+    size: '41mm',
+    material: 'Stainless Steel',
+    certificate: true,
+    box: true,
   },
   // --- End of new watch added ---
 

@@ -79,8 +79,8 @@ function ProductImageGallery({ images }: { images: string[] }) {
         {images.length > 1 && (
           <>
             {/* Custom styled arrows */}
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-black/70" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-black/70" />
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 size-10  text-white border-white/20 " />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 size-10  text-white border-white/20 " />
           </>
         )}
       </Carousel>
@@ -118,14 +118,18 @@ function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
   // since these specific fields might not exist on your 'Product' type yet.
   const detailsData = [
     { label: "MECANISM", value: watch.movement || 'Automatic Movement', span: 1 },
-    { label: "SERIAL NUMBER", value: watch.ref, span: 1 }, // Using ref as a stand-in for serial
-    { label: "CONDITION", value: watch.condition || 'A', span: 1 },
-    { label: "INCLUSIONS", value: watch.inclusions || 'Full Inclusions', span: 1 },
-    { label: "COLOR", value: watch.color || 'Smoked Burgundy', span: 1 },
-    { label: "DELIVERY", value: 'Worldwide', span: 1 },
+    { label: "REF. NUMBER", value: watch.ref, span: 1 }, // Using ref as a stand-in for serial
     { label: "SIZE", value: watch.size || '39 mm', span: 1 },
+    
+    
+    { label: "BOX", value: watch.box ? 'Yes' : 'No', span: 1 },
     { label: "MATERIAL", value: watch.material || 'Titanium Case', span: 1 },
+    
+    { label: "CONDITION", value: watch.condition || 'A', span: 1 },
+   
     { label: "CERTIFICATE", value: watch.certificate ? 'Yes' : 'No', span: 1 },
+    { label: "DIAL COLOR", value: watch.dialcolor || 'Smoked Burgundy', span: 1 },
+    { label: "DELIVERY", value: 'Worldwide', span: 1 },
   ];
 
 // Utility function to convert details array to rows of 3 columns
