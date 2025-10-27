@@ -15,7 +15,7 @@ function SimpleNavLink({ to, text }: { to: string; text: string }) {
       to={to}
       className={({ isActive }) =>
         cn(
-          "inline-block text-lg font-sans font-semibold tracking-wider",
+          "inline-block  font-sans font-semibold tracking-wider",
           // Base color logic: text black, hover to gold
           isActive ? "text-gold" : "text-black hover:text-gold transition-colors duration-200" 
         )
@@ -45,7 +45,7 @@ export default function TerminalStoryBar() {
         <div className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           
           {/* --- REPLACED NAV STRUCTURE WITH UL/LI --- */}
-          <ul className="flex items-center space-x-10 font-sans">
+          <ul className="flex items-center space-x-10 font-sans text-sm sm:text-lg">
             <li>
               <SimpleNavLink to="/buy" text="Buy" />
             </li>
