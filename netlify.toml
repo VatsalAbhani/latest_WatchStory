@@ -22,6 +22,19 @@
   to = "/success.html"
   status = 200
 
+
+[[redirects]]
+  from = "/contact"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/contact/"
+  to = "/"
+  status = 410
+
+
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
