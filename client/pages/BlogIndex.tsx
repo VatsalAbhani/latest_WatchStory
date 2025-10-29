@@ -1,6 +1,7 @@
-// client/pages/BlogIndex.tsx
+// client/pages/Blogpage
 
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { useEffect, useState, useMemo } from "react";
 import { Search } from 'lucide-react';
 import { Input } from "@/components/ui/input";
@@ -48,6 +49,13 @@ export default function BlogIndex() {
 
   return (
     <Layout>
+
+
+<Seo
+    title="WatchStory Journal | Guides, History & Investment Tips"
+    description="Explore the official WatchStory journal. Get expert insights, investment guides, and stories on luxury brands like Rolex, Patek Philippe, and more."
+    canonical="/blog"
+  />
       
       {/* Header/Hero Section */}
       {/* <section className="ws-container pt-20 pb-4">
@@ -98,7 +106,7 @@ export default function BlogIndex() {
 
         Categories/Tags Filter
         <div className="mt-6">
-          <h3 className="text-sm text-offwhite/70 mb-3">FILTER BY TOPICS</h3>
+          <p className="text-sm text-offwhite/70 mb-3">FILTER BY TOPICS</p>
           <div className="flex flex-wrap gap-2">
             
             All button 
@@ -151,6 +159,7 @@ export default function BlogIndex() {
                 index={index} 
                 // Display the first card prominently if a specific presentation is desired (e.g., featured)
                 variant={index === 0 && !selectedCategory && !searchQuery ? 'featured' : 'grid'}
+                headingTag="h2"
               />
             ))
           ) : (

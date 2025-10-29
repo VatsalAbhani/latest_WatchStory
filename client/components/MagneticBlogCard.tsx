@@ -24,12 +24,14 @@ interface MagneticBlogCardProps {
   post: BlogPost;
   index: number;
   variant?: 'grid' | 'featured';
+  headingTag?: 'h2' | 'h3';
 }
 
 export default function MagneticBlogCard({ 
   post, 
   index, 
-  variant = 'grid' 
+  variant = 'grid',
+  headingTag: HeadingTag = 'h3'
 }: MagneticBlogCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -217,7 +219,7 @@ export default function MagneticBlogCard({
         ref={contentRef}
         className="absolute bottom-0 left-0 top-44 right-0 p-6 text-white z-20"
       >
-        <h3 
+        <HeadingTag
           ref={titleRef}
           className={`
             font-title font-bold mb-2 leading-tight
@@ -228,7 +230,7 @@ export default function MagneticBlogCard({
           `}
         >
           {post.title}
-        </h3>
+        </HeadingTag>
         
         {/* <p 
           ref={excerptRef}

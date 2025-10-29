@@ -84,9 +84,9 @@ function SlideContent({ watch }: { watch: Watch }) {
                     <div className="font-sans text-gold text-lg font-semibold tracking-wide">
                       {watch.brand}
                     </div>
-                    <h2 className={`font-title text-3xl md:text-5xl leading-tight ${watch.textColor}`}>
+                    <h3 className={`font-title text-3xl md:text-5xl leading-tight ${watch.textColor}`}>
                       {watch.name}
-                    </h2>
+                    </h3>
                   </div>
 
                   <div className="flex gap-4">
@@ -245,6 +245,7 @@ if (!container || !track || slides.length === 0 || isMobile) {
  {/* Header */}
  {/* <div ref={headerRef} className="flex items-end justify-between mb-12"> */}
         <div className="flex-1">
+        <h2 className="font-title text-2xl sm:text-3xl md:text-4xl">
           <TypewriterHeading
             lines={["Featured Watches"]}
             charsPerSecond={30}
@@ -253,7 +254,7 @@ if (!container || !track || slides.length === 0 || isMobile) {
             triggerOnScroll={true}
             className="font-title text-2xl sm:text-3xl md:text-4xl"
           />
-
+        </h2>
         {/* </div> */}
 
 
@@ -314,14 +315,16 @@ if (!container || !track || slides.length === 0 || isMobile) {
       <div className="absolute top-0 left-0 right-0 z-30 p-8 md:p-12">
         <div className="flex items-start justify-between">
           <div className="max-w-md">
+          <h2 className="font-title font-bold text-4xl md:text-5xl text-white mb-4">
             <TypewriterHeading
-              lines={["Featured Stories"]}
+              lines={["Featured Watches"]}
               charsPerSecond={40}
               showDots={false}
               loop={false}
               triggerOnScroll={false}
               className="font-title font-bold text-4xl md:text-5xl text-white mb-4" // Changed text-offwhite to text-white for clarity
             />
+          </h2>
           </div>
 
           <MagneticButton

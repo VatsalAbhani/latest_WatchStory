@@ -865,7 +865,7 @@ export default function Sell() {
             "Free insured shipping",
             "Expert authentication",
             "Fair, market-based offers",
-            "Offer within 24 hours",
+            
           ]}
           cycleIntervalSec={2.5}
           perLetterDurationSec={1}
@@ -1036,9 +1036,9 @@ setLoading(true);
 
   return (
     <div className="border rounded-xl bg-card/60">
-      <div className="p-4 border-b font-sans flex items-center justify-between">
-        <div className="text-xl font-bold text-offwhite/60">Submit your watch details</div>
-      </div>
+      <h2 className="p-4 border-b font-sans text-xl font-bold text-offwhite/60">
+          Submit your watch details
+      </h2>
       <form 
       className="p-6 grid font-sans md:grid-cols-2 gap-4" 
       onSubmit={handleSubmit}

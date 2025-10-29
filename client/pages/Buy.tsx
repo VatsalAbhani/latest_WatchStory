@@ -143,7 +143,7 @@ export default function Buy() {
       />
       {/* 1. Hero/Title Section */}
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
-        <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4>
+        <p className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</p>
 
         {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
         <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">

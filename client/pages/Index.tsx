@@ -406,22 +406,26 @@ loadJournalPosts();
 
 
 
-          <h1 className="text-center font-sans text-sm sm:text-2xl lg:text-4xl  leading-tight z-30">
-          
-            More Than Time,
-          </h1>
-          <h2 className="mt-4 text-center font-sans text-xl sm:text-2xl lg:text-4xl z-30">
-            A Story on Your Wrist
-          </h2>
+          {/* <p className="text-center font-sans text-sm sm:text-2xl lg:text-4xl  leading-tight z-30">
 
-
-
-          {/* For SEO and website reach */}
-          <p className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
+        
+          <h1 className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
             Buy & Sell Authentic Luxury Watches in Dubai
             Dubai's trusted shop to Buy and Sell authenticated luxury watches.
+          </h1>
+          
+          
+            More Than Time,
           </p>
-          {/* =========================================== */}
+          <h2 className="mt-4 text-center font-sans text-xl sm:text-2xl lg:text-4xl z-30">
+            A Story on Your Wrist
+          </h2> */}
+
+          <h1 className="text-center font-sans text-sm sm:text-2xl lg:text-4xl leading-tight z-30">
+  More Than Time,<br />
+  A Story on Your Wrist
+    </h1>
+
 
 
 
@@ -522,7 +526,7 @@ loadJournalPosts();
 
      
       <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
-      <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h3>
+      <h2 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h2>
           <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted shop to Buy and Sell authenticated luxury watches.</p>
         </div>
  {/* Trust Strip 2 */}
