@@ -1,5 +1,6 @@
 // index.tsx
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async"; 
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import ProductCard from "@/components/ProductCard";
@@ -377,10 +378,34 @@ loadJournalPosts();
         {/* 3. ADD SEO COMPONENT */}
         <Seo
           title="Buy & Sell Luxury Watches in Dubai"
-          description="WatchStory is Dubai's trusted watch shop to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
+          description="Shop authenticated pre-owned Rolex, Audemars Piguet, Patek Philippe & more in Dubai. WatchStory is Dubai's trusted watch shop to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
           canonical="/"
         />
         {/* End SEO Component */}
+
+        <Helmet>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.watchstory.ae/"}
+    ]
+  })}</script>
+</Helmet>
+
+
+<Helmet>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement": FEATURED.map((w, i) => ({
+      "@type":"ListItem",
+      "position": i+1,
+      "url": `https://www.watchstory.ae/watch/${w.slug}`
+    }))
+  })}</script>
+</Helmet>
+
 
       {/* Hero */}
       <section className="relative min-h-[60vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">

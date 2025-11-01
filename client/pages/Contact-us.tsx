@@ -18,7 +18,7 @@ function ContactJsonLd() {
         "@type": "ContactPoint",
         "contactType": "sales",
         "email": "info@watchstory.ae",
-        "telephone": "+971-5450-56156",
+        "telephone": "+971-54-505-6156",
         "areaServed": "AE",
         "availableLanguage": ["en", "ar", "hi"]
       }]
@@ -103,7 +103,19 @@ export default function ContactUsPage() {
         </div>
 
         {/* Contact form */}
-        <form onSubmit={onSubmit} className="rounded-md border border-border/50 p-4">
+        <form 
+        name="contact-form"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  onSubmit={onSubmit} 
+  className="rounded-md border border-border/50 p-4"
+  >
+
+{/* --- HIDDEN FIELDS FOR NETLIFY --- */}
+<input type="hidden" name="form-name" value="contact-form" />
+        <input type="hidden" name="sell-bot-field" />
+
           <div className="grid gap-4">
             <label className="grid gap-2">
               <span className="text-sm">Name</span>

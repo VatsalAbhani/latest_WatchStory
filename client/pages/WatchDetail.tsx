@@ -114,6 +114,7 @@ const getProductSchema = (watch: Product, routePath: string) => {
         logo: `${ORIGIN}/F1.png`,
       },
     },
+    "category":"Luxury Watch"
   };
 };
 
@@ -359,8 +360,8 @@ export default function WatchDetail() {
       
       {/* 1. DYNAMIC META TAGS, TITLE, AND CANONICAL (SEO Component) */}
       <Seo
-        title={`${watch.brand} ${watch.model} | Ref: ${watch.ref} for Sale in Dubai`}
-        description={`Buy the authenticated ${watch.brand} ${watch.model}. Ref ${watch.ref}. Year ${watch.year}. Guaranteed authenticity.`}
+        title={`${watch.brand} ${watch.model} ${watch.size} | Ref: ${watch.ref} for Sale in Dubai`}
+        description={`Buy the authenticated ${watch.brand} ${watch.model}. Ref ${watch.ref}. Year ${watch.year}. Warranty included. Guaranteed authenticity.`}
         canonical={currentPath}
         ogType="product"
         ogImage={absoluteOgImage}

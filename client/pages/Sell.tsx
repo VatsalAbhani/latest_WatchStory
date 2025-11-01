@@ -841,10 +841,31 @@ export default function Sell() {
           <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(FAQ_SCHEMA)}} />
         </Helmet>
             <Seo
-        title="Sell My Watch Fast in Dubai"
-        description="Get a fair, no-obligation instant offer to sell your Rolex or luxury timepiece in Dubai. Free insured shipping and expert valuation."
+        title="Sell Your Luxury Watch in Dubai | Instant Quote & Safe Payment"
+        description="Get the best price for your Rolex, AP, Patek & more in Dubai. Same-day payment and expert valuation."
         canonical="/sell"
       />
+
+
+<Helmet>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"How do I get a valuation?",
+       "acceptedAnswer":{"@type":"Answer","text":"Share your watch details (brand, model, year, condition). We revert with a quote within hours."}},
+      {"@type":"Question","name":"How is payment made?",
+       "acceptedAnswer":{"@type":"Answer","text":"Bank transfer or cash in-person. For remote deals we use secure escrow."}},
+      {"@type":"Question","name":"Do you offer pick-up?",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes, pick-up/insured courier can be arranged within the UAE."}}
+    ]
+  })}</script>
+</Helmet>
+
+
+
+
+
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
         <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
           Sell your watch

@@ -59,6 +59,9 @@ function SlideContent({ watch }: { watch: Watch }) {
                       src={watch.imageUrl}
                       alt={`${watch.brand} ${watch.name}`}
                       className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+decoding="async"
+
                     />
 
                     {/* Minimalistic Hover Overlay */}
@@ -177,13 +180,15 @@ if (!container || !track || slides.length === 0 || isMobile) {
       scrollTrigger: {
         trigger: container,
         pin: true,
-        pinType: 'transform',
+        // pinType: 'transform',
         pinSpacing: true,
+        anticipatePin: 1,
+        fastScrollEnd: true,
         scrub: 1,
         end: `+=${distanceToScroll}`,
-        onRefreshInit: (self) => {
-          window.scrollTo(0, self.start);
-        },
+        // onRefreshInit: (self) => {
+        //   window.scrollTo(0, self.start);
+        // },
         onUpdate(self) {
           const progressBar = progressRef.current;
           if (progressBar) {
@@ -357,7 +362,7 @@ if (!container || !track || slides.length === 0 || isMobile) {
         className="watch-track flex items-center h-full w-full overflow-x-scroll md:overflow-x-visible"
         style={{
           width: 'max-content',
-          willChange: 'transform',
+          // willChange: 'transform',
           transform: 'translate3d(0, 0, 0)'
         }}
       >

@@ -10,7 +10,7 @@ function AboutJsonLd() {
     "@type": "AboutPage",
     "mainEntity": {
       "@type": "Organization",
-      "name": "WatchStory",
+      "name": "WatchStory Trading LLC",
       "url": ORIGIN,
       "logo": `${ORIGIN}/F1.png`,
       "founder": {
@@ -25,13 +25,12 @@ function AboutJsonLd() {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "email": "hello@watchstory.ae",
-        "telephone": "+971-0000-00000",
+        "email": "info@watchstory.ae",
+        "telephone": "+971-54-505-6156",
         "areaServed": "AE"
       },
-      "sameAs": [
-        // Add your official social URLs here when ready
-      ]
+        "sameAs":
+        ["https://www.instagram.com/watchstory.uae/"]
     }
   };
 
@@ -43,10 +42,10 @@ function AboutJsonLd() {
 }
 
 export default function AboutPage() {
-  const title = "About WatchStory";
+  const title = "About WatchStory | Authentic Pre-Owned Luxury Watches in Dubai";
   const description =
-    "WatchStory is a Dubai-based luxury watch house focused on authenticity, transparency, and service. More than time, a story on your wrist.";
-
+    "WatchStory is a Dubai-based luxury watch shop focused on authenticity, transparency, and service. 12-month warranty, secure transactions, and expert guidance. More than time, a story on your wrist.";
+  
   return (
     <Layout>
       <Seo

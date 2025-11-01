@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
   return (
     <Layout>
       <Seo
-        title="Privacy Policy | Data Collection and Security"
+        title="Privacy Policy | WatchStory Trading LLC"
         description="Our detailed Privacy Policy for WatchStory Trading LLC outlines how we handle, process, and protect your personal data for sales, sourcing, and authentication services in Dubai and internationally."
         canonical="/privacy-policy"
       />

@@ -137,10 +137,34 @@ export default function Buy() {
   return (
     <Layout>
             <Seo
-        title="Buy Authentic Luxury Watches"
+        title="Buy Authentic Luxury Watches in Dubai"
         description="Shop authenticated Rolex, AP, and Patek Philippe watches available for immediate sale in Dubai. Includes 12-month warranty."
         canonical="/buy"
       />
+
+
+{/* 
+<Helmet>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Buy Luxury Watches",
+    "mainEntity":{
+      "@type":"ItemList",
+      "itemListElement": products.map((p, i)=>({
+        "@type":"ListItem",
+        "position": i+1,
+        "url": `https://www.watchstory.ae/watch/${p.slug}`
+      }))
+    }
+  })}</script>
+</Helmet> */}
+
+
+
+
+
+
       {/* 1. Hero/Title Section */}
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
         <p className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</p>

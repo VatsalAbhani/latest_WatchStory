@@ -54,11 +54,14 @@ function GlobalJsonLd() {
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "WatchStory",
+    "name": "WatchStory Trading LLC",
     "url": ORIGIN,
-    "logo": `${ORIGIN}/Logo.svg`,
+    "logo": `${ORIGIN}/F1.png`,
     // add real socials when ready
-    "sameAs": []
+    "sameAs":[
+      "https://www.instagram.com/watchstory.uae/",
+      "https://www.facebook.com/watchstory"
+    ]
   };
 
   return (

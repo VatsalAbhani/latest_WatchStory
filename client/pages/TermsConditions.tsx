@@ -62,7 +62,7 @@ export default function TermsConditions() {
   return (
     <Layout>
       <Seo
-        title="Terms & Conditions | Authentication, Warranty, and Security"
+        title="Terms & Conditions | WatchStory Trading LLC"
         description="Terms and Conditions for WatchStory Trading LLC in Dubai: 100% Authenticity Guarantee, 12-Month Mechanical Warranty, secure transactions, insured shipping, and valuation policy."
         canonical="/terms-conditions"
         // If your Seo component supports ogImage/ogType, you can pass them here.

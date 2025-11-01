@@ -15,7 +15,7 @@ interface SeoProps {
 const defaultTitle = "WatchStory | Luxury Watches in Dubai";
 const defaultDescription = "Sell your luxury watch in Dubai for the best price. Trusted buyers for Rolex, Patek, AP, RM and Cartier. Get a fair quote, secure and immediate payment.";
 const ORIGIN = "https://watchstory.ae";                // <- standardized
-const defaultOgImage = `${ORIGIN}/bg_1.png`;
+const defaultOgImage = `${ORIGIN}/F1.png`;
 
 export default function Seo({ 
   title,
