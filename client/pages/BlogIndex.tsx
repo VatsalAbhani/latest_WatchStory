@@ -6,6 +6,8 @@ import { useEffect, useState, useMemo } from "react";
 import { Search } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Helmet } from "react-helmet-async";
+
 import { Article, POSTS } from "@/lib/data";
 import MagneticBlogCard from "@/components/MagneticBlogCard";
 import TypewriterHeading from "@/components/TypewriterHeading";
@@ -18,11 +20,44 @@ const ALL_CATEGORIES = [
   "Gen Z", "Vintage", "Guide"
 ];
 
+
+function BlogIndexJsonLd() {
+  const ORIGIN = "https://watchstory.ae";
+  const items = POSTS
+    .filter(p => !p.externalUrl && p.slug)
+    .map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${ORIGIN}/blog/${p.slug}`,
+      name: p.title,
+    }));
+
+  const collection = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "WatchStory Journal",
+    "url": `${ORIGIN}/blog`,
+    "isPartOf": { "@type": "WebSite", "url": ORIGIN },
+    "about": "Guides, stories and investment insights on luxury watches",
+  };
+
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": items
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(collection)}</script>
+      <script type="application/ld+json">{JSON.stringify(itemList)}</script>
+    </Helmet>
+  );
+}
+
+
 export default function BlogIndex() {
-  useEffect(() => {
-    // Set a descriptive title for the blog index page
-    document.title = "WatchStory Journal — Stories, Guides, and Provenance";
-  }, []);
+
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -56,6 +91,8 @@ export default function BlogIndex() {
     description="Explore the official WatchStory journal. Get expert insights, investment guides, and stories on luxury brands like Rolex, Patek Philippe, and more."
     canonical="/blog"
   />
+
+<BlogIndexJsonLd /> 
       
       {/* Header/Hero Section */}
       {/* <section className="ws-container pt-20 pb-4">

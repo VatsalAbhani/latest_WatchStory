@@ -18,36 +18,102 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
 
 // --- Data & Helper Functions (Kept from original file) ---
+const ORIGIN = "https://watchstory.ae";
+
+
+
+
+
+// Add this helper near the top (with imports)
+const ProductBreadcrumbJsonLd = ({ title, slug }: { title: string; slug: string }) => {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: ORIGIN },
+      { "@type": "ListItem", position: 2, name: "Buy", item: `${ORIGIN}/buy` },
+      { "@type": "ListItem", position: 3, name: title, item: `${ORIGIN}/watch/${slug}` },
+    ],
+  };
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(data)}</script>
+    </Helmet>
+  );
+};
+
+
+
+
+const availabilityMap: Record<Product["availability"], string> = {
+  in_stock: "https://schema.org/InStock",
+  reserved: "https://schema.org/LimitedAvailability",
+  sold: "https://schema.org/OutOfStock",
+};
+
+
+const conditionMap: Record<string, string> = {
+  "brand new": "https://schema.org/NewCondition",
+  "new": "https://schema.org/NewCondition",
+  "like new": "https://schema.org/LikeNewCondition",
+  "used": "https://schema.org/UsedCondition",
+  "pre-owned": "https://schema.org/UsedCondition",
+  "a": "https://schema.org/UsedCondition", // your current example
+};
+
+const absolutize = (url: string) =>
+  url.startsWith("http") ? url : `${ORIGIN}${url}`;
+
+
 
 // Find watch data (Placeholder implementation - fetches from local FEATURED array)
 const findWatchBySlug = (slug: string) => FEATURED.find((w) => w.slug === slug);
 // const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
 
 // FUNCTION: Generates dynamic Product Schema JSON-LD
-const getProductSchema = (watch: Product, url: string) => {
-  return {
+const getProductSchema = (watch: Product, routePath: string) => {
+
+  const absoluteUrl = absolutize(routePath);
+  const imagesAbs = (watch.images?.urls || []).map(absolutize);
+
+   // Try to map your textual condition to a schema.org URL; default to UsedCondition
+   const itemCondition =
+   conditionMap[(watch.condition || "").toLowerCase()] ||
+   "https://schema.org/UsedCondition";
+
+ const availability =
+   availabilityMap[watch.availability] || "https://schema.org/InStock";
+
+
+   return {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "name": `${watch.brand} ${watch.model} for Sale in Dubai`, 
-    "image": watch.images.urls,
-    "description": `Buy the authentic ${watch.brand} ${watch.model} watch in Dubai. Reference: ${watch.ref}. Year: ${watch.year}. Guaranteed authenticity and 12-month mechanical warranty.`,
-    "sku": watch.ref,
-    "brand": {
-      "@type": "Brand",
-      "name": watch.brand
-    },
-    "offers": {
+    name: `${watch.brand} ${watch.model}`,
+    description: `Buy the authentic ${watch.brand} ${watch.model} in Dubai. Reference: ${watch.ref}. Year: ${watch.year}. Guaranteed authenticity.`,
+    sku: watch.ref, // use ref as SKU (good enough if you don't have SKU/MPN/GTIN)
+    brand: { "@type": "Brand", name: watch.brand },
+    url: absoluteUrl,
+    image: imagesAbs.length ? imagesAbs : undefined,
+    material: watch.material,
+    color: watch.dialcolor,         // optional but useful
+    size: watch.size,               // optional but useful
+    itemCondition,
+    // If you later track ratings/reviews, you can add aggregateRating/review arrays here.
+    offers: {
       "@type": "Offer",
-      "url": url,
-      "priceCurrency": watch.currency,
-      "price": watch.price,
-      "itemCondition": "https://schema.org/UsedCondition",
-      "availability": "https://schema.org/InStock",
-      "seller": {
+      url: absoluteUrl,
+      priceCurrency: watch.currency,
+      price: watch.price,
+      priceValidUntil: new Date(Date.now() + 1000*60*60*24*90).toISOString().split("T")[0], // ~90 days
+      availability,
+      itemCondition,
+      seller: {
         "@type": "Organization",
-        "name": "WatchStory"
-      }
-    }
+        name: "WatchStory",
+        url: ORIGIN,
+        logo: `${ORIGIN}/F1.png`,
+      },
+    },
   };
 };
 
@@ -71,6 +137,8 @@ function ProductImageGallery({ images }: { images: string[] }) {
                   src={image}
                   alt={`View ${index + 1}`}
                   className="object-contain w-full h-full max-h-[70vh]"
+                    loading="lazy"
+                    decoding="async"
                 />
               </div>
             </CarouselItem>
@@ -269,36 +337,45 @@ export default function WatchDetail() {
     return <NotFound />;
   }
   
+
+  const currentPath = `/watch/${slug}`; // route path
+  const absoluteOgImage = watch.images?.urls?.[0]
+    ? (watch.images.urls[0].startsWith("http") ? watch.images.urls[0] : `${ORIGIN}${watch.images.urls[0]}`)
+    : `${ORIGIN}/F1.png`;
+
+  const productSchema = getProductSchema(watch, currentPath);
+
+
   // Format price for SEO description
   const priceFmt = new Intl.NumberFormat(undefined, {
     style: "currency",
     currency: watch.currency,
   });
 
-  // Generate dynamic Schema and URL for Helmet
-  const currentUrl = `/watch/${slug}`; 
-  const productSchema = getProductSchema(watch, currentUrl);
-  const jsonLd = JSON.stringify(productSchema);
+
 
   return (
     <Layout>
       
       {/* 1. DYNAMIC META TAGS, TITLE, AND CANONICAL (SEO Component) */}
-      <Seo 
-        title={`${watch.brand} ${watch.model} | Ref: ${watch.ref} for Sale in Dubai`} 
-        description={`Buy the authenticated ${watch.brand} ${watch.model} watch in Dubai. Reference: ${watch.ref}. Includes 12-month warranty. Price: ${watch.currency} ${watch.price.toLocaleString()}`}
-        canonical={currentUrl}
-        ogTitle={`${watch.brand} ${watch.model} | WatchStory Dubai`}
+      <Seo
+        title={`${watch.brand} ${watch.model} | Ref: ${watch.ref} for Sale in Dubai`}
+        description={`Buy the authenticated ${watch.brand} ${watch.model}. Ref ${watch.ref}. Year ${watch.year}. Guaranteed authenticity.`}
+        canonical={currentPath}
+        ogType="product"
+        ogImage={absoluteOgImage}
       />
 
       {/* 2. PRODUCT SCHEMA JSON-LD INJECTION */}
       <Helmet>
-        <script 
-          type="application/ld+json" 
-          dangerouslySetInnerHTML={{ __html: jsonLd }} 
-        />
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
       {/* ------------------------------------------------------------- */}
+
+      <ProductBreadcrumbJsonLd title={`${watch.brand} ${watch.model}`} slug={slug!} />
+
 
 
       {/* Main Content Grid: Image Gallery (left) and Details (right) */}

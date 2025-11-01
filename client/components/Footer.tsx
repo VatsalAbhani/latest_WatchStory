@@ -354,7 +354,7 @@ const encode = (data) => {
       <div className="ws-container py-12 relative z-10">
         
         {/* TOP ROW: LOGO, EMAIL, AND WHATSAPP BUTTON (Spans full width) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b pb-8 border-offwhite/10 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between  pb-8  mb-8">
           
           {/* 1. Logo/Branding */}
           <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
@@ -423,23 +423,23 @@ const encode = (data) => {
               <li><AnimatedTextLink to="/buy" text="Buy" /></li>
               <li><AnimatedTextLink to="/sell" text="Sell" /></li>
               <li><AnimatedTextLink to="/blog" text="Blog" /></li>
-              {/* <li><AnimatedTextLink to="/about" text="About" /></li>
-              <li><AnimatedTextLink to="/contact" text="Contact" /></li> */}
+              <li><AnimatedTextLink to="/about" text="About" /></li>
+              <li><AnimatedTextLink to="/contact" text="Contact" /></li>
             </ul>
           </div>
 
           {/* Column 2: Trust & Service */}
+          
           <div>
-            <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
-            <ul className="font-sans font-semibold space-y-2">
-              {/* UPDATED LINK DESTINATIONS FOR CONSOLIDATED PAGES */}
-              <li><AnimatedTextLink to="/terms-conditions#authentication" text="Authenticity Guarantee" /></li>
-              <li><AnimatedTextLink to="/terms-conditions#warranty" text="Mechanical Warranty" /></li>
-              {/* <li><AnimatedTextLink to="/terms-conditions#security" text="Secure Escrow Transactions" /></li> */}
-              <li><AnimatedTextLink to="/sell#valuation" text="Expert Valuation & Sourcing" /></li>
-              <li><AnimatedTextLink to="/terms-conditions#security" text="Insured Global Shipping" /></li>
-            </ul>
-          </div>
+  <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
+  <ul className="font-sans font-semibold space-y-2">
+    <li><AnimatedTextLink to="/terms-conditions#authentication" text="Authenticity Guarantee" /></li>
+    <li><AnimatedTextLink to="/terms-conditions#warranty" text="Mechanical Warranty" /></li>
+    <li><AnimatedTextLink to="/terms-conditions#valuation" text="Expert Valuation & Sourcing" /></li>
+    <li><AnimatedTextLink to="/terms-conditions#security" text="Insured Global Shipping" /></li>
+  </ul>
+</div>
+
           
           {/* Column 3 (or 3/4): Social Media Links */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
@@ -449,6 +449,7 @@ const encode = (data) => {
                 Icon={Instagram} 
                 href="https://www.instagram.com/watchstory.uae/" 
                 label="Instagram" 
+                
               />
               <SocialLink 
                 Icon={XIcon} 
@@ -469,10 +470,49 @@ const encode = (data) => {
           </div>
           
           {/* Remaining column for large screens */}
-          <div className="hidden lg:block">
-            <div className="font-sans font-extrabold text-offwhite/60 mb-3"></div>
+          <div className="col-span-2 sm:col-span-1 lg:col-span-1">
+            <div className="font-sans font-extrabold text-offwhite/60 mb-3">Contact Us</div>
+                    {/* Email + Location */}
+  <div className="space-y-2 font-sans font-semibold">
+
+
+
+
+  <a
+      href="https://www.google.com/maps?q=The+Bureau+Business+Center+-+Opera+Grand+Opera+Grand,+The+Residences+-+Emaar+Blvd+-+Downtown+Dubai+-+Burj+Residence+Phase+I+%26+II+-+Dubai"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open WatchStory location in Google Maps"
+      className="block  hover:text-primary transition-colors leading-snug"
+    >
+      The Bureau Business Center — Opera Grand<br />
+      The Residences, Emaar Blvd, Downtown Dubai<br />
+      Burj Residence Phase I &amp; II — Dubai
+    </a>
+    <a
+      href="mailto:info@watchstory.ae"
+      aria-label="Email WatchStory"
+      className="block  hover:text-primary transition-colors"
+    >
+      info@watchstory.ae
+    </a>
+
+
+             
+              
+            </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+        
       </div>
 
       {/* === NEW LEGAL LINKS SECTION === */}

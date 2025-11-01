@@ -198,78 +198,134 @@ export type Article = {
 };
 
 export const POSTS: Article[] = [
- // --- NEW: External Blog Post Entry ---
- {
-  id: "a1",
-  title: "Financial Times: Gen Z fuels fast-growing second-hand watch market",
-  brandTags: ["Gen Z"],
-  heroImage: "/blog-imgs/blog-a1.avif", // Use a generic image for now
-  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
-  slug: "", // Leave blank or remove as it won't use a local route
-  publishedAt: "Nov 14 2024",
-  author: "Robin Swithinbank",
-  readingTime: "5 Min Read",
-  externalUrl: "https://www.ft.com/content/a831b315-886f-4b59-91a5-96fe352289ad",
-},
-
-// --- NEW: External Blog Post Entry ---
-{
-  id: "a2",
-  title: "How To Deal With Vintage Watch Dealers: Five Tips",
-  brandTags: ["Vintage", "Guide"],
-  heroImage: "/blog-imgs/blog-a2.jpg", // Use a generic image for now
-  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
-  slug: "", // Leave blank or remove as it won't use a local route
-  publishedAt: "2024-10-16",
-  author: "Fratello Watches",
-  readingTime: "7 min read",
-  externalUrl: "https://www.fratellowatches.com/how-to-deal-with-vintage-watch-dealers-five-tips-from-a-former-dealer-himself/",
-},
 
 
 
-// --- NEW: External Blog Post Entry ---
-{
-  id: "a3",
-  title: "The Story of The Audemars Piguet Star Wheel",
-  brandTags: ["AP", "Story"],
-  heroImage: "/blog-imgs/blog-a3.webp", // Use a generic image for now
-  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
-  slug: "", // Leave blank or remove as it won't use a local route
-  publishedAt: "May 2022",
-  author: "Raj Chaudhuri",
-  readingTime: "26 Min Read",
-  externalUrl: "https://www.acollectedman.com/blogs/journal/story-of-the-audemars-piguet-star-wheel",
-},
+  // add to POSTS array (top of the list if you want it featured)
+  {
+    id: "ws-001",
+    title: "A Guide: 5 Ways to Spot a 'Fake' Rolex in Dubai",
+    brandTags: ["Rolex", "Authentication", "Guide"],
+    heroImage: "/blog-imgs/blog-1.webp", // optional: or keep external URL
+    excerpt:
+      "Five essential checks that separate genuine Rolex watches from counterfeits in Dubai's fast-moving market.",
+    slug: "fake-rolex-dubai",              // IMPORTANT: must match the route slug above
+    publishedAt: "Oct 30 2025",
+    author: "WatchStory Editorial",
+    readingTime: "8 min read",
+  },
+
+  {
+    id: "ws-002",
+    title: "The 5 Factors That Can Devalue a Pre-Owned Watch and How to Avoid Them",
+    brandTags: ["Guide"],
+    heroImage: "/blog-imgs/blog-2.webp", // or leave blank if you do not want a card image
+    excerpt: "Five common reasons pre-owned watches lose value and how to protect price, authenticity, and desirability.",
+    slug: "devalue-preowned-watch",
+    publishedAt: "Nov 1 2025",
+    author: "WatchStory Editorial",
+    readingTime: "6 min read",
+  },
+  
+  {
+    id: "ws-003",
+    title: "From Wrist to Wealth: Why Luxury Watches Are the Smartest Investment You Can Wear",
+    brandTags: ["Guide", "Investment"],
+    heroImage: "/blog-imgs/blog-3.webp", // optional card image
+    excerpt: "Why modern collectors treat timepieces as an investable asset and how to start with confidence.",
+    slug: "wrist-to-wealth",
+    publishedAt: "Nov 1 2025",
+    author: "WatchStory Editorial",
+    readingTime: "7 min read",
+  },
+  
 
 
-// --- NEW: External Blog Post Entry ---
-{
-  id: "a4",
-  title: "Collectability: Five Patek Philippe Watches for Under $5,000",
-  brandTags: ["Patek Philippe"],
-  heroImage: "/blog-imgs/blog-a4.jpg", // Use a generic image for now
-  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
-  slug: "", // Leave blank or remove as it won't use a local route
-  publishedAt: "May 2022",
-  author: "Collectability",
-  readingTime: "5:58 Min Video",
-  externalUrl: "https://www.youtube.com/watch?v=odHOm869EwQ",
-},
 
-// --- NEW: External Blog Post Entry ---
-{
-  id: "a5",
-  title: "Hodinkee: How the multi-million dollar sale of a single watch is helping save the planet.",
-  brandTags: ["Patek Philippe"],
-  heroImage: "/blog-imgs/blog-a5.avif", // Use a generic image for now
-  excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
-  slug: "", // Leave blank or remove as it won't use a local route
-  publishedAt: "May 2022",
-  author: "Logan Baker",
-  readingTime: "10 Min Read",
-  externalUrl: "https://www.hodinkee.com/articles/tiffany-blue-patek-philippe-nautilus-5711-phillips-zach-nature-conservancy",
-},
+
+
+
+
+
+
+
+
+
+
+
+
+  // --- NEW: External Blog Post Entry ---
+  {
+    id: "a1",
+    title: "Financial Times: Gen Z fuels fast-growing second-hand watch market",
+    brandTags: ["Gen Z"],
+    heroImage: "/blog-imgs/blog-a1.avif", // Use a generic image for now
+    excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+    slug: "", // Leave blank or remove as it won't use a local route
+    publishedAt: "Nov 14 2024",
+    author: "Robin Swithinbank",
+    readingTime: "5 Min Read",
+    externalUrl: "https://www.ft.com/content/a831b315-886f-4b59-91a5-96fe352289ad",
+  },
+
+  // --- NEW: External Blog Post Entry ---
+  {
+    id: "a2",
+    title: "How To Deal With Vintage Watch Dealers: Five Tips",
+    brandTags: ["Vintage", "Guide"],
+    heroImage: "/blog-imgs/blog-a2.jpg", // Use a generic image for now
+    excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+    slug: "", // Leave blank or remove as it won't use a local route
+    publishedAt: "2024-10-16",
+    author: "Fratello Watches",
+    readingTime: "7 min read",
+    externalUrl: "https://www.fratellowatches.com/how-to-deal-with-vintage-watch-dealers-five-tips-from-a-former-dealer-himself/",
+  },
+
+
+
+  // --- NEW: External Blog Post Entry ---
+  {
+    id: "a3",
+    title: "The Story of The Audemars Piguet Star Wheel",
+    brandTags: ["AP", "Story"],
+    heroImage: "/blog-imgs/blog-a3.webp", // Use a generic image for now
+    excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+    slug: "", // Leave blank or remove as it won't use a local route
+    publishedAt: "May 2022",
+    author: "Raj Chaudhuri",
+    readingTime: "26 Min Read",
+    externalUrl: "https://www.acollectedman.com/blogs/journal/story-of-the-audemars-piguet-star-wheel",
+  },
+
+
+  // --- NEW: External Blog Post Entry ---
+  {
+    id: "a4",
+    title: "Collectability: Five Patek Philippe Watches for Under $5,000",
+    brandTags: ["Patek Philippe"],
+    heroImage: "/blog-imgs/blog-a4.jpg", // Use a generic image for now
+    excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+    slug: "", // Leave blank or remove as it won't use a local route
+    publishedAt: "May 2022",
+    author: "Collectability",
+    readingTime: "5:58 Min Video",
+    externalUrl: "https://www.youtube.com/watch?v=odHOm869EwQ",
+  },
+
+  // --- NEW: External Blog Post Entry ---
+  {
+    id: "a5",
+    title: "Hodinkee: How the multi-million dollar sale of a single watch is helping save the planet.",
+    brandTags: ["Patek Philippe"],
+    heroImage: "/blog-imgs/blog-a5.avif", // Use a generic image for now
+    excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
+    slug: "", // Leave blank or remove as it won't use a local route
+    publishedAt: "May 2022",
+    author: "Logan Baker",
+    readingTime: "10 Min Read",
+    externalUrl: "https://www.hodinkee.com/articles/tiffany-blue-patek-philippe-nautilus-5711-phillips-zach-nature-conservancy",
+  },
 
 
 
@@ -284,7 +340,7 @@ export const POSTS: Article[] = [
     author: "PrestigeTime", // Add data here
     readingTime: "10 min read", // Add data here
     externalUrl: "https://www.prestigetime.com/blog/must-know-luxury-watch-brands.html",
-    
+
   },
   {
     id: "a7",
@@ -297,7 +353,7 @@ export const POSTS: Article[] = [
     author: "Rolex Team",
     readingTime: "15 min read",
     externalUrl: "https://www.rolex.com/ar/watchmaking/excellence-in-the-making",
-    
+
   },
   {
     id: "a8",
@@ -310,7 +366,7 @@ export const POSTS: Article[] = [
     author: "Audemars Piguet Team",
     readingTime: "10 min read",
     externalUrl: "https://www.audemarspiguet.com/com/en/news/savoir-faire/aptalks-the-royal-oak-rd5.html",
-    
+
   },
   {
     id: "a9",
@@ -323,12 +379,12 @@ export const POSTS: Article[] = [
     author: "Patek Philippe Team",
     readingTime: "15 min read",
     externalUrl: "https://www.patek.com/en/service/taking-care-of-your-watch/watch-care-recommendations",
-    
+
   },
 
-  
 
- 
+
+
 ];
 
 // --- NEW FUNCTION: Simulates an API call to fetch latest posts ---

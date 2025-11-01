@@ -1,5 +1,6 @@
 import "./global.css";
 import { HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -12,11 +13,12 @@ import Sell from "./pages/Sell";
 import Buy from "./pages/Buy";
 import BlogIndex from "./pages/BlogIndex";
 // import BlogArticle from "./pages/BlogArticle";
+import BlogArticle from "./pages/BlogArticle";
 import WatchDetail from "./pages/WatchDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact-us";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import { StoryProvider } from "@/state/story";
@@ -31,7 +33,43 @@ import IntroSplash from "@/components/IntroSplash";
 
 // import DriftingWatches from '@/components/DriftingWatches';
 
-//
+const ORIGIN = "https://watchstory.ae";
+
+
+
+function GlobalJsonLd() {
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": ORIGIN,
+    "name": "WatchStory",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${ORIGIN}/buy?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "WatchStory",
+    "url": ORIGIN,
+    "logo": `${ORIGIN}/Logo.svg`,
+    // add real socials when ready
+    "sameAs": []
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(website)}</script>
+      <script type="application/ld+json">{JSON.stringify(organization)}</script>
+    </Helmet>
+  );
+}
+
+
 
 const queryClient = new QueryClient();
 
@@ -56,6 +94,7 @@ const App = () => {
           <CartProvider>
             <StoryProvider>
             <HelmetProvider>
+            <GlobalJsonLd /> 
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/sell" element={<Sell />} />
@@ -70,6 +109,15 @@ const App = () => {
 
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-conditions" element={<TermsConditions />} />
+
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+
+
+
+                
+                {/* <Route path="/blog" element={<BlogIndex />} /> */}
+                <Route path="/blog/:slug" element={<BlogArticle />} />
 
                 {/* Drifting Watches */}
                 {/* <Route path="/drifting-watches" element={<DriftingWatches />} /> */}

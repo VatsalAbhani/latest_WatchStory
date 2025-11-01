@@ -1,35 +1,106 @@
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
-import React from 'react';
+import React from "react";
+import { Helmet } from "react-helmet-async";
+
+
 
 export default function TermsConditions() {
+
+  const LAST_UPDATED = "2025-10-30"; // ISO date for SEO; update when you edit
+
+    // JSON-LD: Breadcrumb + FAQ (targets rich results)
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://watchstory.ae" },
+        { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: "https://watchstory.ae/terms-conditions" }
+      ]
+    };
+
+    const faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          "name": "How does WatchStory guarantee authenticity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every timepiece is verified through a multi-point inspection by certified, Swiss-trained watchmakers. We cross-check provenance and documentation. If any watch sold by WatchStory is ever proven non-genuine, we provide a full refund plus an additional 10%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the 12-Month Mechanical Warranty cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The warranty covers internal movement defects from the date of purchase. It excludes damage from misuse, accidental impact, water ingress due to negligence, or normal cosmetic wear such as straps, crystals, and bezels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are transactions and shipping secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High-value payments are protected via a secure holding process until buyers verify the watch. All shipments are fully insured at market value using trusted, trackable couriers. We manage logistics and provide prepaid labels for sellers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does valuation work when selling a watch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sellers must confirm legal ownership and accurate descriptions. Our specialists assess model, reference, condition, inclusions, and market data to provide a fair valuation."
+          }
+        }
+      ]
+    };
+
+
   return (
     <Layout>
       <Seo
         title="Terms & Conditions | Authentication, Warranty, and Security"
-        description="The full Terms and Conditions for WatchStory Trading LLC in Dubai, covering our 100% Authenticity Guarantee, 12-Month Mechanical Warranty, secure transactions, and shipping."
+        description="Terms and Conditions for WatchStory Trading LLC in Dubai: 100% Authenticity Guarantee, 12-Month Mechanical Warranty, secure transactions, insured shipping, and valuation policy."
         canonical="/terms-conditions"
+        // If your Seo component supports ogImage/ogType, you can pass them here.
       />
-      <div className="ws-container pt-16 pb-24 max-w-4xl mx-auto">
-        <h1 className="font-title text-5xl mb-4 text-gold">Terms & Conditions</h1>
-        {/* <p className="text-offwhite/70 text-sm mb-12">
-          Last Updated: October 24, {new Date().getFullYear()}
-        </p> */}
+
+            {/* Structured data for rich results */}
+            <Helmet>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      </Helmet>
+
+
+<div className="ws-container pt-16 pb-24 max-w-4xl mx-auto">
+        <h1 className="font-title text-5xl mb-2 text-gold">Terms &amp; Conditions</h1>
+
+        {/* Visible + machine-readable last-updated */}
+        <p className="text-offwhite/60 text-sm mb-12">
+          Last Updated:{" "}
+          <time dateTime={LAST_UPDATED}>
+            {new Date(LAST_UPDATED).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}
+          </time>
+        </p>
+
 
         <section className="space-y-8 text-offwhite/80">
           <p>
-            Welcome to **WatchStory Trading LLC** ("WatchStory", "we", "us"). These Terms and Conditions govern your use of the Site and the sale and purchase of all luxury watches and related services. By accessing or using the Site, you agree to be bound by these Terms.
+            Welcome to <strong>WatchStory Trading LLC</strong> (“WatchStory”, “we”, “us”). These Terms and Conditions govern your use of the Site and the sale and purchase of all luxury watches and related services. By accessing or using the Site, you agree to be bound by these Terms.
           </p>
           
-          {/* --- Section 1: Core Terms --- */}
+          {/* 1. Core Terms */}
           <div>
             <h2 className="font-title text-3xl mb-3 text-offwhite">1. Basis of Sale and Purchase</h2>
             <p>
-              **1.1 Purchase:** All orders placed through the Site are subject to availability and acceptance by WatchStory. Full payment, including shipping and taxes, is required at the time of order confirmation. We reserve the right to correct any errors and cancel transactions based on misrepresentation or clear pricing error.
+              <strong>1.1 Purchase:</strong> All orders placed through the Site are subject to availability and acceptance by WatchStory. Full payment, including shipping and taxes, is required at the time of order confirmation. We reserve the right to correct any errors and cancel transactions based on misrepresentation or clear pricing error.
             </p>
           </div>
 
-          {/* --- Section 2: 100% Authenticity Guarantee (Footer Link Target) --- */}
+          {/* 2. Authenticity */}
           <div>
             <h2 id="authentication" className="font-title text-3xl mb-3 text-offwhite">
               2. 100% Authenticity Guarantee
@@ -38,54 +109,56 @@ export default function TermsConditions() {
               Your Peace of Mind is Our Priority: The WatchStory Authentication Process
             </p>
             <p>
-              In the market for pre-owned luxury watches in Dubai, trust is paramount. At WatchStory, our commitment to authenticity is absolute. **We guarantee that every timepiece we offer is 100% genuine.** Our rigorous, multi-point inspection is carried out by certified, Swiss-trained watchmakers.
+              In the market for pre-owned luxury watches in Dubai, trust is paramount. At WatchStory, our commitment to authenticity is absolute. <strong>We guarantee that every timepiece we offer is 100% genuine.</strong> Our rigorous, multi-point inspection is carried out by certified, Swiss-trained watchmakers.
             </p>
             <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
-              <li>**Multi-Point Inspection:** Includes microscopic evaluation, movement verification, and material integrity checks.</li>
-              <li>**Provenance Check:** All available documentation (Box and Papers) is cross-referenced against global databases.</li>
-              <li>**Anti-Counterfeit Pledge:** If any watch purchased from WatchStory is ever proven to be non-genuine, we offer a **full refund plus an additional 10%** of your purchase price.</li>
+              <li><strong>Multi-Point Inspection:</strong> Includes microscopic evaluation, movement verification, and material integrity checks.</li>
+              <li><strong>Provenance Check:</strong> All available documentation (box and papers) is cross-referenced against global databases.</li>
+              <li><strong>Anti-Counterfeit Pledge:</strong> If any watch purchased from WatchStory is ever proven to be non-genuine, we offer a <strong>full refund plus an additional 10%</strong> of your purchase price.</li>
             </ul>
           </div>
 
-          {/* --- Section 3: Mechanical Warranty (Footer Link Target) --- */}
+          {/* 3. Warranty */}
           <div>
             <h2 id="warranty" className="font-title text-3xl mb-3 text-offwhite">
               3. 12-Month Mechanical Warranty
             </h2>
             <p>
-              Every pre-owned luxury watch purchased from WatchStory is covered by our comprehensive **12-Month Mechanical Warranty**, valid from the date of purchase. This secures your investment and is serviced by our authorized watchmakers in the UAE.
+              Every pre-owned luxury watch purchased from WatchStory is covered by our comprehensive <strong>12-Month Mechanical Warranty</strong>, valid from the date of purchase. This secures your investment and is serviced by our authorized watchmakers in the UAE.
             </p>
             <p className="mt-3">
-              **3.1 Coverage:** The warranty covers internal defects of the watch movement only. It explicitly excludes damage from misuse, accidental impact, water damage due to negligence, or cosmetic wear (straps, crystals, bezels).
+              <strong>3.1 Coverage:</strong> The warranty covers internal defects of the watch movement only. It explicitly excludes damage from misuse, accidental impact, water damage due to negligence, or cosmetic wear (straps, crystals, bezels).
             </p>
           </div>
 
-          {/* --- Section 4: Transaction Security (Footer Link Target) --- */}
+          {/* 4. Security + Shipping */}
           <div>
             <h2 id="security" className="font-title text-3xl mb-3 text-offwhite">
-              4. Secure Transactions & Insured Shipping
+              4. Secure Transactions &amp; Insured Shipping
             </h2>
             <p>
-              **Secure Escrow Transactions:** To protect high-value payments, WatchStory utilizes a secure, designated holding process. Funds are secured until the buyer receives and verifies the watch's condition, ensuring **zero risk of chargebacks or fraud** for both buyers and sellers.
+              <strong>Secure Holding Process:</strong> To protect high-value payments, WatchStory utilizes a secure, designated holding process. Funds are secured until the buyer receives and verifies the watch’s condition, helping prevent chargebacks and fraud for both buyers and sellers.
             </p>
             <p className="mt-3">
-              **Insured Global Shipping:** All shipments are **fully insured** for the full market value of the timepiece, using trusted, secure, and trackable courier services. We manage all logistics and provide prepaid shipping labels for sellers globally.
+              <strong>Insured Global Shipping:</strong> All shipments are <strong>fully insured</strong> for the full market value of the timepiece, using trusted, secure, and trackable courier services. We manage logistics and provide prepaid shipping labels for sellers globally.
             </p>
           </div>
 
-          {/* --- Section 5: Selling Your Watch --- */}
+          {/* 5. Valuation */}
           <div>
-            <h2 className="font-title text-3xl mb-3 text-offwhite">5. Selling Your Watch (Valuation)</h2>
+            <h2 id="valuation" className="font-title text-3xl mb-3 text-offwhite">
+              5. Selling Your Watch (Valuation)
+            </h2>
             <p>
-              When submitting a watch for sale, you guarantee legal ownership and accurate representation. Our expert valuation process is detailed on the <a href="/sell#valuation" className="text-gold hover:underline">Expert Valuation & Sourcing</a> section of our Sell page.
+              When submitting a watch for sale, you guarantee legal ownership and accurate representation. Our specialists evaluate model and reference, condition, inclusions (box and card), market demand, and comparable sales to determine a fair offer aligned with current Dubai market conditions.
             </p>
           </div>
 
-          {/* --- Section 6: Governing Law --- */}
+          {/* 6. Law */}
           <div>
             <h2 className="font-title text-3xl mb-3 text-offwhite">6. Governing Law</h2>
             <p>
-              These Terms shall be governed by the laws of the **Dubai International Financial Centre (DIFC)** and the **United Arab Emirates (UAE)**. Any dispute will be subject to the exclusive jurisdiction of the courts of Dubai.
+              These Terms shall be governed by the laws of the <strong>Dubai International Financial Centre (DIFC)</strong> and the <strong>United Arab Emirates (UAE)</strong>. Any dispute will be subject to the exclusive jurisdiction of the courts of Dubai.
             </p>
           </div>
         </section>
