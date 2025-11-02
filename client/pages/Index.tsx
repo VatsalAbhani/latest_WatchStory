@@ -511,9 +511,9 @@ loadJournalPosts();
             <MagneticButton
               href="/sell"
               variant="primary"
-              className="group flex-grow sm:flex-grow-0" // Add flex-grow to make buttons fill space on small screens
+              className="group  flex-grow sm:flex-grow-0" // Add flex-grow to make buttons fill space on small screens
             >
-              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
+              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2">
                 Sell a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
@@ -531,7 +531,7 @@ loadJournalPosts();
               variant="secondary"
               className="group flex-grow sm:flex-grow-0" // Add flex-grow here too
             >
-              <span className="font-sans font-extrabold flex items-center gap-2 pr-2">
+              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2">
                 Buy a Watch
                 <svg
                   className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
