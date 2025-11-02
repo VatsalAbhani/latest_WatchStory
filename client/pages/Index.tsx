@@ -504,7 +504,7 @@ loadJournalPosts();
       </section>
 
       {/* --- START NEW BUTTON SECTION --- */}
-      <div className="ws-container -mt-18 sm:-mt-56 mb-16 relative z-30 flex justify-center">
+      <div className="ws-container -mt-20 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
           <div className="flex flex-row gap-4 justify-center items-center">
