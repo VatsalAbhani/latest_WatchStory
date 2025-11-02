@@ -74,7 +74,8 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
           <img
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
-            className="w-full h-full mt-16 sm:mt-0 object-contain sm:object-cover object-center inset-0 -z-30"
+            // object-contain sm:object-cover object-center
+            className="w-full h-full mt-16 sm:mt-0 object-cover object-center inset-0 -z-30"
             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
           />
         </div>
@@ -408,7 +409,7 @@ loadJournalPosts();
 
 
       {/* Hero */}
-      <section className="relative min-h-[60vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
+      <section className="relative min-h-[80vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
 
         {/*  */}
         {/* The DriftingWatches component is added here as a subtle background */}
