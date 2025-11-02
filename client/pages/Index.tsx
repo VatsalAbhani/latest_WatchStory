@@ -38,9 +38,9 @@ const DESKTOP_IMAGES = [
 ];
 
 const MOBILE_IMAGES = [
-  '/g-1.png', // New mobile-optimized image 1
-  '/g-2.png', // New mobile-optimized image 2
-  '/g-3.png', // New mobile-optimized image 3
+  '/bg-mobile-1.png', // New mobile-optimized image 1
+  '/bg-mobile-2.png', // New mobile-optimized image 2
+  '/bg-mobile-3.png', // New mobile-optimized image 3
 ];
 
 // 2. SIMPLE BACKGROUND CAROUSEL COMPONENT

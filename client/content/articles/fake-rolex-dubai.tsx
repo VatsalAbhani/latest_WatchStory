@@ -212,7 +212,7 @@ const article: ArticleFull = {
         "Learn how to identify a counterfeit Rolex in Dubai with expert insights from the city's luxury watch market. Five essential methods to ensure authenticity and protect your next investment.",
     heroImage:
         "https://images.watchfinder.co.uk/images/watchfinderimages/media/articles/1-2021-03-29-01-57-44-617.jpg",
-    author: "Raj Abhani",
+    author: "WatchStory Editorial",
     publishedAtISO: "2025-10-30",
     readingTime: "8 min read",
     keywords: [
