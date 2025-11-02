@@ -409,7 +409,7 @@ loadJournalPosts();
 
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
+      <section className="relative min-h-[70vh] md:min-h-[92vh] flex items-center overflow-hidden hero-section">
 
         {/*  */}
         {/* The DriftingWatches component is added here as a subtle background */}
