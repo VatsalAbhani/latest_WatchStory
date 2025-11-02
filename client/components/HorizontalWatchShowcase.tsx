@@ -177,18 +177,23 @@ if (!container || !track || slides.length === 0 || isMobile) {
     const tween = gsap.to(track, {
       x: -distanceToScroll,
       ease: 'none',
+      force3D: true,
       scrollTrigger: {
         trigger: container,
         pin: true,
-        // pinType: 'transform',
+        pinType: 'transform',
         pinSpacing: true,
         anticipatePin: 1,
         fastScrollEnd: true,
         scrub: 1,
         end: `+=${distanceToScroll}`,
-        // onRefreshInit: (self) => {
-        //   window.scrollTo(0, self.start);
-        // },
+        // Add these lines:
+        pinReparent: true, // Forces re-insertion to fix potential Safari bugs
+   
+    // ----------------------------------------------
+        onRefreshInit: (self) => {
+          window.scrollTo(0, self.start);
+        },
         onUpdate(self) {
           const progressBar = progressRef.current;
           if (progressBar) {
@@ -224,6 +229,7 @@ if (!container || !track || slides.length === 0 || isMobile) {
           duration: 1.5,
           ease: 'elastic.out(1,0.4)',
           stagger: 0.1,
+          force3D: true,
         })
       });
       slideTriggers.push(st); // <-- CAPTURE IT
@@ -362,7 +368,7 @@ if (!container || !track || slides.length === 0 || isMobile) {
         className="watch-track flex items-center h-full w-full overflow-x-scroll md:overflow-x-visible"
         style={{
           width: 'max-content',
-          // willChange: 'transform',
+          willChange: 'transform',
           transform: 'translate3d(0, 0, 0)'
         }}
       >
