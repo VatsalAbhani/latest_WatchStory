@@ -486,8 +486,7 @@ const encode = (data) => {
       className="block  hover:text-primary transition-colors leading-snug"
     >
       The Bureau Business Center — Opera Grand<br />
-      The Residences, Emaar Blvd, Downtown Dubai<br />
-      Burj Residence Phase I &amp; II — Dubai
+      Downtown Dubai<br />
     </a>
     <a
       href="mailto:info@watchstory.ae"

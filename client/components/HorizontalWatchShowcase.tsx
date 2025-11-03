@@ -484,9 +484,7 @@
 
 
 // client/components/HorizontalWatchShowcase.tsx
-import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
-// Removed: gsap and ScrollTrigger imports
-import { Link } from 'react-router-dom';
+import React from 'react';
 import TypewriterHeading from './TypewriterHeading';
 import MagneticButton from './MagneticButton';
 import { 
@@ -529,7 +527,7 @@ function SlideContent({ watch }: { watch: Watch }) {
               <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center pt-16 pb-20">
 
                 {/* Image Section */}
-                <div className="relative border border-white/10 rounded-2xl">
+                <div className="relative border border-white/10 rounded-2xl group">
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
                       src={watch.imageUrl}
@@ -602,19 +600,19 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
   return (
     <section 
       // Changed base class from min-h-screen bg-white to use ws-container for standard padding
-      className="ws-container relative py-20 md:py-32 overflow-hidden bg-transparent" 
+      className="ws-container relative py-28 md:py-32 overflow-hidden bg-transparent" 
     >
 
       {/* Header and Controls (Unified for all screens) */}
       <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
         <div className="max-w-md">
-          <h2 className="font-title font-bold text-3xl md:text-5xl text-white">
+          <h2 className="font-title font-bold text-3xl md:text-5xl text-white relative z-10">
             <TypewriterHeading
               lines={["Featured Watches"]}
               charsPerSecond={40}
               showDots={false}
               loop={false}
-              triggerOnScroll={true} // Re-enabled for scroll effect if placed far down the page
+              triggerOnScroll={false} // Re-enabled for scroll effect if placed far down the page
               className="font-title font-bold text-3xl md:text-5xl text-white"
             />
           </h2>
