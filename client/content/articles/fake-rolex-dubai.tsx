@@ -213,7 +213,7 @@ const article: ArticleFull = {
     heroImage:
         "https://images.watchfinder.co.uk/images/watchfinderimages/media/articles/1-2021-03-29-01-57-44-617.jpg",
     author: "WatchStory Editorial",
-    publishedAtISO: "2025-10-30",
+    publishedAtISO: "2025-10-20",
     readingTime: "8 min read",
     keywords: [
         "Rolex Dubai",

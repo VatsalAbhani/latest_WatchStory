@@ -234,7 +234,7 @@ const article: ArticleFull = {
   description:
     "Five common reasons a pre-owned watch loses value and practical steps to protect authenticity, condition, and resale price.",
   author: "WatchStory Editorial",
-  publishedAtISO: "2025-11-01",
+  publishedAtISO: "2025-10-25",
   heroImage: undefined, // keep undefined so BlogArticle won't render a hero image at the top
   keywords: [
     "pre owned watch value",

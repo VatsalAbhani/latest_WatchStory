@@ -210,7 +210,7 @@ export const POSTS: Article[] = [
     excerpt:
       "Five essential checks that separate genuine Rolex watches from counterfeits in Dubai's fast-moving market.",
     slug: "fake-rolex-dubai",              // IMPORTANT: must match the route slug above
-    publishedAt: "Oct 30 2025",
+    publishedAt: "Oct 20 2025",
     author: "WatchStory Editorial",
     readingTime: "8 min read",
   },
@@ -222,7 +222,7 @@ export const POSTS: Article[] = [
     heroImage: "/blog-imgs/blog-2.webp", // or leave blank if you do not want a card image
     excerpt: "Five common reasons pre-owned watches lose value and how to protect price, authenticity, and desirability.",
     slug: "devalue-preowned-watch",
-    publishedAt: "Nov 1 2025",
+    publishedAt: "Oct 25 2025",
     author: "WatchStory Editorial",
     readingTime: "6 min read",
   },
