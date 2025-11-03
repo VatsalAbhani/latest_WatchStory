@@ -528,6 +528,7 @@ function SlideContent({ watch }: { watch: Watch }) {
 
                 {/* Image Section */}
                 <div className="relative border border-white/10 rounded-2xl group">
+                
                   <div className="watch-image relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-offwhite/10 to-transparent backdrop-blur-sm border border-offwhite/10">
                     <img
                       src={watch.imageUrl}
