@@ -28,7 +28,7 @@ export default function TermsConditions() {
           "name": "How does WatchStory guarantee authenticity?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every timepiece is verified through a multi-point inspection by certified, Swiss-trained watchmakers. We cross-check provenance and documentation. If any watch sold by WatchStory is ever proven non-genuine, we provide a full refund plus an additional 10%."
+            "text": "Every timepiece is verified through a multi-point inspection by certified, Swiss-trained watchmakers. We cross-check provenance and documentation. If any watch sold by WatchStory is ever proven non-genuine, we provide a full refund."
           }
         },
         {
@@ -114,7 +114,7 @@ export default function TermsConditions() {
             <ul className="list-disc list-inside ml-4 mt-3 space-y-2">
               <li><strong>Multi-Point Inspection:</strong> Includes microscopic evaluation, movement verification, and material integrity checks.</li>
               <li><strong>Provenance Check:</strong> All available documentation (box and papers) is cross-referenced against global databases.</li>
-              <li><strong>Anti-Counterfeit Pledge:</strong> If any watch purchased from WatchStory is ever proven to be non-genuine, we offer a <strong>full refund plus an additional 10%</strong> of your purchase price.</li>
+              <li><strong>Anti-Counterfeit Pledge:</strong> If any watch purchased from WatchStory is ever proven to be non-genuine, we offer a <strong>full refund. </strong></li>
             </ul>
           </div>
 
