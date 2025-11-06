@@ -193,7 +193,7 @@ export default function Buy() {
       
       {/* Emphasize the WhatsApp Call to Action */}
       <p className="font-sans text-xl !text-yellow-900 font-semibold max-w-4xl mx-auto mb-8">
-        Meanwhile, if you have a specific **Rolex, AP, RM, Cartier or Patek Philippe** model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
+        Meanwhile, if you have a specific <strong>Rolex, AP, RM, Cartier or Patek Philippe</strong> model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
       </p>
       
       {/* You should replace #LINK_TO_WHATSAPP with your actual WhatsApp link */}
