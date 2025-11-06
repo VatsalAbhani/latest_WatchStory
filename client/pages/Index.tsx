@@ -76,7 +76,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
             // object-contain sm:object-cover object-center
-            className="w-full h-full mt-16 sm:mt-0 object-cover object-center inset-0 -z-30"
+            className="w-full h-full mt-12 sm:mt-0 object-cover object-center inset-0 -z-30"
             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
           />
         </div>
@@ -428,7 +428,7 @@ loadJournalPosts();
 
 
 
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-68">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-56">
           
 
 
@@ -448,7 +448,7 @@ loadJournalPosts();
             A Story on Your Wrist
           </h2> */}
 
-          <h1 className="text-center font-sans text-2xl sm:text-2xl lg:text-4xl leading-tight z-30">
+          <h1 className="text-center font-sans text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-40">
   More Than Time,<br />
   A Story on Your Wrist
     </h1>
