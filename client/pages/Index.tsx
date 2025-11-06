@@ -428,7 +428,7 @@ loadJournalPosts();
 
 
 
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-56">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-68">
           
 
 
