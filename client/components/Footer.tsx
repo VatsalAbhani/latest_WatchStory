@@ -460,7 +460,7 @@ const encode = (data) => {
               />
               <SocialLink 
                 Icon={Linkedin} 
-                href="https://www.linkedin.com/company/watchstory" 
+                href="https://www.linkedin.com/company/watchstoryuae/" 
                 label="LinkedIn" 
               />
               <SocialLink 

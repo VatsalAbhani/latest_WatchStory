@@ -60,7 +60,8 @@ function GlobalJsonLd() {
     // add real socials when ready
     "sameAs":[
       "https://www.instagram.com/watchstory.uae/",
-      "https://www.facebook.com/watchstory"
+      "https://www.facebook.com/watchstory",
+      "https://www.linkedin.com/company/watchstoryuae/"
     ]
   };
 

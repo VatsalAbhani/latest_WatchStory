@@ -29,9 +29,15 @@ function AboutJsonLd() {
         "telephone": "+971-54-505-6156",
         "areaServed": "AE"
       },
-        "sameAs":
-        ["https://www.instagram.com/watchstory.uae/"]
+
+
+        "sameAs": [
+          "https://www.instagram.com/watchstory.uae/",
+          "https://www.linkedin.com/company/watchstoryuae/"
+        ]
     }
+
+
   };
 
   return (
