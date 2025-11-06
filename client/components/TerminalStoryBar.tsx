@@ -136,7 +136,7 @@ export default function TerminalStoryBar() {
         {/* Logo (Stays on the left) */}
         <Link to="/" className="flex items-center ml-[-2] gap-2 font-mono group">
             {/* Adjusted logo classes for better scale in navbar, assuming F1.png is the logo */}
-            <img src="/F1.png" alt="WatchStory Logo" className="h-48 sm:h-48 w-auto" /> 
+            <img src="/F1.png" alt="WatchStory Logo" className="-mt-4 h-48 sm:h-48 w-auto" /> 
         </Link>
 
         {/* --- DESKTOP NAVIGATION LINKS (Visible only on screens larger than 'sm') --- */}

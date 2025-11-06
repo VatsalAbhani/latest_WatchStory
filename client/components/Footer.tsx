@@ -349,9 +349,9 @@ const encode = (data) => {
 // ----------------------------------------------------------------------
   };
   return (
-    <footer className="relative mt-24 overflow-hidden">
+    <footer className="relative mt-8 overflow-hidden">
       
-      <div className="ws-container py-12 relative z-10">
+      <div className="ws-container py-8 relative z-10">
         
         {/* TOP ROW: LOGO, EMAIL, AND WHATSAPP BUTTON (Spans full width) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between  pb-8  mb-8">
@@ -359,7 +359,7 @@ const encode = (data) => {
           {/* 1. Logo/Branding */}
           <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
           {/* -mb-8 h-16 sm:h-40 w-auto */}
-            <img src="/F1.png" alt="WatchStory Logo" className="h-32 sm:h-32 md:h-44 w-auto mb-8 md:mb-0" />
+            <img src="/F1.png" alt="WatchStory Logo" className="h-52 sm:h-32 md:h-44 w-auto mb-8 md:mb-0" />
             
           </Link>
 
