@@ -624,6 +624,7 @@ import Seo from "@/components/Seo";
 
 // --- 1. UPDATED SHARED INTERFACE FOR DATA ---
 interface SellFormData {
+  fullName: string;
   brand: string;
   model: string;
   reference: string;
@@ -957,6 +958,7 @@ function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 function SingleStepSellForm() {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<Partial<SellFormData>>({
+    fullName: '',
     brand: 'Rolex',
     model: '',
     reference: '',
@@ -964,10 +966,10 @@ function SingleStepSellForm() {
     conditionNotes: '',
     boxAndPapers: 'Yes',
     askingPrice: '',
-    location: '',
+    // location: '',
     contactMethod: 'WhatsApp', // Set default to WhatsApp
     contactDetail: '',
-    preferredPayout: 'Bank Transfer',
+    // preferredPayout: 'Bank Transfer',
     'upload-photos': null,
   });
 
@@ -1078,6 +1080,20 @@ setLoading(true);
         
         {/* CRITICAL: Removed _redirect field from dynamic form to avoid conflict and rely on action="/success" + netlify.toml redirect */}
         
+
+{/* --- NEW ROW: FULL NAME --- */}
+<Field label="Full Name" className="md:col-span-2">
+            <Input
+              required
+              name="fullName" // Netlify requires the 'name' attribute
+              placeholder="John Smith"
+              value={formData.fullName || ''}
+              onChange={e => handleChange('fullName', e.target.value)}
+            />
+        </Field>
+
+
+
 
         {/* --- ROW 1: BRAND & MODEL --- */}
         <Field label="Brand">

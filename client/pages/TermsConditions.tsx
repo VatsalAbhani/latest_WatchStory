@@ -1,12 +1,15 @@
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+// Import useLocation to access the current URL hash
+import { useLocation } from "react-router-dom";
 
 
 
 export default function TermsConditions() {
 
+  const location = useLocation();
   const LAST_UPDATED = "2025-10-30"; // ISO date for SEO; update when you edit
 
     // JSON-LD: Breadcrumb + FAQ (targets rich results)
@@ -57,6 +60,30 @@ export default function TermsConditions() {
         }
       ]
     };
+
+
+    useEffect(() => {
+      // Check if the URL has a hash (e.g., #authentication)
+      if (location.hash) {
+        // Get the ID (e.g., "authentication") by removing the leading "#"
+        const id = location.hash.substring(1);
+        
+        // Find the corresponding element in the DOM
+        const element = document.getElementById(id);
+  
+        if (element) {
+          // Use scrollIntoView with a smooth behavior and offset (if needed)
+          // NOTE: If you have a fixed header, you might need a more complex solution 
+          // using window.scrollTo to account for the header height.
+          // For simplicity, we use scrollIntoView here.
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        // If there is no hash, scroll to the top of the page when the component mounts
+        window.scrollTo(0, 0);
+      }
+    }, [location.hash]); // Rerun this effect whenever the URL hash changes
+
 
 
   return (
