@@ -131,10 +131,10 @@ export default function TerminalStoryBar() {
   return (
     // The main container needs z-50 to ensure it's always on top
     <div className=" top-0 z-50 bg-white text-black">
-      <div className="ws-container relative h-16 sm:h-20 flex items-center justify-between px-4 sm:px-0">
+      <div className="ws-container relative h-auto sm:h-20 flex items-center justify-between px-4 sm:px-0">
         
         {/* Logo (Stays on the left) */}
-        <Link to="/" className="flex items-center ml-[-6] gap-2 font-mono group">
+        <Link to="/" className="flex items-center ml-[-2] gap-2 font-mono group">
             {/* Adjusted logo classes for better scale in navbar, assuming F1.png is the logo */}
             <img src="/F1.png" alt="WatchStory Logo" className="h-48 sm:h-48 w-auto" /> 
         </Link>
