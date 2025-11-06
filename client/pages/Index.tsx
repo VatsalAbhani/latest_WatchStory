@@ -76,7 +76,7 @@ function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroun
             src={image}
             alt={`Luxury Watch Background ${index + 1}`}
             // object-contain sm:object-cover object-center
-            className="w-full h-full mt-12 sm:mt-0 object-cover object-center inset-0 -z-30"
+            className="w-full h-full mt-8 sm:mt-0 object-cover object-center inset-0 -z-30"
             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
           />
         </div>
@@ -428,7 +428,7 @@ loadJournalPosts();
 
 
 
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-56">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-40">
           
 
 
