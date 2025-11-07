@@ -101,9 +101,9 @@ function SimpleNavLink({ to, text, onClick }: { to: string; text: string; onClic
         cn(
           "inline-block font-sans font-semibold tracking-wider p-2 rounded-lg",
           // Base color logic: text black, hover to gold
-          isActive 
-            ? "text-white bg-gold" 
-            : "text-black hover:text-gold transition-colors duration-200" 
+          // isActive 
+          //   ? "!text-offwhite/50" 
+          //   : "text-gold hover:text-black transition-colors duration-200" 
         )
       }
     >

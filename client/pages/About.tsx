@@ -109,7 +109,8 @@ export default function AboutPage() {
       <section className="ws-container py-12">
         <div className="rounded-md border border-border/50 p-4 text-sm text-offwhite/70">
           <p className="mb-1">Business hours: Mon–Sat, 10:00 – 19:00 (GST)</p>
-          <p>Location: Dubai, United Arab Emirates</p>
+          <p>The Bureau Business Center — Opera Grand<br />
+          Downtown Dubai<br /></p>
         </div>
       </section>
     </Layout>

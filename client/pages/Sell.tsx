@@ -800,7 +800,7 @@ const FAQ_ITEMS = [
 
 function SellPageFAQ() {
   return (
-    <section className="ws-container pt-16 pb-24">
+    <section className="ws-container pt-16 pb-12">
       <h2 className="font-title text-3xl mb-8">Frequently Asked Questions</h2>
       {/* Set type="single" for one item open at a time */}
       <Accordion type="single" collapsible className="w-full">
@@ -1091,7 +1091,6 @@ setLoading(true);
               onChange={e => handleChange('fullName', e.target.value)}
             />
         </Field>
-
 
 
 

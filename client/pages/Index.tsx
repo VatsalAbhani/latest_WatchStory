@@ -603,7 +603,7 @@ loadJournalPosts();
      {/* From the Journal */}
       {/* Display loading state while fetching */}
       {isJournalLoading ? (
-        <section className="ws-container mt-32 mb-24 relative text-center">
+        <section className="ws-container mt-32 relative text-center">
           <p className="text-offwhite/50">Loading inspiring stories from the Journal...</p>
         </section>
       ) : (

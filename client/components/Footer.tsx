@@ -349,7 +349,7 @@ const encode = (data) => {
 // ----------------------------------------------------------------------
   };
   return (
-    <footer className="relative mt-8 overflow-hidden">
+    <footer className="relative overflow-hidden">
       
       <div className="ws-container py-8 relative z-10">
         

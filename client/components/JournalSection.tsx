@@ -60,7 +60,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
   return (
     <section 
       ref={sectionRef}
-      className="ws-container mt-32 mb-24 relative"
+      className="ws-container mt-32 relative"
     >
       {/* Background decoration */}
       <div className="absolute inset-0">
@@ -129,7 +129,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
       
       {/* Mobile "Read More" Button */}
       {/* md:hidden */}
-      <div className="flex justify-center mt-12 md:hidden">
+      <div className="flex justify-center mt-16 md:hidden">
         <MagneticButton 
           href="/blog" 
           variant="primary"

@@ -4,14 +4,16 @@ import Layout from "@/components/Layout";
 import ProductCard from "@/components/ProductCard";
 import BuyPageFilter from "@/components/BuyPageFilter";
 import { FEATURED } from "@/lib/data";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Seo from "@/components/Seo";
+import SplitText from "gsap/SplitText";
 // Assuming 'Product' is a type from your project
 type Product = (typeof FEATURED)[0]; 
 
 
+gsap.registerPlugin(ScrollTrigger, SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
 // Define the shape of your filter state
@@ -19,6 +21,138 @@ interface FilterState {
   searchQuery: string;
   sortOption: string; // e.g., 'price-asc', 'price-desc', 'name-asc'
 }
+
+
+const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
+
+
+// / --- WHATSAPP LINK COMPONENT (ANIMATION REMOVED) ---
+function WhatsAppLink() {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const originalTextRef = useRef<HTMLSpanElement>(null);
+  const hoverTextRef = useRef<HTMLSpanElement>(null);
+  const splitRefs = useRef<{ original?: SplitText; hover?: SplitText }>({});
+
+  const text = "Chat With Us on WhatsApp";
+
+// Setup SplitText on mount (copied from MenuLink, running here)
+useEffect(() => {
+  if (originalTextRef.current && hoverTextRef.current) {
+    const originalSplit = new SplitText(originalTextRef.current, { type: "chars" });
+    const hoverSplit = new SplitText(hoverTextRef.current, { type: "chars" });
+    
+    splitRefs.current = { original: originalSplit, hover: hoverSplit };
+
+    gsap.set(hoverSplit.chars, { y: "100%" }); // Hover text hidden below
+    gsap.set(originalSplit.chars, { y: "0%" }); // Original text visible
+
+    return () => {
+      originalSplit.revert();
+      hoverSplit.revert();
+    };
+  }
+}, [text]);
+
+// HandleMouseEnter logic (copied from MenuLink, running on outer <a>)
+const handleMouseEnter = () => {
+  const { original, hover } = splitRefs.current;
+  if (!original || !hover) return;
+
+  // Animate underline
+  const underline = linkRef.current?.querySelector('.underline');
+  if (underline) {
+    gsap.set(underline, { transformOrigin: "left center" });
+    gsap.to(underline, { scaleX: 1, duration: 0.3, ease: "power2.out" });
+  }
+  
+  gsap.to(original.chars, {
+    y: "-100%",
+    stagger: 0.01,
+    duration: 0.3,
+    ease: "sine.in",
+  });
+
+  gsap.to(hover.chars, {
+    y: "0%",
+    stagger: 0.01,
+    duration: 0.4,
+    ease: "sine.out",
+  });
+};
+
+// HandleMouseLeave logic (copied from MenuLink, running on outer <a>)
+const handleMouseLeave = () => {
+  const { original, hover } = splitRefs.current;
+  if (!original || !hover) return;
+  
+  // Animate underline
+  const underline = linkRef.current?.querySelector('.underline');
+  if (underline) {
+    gsap.set(underline, { transformOrigin: "right center" });
+    gsap.to(underline, { scaleX: 0, duration: 0.3, ease: "power2.in" });
+  }
+
+  gsap.to(original.chars, {
+    y: "0%",
+    stagger: 0.01,
+    duration: 0.3,
+    ease: "sine.out",
+  });
+
+  gsap.to(hover.chars, {
+    y: "100%",
+    stagger: 0.01,
+    duration: 0.3,
+    ease: "sine.in",
+  });
+};
+
+return (
+  <a 
+    ref={linkRef}
+    href="https://wa.me/971545056156" // Example Dubai number
+    target="_blank" 
+    rel="noreferrer" 
+    // The entire <a> tag is the unified hover trigger
+    className="inline-flex items-center gap-2 text-sm ws-button-secondary py-2 px-4 relative group/whatsapp"
+    onMouseEnter={handleMouseEnter} 
+    onMouseLeave={handleMouseLeave}
+  >
+    <img 
+      src={WHATSAPP_ICON_SRC} 
+      alt="WhatsApp" 
+      className="w-5 h-5" 
+    />
+    
+    {/* Manually embedded text content for animation */}
+    <div className="relative inline-block font-sans text-base font-semibold
+ transition-colors">
+      <div className="relative h-[1.5em] overflow-hidden grid">
+        <span 
+          ref={originalTextRef} 
+          className="col-start-1 row-start-1 whitespace-nowrap"
+        >
+          {text}
+        </span>
+        <span 
+          ref={hoverTextRef} 
+          className="col-start-1 row-start-1 whitespace-nowrap"
+        >
+          {text}
+        </span>
+      </div>
+      {/* Underline targetting this specific link */}
+      <span className="underline absolute bottom-[-2px] left-0 block h-[1px] w-full bg-current scale-x-0"></span>
+    </div>
+  </a>
+);
+}
+
+
+
+
+
+
 
 export default function Buy() {
   // 1. STATE FOR FILTERS
@@ -188,23 +322,27 @@ export default function Buy() {
         We're Curating Our Collection!!
       </h2>
       <p className="font-sans text-lg text-offwhite/80 max-w-3xl mx-auto mb-6">
-        The full inventory of luxury watches will be displayed here soon. We're working hard to update our online catalogue.
+        Our complete selection of luxury watches will be available here soon. We're carefully updating our online catalogue to ensure an exceptional browsing experience.
       </p>
       
       {/* Emphasize the WhatsApp Call to Action */}
       <p className="font-sans text-xl !text-yellow-900 font-semibold max-w-4xl mx-auto mb-8">
-        Meanwhile, if you have a specific <strong>Rolex, AP, RM, Cartier or Patek Philippe</strong> model on your mind to buy, please connect with us on **WHATSAPP** for immediate assistance and availability.
+        Meanwhile, if you have a specific <strong className="!text-yellow-900">Rolex, AP, RM, Cartier or Patek Philippe</strong> model on your mind to buy, 
+        please connect with us on <strong className="!text-yellow-900">WHATSAPP</strong> for immediate assistance and availability.
       </p>
       
       {/* You should replace #LINK_TO_WHATSAPP with your actual WhatsApp link */}
-      <a 
+      {/* <a 
         href="https://wa.me/971545056156"
         target="_blank" 
         rel="noopener noreferrer"
         className="inline-block px-8 py-3 bg-green-500 text-white font-bold rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-xl"
       >
         Chat With Us on WhatsApp
-      </a>
+      </a> */}
+
+
+<WhatsAppLink /> 
     </section>
     {/* END MODIFIED SECTION */}
 
