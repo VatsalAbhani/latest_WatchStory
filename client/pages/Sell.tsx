@@ -1675,7 +1675,7 @@ setLoading(true);
         </Field>
 
 
-        <Field label="Model" required>
+        <Field label="Model" >
           <Input
             required
             name="model" 
@@ -1686,7 +1686,7 @@ setLoading(true);
         </Field>
 
         {/* --- ROW 2: REFERENCE & YEAR (REQUIRED) --- */}
-        <Field label="Reference No." required>
+        <Field label="Reference No." >
           <Input
             required
             name="reference" 
@@ -1696,7 +1696,7 @@ setLoading(true);
           />
         </Field>
         
-        <Field label="Year" required>
+        <Field label="Year" >
           <Input
             type="number"
             name="year"
@@ -1708,7 +1708,7 @@ setLoading(true);
         </Field>
 
         {/* --- ROW 3: BOX & PRICE (PRICE REQUIRED) --- */}
-        <Field label="Box & Papers">
+        <Field label="Box & Papers" required>
           <Select
             name="boxAndPapers" 
             value={formData.boxAndPapers}
@@ -1720,7 +1720,7 @@ setLoading(true);
             <option>Only papers</option>
           </Select>
         </Field>
-        <Field label="Asking price (AED)" required>
+        <Field label="Asking price (AED)" >
           <Input
             type="number"
             name="askingPrice"
@@ -1770,7 +1770,7 @@ setLoading(true);
         </div>
 
         {/* --- ROW 7: FILE UPLOAD (Full Width) --- */}
-        <Field label="Upload photos" className="md:col-span-2">
+        <Field label="Upload photos" className="md:col-span-2" required>
           <Input 
             type="file" 
             accept="image/*" 

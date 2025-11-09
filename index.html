@@ -111,32 +111,32 @@
 
 
   <!-- Watch Sell request form Sell Page -->
-    <form 
-    name="sell-watch-request" 
-    data-netlify="true" 
-    netlify-honeypot="sell-bot-field" 
-    action="/success"
-    hidden>
-    <input type="text" name="fullName" />
-      <input type="text" name="brand" />
-      <input type="text" name="model" />
-      <input type="text" name="reference" />
-      <input type="number" name="year" />
+  <form 
+  name="sell-watch-request" 
+  data-netlify="true" 
+  netlify-honeypot="sell-bot-field" 
+  action="/success"
+  hidden>
+
+  <input type="text" name="fullName" />
+  <input type="text" name="brand" />
+  <input type="text" name="model" />        
+  <input type="text" name="reference" />     
+  <input type="number" name="year" />
+
+  <input type="text" name="boxAndPapers" />
+  <input type="number" name="askingPrice" />
+
+  <textarea name="conditionNotes"></textarea>
+
+  <input type="text" name="contactMethod" />
+  <input type="text" name="contactDetail" />
+
+  <input type="file" name="upload-photos[]" multiple />
   
-      <input type="text" name="boxAndPapers" />
-      <input type="number" name="askingPrice" />
-      <textarea name="conditionNotes"></textarea>
-  
-      <input type="text" name="contactMethod" />
-      <input type="text" name="contactDetail" />
-      <input type="text" name="location" />
-      <input type="text" name="preferredPayout" />
-  
-      <input type="file" name="upload-photos[]" multiple />
-  
-      <!-- <input type="text" name="_redirect" /> -->
-      
-  </form>
+  <input type="hidden" name="form-name" value="sell-watch-request" />
+  <input type="hidden" name="sell-bot-field" />
+</form>
 
 
 
