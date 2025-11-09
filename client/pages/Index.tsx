@@ -428,27 +428,14 @@ loadJournalPosts();
 
 
 
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-40">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-32">
           
 
 
 
-          {/* <p className="text-center font-sans text-sm sm:text-2xl lg:text-4xl  leading-tight z-30">
+ 
 
-        
-          <h1 className="text-center font-sans text-xs !text-offwhite/5 mt-6 tracking-wide max-w-xl mx-auto">
-            Buy & Sell Authentic Luxury Watches in Dubai
-            Dubai's trusted shop to Buy and Sell authenticated luxury watches.
-          </h1>
-          
-          
-            More Than Time,
-          </p>
-          <h2 className="mt-4 text-center font-sans text-xl sm:text-2xl lg:text-4xl z-30">
-            A Story on Your Wrist
-          </h2> */}
-
-          <h1 className="text-center font-sans text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-40">
+          <h1 className="text-center font-sans text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
   More Than Time,<br />
   A Story on Your Wrist
     </h1>
