@@ -113,8 +113,8 @@ export default function BlogIndex() {
         {/* <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4> */}
 
         {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
-        <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
-          WatchStory Journal
+        <h1 className="font-title font-normal text-4xl sm:text-5xl max-w-6xl">
+        Articles Recommended For You
         </h1>
 
         

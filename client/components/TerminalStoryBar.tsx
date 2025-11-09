@@ -99,15 +99,17 @@ function SimpleNavLink({ to, text, onClick }: { to: string; text: string; onClic
       onClick={onClick}
       className={({ isActive }) =>
         cn(
-          "inline-block font-sans font-semibold tracking-wider p-2 rounded-lg",
+          "inline-block font-sans font-semibold tracking-wider p-2",
           // Base color logic: text black, hover to gold
           // isActive 
-          //   ? "!text-offwhite/50" 
-          //   : "text-gold hover:text-black transition-colors duration-200" 
+          //   ? "border-b border-black" // Active: Add a visible 2px black bottom border
+          //   : "border-b border-transparent" // Inactive: Keep the border space but make it transparent (prevents text shift)
         )
       }
     >
-      <span>{text}</span>
+      {({ isActive }) => (
+        <span>{isActive ? text.toUpperCase() : text}</span>
+      )}
     </NavLink>
   );
 }

@@ -868,11 +868,11 @@ export default function Sell() {
 
 
       <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
-        <h1 className="font-title text-4xl sm:text-5xl max-w-6xl">
+        <h1 className="font-title font-normal text-4xl sm:text-5xl max-w-6xl">
           Sell your watch
           </h1>
 
-          <h2 className="font-sans text-base text-offwhite/80 mt-2 max-w-4xl">
+          <h2 className="font-sans font-light text-base text-offwhite/80 mt-2 max-w-4xl">
           Sell Your Rolex, Audemars Piguet, Patek Philippe, Cartier or Richard Mille Watch in Dubai.
         </h2>
 
@@ -881,7 +881,7 @@ export default function Sell() {
 
         {/* <p className="text-offwhite/70 mt-3 max-w-2xl">Get a fair offer fast. Our specialists evaluate condition, provenance, and demand to place your watch with the right collector.</p> */}
         <CyclingLines
-          className="mt-2 text-2xl sm:text-4xl font-sans"
+          className="mt-2 text-2xl sm:text-3xl font-sans"
           lines={[
             "Get instant payment",
             "Free insured shipping",
@@ -928,10 +928,14 @@ export default function Sell() {
 // ====================================================================
 // --- Utility Components (Updated to include cn utility) ---
 
-function Field({ label, children, className }: { label: string; children: React.ReactNode; className?: string }) {
+function Field({ label, children, className, required }: { label: string; children: React.ReactNode; className?: string; required?: boolean }) {
   return (
     <label className={cn("block", className)}>
-      <div className="text-sm text-offwhite/70 mb-1 font-bold">{label}</div>
+      <div className="text-sm text-offwhite/70 mb-1 font-bold">
+      {label}
+      {/* CONDITIONAL ASTERISK HERE */}
+      {required && <span className="text-red-500 ml-1">*</span>}
+      </div>
       {children}
     </label>
   );
@@ -1059,7 +1063,7 @@ setLoading(true);
 
   return (
     <div className="border rounded-xl bg-card/60">
-      <h2 className="p-4 border-b font-sans text-xl font-bold text-offwhite/60">
+      <h2 className="p-4 border-b font-sans text-xl font-normal text-offwhite/60">
           Submit your watch details
       </h2>
       <form 
@@ -1082,9 +1086,9 @@ setLoading(true);
         
 
 {/* --- NEW ROW: FULL NAME --- */}
-<Field label="Full Name" className="md:col-span-2">
+<Field label="Full Name" className="md:col-span-2"required>
             <Input
-              required
+              
               name="fullName" // Netlify requires the 'name' attribute
               placeholder="John Smith"
               value={formData.fullName || ''}
@@ -1095,9 +1099,9 @@ setLoading(true);
 
 
         {/* --- ROW 1: BRAND & MODEL --- */}
-        <Field label="Brand">
+        <Field label="Brand" required>
           <Select
-            required
+            
             name="brand" // Netlify requires the 'name' attribute
             value={formData.brand}
             onChange={e => handleChange('brand', e.target.value)}
@@ -1114,7 +1118,7 @@ setLoading(true);
 
         <Field label="Model">
           <Input
-            required
+            
             name="model" // Netlify requires the 'name' attribute
             placeholder="Submariner Date"
             value={formData.model || ''}
@@ -1125,7 +1129,7 @@ setLoading(true);
         {/* --- ROW 2: REFERENCE & YEAR --- */}
         <Field label="Reference No.">
           <Input
-            required
+            
             name="reference" // Netlify requires the 'name' attribute
             placeholder="126610LN"
             value={formData.reference || ''}
@@ -1138,14 +1142,14 @@ setLoading(true);
             type="number"
             name="year" // Netlify requires the 'name' attribute
             placeholder="2022"
-            required
+            
             value={formData.year || ''}
             onChange={e => handleChange('year', Number(e.target.value))}
           />
         </Field>
 
         {/* --- ROW 3: BOX & PRICE --- */}
-        <Field label="Box & Papers">
+        <Field label="Box & Papers" required>
           <Select
             name="boxAndPapers" // Netlify requires the 'name' attribute
             value={formData.boxAndPapers}
@@ -1163,7 +1167,7 @@ setLoading(true);
             type="number"
             name="askingPrice" // Netlify requires the 'name' attribute
             placeholder="0"
-            required
+            
             value={formData.askingPrice || ''}
             onChange={e => handleChange('askingPrice', Number(e.target.value))}
           />
@@ -1197,12 +1201,13 @@ setLoading(true);
           </Field>
 
           {/* CONDITIONAL CONTACT INPUT FIELD */}
-          <Field label={contactInputLabel} key={contactType}> {/* Use key to reset component state */}
+          <Field label={contactInputLabel} key={contactType} 
+          required> {/* Use key to reset component state */}
             <Input
               type={contactInputType}
               name="contactDetail" // Netlify requires the 'name' attribute
               placeholder={'e.g., +971 50 123 4567'}
-              required
+              
               value={formData.contactDetail || ''}
               onChange={e => handleChange('contactDetail', e.target.value)}
             />
