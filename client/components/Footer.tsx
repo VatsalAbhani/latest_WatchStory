@@ -419,8 +419,8 @@ const encode = (data) => {
           
           {/* Column 1: Explore */}
           <div>
-            <div className="font-sans font-extrabold text-offwhite/60 mb-3">Explore</div>
-            <ul className="font-sans font-semibold space-y-2">
+            <div className="font-sans font-semibold text-offwhite/60 mb-3">Explore</div>
+            <ul className="font-sans font-normal space-y-2">
               {/* Using the standard component here */}
               <li><AnimatedTextLink to="/buy" text="Buy" /></li>
               <li><AnimatedTextLink to="/sell" text="Sell" /></li>
@@ -433,8 +433,8 @@ const encode = (data) => {
           {/* Column 2: Trust & Service */}
           
           <div>
-  <div className="font-sans font-extrabold text-offwhite/60 mb-3">Trust & Service</div>
-  <ul className="font-sans font-semibold space-y-2">
+  <div className="font-sans font-semibold text-offwhite/60 mb-3">Trust & Service</div>
+  <ul className="font-sans font-normal space-y-2">
     <li><AnimatedTextLink to="/terms-conditions#authentication" text="Authenticity Guarantee" /></li>
     <li><AnimatedTextLink to="/terms-conditions#warranty" text="Mechanical Warranty" /></li>
     <li><AnimatedTextLink to="/terms-conditions#valuation" text="Expert Valuation & Sourcing" /></li>
@@ -445,7 +445,7 @@ const encode = (data) => {
           
           {/* Column 3 (or 3/4): Social Media Links */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
-            <div className="font-sans font-extrabold text-offwhite/60 mb-3">Connect</div>
+            <div className="font-sans font-semibold text-offwhite/60 mb-3">Connect</div>
             <div className="flex gap-4">
               <SocialLink 
                 Icon={Instagram} 
@@ -473,7 +473,7 @@ const encode = (data) => {
           
           {/* Remaining column for large screens */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
-            <div className="font-sans font-extrabold text-offwhite/60 mb-3">Contact Us</div>
+            <div className="font-sans font-semibold text-offwhite/60 mb-3">Contact Us</div>
                     {/* Email + Location */}
   <div className="space-y-2 font-sans font-semibold">
 

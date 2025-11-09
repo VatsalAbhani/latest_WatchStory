@@ -74,7 +74,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
         <div className="flex-1">
         <h2 className="font-title font-normal text-2xl ... text-white mb-4">
           <TypewriterHeading
-            lines={["From the Journal"]} // Using the updated text
+            lines={["Articles Recommended For You"]} // Using the updated text
             charsPerSecond={40}
             showDots={false}
             loop={false}
