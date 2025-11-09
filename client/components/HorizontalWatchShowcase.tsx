@@ -607,14 +607,14 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
       {/* Header and Controls (Unified for all screens) */}
       <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
         <div className="max-w-md">
-          <h2 className="font-title font-bold text-3xl md:text-5xl text-white relative z-10">
+          <h2 className="font-title font-normal text-3xl md:text-5xl text-white relative z-10">
             <TypewriterHeading
               lines={["Featured Watches"]}
               charsPerSecond={40}
               showDots={false}
               loop={false}
               triggerOnScroll={false} // Re-enabled for scroll effect if placed far down the page
-              className="font-title font-bold text-3xl md:text-5xl text-white"
+              className="font-title font-normal text-3xl md:text-5xl text-white"
             />
           </h2>
         </div>

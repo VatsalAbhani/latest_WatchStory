@@ -1,10 +1,22 @@
 /** @import must precede all other statements */
 
 /* === STEP 1: ADD FONT IMPORT AT THE TOP === */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
+
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap'); */
 /* ========================================= */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..50,200..800&display=swap'); */
+
 
 
 /* 2. RE-ADD @font-face declaration for Kenau Sans Serif (using local file) */
@@ -146,7 +158,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
   }
 
   html {
-    font-family: 'Newsreader', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Domine', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   body {
@@ -162,7 +174,7 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 
   /* Font for headings (now using the Adobe font-family name) */
   h1, h2, h3, .font-title {
-    font-family: 'Newsreader', serif;
+    font-family: 'Domine', serif;
     font-weight: 800; 
     letter-spacing: -0.01em;
   }

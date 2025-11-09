@@ -435,7 +435,7 @@ loadJournalPosts();
 
  
 
-          <h1 className="text-center font-sans text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
+          <h1 className="text-center font-sans font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
   More Than Time,<br />
   A Story on Your Wrist
     </h1>

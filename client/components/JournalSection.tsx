@@ -72,7 +72,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
 {/* MODIFIED BLOCK: Removed absolute positioning, restored headerRef, added margin-bottom (mb-12) */}
     <div ref={headerRef} className="flex items-end justify-between mb-12 relative z-10 pt-4 md:pt-0"> 
         <div className="flex-1">
-        <h2 className="font-title font-bold text-2xl ... text-white mb-4">
+        <h2 className="font-title font-normal text-2xl ... text-white mb-4">
           <TypewriterHeading
             lines={["From the Journal"]} // Using the updated text
             charsPerSecond={40}
@@ -80,7 +80,7 @@ export default function JournalSection({ posts, showFeatured = true }: JournalSe
             loop={false}
             triggerOnScroll={true} // Use true for JournalSection for GSAP trigger
             // Using the optimized responsive text classes
-            className="font-title font-bold text-2xl sm:text-3xl md:text-4xl text-white mb-4" 
+            className="font-title font-normal text-2xl sm:text-3xl md:text-4xl text-white mb-4" 
           />
           </h2>
         </div>

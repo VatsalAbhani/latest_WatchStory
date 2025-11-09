@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme"; // Import default theme
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -16,7 +17,7 @@ export default {
     extend: {
       fontFamily: {
         // Cooper Black for titles/headings
-        title: ['Newsreader', ...defaultTheme.fontFamily.serif],
+        title: ['Domine', ...defaultTheme.fontFamily.serif],
 
 
 
@@ -24,7 +25,7 @@ export default {
         // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
 
         // Kenau Sans Serif for sans-serif (body text)
-        sans: ['Newsreader', ...defaultTheme.fontFamily.sans],
+        sans: ['Domine', ...defaultTheme.fontFamily.sans],
 
         // "logo-sans": ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
       },
@@ -109,5 +110,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

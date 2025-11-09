@@ -83,14 +83,14 @@ export default function BrandsShowcase({ brands }) {
   {/* Fixed Header at top with z-index to remain above carousel */}
   <div className="absolute top-0 left-0 right-0 z-30 p-4 md:p-12 md:text-left">
         <div className="max-w-lg mx-auto md:mx-0">
-        <h2 className="font-title text-3xl md:text-5xl text-offwhite mb-4">
+        <h2 className="font-title font-normal text-3xl md:text-5xl text-offwhite mb-4">
       <TypewriterHeading
         lines={["Brands We Trust"]}
         charsPerSecond={35}
         showDots={false}
         loop={false}
         triggerOnScroll={false}
-        className="font-title text-3xl md:text-5xl text-offwhite mb-4"
+        className="font-title font-normal text-3xl md:text-5xl text-offwhite mb-4"
       />
       </h2>
       <p className="font-sans text-offwhite/70 text-base md:text-lg leading-relaxed">
