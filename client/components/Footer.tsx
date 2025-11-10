@@ -10,6 +10,7 @@ import React, { useRef, useEffect, useState } from "react";
 import DriftingWatches from "./DriftingWatches";
 import { Instagram, Linkedin, Facebook } from "lucide-react"; 
 import Xlogo from "/X(twitter)-icon.svg";
+import TrustpilotReviewButton from "@/components/TrustpilotReviewButton";
 
 // Create a React component for the X logo
 const XIcon = ({ className }: { className?: string }) => (
@@ -524,6 +525,16 @@ const encode = (data) => {
                 © {new Date().getFullYear()} WatchStory Trading LLC. All rights reserved.
             </div>
             
+
+            <div className="mt-4 flex justify-center">
+        <TrustpilotReviewButton />
+      </div>
+
+
+
+
+
+
             {/* 2. Legal Links (Order 1 on mobile, 2 on desktop) */}
             <div className="order-1 sm:order-2 flex gap-4 text-sm font-semibold">
                 <Link to="/privacy-policy" className="hover:text-gold transition-colors text-primary">
