@@ -1296,8 +1296,9 @@
 
 
 import Layout from "@/components/Layout";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import CyclingLines from "@/components/CyclingLines";
 import { cn } from "@/lib/utils"; 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"; 
@@ -1527,7 +1528,12 @@ function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 // --- SINGLE STEP FORM COMPONENT (UPDATED FOR FILE ARRAY STATE) ---
 
 function SingleStepSellForm() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+
   const [formData, setFormData] = useState<Partial<SellFormData>>({
     fullName: '',
     brand: 'Rolex',
@@ -1542,76 +1548,137 @@ function SingleStepSellForm() {
     'upload-photos': [], // Initialized as empty array
   });
 
-  const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers' | File[] | null) => {
+  const handleChange = useCallback((field: keyof SellFormData, value: any) => {
     // Note: The signature here is slightly simplified, as 'upload-photos' only expects File[] now.
     setFormData(prev => ({ ...prev, [field]: value }));
   }, []);
 
 // ---------------------
+
 // *** REFACTORED: FILE CHANGE HANDLER USING File[] ***
-
 const handleFileChange = useCallback((files: FileList | null) => {
-    if (!files || files.length === 0) return;
-
-    setFormData(prev => {
-        // Access files as a simple array from state
-        const existingFiles = prev['upload-photos'] || [];
-        const newFilesArray = Array.from(files);
-
-        // Simple and reliable array merging
-        const mergedFiles = existingFiles.concat(newFilesArray);
-        
-        return {
-            ...prev,
-            'upload-photos': mergedFiles,
-        };
-    });
+  if (!files || files.length === 0) return;
+  setFormData(prev => {
+    const existing = prev['upload-photos'] || [];
+    const merged = existing.concat(Array.from(files));
+    return { ...prev, 'upload-photos': merged };
+  });
+  // allow selecting more files again in a new dialog
+  if (fileInputRef.current) fileInputRef.current.value = '';
 }, []);
 
 // ---------------------
 // *** REFACTORED: FILE REMOVAL HANDLER USING File[] ***
 
 const handleRemoveFile = useCallback((indexToRemove: number) => {
-    setFormData(prev => {
-        const existingFiles = prev['upload-photos'] || [];
-        
-        // Filter out the file at the specified index
-        const updatedFiles = existingFiles.filter((_, index) => index !== indexToRemove);
-
-        return {
-            ...prev,
-            'upload-photos': updatedFiles,
-        };
-    });
+  setFormData(prev => {
+    const existing = prev['upload-photos'] || [];
+    const updated = existing.filter((_, i) => i !== indexToRemove);
+    return { ...prev, 'upload-photos': updated };
+  });
 }, []);
 
 // ---------------------
 
+
+  // Build FormData for Netlify (AJAX)
+  const buildFormData = () => {
+    const fd = new FormData();
+    fd.append('form-name', 'sell-watch-request');
+    fd.append('sell-bot-field', ''); // honeypot blank
+
+    // text fields
+    fd.append('fullName', formData.fullName ?? '');
+    fd.append('brand', formData.brand ?? '');
+    fd.append('model', formData.model ?? '');
+    fd.append('reference', formData.reference ?? '');
+    fd.append('year', String(formData.year ?? ''));
+    fd.append('boxAndPapers', formData.boxAndPapers ?? 'Yes');
+    fd.append('askingPrice', String(formData.askingPrice ?? ''));
+    fd.append('conditionNotes', formData.conditionNotes ?? '');
+    fd.append('contactMethod', formData.contactMethod ?? 'WhatsApp');
+    fd.append('contactDetail', formData.contactDetail ?? '');
+
+    // files (append each one under the same field name)
+    const files = formData['upload-photos'] || [];
+    files.forEach(file => {
+      fd.append('upload-photos[]', file, file.name);
+    });
+
+    return fd;
+  };
+
+
+
+
 // Netlify-friendly submission handler: Only for validation and setting loading state.
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+//   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     
-    // Simple validation before allowing native form submit
-    if (
-        !formData.fullName || 
-        !formData.brand || 
-        !formData.model || 
-        !formData.reference || 
-        !formData.year ||
-        !formData.askingPrice || 
-        !formData.contactDetail ||
-        // Check if files exist (now that it's a File[] array)
-        (formData['upload-photos']?.length === 0) 
-      ) {
-        alert("Please fill in all required fields and upload at least one photo (marked with an asterisk *).");
-        e.preventDefault(); // Stop the form submit if validation fails
-        return;
+//     // Simple validation before allowing native form submit
+//     if (
+//         !formData.fullName || 
+//         !formData.brand || 
+//         !formData.model || 
+//         !formData.reference || 
+//         !formData.year ||
+//         !formData.askingPrice || 
+//         !formData.contactDetail ||
+//         // Check if files exist (now that it's a File[] array)
+//         (formData['upload-photos']?.length === 0) 
+//       ) {
+//         alert("Please fill in all required fields and upload at least one photo (marked with an asterisk *).");
+//         e.preventDefault(); // Stop the form submit if validation fails
+//         return;
+//     }
+
+// // Set loading state for UI feedback.
+// setLoading(true);
+
+// // CRITICAL: We do NOT call e.preventDefault(), allowing the browser to execute the native POST.
+// };
+
+
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault(); // AJAX path
+  // basic validation against state
+  if (
+    !formData.fullName ||
+    !formData.brand ||
+    !formData.model ||
+    !formData.reference ||
+    !formData.year ||
+    !formData.askingPrice ||
+    !formData.contactDetail ||
+    !(formData['upload-photos'] && formData['upload-photos'].length > 0)
+  ) {
+    alert("Please fill in all required fields and upload at least one photo (marked with *).");
+    return;
+  }
+
+  try {
+    setLoading(true);
+    const body = buildFormData();
+    // IMPORTANT: post to "/" so Netlify intercepts it
+    const resp = await fetch('/', { method: 'POST', body });
+    // Netlify returns HTML redirect; if OK, send user to success page
+    if (resp.ok) {
+      navigate('/success');
+    } else {
+      alert('Submission failed. Please try again.');
     }
-
-// Set loading state for UI feedback.
-setLoading(true);
-
-// CRITICAL: We do NOT call e.preventDefault(), allowing the browser to execute the native POST.
+  } catch (err) {
+    alert('Network error. Please try again.');
+  } finally {
+    setLoading(false);
+  }
 };
+
+
+
+
+
+
 
   const contactType = formData.contactMethod;
   const contactInputLabel = 'Your WhatsApp Number';
@@ -1772,24 +1839,15 @@ setLoading(true);
             multiple 
             name="upload-photos[]" // Netlify requires this format for file arrays
             className="block text-sm py-1" 
-            onChange={e => {
-                // Call the new file array merging handler
-                handleFileChange(e.target.files);
-                // CRITICAL FIX: Clear the input value to ensure the onChange event fires 
-                // reliably for subsequent file selections.
-                (e.target as HTMLInputElement).value = ''; 
-            }}
+            onChange={e => handleFileChange(e.target.files)}
           />
           {/* File list display and removal buttons */}
           {uploadedFiles.length > 0 && (
-              <div className="mt-2 space-y-1 text-sm text-offwhite/70">
-                  <p className="font-bold text-xs">{uploadedFiles.length} Photo(s) Added:</p>
-                  {uploadedFiles.map((file, index) => (
-                      <div 
-                          key={index} 
-                          className="flex items-center justify-between p-2 bg-card/40 rounded text-xs"
-                      >
-                          <span className="truncate pr-2">{file.name}</span>
+            <div className="mt-2 space-y-1 text-sm text-offwhite/70">
+              <p className="font-bold text-xs">{uploadedFiles.length} Photo(s) Added:</p>
+              {uploadedFiles.map((file, index) => (
+                <div key={index} className="flex items-center justify-between p-2 bg-card/40 rounded text-xs">
+                  <span className="truncate pr-2">{file.name}</span>
                           <button
                               type="button"
                               onClick={() => handleRemoveFile(index)}

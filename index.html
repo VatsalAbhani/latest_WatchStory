@@ -111,7 +111,7 @@
 
 
   <!-- Watch Sell request form Sell Page -->
-  <form 
+  <!-- <form 
   name="sell-watch-request" 
   data-netlify="true" 
   netlify-honeypot="sell-bot-field" 
@@ -136,7 +136,31 @@
   
   <input type="hidden" name="form-name" value="sell-watch-request" />
   <input type="hidden" name="sell-bot-field" />
+</form> -->
+
+
+
+<form name="sell-watch-request" data-netlify="true" netlify-honeypot="sell-bot-field" hidden>
+  <input type="text" name="fullName" />
+  <select name="brand">
+    <option>Rolex</option><option>Audemars Piguet</option><option>Richard Mille</option>
+    <option>Patek Philippe</option><option>Cartier</option><option>Other</option>
+  </select>
+  <input type="text" name="model" />
+  <input type="text" name="reference" />
+  <input type="number" name="year" />
+  <select name="boxAndPapers">
+    <option>Yes</option><option>No</option><option>Only box</option><option>Only papers</option>
+  </select>
+  <input type="number" name="askingPrice" />
+  <textarea name="conditionNotes"></textarea>
+  <select name="contactMethod"><option>WhatsApp</option></select>
+  <input type="text" name="contactDetail" />
+  <input type="file" name="upload-photos[]" multiple />
+  <input type="text" name="sell-bot-field" />
 </form>
+
+
 
 
 
