@@ -19,6 +19,26 @@ const XIcon = ({ className }: { className?: string }) => (
 import { AnimatedButton } from "@/components/AnimatedButton";
 
 
+
+
+// const ref = useRef<HTMLDivElement>(null);
+
+// useEffect(() => {
+//   const script = document.querySelector(
+//     'script[src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]'
+//   );
+//   // If Trustpilot script already loaded, reload widget
+//   if (script && (window as any).Trustpilot) {
+//     (window as any).Trustpilot.loadFromElement(ref.current, true);
+//   }
+// }, []);
+
+
+
+
+
+
+
 // The static path to the uploaded WhatsApp icon (Assuming it is accessible at the root)
 const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
 
@@ -509,6 +529,36 @@ const encode = (data) => {
 
 
 
+{/* 
+        <div className="mt-4 flex justify-center">
+        <TrustpilotReviewButton />
+      </div> */}
+
+
+{/* 
+<div
+      ref={ref}
+      className="trustpilot-widget"
+      data-locale="en-US"
+      data-template-id="56278e9abfbba0bdcd568bc"
+      data-businessunit-id="69120bb73e1c13bc5f436817"
+      data-style-height="32px"
+      data-style-width="100%"
+      data-theme="dark"
+      data-token="86546cb0-7206-4502-98d0-b3b4a5589b62"
+    >
+      <a
+        href="https://www.trustpilot.com/review/watchstory.ae"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Review us on Trustpilot
+      </a>
+    </div> */}
+
+
+
+
 
 
 
@@ -521,22 +571,27 @@ const encode = (data) => {
       <div className="py-6 ws-container border-t border-offwhite/10">
         <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center text-xs text-offwhite/50">
             {/* 1. Copyright Text (Order 2 on mobile, 1 on desktop) */}
-            <div className="order-2 sm:order-1 mt-3 sm:mt-0">
+            <div className="order-1 sm:order-1 mt-3 sm:mt-0">
                 © {new Date().getFullYear()} WatchStory Trading LLC. All rights reserved.
             </div>
             
 
-            <div className="mt-4 flex justify-center">
-        <TrustpilotReviewButton />
-      </div>
 
-
+            <a
+    href="https://www.trustpilot.com/evaluate/watchstory.ae"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="order-3 ws-button-secondary px-0 py-0 text-sm font-semibold"
+  >
+    Review us on Trustpilot
+    <TrustpilotReviewButton />
+  </a>
 
 
 
 
             {/* 2. Legal Links (Order 1 on mobile, 2 on desktop) */}
-            <div className="order-1 sm:order-2 flex gap-4 text-sm font-semibold">
+            <div className="order-2 sm:order-2 flex gap-4 text-sm font-semibold">
                 <Link to="/privacy-policy" className="hover:text-gold transition-colors text-primary">
                     Privacy Policy
                 </Link>
@@ -544,7 +599,37 @@ const encode = (data) => {
                     Terms & Conditions
                 </Link>
             </div>
+
+
+            
         </div>
+
+
+
+
+        {/* <div className="flex items-center  justify-center"> */}
+
+  {/* <a
+    href="https://www.trustpilot.com/evaluate/watchstory.ae"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="ws-button-secondary px-0 py-0 text-sm font-semibold"
+  >
+    Review us on Trustpilot
+    <TrustpilotReviewButton />
+  </a> */}
+{/* </div> */}
+
+
+
+
+
+
+
+
+
+
+
       </div>
       {/* =============================== */}
     </footer>
