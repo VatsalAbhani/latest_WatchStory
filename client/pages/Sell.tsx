@@ -1295,18 +1295,16 @@
 
 
 
-
-
 import Layout from "@/components/Layout";
 import { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import CyclingLines from "@/components/CyclingLines";
-import { cn } from "@/lib/utils"; // ADDED cn import for styling utility
+import { cn } from "@/lib/utils"; 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"; 
 import { AnimatedButton } from "@/components/AnimatedButton";
 import Seo from "@/components/Seo";
 
-// --- 1. UPDATED SHARED INTERFACE FOR DATA ---
+// --- 1. UPDATED SHARED INTERFACE FOR DATA (File changed to File[]) ---
 interface SellFormData {
   fullName: string;
   brand: string;
@@ -1323,10 +1321,11 @@ interface SellFormData {
   // NEW FIELD FOR CONTACT DETAIL
   contactDetail: string;
   preferredPayout: string;
-  'upload-photos': FileList | null;
+  // CRITICAL CHANGE: Use File[] for reliable state management
+  'upload-photos': File[]; 
 }
 
-// --- 2. FAQ DATA & SCHEMA ---
+// --- 2. FAQ DATA & SCHEMA (Unchanged) ---
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
@@ -1447,7 +1446,7 @@ function SellPageFAQ() {
 }
 
 // ====================================================================
-// --- MAIN PAGE COMPONENT ---
+// --- MAIN PAGE COMPONENT (Unchanged) ---
 
 export default function Sell() {
   return (
@@ -1498,7 +1497,7 @@ export default function Sell() {
 }
 
 // ====================================================================
-// --- Utility Components (UPDATED FIELD COMPONENT) ---
+// --- Utility Components (Unchanged) ---
 
 function Field({ label, children, className, required }: { label: string; children: React.ReactNode; className?: string; required?: boolean }) {
   return (
@@ -1525,7 +1524,7 @@ function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 
 
 // ====================================================================
-// --- SINGLE STEP FORM COMPONENT (UPDATED WITH FILE MERGING AND REMOVAL) ---
+// --- SINGLE STEP FORM COMPONENT (UPDATED FOR FILE ARRAY STATE) ---
 
 function SingleStepSellForm() {
   const [loading, setLoading] = useState(false);
@@ -1540,54 +1539,48 @@ function SingleStepSellForm() {
     askingPrice: '',
     contactMethod: 'WhatsApp', 
     contactDetail: '',
-    'upload-photos': null,
+    'upload-photos': [], // Initialized as empty array
   });
 
-  const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers' | FileList | null) => {
+  const handleChange = useCallback((field: keyof SellFormData, value: string | number | 'Yes' | 'No' | 'Only box' | 'Only papers' | File[] | null) => {
+    // Note: The signature here is slightly simplified, as 'upload-photos' only expects File[] now.
     setFormData(prev => ({ ...prev, [field]: value }));
   }, []);
 
 // ---------------------
-// *** FILE CHANGE HANDLER FOR MULTIPLE UPLOADS ***
+// *** REFACTORED: FILE CHANGE HANDLER USING File[] ***
 
 const handleFileChange = useCallback((files: FileList | null) => {
     if (!files || files.length === 0) return;
 
     setFormData(prev => {
-        const existingFiles = prev['upload-photos'] ? Array.from(prev['upload-photos']) : [];
-        const newFiles = Array.from(files);
+        // Access files as a simple array from state
+        const existingFiles = prev['upload-photos'] || [];
+        const newFilesArray = Array.from(files);
 
-        // Merge existing and new files into one array
-        const mergedFiles = [...existingFiles, ...newFiles];
-
-        // Convert the merged array back into a FileList using DataTransfer
-        const dataTransfer = new DataTransfer();
-        mergedFiles.forEach(file => dataTransfer.items.add(file));
+        // Simple and reliable array merging
+        const mergedFiles = existingFiles.concat(newFilesArray);
         
         return {
             ...prev,
-            'upload-photos': dataTransfer.files, // Use the new FileList
+            'upload-photos': mergedFiles,
         };
     });
 }, []);
 
 // ---------------------
-// *** NEW: FILE REMOVAL HANDLER ***
+// *** REFACTORED: FILE REMOVAL HANDLER USING File[] ***
 
 const handleRemoveFile = useCallback((indexToRemove: number) => {
     setFormData(prev => {
-        const existingFiles = prev['upload-photos'] ? Array.from(prev['upload-photos']) : [];
+        const existingFiles = prev['upload-photos'] || [];
         
         // Filter out the file at the specified index
         const updatedFiles = existingFiles.filter((_, index) => index !== indexToRemove);
 
-        // Convert the updated array back into a FileList
-        const dataTransfer = new DataTransfer();
-        updatedFiles.forEach(file => dataTransfer.items.add(file));
-
         return {
             ...prev,
-            'upload-photos': dataTransfer.files,
+            'upload-photos': updatedFiles,
         };
     });
 }, []);
@@ -1605,9 +1598,11 @@ const handleRemoveFile = useCallback((indexToRemove: number) => {
         !formData.reference || 
         !formData.year ||
         !formData.askingPrice || 
-        !formData.contactDetail
+        !formData.contactDetail ||
+        // Check if files exist (now that it's a File[] array)
+        (formData['upload-photos']?.length === 0) 
       ) {
-        alert("Please fill in all required fields (marked with an asterisk *).");
+        alert("Please fill in all required fields and upload at least one photo (marked with an asterisk *).");
         e.preventDefault(); // Stop the form submit if validation fails
         return;
     }
@@ -1622,8 +1617,8 @@ setLoading(true);
   const contactInputLabel = 'Your WhatsApp Number';
   const contactInputType = 'text';
 
-  // Helper to get the FileList as an array for easier rendering
-  const uploadedFiles = formData['upload-photos'] ? Array.from(formData['upload-photos']) : [];
+  // Helper to get the File array for easier rendering
+  const uploadedFiles = formData['upload-photos'] || [];
 
 
   return (
@@ -1642,7 +1637,7 @@ setLoading(true);
       action="/success"
       >
 
-{/* --- HIDDEN FIELDS FOR NETLIFY --- */}
+{/* --- HIDDEN FIELDS FOR NETLIFY (Note: These inputs are ignored by Netlify's multipart handler, but the form-name is essential) --- */}
 <input type="hidden" name="form-name" value="sell-watch-request" />
 <input type="hidden" name="sell-bot-field" />
         
@@ -1708,7 +1703,7 @@ setLoading(true);
         </Field>
 
         {/* --- ROW 3: BOX & PRICE (PRICE REQUIRED) --- */}
-        <Field label="Box & Papers" required>
+        <Field label="Box & Papers" >
           <Select
             name="boxAndPapers" 
             value={formData.boxAndPapers}
@@ -1770,17 +1765,18 @@ setLoading(true);
         </div>
 
         {/* --- ROW 7: FILE UPLOAD (Full Width) --- */}
-        <Field label="Upload photos" className="md:col-span-2" required>
+        <Field label="Upload photos" className="md:col-span-2" >
           <Input 
             type="file" 
             accept="image/*" 
             multiple 
-            name="upload-photos[]"
+            name="upload-photos[]" // Netlify requires this format for file arrays
             className="block text-sm py-1" 
             onChange={e => {
-                // Call the new file merging handler
+                // Call the new file array merging handler
                 handleFileChange(e.target.files);
-                // Clear the input value after processing to allow selecting more files
+                // CRITICAL FIX: Clear the input value to ensure the onChange event fires 
+                // reliably for subsequent file selections.
                 (e.target as HTMLInputElement).value = ''; 
             }}
           />
