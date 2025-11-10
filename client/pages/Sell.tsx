@@ -1506,7 +1506,7 @@ function Field({ label, children, className, required }: { label: string; childr
       <div className="text-sm text-offwhite/70 mb-1 font-bold">
       {label}
       {/* CONDITIONAL ASTERISK FOR REQUIRED FIELDS */}
-      {required && <span className="text-red-500 ml-1">*</span>}
+      {required && <span className="!text-red-500 ml-1">*</span>}
       </div>
       {children}
     </label>
