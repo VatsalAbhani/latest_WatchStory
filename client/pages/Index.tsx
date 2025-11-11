@@ -462,7 +462,7 @@ loadJournalPosts();
   }, []);
 
   return (
-    <Layout navVariant="transparent">
+    <Layout>
 
 
         {/* 3. ADD SEO COMPONENT */}

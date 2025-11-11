@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger"; // Added ScrollTrigger import
 
-export default function Layout({ children, navVariant }: { children: React.ReactNode, navVariant: string }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const contentRef = useRef(null);
   const location = useLocation();
 

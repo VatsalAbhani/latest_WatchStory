@@ -123,6 +123,24 @@ import React, { useEffect, useState } from "react";
 
 type NavVariant = "auto" | "transparent" | "solid";
 
+
+function SimpleNavLink({ to, text, onClick }: { to: string; text: string; onClick?: () => void }) {
+  return (
+    <NavLink
+      to={to}
+      onClick={onClick}
+      className={({ isActive }) =>
+        cn("inline-block font-sans font-semibold tracking-wider p-2")
+      }
+    >
+      {({ isActive }) => <span>{isActive ? text.toUpperCase() : text}</span>}
+    </NavLink>
+  );
+}
+
+
+
+
 export default function TerminalStoryBar({
   variant = "auto",
 }: { variant?: NavVariant }){
@@ -149,7 +167,7 @@ export default function TerminalStoryBar({
     "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
     effectiveTransparent
       ? "bg-transparent text-white"
-      : "bg-white/90 text-black backdrop-blur-md border-b border-black/10"
+      : "bg-white/90 text-black backdrop-blur-md"
   );
 
   const linkClass = "inline-block font-sans font-semibold tracking-wider p-2";
@@ -176,9 +194,14 @@ export default function TerminalStoryBar({
         {/* Desktop Links */}
         <div className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <ul className={cn("flex items-center space-x-10 font-sans text-sm sm:text-lg")}>
-            <li><NavLink to="/buy" className={linkClass}>Buy</NavLink></li>
+            {/* <li><NavLink to="/buy" className={linkClass}>Buy</NavLink></li>
             <li><NavLink to="/sell" className={linkClass}>Sell</NavLink></li>
-            <li><NavLink to="/blog" className={linkClass}>Blog</NavLink></li>
+            <li><NavLink to="/blog" className={linkClass}>Blog</NavLink></li> */}
+
+
+                         <li><SimpleNavLink to="/buy" text="Buy" /></li>
+            <li><SimpleNavLink to="/sell" text="Sell" /></li>
+             <li><SimpleNavLink to="/blog" text="Blog" /></li>
           </ul>
         </div>
 

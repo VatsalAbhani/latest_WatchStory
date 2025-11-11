@@ -109,7 +109,7 @@ export default function BlogIndex() {
 
 
 
-      <section className="ws-container pt-16 pb-0 md:pb-8 bg-background">
+      <section className="ws-container mt-24  pt-16 pb-0 md:pb-8 bg-background">
         {/* <h4 className="text-sm text-offwhite/60 font-medium tracking-widest mb-2">DISCOVER</h4> */}
 
         {/* MODIFIED H1/H2 BLOCK: Explicitly mention commercial keywords */}
