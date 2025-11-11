@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger"; // Added ScrollTrigger import
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children, navVariant }: { children: React.ReactNode, navVariant: string }) {
   const contentRef = useRef(null);
   const location = useLocation();
 
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="ws-grain">
-      <TerminalStoryBar />
+      <TerminalStoryBar  />
       <div ref={contentRef} className="min-h-screen">
         {children}
       </div>

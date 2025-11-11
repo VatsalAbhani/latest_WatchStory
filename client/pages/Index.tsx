@@ -31,65 +31,153 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 // 1. DEFINE BACKGROUND IMAGES (using your original and new ones)
-const DESKTOP_IMAGES = [
-  '/bg_1.png', // Your original static image
-  '/bg_2.png',           // New image 1
-  '/bg_3.png',           // New image 2
-];
+// const DESKTOP_IMAGES = [
+//   '/bg_1.png', // Your original static image
+//   '/bg_2.png',           // New image 1
+//   '/bg_3.png',           // New image 2
+// ];
 
-const MOBILE_IMAGES = [
-  '/22.png', // New mobile-optimized image 1
-  '/23.png', // New mobile-optimized image 2
-  '/24.png', // New mobile-optimized image 3
-  '/25.png',
-];
+// const MOBILE_IMAGES = [
+//   '/22.png', // New mobile-optimized image 1
+//   '/23.png', // New mobile-optimized image 2
+//   '/24.png', // New mobile-optimized image 3
+//   '/25.png',
+// ];
 
-// 2. SIMPLE BACKGROUND CAROUSEL COMPONENT
-interface SimpleBackgroundCarouselProps {
-  images: string[];
-  intervalMs?: number;
+// // 2. SIMPLE BACKGROUND CAROUSEL COMPONENT
+// interface SimpleBackgroundCarouselProps {
+//   images: string[];
+//   intervalMs?: number;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroundCarouselProps) {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const containerRef = useRef<HTMLDivElement>(null);
+
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       setCurrentIndex((prev) => (prev + 1) % images.length);
+//     }, intervalMs);
+
+//     return () => clearInterval(intervalId);
+//   }, [images.length, intervalMs]);
+
+//   return (
+//     <div ref={containerRef} className="absolute inset-0 -z-30 overflow-hidden">
+//       {/* Simple fade transition between images */}
+//       {images.map((image, index) => (
+//         <div
+//           key={index}
+//           className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+//             index === currentIndex ? 'opacity-100' : 'opacity-0'
+//           }`}
+//         >
+//           <img
+//             src={image}
+//             alt={`Luxury Watch Background ${index + 1}`}
+//             // object-contain sm:object-cover object-center
+//             className="w-full h-full mt-8 sm:mt-0 object-cover object-center inset-0 -z-30"
+//             // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
+//           />
+//         </div>
+//       ))}
+      
+//       {/* Subtle overlay for text readability */}
+//       <div className="absolute inset-0 z-10" />
+//     </div>
+//   );
+// }
+
+
+
+// 1) Add this just above your Index() component (same file)
+
+interface BackgroundVideoProps {
+  src: string;             // default video (MP4)
+  mobileSrc?: string;      // optional smaller/mobile video
+  poster?: string;         // desktop poster fallback
+  mobilePoster?: string;   // mobile poster fallback
+  className?: string;
+  loop?: boolean;
+  muted?: boolean;
 }
 
-function SimpleBackgroundCarousel({ images, intervalMs = 5000 }: SimpleBackgroundCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+function BackgroundVideo({
+  src,
+  mobileSrc,
+  poster,
+  mobilePoster,
+  className = "",
+  loop = true,
+  muted = true,
+}: BackgroundVideoProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const isMobile = useIsMobile();
+  const activeSrc = isMobile && mobileSrc ? mobileSrc : src;
+  const activePoster = isMobile && mobilePoster ? mobilePoster : poster;
 
+  // Autoplay reliability on iOS + pause when off-screen to save battery
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, intervalMs);
+    const v = videoRef.current;
+    if (!v) return;
 
-    return () => clearInterval(intervalId);
-  }, [images.length, intervalMs]);
+    // iOS requirements
+    v.muted = muted;
+    v.setAttribute("playsinline", "true"); // Safari iOS
+    v.autoplay = true;
+
+    const tryPlay = () => v.play().catch(() => {/* ignore */});
+    tryPlay();
+
+    // Pause when not visible
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (!v) return;
+        if (entry.isIntersecting) tryPlay();
+        else v.pause();
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(v);
+
+    return () => obs.disconnect();
+  }, [muted, activeSrc]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 -z-30 overflow-hidden">
-      {/* Simple fade transition between images */}
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={image}
-            alt={`Luxury Watch Background ${index + 1}`}
-            // object-contain sm:object-cover object-center
-            className="w-full h-full mt-8 sm:mt-0 object-cover object-center inset-0 -z-30"
-            // w-full h-full object-cover md:object-cover object-center inset-0 -z-30
-          />
-        </div>
-      ))}
-      
-      {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 z-10" />
+    <div className={`absolute inset-0 -z-30 overflow-hidden ${className}`}>
+      <video
+        key={activeSrc}                  // forces reload when src changes
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        poster={activePoster}
+        muted={muted}
+        loop={loop}
+        playsInline
+        autoPlay
+        preload="auto"
+        // controls={false}  // (implicit) keep controls hidden
+      >
+        {/* If you later export a WebM, put it first for Chrome; MP4 as fallback */}
+        {/* <source src="/Untitled-design.webm" type="video/webm" /> */}
+        <source src={activeSrc} type="video/mp4" />
+      </video>
+
+      {/* Optional dark overlay to keep hero text readable */}
+      <div className="absolute inset-0 bg-black/20" />
     </div>
   );
 }
-
-
-
 
 
 
@@ -197,8 +285,8 @@ export default function Index() {
 
 // --- NEW: Screen detection hook ---
 const isMobile = useIsMobile();
-const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
-// ------------------------------------
+// const currentBackgroundImages = isMobile ? MOBILE_IMAGES : DESKTOP_IMAGES;
+// // ------------------------------------
 
   // --- NEW STATE FOR BLOG POSTS ---
   const [latestPosts, setLatestPosts] = useState<Article[]>([]);
@@ -374,7 +462,7 @@ loadJournalPosts();
   }, []);
 
   return (
-    <Layout>
+    <Layout navVariant="transparent">
 
 
         {/* 3. ADD SEO COMPONENT */}
@@ -417,8 +505,24 @@ loadJournalPosts();
         {/* <DriftingWatches />  */}
 
 
+
+        <BackgroundVideo
+  src="/Untitled-design.mp4"  // desktop + default
+  mobileSrc="/Untitled-design.mp4" // (use the same file or a lighter mobile cut)
+  // poster="/bg_1.png"          // keeps CLS low while video buffers
+  // mobilePoster="/22.png"
+/>
+
+<div className="absolute inset-0 z-10" />
+
+
+{/*  Inside your hero section (Index.tsx), after <BackgroundVideo /> */}
+{/* <div className="pointer-events-none absolute inset-x-0 top-0 h-24 z-10 bg-gradient-to-b from-black/40 to-transparent" /> */}
+{/* <div className="pointer-events-none absolute inset-x-0 top-0 h-24 z-10 bg-gradient-to-b from-black/40 to-transparent" /> */}
+
+
 {/* 3. INTEGRATE BACKGROUND CAROUSEL - Use conditional images here */}
-<SimpleBackgroundCarousel images={currentBackgroundImages} intervalMs={5000} />
+{/* <SimpleBackgroundCarousel images={currentBackgroundImages} intervalMs={5000} /> */}
 
         {/*  */}
         {/* <div className="parallax-bg"></div> */}
@@ -435,7 +539,7 @@ loadJournalPosts();
 
  
 
-          <h1 className="text-center font-sans font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
+          <h1 className="text-center font-sans !text-white font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
   More Than Time,<br />
   A Story on Your Wrist
     </h1>
@@ -491,6 +595,7 @@ loadJournalPosts();
       </section>
 
       {/* --- START NEW BUTTON SECTION --- */}
+      
       <div className="ws-container -mt-20 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
@@ -498,12 +603,15 @@ loadJournalPosts();
             <MagneticButton
               href="/sell"
               variant="primary"
-              className="group  flex-grow sm:flex-grow-0" // Add flex-grow to make buttons fill space on small screens
+              className="group flex-grow sm:flex-grow-0
+             
+             [&_*]:!text-white [&_svg]:[stroke:white]"
+              // Add flex-grow to make buttons fill space on small screens
             >
-              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2">
+              <span className="font-sans   text-xl font-extrabold flex items-center gap-2 pr-2">
                 Sell a Watch
                 <svg
-                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  className="w-4 h-4  transform transition-transform group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -516,12 +624,14 @@ loadJournalPosts();
             <MagneticButton
               href="/buy"
               variant="secondary"
-              className="group flex-grow sm:flex-grow-0" // Add flex-grow here too
+              className="group flex-grow sm:flex-grow-0 
+              [&_*]:!text-white [&_svg]:[stroke:white]" // Add flex-grow here too
             >
-              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2">
+              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2"
+              style={{ color: "#ffffff" }}>
                 Buy a Watch
                 <svg
-                  className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                  className="w-4 h-4 transform  transition-transform group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -536,7 +646,7 @@ loadJournalPosts();
 
 
       {/* Trust strips */}
-      <section className="ws-container mt-28 pb-20 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section ">
+      <section className="ws-container mt-28 pb-20 grid grid-cols-1 md:grid-cols-4 gap-6 ">
 
      
       <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">

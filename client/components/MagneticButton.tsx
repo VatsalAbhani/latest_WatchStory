@@ -424,13 +424,13 @@ gsap.set(allChars, {
 
     // The base classes remain the same
     const baseClasses = `
-        relative cursor-pointer 
+        relative cursor-pointer !text-white 
         font-title text-base sm:text-lg tracking-wide
         transition-all duration-300 ease-out
         
         ${variant === 'primary' 
-            ? 'text-offwhite' 
-            : 'text-offwhite/80'
+            ? '!text-white' 
+            : '!text-offwhite/80'
         }
         ${className}
     `;
