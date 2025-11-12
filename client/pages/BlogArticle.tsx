@@ -133,7 +133,7 @@ export default function BlogArticle() {
 
       <BreadcrumbsJsonLd slug={article.slug} title={article.title} />
 
-      <section className="ws-container pt-16 pb-6">
+      <section className="ws-container mt-28 pb-6">
         <h1 className="font-title text-4xl sm:text-5xl">{article.title}</h1>
         <p className="text-sm text-offwhite/60 mt-2">
           {article.publishedAtISO ? new Date(article.publishedAtISO).toLocaleDateString() : ""} • {article.author} {article.readingTime ? `• ${article.readingTime}` : ""}

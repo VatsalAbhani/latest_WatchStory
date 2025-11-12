@@ -543,7 +543,7 @@ loadJournalPosts();
 
           <h1 className="text-center font-title font-normal tracking-tight 
           text-3xl sm:text-4xl lg:text-5xl leading-[1.1] !text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] z-30 
-          -mt-12 sm:-mt-36">
+          -mt-8 sm:-mt-36">
          
   More Than Time,<br /> 
   {/* <span className="!text-primary">A Story on Your Wrist</span> */}
