@@ -1473,10 +1473,11 @@ export default function Sell() {
         <CyclingLines
           className="mt-2 text-2xl sm:text-3xl font-sans"
           lines={[
-            "Get instant payment",
-            "Free insured shipping",
-            "Expert authentication",
-            "Fair, market-based offers",
+            "Get Instant Payment",
+            "Fair, Market-Based Offers",
+            
+            "Expert Authentication",
+            "Free Insured Shipping",
             
           ]}
           cycleIntervalSec={2.5}

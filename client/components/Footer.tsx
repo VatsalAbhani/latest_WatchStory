@@ -571,7 +571,7 @@ const encode = (data) => {
       <div className="py-6 ws-container border-t border-offwhite/10">
         <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center text-xs text-offwhite/50">
             {/* 1. Copyright Text (Order 2 on mobile, 1 on desktop) */}
-            <div className="order-1 sm:order-1 mt-3 sm:mt-0">
+            <div className="order-3 sm:order-1 mt-3 sm:mt-0">
                 © {new Date().getFullYear()} WatchStory Trading LLC. All rights reserved.
             </div>
             
@@ -581,7 +581,7 @@ const encode = (data) => {
     href="https://www.trustpilot.com/evaluate/watchstory.ae"
     target="_blank"
     rel="noopener noreferrer"
-    className="order-3 ws-button-secondary px-0 py-0 text-sm font-semibold"
+    className="order-1 mb-0 sm:mb-0 lg:mb-0  ws-button-secondary px-0 py-0 text-sm font-semibold"
   >
     Review us on Trustpilot
     <TrustpilotReviewButton />
