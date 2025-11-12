@@ -12,7 +12,7 @@ const Body: React.FC = () => (
 
     {/* 1. Better Value for Money */}
     <section id="value" className="mt-12">
-      <figure className="my-6">
+      {/* <figure className="my-6">
         <img
           src="https://images.squarespace-cdn.com/content/v1/56a9e12ac647ad08eb4453c7/b9a8d108-7c69-4ee8-b8d6-ca99e04273ce/IMG_7743.JPG"
           alt="Display of pre owned luxury watches representing value at real market price"
@@ -22,7 +22,7 @@ const Body: React.FC = () => (
         <figcaption className="text-sm text-offwhite/60">
           Buying pre owned skips the boutique drop and starts at true market value.
         </figcaption>
-      </figure>
+      </figure> */}
 
       <h2>1. Better Value for Money</h2>
       <p>
@@ -180,7 +180,8 @@ const article: ArticleFull = {
   description:
     "A clear guide for first time buyers on why authenticated pre owned luxury watches offer better value access to rare models verified authenticity sustainability advantages and stronger resale potential in 2026.",
   heroImage:
-    "https://images.squarespace-cdn.com/content/v1/56a9e12ac647ad08eb4453c7/b9a8d108-7c69-4ee8-b8d6-ca99e04273ce/IMG_7743.JPG",
+    "/blog-imgs/blog-4.jpg",
+    
   author: "WatchStory Editorial",
   publishedAtISO: "2025-11-12",
   readingTime: "7 min read",

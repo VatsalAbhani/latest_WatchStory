@@ -250,7 +250,7 @@ export const POSTS: Article[] = [
     id: "ws-004",
     title: "Why Buying Pre Owned Is Smarter Than Buying Brand New (2026 Edition)",
     brandTags: ["Investment", "Guide"],
-    heroImage: "/blog-imgs/blog-2.webp", // or use external link if preferred
+    heroImage: "/blog-imgs/blog-4.jpg", // or use external link if preferred
     excerpt:
       "Discover why buying pre owned luxury watches in 2026 offers better value, authenticity, and long term potential than buying new.",
     slug: "why-buying-preowned-smarter-2026", // must match the article slug
