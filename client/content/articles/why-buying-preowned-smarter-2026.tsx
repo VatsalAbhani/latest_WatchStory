@@ -27,7 +27,7 @@ const Body: React.FC = () => (
       <h2>1. Better Value for Money</h2>
       <p>
         Brand new pieces typically lose value as soon as they leave a boutique. Pre owned pricing already 
-        reflects the real market so you avoid that first drop. References from Rolex Patek Philippe and 
+        reflects the real market so you avoid that first drop. References from Rolex, Patek Philippe and 
         Audemars Piguet are known to hold value well and some appreciate over time as demand builds.
       </p>
       <div className="rounded-md border border-border/60 bg-card/50 p-4">
@@ -56,13 +56,13 @@ const Body: React.FC = () => (
       <h2>2. Access to Discontinued and Hard to Find Models</h2>
       <p>
         Boutiques often have long wait lists for sought after pieces. The pre owned market gives you access 
-        to discontinued editions limited releases and rare references that may never appear at retail.
+        to discontinued editions, limited releases and rare references that may never appear at retail.
       </p>
       <div className="rounded-md border border-border/60 bg-card/50 p-4">
         <strong>WatchStory review</strong>
         <ul className="list-disc pl-6 mt-2">
           <li>Tell us your target reference and we will source verified examples.</li>
-          <li>We document condition service history and inclusions so you can decide with confidence.</li>
+          <li>We document condition, service history and inclusions so you can decide with confidence.</li>
         </ul>
       </div>
     </section>
@@ -85,7 +85,7 @@ const Body: React.FC = () => (
       <p>
         Authenticity is the first concern for new buyers and it should be. Certified pre owned is not the 
         same as grey market. At WatchStory every watch goes through a detailed inspection by Swiss trained 
-        specialists. Movement serials materials and function are verified and every piece is backed by a 
+        specialists. Movement, serials, materials and function are verified and every piece is backed by a 
         12 month mechanical warranty and a 100 percent authenticity guarantee.
       </p>
       <div className="rounded-md border border-border/60 bg-card/50 p-4">
@@ -158,7 +158,7 @@ const Body: React.FC = () => (
     <section id="final" className="mt-12">
       <h2>The Smarter Way to Collect in 2026</h2>
       <p>
-        Buyers today want story provenance and staying power. A good pre owned watch offers all three. 
+        Buyers today want story, provenance and staying power. A good pre owned watch offers all three. 
         At WatchStory we authenticate service and prepare each piece for its next chapter.
       </p>
 

@@ -458,7 +458,7 @@ const encode = (data) => {
   <ul className="font-sans font-normal space-y-2">
     <li><AnimatedTextLink to="/terms-conditions#authentication" text="Authenticity Guarantee" /></li>
     <li><AnimatedTextLink to="/terms-conditions#warranty" text="Mechanical Warranty" /></li>
-    <li><AnimatedTextLink to="/terms-conditions#valuation" text="Expert Valuation & Sourcing" /></li>
+    <li><AnimatedTextLink to="/terms-conditions#valuation" text="Expert Valuation" /></li>
     <li><AnimatedTextLink to="/terms-conditions#security" text="Insured Global Shipping" /></li>
   </ul>
 </div>
@@ -484,11 +484,11 @@ const encode = (data) => {
                 href="https://www.linkedin.com/company/watchstoryuae/" 
                 label="LinkedIn" 
               />
-              <SocialLink 
+              {/* <SocialLink 
                 Icon={Facebook} 
                 href="https://www.facebook.com/watchstory" 
                 label="Facebook" 
-              />
+              /> */}
             </div>
           </div>
           
@@ -581,7 +581,7 @@ const encode = (data) => {
     href="https://www.trustpilot.com/evaluate/watchstory.ae"
     target="_blank"
     rel="noopener noreferrer"
-    className="order-1 mb-0 sm:mb-0 lg:mb-0  ws-button-secondary px-0 py-0 text-sm font-semibold"
+    className="order-1 -mt-4 sm:mt-0 lg:mt-0 mb-4 sm:mb-0 lg:mb-0  ws-button-secondary px-0 py-0 text-sm font-semibold"
   >
     Review us on Trustpilot
     <TrustpilotReviewButton />
