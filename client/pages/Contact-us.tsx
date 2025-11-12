@@ -60,7 +60,7 @@ export default function ContactUsPage() {
 
       <ContactJsonLd />
 
-      <section className="ws-container pt-16 pb-8">
+      <section className="ws-container mt-24 pb-8">
         <h1 className="font-title text-4xl sm:text-5xl">{title}</h1>
         <p className="text-sm text-offwhite/60 mt-2">Dubai, United Arab Emirates</p>
       </section>

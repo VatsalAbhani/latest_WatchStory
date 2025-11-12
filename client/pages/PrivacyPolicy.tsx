@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
         description="Our detailed Privacy Policy for WatchStory Trading LLC outlines how we handle, process, and protect your personal data for sales, sourcing, and authentication services in Dubai and internationally."
         canonical="/privacy-policy"
       />
-      <div className="ws-container pt-16 pb-24 max-w-4xl mx-auto">
+      <div className="ws-container mt-24 pb-24 max-w-4xl mx-auto">
         <h1 className="font-title text-5xl mb-4 text-gold">Privacy Policy</h1>
         <p className="text-offwhite/70 text-sm mb-12">
           Effective Date: {effectiveDate}

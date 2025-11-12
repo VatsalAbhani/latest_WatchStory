@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 export default function TermsConditions() {
 
   const location = useLocation();
-  const LAST_UPDATED = "2025-10-30"; // ISO date for SEO; update when you edit
+  const LAST_UPDATED = "2025-11-12"; // 12th Nov, 2025  // ISO date for SEO; update when you edit
 
     // JSON-LD: Breadcrumb + FAQ (targets rich results)
     const breadcrumbJsonLd = {
@@ -102,7 +102,7 @@ export default function TermsConditions() {
       </Helmet>
 
 
-<div className="ws-container pt-16 pb-24 max-w-4xl mx-auto">
+<div className="ws-container mt-24 pb-24 max-w-4xl mx-auto">
         <h1 className="font-title text-5xl mb-2 text-gold">Terms &amp; Conditions</h1>
 
         {/* Visible + machine-readable last-updated */}

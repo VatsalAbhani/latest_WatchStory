@@ -215,7 +215,8 @@ const getDetailRows = (data: typeof detailsData) => {
 
 
   return (
-    <div className="md:sticky md:top-24 space-y-8 p-4 md:p-0">
+    <div className="mt-24 md:sticky md:top-24 space-y-8 p-4 md:p-0">
+      
       
       {/* Title and Price */}
       <div>
