@@ -543,7 +543,7 @@ loadJournalPosts();
 
           <h1 className="text-center font-title font-normal tracking-tight 
           text-3xl sm:text-4xl lg:text-5xl leading-[1.1] !text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] z-30 
-          -mt-8 sm:-mt-36">
+          -mt-4 sm:-mt-36">
          
   More Than Time,<br /> 
   {/* <span className="!text-primary">A Story on Your Wrist</span> */}
@@ -602,7 +602,7 @@ loadJournalPosts();
 
       {/* --- START NEW BUTTON SECTION --- */}
       
-      <div className="ws-container -mt-56 sm:-mt-56 mb-16 relative z-30 flex justify-center">
+      <div className="ws-container -mt-48 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
           
