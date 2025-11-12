@@ -160,6 +160,7 @@ function BackgroundVideo({
         key={activeSrc}                  // forces reload when src changes
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
+        
         poster={activePoster}
         muted={muted}
         loop={loop}
@@ -174,7 +175,7 @@ function BackgroundVideo({
       </video>
 
       {/* Optional dark overlay to keep hero text readable */}
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/40" />
     </div>
   );
 }
@@ -507,13 +508,14 @@ loadJournalPosts();
 
 
         <BackgroundVideo
+        className="mt-36 sm:mt-0"
   src="/Untitled-design.mp4"  // desktop + default
   mobileSrc="/Untitled-design.mp4" // (use the same file or a lighter mobile cut)
-  // poster="/bg_1.png"          // keeps CLS low while video buffers
-  // mobilePoster="/22.png"
+  // poster="/F-1-white.png"          // keeps CLS low while video buffers
+  // mobilePoster="/F-1-white.png"
 />
 
-<div className="absolute inset-0 z-10" />
+{/* <div className="absolute inset-0 z-10" /> */}
 
 
 {/*  Inside your hero section (Index.tsx), after <BackgroundVideo /> */}
@@ -537,10 +539,14 @@ loadJournalPosts();
 
 
 
- 
+        {/* text-center font-sans !text-white font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36 */}
 
-          <h1 className="text-center font-sans !text-white font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36">
-  More Than Time,<br />
+          <h1 className="text-center font-title font-normal tracking-tight 
+          text-3xl sm:text-4xl lg:text-5xl leading-[1.1] !text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] z-30 
+          -mt-12 sm:-mt-36">
+         
+  More Than Time,<br /> 
+  {/* <span className="!text-primary">A Story on Your Wrist</span> */}
   A Story on Your Wrist
     </h1>
 
@@ -596,19 +602,20 @@ loadJournalPosts();
 
       {/* --- START NEW BUTTON SECTION --- */}
       
-      <div className="ws-container -mt-20 sm:-mt-56 mb-16 relative z-30 flex justify-center">
+      <div className="ws-container -mt-56 sm:-mt-56 mb-16 relative z-30 flex justify-center">
           {/* Enhanced Magnetic Buttons (Now visible outside the hero overlay) */}
           {/* We use flex-row and flex-wrap for side-by-side on mobile, and a tight gap */}
-          <div className="flex flex-row gap-4 justify-center items-center">
+          
+          <div className="flex flex-wrap sm:flex-nowrap gap-6 sm:gap-4 justify-center items-stretch w-full">
             <MagneticButton
               href="/sell"
               variant="primary"
-              className="group flex-grow sm:flex-grow-0
+              className="group w-full sm:w-auto sm:flex-grow-0
              
              [&_*]:!text-white [&_svg]:[stroke:white]"
               // Add flex-grow to make buttons fill space on small screens
             >
-              <span className="font-sans   text-xl font-extrabold flex items-center gap-2 pr-2">
+              <span className="font-sans text-base sm:text-xl lg:text-2xl font-extrabold flex items-center justify-center gap-2 pr-2">
                 Sell a Watch
                 <svg
                   className="w-4 h-4  transform transition-transform group-hover:translate-x-1"
@@ -624,11 +631,11 @@ loadJournalPosts();
             <MagneticButton
               href="/buy"
               variant="secondary"
-              className="group flex-grow sm:flex-grow-0 
+              className="group w-full sm:w-auto sm:flex-grow-0
               [&_*]:!text-white [&_svg]:[stroke:white]" // Add flex-grow here too
             >
-              <span className="font-sans text-xl font-extrabold flex items-center gap-2 pr-2"
-              style={{ color: "#ffffff" }}>
+              <span className="font-sans text-base sm:text-xl lg:text-2xl font-extrabold flex items-center justify-center gap-2 pr-2"
+             >
                 Buy a Watch
                 <svg
                   className="w-4 h-4 transform  transition-transform group-hover:translate-x-1"
@@ -665,7 +672,7 @@ loadJournalPosts();
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
         <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
-          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & verified</h3>
+          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Authenticated & Verified</h3>
           <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Materials, movement, and reference are checked by specialists.</p>
         </div>
 
@@ -673,7 +680,7 @@ loadJournalPosts();
         {/* MODIFIED: Reduced padding (p-4) on mobile */}
         <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           {/* MODIFIED: Reduced heading text size (text-lg) on mobile */}
-          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair offers, fast payouts</h3>
+          <h3 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Fair Offers, Fast Payouts</h3>
           <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
         </div>
 

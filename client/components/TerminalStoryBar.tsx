@@ -119,7 +119,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useStory } from "@/state/story";
 import { useCart } from "@/state/cart";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type NavVariant = "auto" | "transparent" | "solid";
 
@@ -153,6 +153,10 @@ export default function TerminalStoryBar({
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // ✅ detect mobile once per render
+  const isMobile = useMemo(() => (typeof window !== "undefined" ? window.matchMedia("(max-width: 639px)").matches : false), []);
+
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
@@ -161,7 +165,7 @@ export default function TerminalStoryBar({
   }, []);
 
   const effectiveTransparent =
-    (variant === "transparent") || (variant === "auto" && isHome && !scrolled);
+  !isMobile && ((variant === "transparent") || (variant === "auto" && isHome && !scrolled));
 
   const barClass = cn(
     "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
@@ -179,7 +183,8 @@ export default function TerminalStoryBar({
 
   return (
     <div className={barClass}>
-      <div className="ws-container relative h-auto sm:h-20 flex items-center justify-between px-4 sm:px-0">
+      <div className="ws-container relative h-36
+       sm:h-20 flex items-center justify-between px-4 sm:px-0">
 
         {/* Logo */}
         <Link to="/" className="flex items-center ml-[-2] gap-2 font-mono group">
@@ -243,7 +248,7 @@ export default function TerminalStoryBar({
       {/* Mobile Drawer (always white for readability) */}
       <div
         className={cn(
-          "sm:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out shadow-lg",
+          "sm:hidden fixed top-36 left-0 w-4/5 h-[calc(100vh-4rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out shadow-lg",
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
