@@ -183,7 +183,7 @@ export default function TerminalStoryBar({
 
   return (
     <div className={barClass}>
-      <div className="ws-container relative h-36
+      <div className="ws-container relative h-28
        sm:h-20 flex items-center justify-between px-4 sm:px-0">
 
         {/* Logo */}

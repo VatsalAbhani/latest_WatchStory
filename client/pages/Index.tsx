@@ -508,7 +508,7 @@ loadJournalPosts();
 
 
         <BackgroundVideo
-        className="mt-36 sm:mt-0"
+        className="mt-28 sm:mt-0"
   src="/Untitled-design.mp4"  // desktop + default
   mobileSrc="/Untitled-design.mp4" // (use the same file or a lighter mobile cut)
   // poster="/F-1-white.png"          // keeps CLS low while video buffers
