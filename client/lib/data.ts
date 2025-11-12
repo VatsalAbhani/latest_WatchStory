@@ -199,7 +199,15 @@ export type Article = {
 
 export const POSTS: Article[] = [
 
+  // const ALL_CATEGORIES = [
 
+
+  //   "Rolex", "Audemars Piguet", "Patek Philippe", "Richard Mille", "Cartier",
+  //     "Horology History", "Investment", "Authentication",
+  //     "Gen Z", "Vintage", "Guide"
+
+
+  //   ];
 
   // add to POSTS array (top of the list if you want it featured)
   {
@@ -235,6 +243,18 @@ export const POSTS: Article[] = [
     excerpt: "Why modern collectors treat timepieces as an investable asset and how to start with confidence.",
     slug: "wrist-to-wealth",
     publishedAt: "Nov 1 2025",
+    author: "WatchStory Editorial",
+    readingTime: "7 min read",
+  },
+  {
+    id: "ws-004",
+    title: "Why Buying Pre Owned Is Smarter Than Buying Brand New (2026 Edition)",
+    brandTags: ["Investment", "Guide"],
+    heroImage: "/blog-imgs/blog-2.webp", // or use external link if preferred
+    excerpt:
+      "Discover why buying pre owned luxury watches in 2026 offers better value, authenticity, and long term potential than buying new.",
+    slug: "why-buying-preowned-smarter-2026", // must match the article slug
+    publishedAt: "Nov 12 2025",
     author: "WatchStory Editorial",
     readingTime: "7 min read",
   },

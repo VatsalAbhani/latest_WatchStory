@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 // Mock available categories/tags for the filter section
 const ALL_CATEGORIES = [
 "Rolex", "Audemars Piguet", "Patek Philippe", "Richard Mille", "Cartier",
-  "Horology History", "Investment Guides", "Authentication",
+  "Horology History", "Investment", "Authentication",
   "Gen Z", "Vintage", "Guide"
 ];
 
