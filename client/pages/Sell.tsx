@@ -1461,6 +1461,8 @@ export default function Sell() {
           canonical="/sell"
         />
 
+        {/* SEO search engine */}
+
       <section className="ws-container mt-24 pt-16 pb-0 md:pb-8 bg-background">
         <h1 className="font-title font-normal text-4xl sm:text-5xl max-w-6xl">
           Sell your watch
