@@ -211,30 +211,34 @@ export const POSTS: Article[] = [
 
   // add to POSTS array (top of the list if you want it featured)
   {
-    id: "ws-001",
-    title: "A Guide: 5 Ways to Spot a 'Fake' Rolex in Dubai",
-    brandTags: ["Rolex", "Authentication", "Guide"],
-    heroImage: "/blog-imgs/blog-1.webp", // optional: or keep external URL
+    id: "ws-001", // choose next sequential ID
+    title: "The Royal Oak: Is Now the Right Time to Sell Your Audemars Piguet in Dubai?",
+    brandTags: ["Audemars Piguet"],
+    heroImage: "/blog-imgs/ap-black-bg-royal-oak.jpeg", 
     excerpt:
-      "Five essential checks that separate genuine Rolex watches from counterfeits in Dubai's fast-moving market.",
-    slug: "fake-rolex-dubai",              // IMPORTANT: must match the route slug above
-    publishedAt: "Oct 20 2025",
-    author: "WatchStory Editorial",
-    readingTime: "8 min read",
-  },
-
-  {
-    id: "ws-002",
-    title: "The 5 Factors That Can Devalue a Pre-Owned Watch and How to Avoid Them",
-    brandTags: ["Guide"],
-    heroImage: "/blog-imgs/blog-2.webp", // or leave blank if you do not want a card image
-    excerpt: "Five common reasons pre-owned watches lose value and how to protect price, authenticity, and desirability.",
-    slug: "devalue-preowned-watch",
-    publishedAt: "Oct 25 2025",
+      "The AP Royal Oak market has corrected from its 2022 peak. Here's why selling your Audemars Piguet in Dubai right now can still be a smart, profitable move.",
+    slug: "royal-oak-market-sell-audemars-piguet-dubai",
+    publishedAt: "Nov 13 2025",
     author: "WatchStory Editorial",
     readingTime: "6 min read",
   },
-  
+
+
+  {
+    id: "ws-002",
+    title: "Why Buying Pre Owned Is Smarter Than Buying Brand New (2026 Edition)",
+    brandTags: ["Investment", "Guide"],
+    heroImage: "/blog-imgs/blog-4.jpg", // or use external link if preferred
+    excerpt:
+      "Discover why buying pre owned luxury watches in 2026 offers better value, authenticity, and long term potential than buying new.",
+    slug: "why-buying-preowned-smarter-2026", // must match the article slug
+    publishedAt: "Nov 12 2025",
+    author: "WatchStory Editorial",
+    readingTime: "7 min read",
+  },
+
+
+
   {
     id: "ws-003",
     title: "From Wrist to Wealth: Why Luxury Watches Are the Smartest Investment You Can Wear",
@@ -246,20 +250,54 @@ export const POSTS: Article[] = [
     author: "WatchStory Editorial",
     readingTime: "7 min read",
   },
+
+
   {
     id: "ws-004",
-    title: "Why Buying Pre Owned Is Smarter Than Buying Brand New (2026 Edition)",
-    brandTags: ["Investment", "Guide"],
-    heroImage: "/blog-imgs/blog-4.jpg", // or use external link if preferred
-    excerpt:
-      "Discover why buying pre owned luxury watches in 2026 offers better value, authenticity, and long term potential than buying new.",
-    slug: "why-buying-preowned-smarter-2026", // must match the article slug
-    publishedAt: "Nov 12 2025",
+    title: "The 5 Factors That Can Devalue a Pre-Owned Watch and How to Avoid Them",
+    brandTags: ["Guide"],
+    heroImage: "/blog-imgs/blog-2.webp", // or leave blank if you do not want a card image
+    excerpt: "Five common reasons pre-owned watches lose value and how to protect price, authenticity, and desirability.",
+    slug: "devalue-preowned-watch",
+    publishedAt: "Oct 25 2025",
     author: "WatchStory Editorial",
-    readingTime: "7 min read",
+    readingTime: "6 min read",
   },
+
+
+
+  {
+    id: "ws-005",
+    title: "A Guide: 5 Ways to Spot a 'Fake' Rolex in Dubai",
+    brandTags: ["Rolex", "Authentication", "Guide"],
+    heroImage: "/blog-imgs/blog-1.webp", // optional: or keep external URL
+    excerpt:
+      "Five essential checks that separate genuine Rolex watches from counterfeits in Dubai's fast-moving market.",
+    slug: "fake-rolex-dubai",              // IMPORTANT: must match the route slug above
+    publishedAt: "Oct 20 2025",
+    author: "WatchStory Editorial",
+    readingTime: "8 min read",
+  },
+
+
   
 
+ 
+  
+
+ // const ALL_CATEGORIES = [
+
+
+  //   "Rolex", "Audemars Piguet", "Patek Philippe", "Richard Mille", "Cartier",
+  //     "Horology History", "Investment", "Authentication",
+  //     "Gen Z", "Vintage", "Guide"
+
+
+  //   ];
+
+
+ 
+  
 
 
 
@@ -308,7 +346,7 @@ export const POSTS: Article[] = [
   {
     id: "a3",
     title: "The Story of The Audemars Piguet Star Wheel",
-    brandTags: ["AP", "Story"],
+    brandTags: ["Audemars Piguet", "Story"],
     heroImage: "/blog-imgs/blog-a3.webp", // Use a generic image for now
     excerpt: "Tips from a former dealer on what to look for and what to ask when buying from a vintage specialist.",
     slug: "", // Leave blank or remove as it won't use a local route
@@ -352,7 +390,7 @@ export const POSTS: Article[] = [
   {
     id: "a6",
     title: "Must-Know Luxury Watch Brands",
-    brandTags: ["Rolex, Patek Philippe, AP"],
+    brandTags: ["Rolex, Patek Philippe, Audemars Piguet"],
     heroImage: "/blog-imgs/blog-a6.webp",
     excerpt: "The Top 10+ Must-Know Luxury Watch Brands: The Mother of All Lists",
     slug: "",
@@ -378,7 +416,7 @@ export const POSTS: Article[] = [
   {
     id: "a8",
     title: "AP TALKS THE ROYAL OAK RD#5",
-    brandTags: ["AP"],
+    brandTags: ["Audemars Piguet"],
     heroImage: "/blog-imgs/blog-a8.avif",
     excerpt: "The Royal Oak “Jumbo” Extra-Thin Selfwinding Flying Tourbillon Chronograph",
     slug: "",
