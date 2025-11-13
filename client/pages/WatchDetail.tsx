@@ -354,7 +354,7 @@ export default function WatchDetail() {
 
 
       {/* Main Content Grid: Image Gallery (left) and Details (right) */}
-      <div className="ws-container pt-12 pb-24">
+      <div className="ws-container mt-24 pb-24">
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           
