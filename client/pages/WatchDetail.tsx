@@ -248,7 +248,7 @@ const getDetailRows = (data: typeof detailsData) => {
           variant="secondary"
           target="_blank" // <--- Recommended addition
           rel="noopener noreferrer" // <--- Recommended addition
-          className="flex-1 text-base font-extrabold"
+          className="flex-1 text-base font-extrabold border-1 border-black rounded-md"
         >
           Discuss & Order It Now (WhatsApp)
 
