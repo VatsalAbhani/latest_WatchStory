@@ -197,7 +197,7 @@ const Body: React.FC = () => (
 
             <blockquote className="border-l-4 border-border/60 pl-4 italic text-primary my-6">
                 “At WatchStory, authenticity is the first chapter.”
-                <br />— Raj Abhani, Co-Founder
+                
             </blockquote>
 
             <p className="text-offwhite/90">Authenticity is timeless. Precision is everything.</p>

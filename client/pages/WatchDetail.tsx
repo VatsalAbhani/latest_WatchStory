@@ -272,12 +272,18 @@ const getDetailRows = (data: typeof detailsData) => {
           {detailsData.map((item, index) => (
             <div key={index} className="col-span-1">
               {/* Label (Uppercase and slightly faded) */}
-              <p className="font-sans text-xs text-offwhite/70 uppercase tracking-wider mb-1">
+              <p className="font-sans text-xs font-light text-offwhite/70 uppercase tracking-wider mb-1">
                 {item.label}
                 {/* Optional Info Icon - not implemented here, but you'd add it next to the label */}
               </p>
               {/* Value (Bold and prominent) */}
-              <p className="font-sans text-base font-medium text-foreground leading-snug">
+              {/* <p className="font-sans text-base font-medium text-foreground leading-snug"> */}
+              <p 
+  className={cn(
+    "font-sans text-sm md:text-base font-medium text-foreground leading-snug max-w-full",
+    item.label === "REF. NUMBER" && "truncate" // Use truncate instead of whitespace-nowrap
+  )}
+>
                 {item.value}
               </p>
             </div>
@@ -290,39 +296,6 @@ const getDetailRows = (data: typeof detailsData) => {
       {/* END NEW SECTION */}
       {/* ========================================================= */}
 
-      {/* Specifications Table */}
-      {/* <h2 className="font-title text-2xl">Specifications</h2>
-      <Table className="bg-card/60 border border-border/50 rounded-lg">
-        <TableBody> */}
-          {/* Reference */}
-          {/* <TableRow className="hover:bg-transparent transition-colors">
-            <TableCell className="w-1/3 text-sm font-semibold text-offwhite/70">Reference No.</TableCell>
-            <TableCell className="w-2/3 text-sm text-foreground">{watch.ref}</TableCell>
-          </TableRow> */}
-          {/* Year */}
-          {/* <TableRow className="hover:bg-transparent">
-            <TableCell className="text-sm font-semibold text-offwhite/70">Year</TableCell>
-            <TableCell className="text-sm text-foreground">{watch.year}</TableCell>
-          </TableRow> */}
-          {/* Condition */}
-          {/* <TableRow className="hover:bg-transparent">
-            <TableCell className="text-sm font-semibold text-offwhite/70">Condition</TableCell>
-            <TableCell className="text-sm text-foreground capitalize">{watch.condition}</TableCell>
-          </TableRow> */}
-          {/* Movement */}
-          {/* <TableRow className="hover:bg-transparent">
-            <TableCell className="text-sm font-semibold text-offwhite/70">Movement</TableCell>
-            <TableCell className="text-sm text-foreground">{watch.movement || 'Automatic'}</TableCell>
-          </TableRow> */}
-          {/* Availability */}
-          {/* <TableRow className="hover:bg-transparent">
-            <TableCell className="text-sm font-semibold text-offwhite/70">Availability</TableCell>
-            <TableCell className={cn("text-sm font-medium capitalize", watch.availability === 'in_stock' ? 'text-green-500' : 'text-yellow-600')}>
-              {watch.availability.replace('_', ' ')}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table> */}
     </div>
   );
 }

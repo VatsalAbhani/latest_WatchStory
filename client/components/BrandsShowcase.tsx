@@ -35,7 +35,7 @@ export default function BrandsShowcase({ brands }) {
       repeat: -1,
       onUpdate() {
         if (!draggableRef.current?.isDragging) {
-          baseXRef.current -= totalWidth / (30 * 60); // approx per tick at 60fps
+          baseXRef.current -= totalWidth / (15 * 60); // approx per tick at 60fps
           gsap.set(track, { x: wrapX(baseXRef.current + dragXRef.current) });
         }
       }

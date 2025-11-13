@@ -248,7 +248,7 @@ export default function TerminalStoryBar({
       {/* Mobile Drawer (always white for readability) */}
       <div
         className={cn(
-          "sm:hidden fixed top-36 left-0 w-4/5 h-[calc(100vh-4rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out shadow-lg",
+          "sm:hidden fixed top-28 left-0 w-4/5 h-[calc(100vh-4rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out shadow-lg",
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
