@@ -145,7 +145,7 @@ export const FEATURED: Product[] = [
   {
     id: "p5",
     brand: "Audemars Piguet",
-    model: "Royal Oak Selfwinding",
+    model: "Royal Oak",
     ref: "15510ST.OO.1320ST.06",
     year: 2023,
     price: 3600,

@@ -313,7 +313,7 @@ function SocialLink({ Icon, href, label }: { Icon: React.ElementType, href: stri
       aria-label={label}
       className="text-offwhite/50 hover:text-gold transition-colors duration-200"
     >
-      <Icon className="w-5 h-5" />
+      <Icon className="w-5 h-5 md:w-6 md:h-6 hover:opacity-75" />
     </a>
   );
 }
@@ -467,11 +467,12 @@ const encode = (data) => {
           {/* Column 3 (or 3/4): Social Media Links */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
             <div className="font-sans font-semibold text-offwhite/60 mb-3">Connect</div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 block  ">
               <SocialLink 
                 Icon={Instagram} 
                 href="https://www.instagram.com/watchstory.uae/" 
                 label="Instagram" 
+                
                 
               />
               <SocialLink 
