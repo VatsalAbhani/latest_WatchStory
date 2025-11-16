@@ -171,7 +171,8 @@ function BackgroundVideo({
       >
         {/* If you later export a WebM, put it first for Chrome; MP4 as fallback */}
         {/* <source src="/Untitled-design.webm" type="video/webm" /> */}
-        <source src={activeSrc} type="video/mp4" />
+        {/* <source src={activeSrc} type="video/mp4" /> */}
+        <source src={activeSrc} type="video/webm; codecs=av01.0.08M.08" />
       </video>
 
       {/* Optional dark overlay to keep hero text readable */}
@@ -509,10 +510,10 @@ loadJournalPosts();
 
         <BackgroundVideo
         className="mt-28 sm:mt-0"
-  src="/Untitled-design.mp4"  // desktop + default
-  mobileSrc="/Untitled-design.mp4" // (use the same file or a lighter mobile cut)
-  // poster="/F-1-white.png"          // keeps CLS low while video buffers
-  // mobilePoster="/F-1-white.png"
+  src="/hero.av1.webm"  // desktop + default
+  mobileSrc="/hero.av1.webm" // (use the same file or a lighter mobile cut)
+  poster="/poster.webp"          // keeps CLS low while video buffers
+  mobilePoster="/poster.webp"
 />
 
 {/* <div className="absolute inset-0 z-10" /> */}
