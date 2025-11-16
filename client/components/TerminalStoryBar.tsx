@@ -192,8 +192,16 @@ export default function TerminalStoryBar({
           <img
             src="/F1.png"
             alt="WatchStory Logo"
-            className={cn("-mt-4 h-48 sm:h-48 w-auto drop-shadow", effectiveTransparent && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]")}
+            className={cn("-mt-4 h-48 sm:h-44 w-auto drop-shadow", effectiveTransparent && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]")}
           />
+
+
+
+        {/* <img
+            src="/logo-try.png"
+            alt="WatchStory Logo"
+            className={cn("mt-4 h-48 sm:h-28 w-auto drop-shadow", effectiveTransparent && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]")}
+          /> */}
         </Link>
 
         {/* Desktop Links */}

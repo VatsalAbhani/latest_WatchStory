@@ -104,18 +104,22 @@ gsap.registerPlugin(ScrollTrigger);
 // 1) Add this just above your Index() component (same file)
 
 interface BackgroundVideoProps {
-  src: string;             // default video (MP4)
-  mobileSrc?: string;      // optional smaller/mobile video
-  poster?: string;         // desktop poster fallback
-  mobilePoster?: string;   // mobile poster fallback
+  srcWebm: string;           // WebM format
+  srcMp4: string;            // MP4 format
+  mobileSrcWebm?: string;
+  mobileSrcMp4?: string;
+  poster?: string;
+  mobilePoster?: string;
   className?: string;
   loop?: boolean;
   muted?: boolean;
 }
 
 function BackgroundVideo({
-  src,
-  mobileSrc,
+  srcWebm,
+  srcMp4,
+  mobileSrcWebm,
+  mobileSrcMp4,
   poster,
   mobilePoster,
   className = "",
@@ -124,7 +128,13 @@ function BackgroundVideo({
 }: BackgroundVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isMobile = useIsMobile();
-  const activeSrc = isMobile && mobileSrc ? mobileSrc : src;
+  // const activeSrc = isMobile && mobileSrc ? mobileSrc : src;
+  // const activePoster = isMobile && mobilePoster ? mobilePoster : poster;
+
+
+  // Get the active sources for WebM and MP4
+  const activeSrcWebm = isMobile && mobileSrcWebm ? mobileSrcWebm : srcWebm;
+  const activeSrcMp4 = isMobile && mobileSrcMp4 ? mobileSrcMp4 : srcMp4;
   const activePoster = isMobile && mobilePoster ? mobilePoster : poster;
 
   // Autoplay reliability on iOS + pause when off-screen to save battery
@@ -138,7 +148,9 @@ function BackgroundVideo({
     v.autoplay = true;
 
     const tryPlay = () => v.play().catch(() => {/* ignore */});
-    tryPlay();
+// We must load the new sources before playing
+v.load(); 
+tryPlay();
 
     // Pause when not visible
     const obs = new IntersectionObserver(
@@ -152,27 +164,32 @@ function BackgroundVideo({
     obs.observe(v);
 
     return () => obs.disconnect();
-  }, [muted, activeSrc]);
+  }, [muted, activeSrcWebm, activeSrcMp4]);
 
   return (
     <div className={`absolute inset-0 -z-30 overflow-hidden ${className}`}>
-      <video
-        key={activeSrc}                  // forces reload when src changes
+<video
+        // 4) Update the key to force reload if *either* source changes
+        key={activeSrcWebm + activeSrcMp4} 
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
-        
         poster={activePoster}
         muted={muted}
         loop={loop}
         playsInline
         autoPlay
         preload="auto"
-        // controls={false}  // (implicit) keep controls hidden
       >
         {/* If you later export a WebM, put it first for Chrome; MP4 as fallback */}
         {/* <source src="/Untitled-design.webm" type="video/webm" /> */}
         {/* <source src={activeSrc} type="video/mp4" /> */}
-        <source src={activeSrc} type="video/webm; codecs=av01.0.08M.08" />
+{/* 5) Provide BOTH sources.
+          List the modern (WebM) source first.
+          The browser will try it, and if it fails (like on Safari),
+          it will automatically fall back to the MP4 source.
+        */}
+        <source src={activeSrcWebm} type="video/webm; codecs=av01.0.08M.08" />
+        <source src={activeSrcMp4} type="video/mp4" />
       </video>
 
       {/* Optional dark overlay to keep hero text readable */}
@@ -508,13 +525,44 @@ loadJournalPosts();
 
 
 
-        <BackgroundVideo
+        {/* <BackgroundVideo
         className="mt-28 sm:mt-0"
   src="/hero.av1.webm"  // desktop + default
   mobileSrc="/hero.av1.webm" // (use the same file or a lighter mobile cut)
   poster="/poster.webp"          // keeps CLS low while video buffers
   mobilePoster="/poster.webp"
+/> */}
+
+
+<BackgroundVideo
+  className="mt-28 sm:mt-0"
+  
+  // Provide both desktop formats
+  srcWebm="/hero.av1.webm" 
+  srcMp4="/Untitled-design.mp4"         // <-- ADD THIS MP4 FALLBACK
+
+  // Provide both mobile formats (can be same as desktop)
+  mobileSrcWebm="/hero.av1.webm"
+  mobileSrcMp4="/Untitled-design.mp4"    // <-- ADD THIS MP4 FALLBACK
+  
+  poster="/poster.webp"
+  mobilePoster="/poster.webp"
 />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {/* <div className="absolute inset-0 z-10" /> */}
 
