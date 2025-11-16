@@ -534,12 +534,9 @@ loadJournalPosts();
 
 
 
-        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-32">
+        <div className="ws-container mb-16 sm:mb-0 text-center relative z-20 sm:pt-24 -mt-24">
           
 
-
-
-        {/* text-center font-sans !text-white font-normal text-2xl sm:text-2xl lg:text-4xl leading-tight z-30 -mt-36 */}
 
           <h1 className="text-center font-title font-normal tracking-tight 
           text-3xl sm:text-4xl lg:text-5xl leading-[1.1] !text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] z-30 

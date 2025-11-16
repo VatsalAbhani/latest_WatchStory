@@ -649,8 +649,8 @@ export default function HorizontalWatchShowcase({ watches }: Props) {
           ))}
         </CarouselContent>
         {/* Navigation buttons are placed outside the slide content container */}
-        <CarouselPrevious className="absolute left-6 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-primary" />
-        <CarouselNext className="absolute right-6 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-primary" />
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-primary" />
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 size-10 bg-black/50 text-white border-white/20 hover:bg-primary" />
       </Carousel>
       
       {/* Removed Footer Controls */}
