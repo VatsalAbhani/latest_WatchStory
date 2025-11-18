@@ -59,7 +59,7 @@ export default function AboutPage() {
         description={description}
         canonical="/about"
         ogType="website"
-        ogImage="/og/watchstory-og.jpg"
+
       />
 
       <AboutJsonLd />

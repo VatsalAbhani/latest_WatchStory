@@ -55,7 +55,7 @@ export default function ContactUsPage() {
         description={description}
         canonical="/contact"
         ogType="website"
-        ogImage="/og/watchstory-og.jpg"
+        
       />
 
       <ContactJsonLd />
@@ -70,7 +70,7 @@ export default function ContactUsPage() {
         <div className="prose prose-gray">
           <h2>Talk to us</h2>
           <p>
-            Buying, selling, or valuing a watch—our team is here to help with fast, transparent guidance.
+            Buying, selling, or valuing a watch — our team is here to help with fast, transparent guidance.
           </p>
 
           <h3>Direct lines</h3>
@@ -81,12 +81,15 @@ export default function ContactUsPage() {
           </ul>
 
           <h3>Business hours</h3>
-          <p>Mon–Sat, 10:00 – 19:00 (GST)</p>
+          <p>Mon-Sat, 10:00 - 19:00 (GST)</p>
 
           <h3>Location</h3>
+
+
+          
+
           <p>The Bureau Business Center — Opera Grand<br />
-      The Residences, Emaar Blvd, Downtown Dubai<br />
-      Burj Residence Phase I &amp; II — Dubai</p>
+      Downtown Dubai</p>
 
           {/* Optional: Map embed — replace the src with your map link when ready */}
           {/* <div className="rounded-md overflow-hidden border border-border/50">
