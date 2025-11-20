@@ -1204,7 +1204,6 @@
 
 
 
-
 // index.tsx
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async"; 
@@ -1409,7 +1408,7 @@ export default function Index() {
       }
     );
 
-    // --- NEW: Keyword Highlight Reveal + Floating Background Keywords (Idea 2) ---
+    // --- NEW: Keyword Background Highlight + Floating Background Keywords ---
 
     // Foreground inline keywords inside the paragraphs
     const keywords = gsap.utils.toArray<HTMLElement>(
@@ -1417,23 +1416,49 @@ export default function Index() {
     );
 
     if (keywords.length > 0) {
-      gsap.fromTo(
-        keywords,
-        { opacity: 0, scale: 0.95 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: ".seo-content-block",
-            start: "top 60%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+      // Only per-keyword background highlight on scroll (NO fade/scale animation)
+      keywords.forEach((el) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 80%",     // when keyword enters view
+          end: "bottom 25%",    // when keyword is nearly out
+          onEnter: () => el.classList.add("keyword-active"),
+          onEnterBack: () => el.classList.add("keyword-active"),
+          onLeave: () => el.classList.remove("keyword-active"),
+          onLeaveBack: () => el.classList.remove("keyword-active"),
+          scrub: false,
+        });
+      });
     }
+
+
+    // if (keywords.length > 0) {
+    //   const clearAll = () => {
+    //     keywords.forEach((k) => k.classList.remove("keyword-active"));
+    //   };
+
+    //   keywords.forEach((el) => {
+    //     ScrollTrigger.create({
+    //       trigger: el,
+    //       start: "top 75%",    // when keyword is approaching center
+    //       end: "bottom 20%",   // while it's still within the middle band
+    //       onEnter: () => {
+    //         clearAll();
+    //         el.classList.add("keyword-active");
+    //       },
+    //       onEnterBack: () => {
+    //         clearAll();
+    //         el.classList.add("keyword-active");
+    //       },
+    //       // onLeave: () => {
+    //       //   el.classList.remove("keyword-active");
+    //       // },
+    //       // onLeaveBack: () => {
+    //       //   el.classList.remove("keyword-active");
+    //       // },
+    //     });
+    //   });
+    // }
 
     // Background floating / parallax keywords
     const bgKeywords = gsap.utils.toArray<HTMLElement>(
@@ -1630,201 +1655,104 @@ export default function Index() {
 
 
 
+      
 
+      {/* --- START SEO CONTENT BLOCK WITH VERTICAL LABEL, FLOATING BRANDS & STRIPES --- */}
+      <section className="ws-container mt-16 md:mt-28 pb-16 seo-content-block relative overflow-hidden">
+        {/* Vertical left side label */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center z-10">
+          <p
+            className="
+              
+              block
+              text-[0.45rem] md:text-[0.55rem]
+              tracking-[0.5em]
+              uppercase
+              !text-black/80
+              rotate-[-90deg]
+              origin-left
+              whitespace-nowrap
+              translate-x-2
+            "
+            
+          >
+            Luxury Watch Dealer · Dubai
+          </p>
+        </div>
 
+        {/* Vertical right side label */}
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center z-10">
+          <p
+            className="
+              
+              block
+              text-[0.45rem] md:text-[0.55rem]
+              tracking-[0.5em]
+              uppercase
+              !text-black/80
+              rotate-[-90deg]
+              origin-right
+              whitespace-nowrap
+              -translate-x-4
+            "
+          >
+            Luxury Watch Dealer · Dubai
+          </p>
+        </div>
 
+        {/* Foreground content */}
+        <div className="relative z-10 max-w-4xl mx-auto pl-6 md:pl-10">
+          <p className="text-center text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase  mb-4">
+            WHY COLLECTORS TRUST WATCHSTORY
+          </p>
 
+          <h2 className="font-title font-bold text-3xl sm:text-4xl text-center mb-6">
+            Dubai's Trusted Source for Luxury Watches
+          </h2>
+          
+          <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
+            WatchStory is built on the principle that{" "}
+            <span className="highlight-keyword">
+              buying or selling a luxury timepiece in Dubai
+            </span>{" "}
+            should feel as rewarding and secure as wearing one. We specialize in{" "}
+            <span className="highlight-keyword">authenticated pre-owned watches</span>{" "}
+            from the world's most desired houses, including{" "}
+            <span className="highlight-keyword">Rolex</span>,{" "}
+            <span className="highlight-keyword">Patek Philippe</span>,{" "}
+            <span className="highlight-keyword">Audemars Piguet</span>, and{" "}
+            <span className="highlight-keyword">Richard Mille</span>. Every watch we acquire
+            is meticulously inspected and verified by our{" "}
+            <span className="highlight-keyword">Swiss-trained experts</span> to ensure its
+            provenance, mechanics, and authenticity are beyond reproach.
+          </p>
 
-{/* --- START SEO CONTENT BLOCK WITH VERTICAL LABEL, FLOATING BRANDS & STRIPES --- */}
-<section className="ws-container mt-16 md:mt-24 pb-16 seo-content-block relative overflow-hidden">
- {/* Vertical left side label */}
-<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center z-10">
-  <p
-    className="
-      floating-keyword-bg
-      block
-      text-[0.45rem] md:text-[0.55rem]
-      tracking-[0.5em]
-      uppercase
-      text-primary/30
-      rotate-[-90deg]
-      origin-left
-      whitespace-nowrap
-      translate-x-2
-    "
-  >
-    Luxury Watch Dealer · Dubai
-  </p>
-</div>
+          <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
+            As one of the leading luxury watch dealers in the{" "}
+            <span className="highlight-keyword">United Arab Emirates</span>, we bridge the
+            gap between discerning collectors and secure transactions. Our curated
+            collection offers a refined alternative to retail, providing competitive
+            market pricing and immediate availability for investment-grade timepieces.
+            Whether you are looking to{" "}
+            <span className="highlight-keyword">buy a stainless steel icon</span> or{" "}
+            <span className="highlight-keyword">sell a complex grand complication</span>,
+            our process is transparent, insured, and designed around a five-star client
+            experience from Dubai to the rest of the world.
+          </p>
 
-{/* Vertical right side label */}
-<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center z-10">
-  <p
-    className="
-      floating-keyword-bg
-      block
-      text-[0.45rem] md:text-[0.55rem]
-      tracking-[0.5em]
-      uppercase
-      text-primary/30
-      rotate-[-90deg]
-      origin-right
-      whitespace-nowrap
-      -translate-x-4
-    "
-  >
-    Luxury Watch Dealer · Dubai
-  </p>
-</div>
-
-
-
-  {/* Background floating keywords (parallax) */}
-  <div className="pointer-events-none absolute inset-0">
-    {/* Big corner brands */}
-    <span
-      className="
-        floating-keyword-bg 
-        absolute top-[8%] left-[4%] 
-        font-title text-3xl md:text-5xl 
-        tracking-[0.35em] uppercase 
-        text-primary/10 
-        select-none
-        whitespace-nowrap
-      "
-    >
-      ROLEX
-    </span>
-
-    <span
-      className="
-        floating-keyword-bg 
-        absolute top-[35%] right-[6%] 
-        font-title text-2xl md:text-4xl 
-        tracking-[0.3em] uppercase 
-        text-primary/10 
-        select-none
-        whitespace-nowrap
-      "
-    >
-      AUDEMARS&nbsp;PIGUET
-    </span>
-
-    <span
-      className="
-        floating-keyword-bg 
-        absolute bottom-[18%] left-[10%] 
-        font-title text-2xl md:text-4xl 
-        tracking-[0.3em] uppercase 
-        text-primary/10 
-        select-none
-        whitespace-nowrap
-      "
-    >
-      PATEK&nbsp;PHILIPPE
-    </span>
-
-    <span
-      className="
-        floating-keyword-bg 
-        absolute bottom-[5%] right-[12%] 
-        font-title text-xl md:text-3xl 
-        tracking-[0.35em] uppercase 
-        text-primary/10 
-        select-none
-        whitespace-nowrap
-      "
-    >
-      RICHARD&nbsp;MILLE
-    </span>
-
-    {/* Brand stripes behind content */}
-    {/* <div
-      className="
-        floating-keyword-bg
-        absolute top-[22%] inset-x-[-5%]
-        text-center
-        text-[0.55rem] md:text-xs
-        tracking-[0.55em]
-        uppercase
-        text-primary/12
-        whitespace-nowrap
-      "
-    >
-      ROLEX · PATEK PHILIPPE · AUDEMARS PIGUET
-    </div> */}
-
-    {/* <div
-      className="
-        floating-keyword-bg
-        absolute bottom-[24%] inset-x-[-5%]
-        text-center
-        text-[0.55rem] md:text-xs
-        tracking-[0.55em]
-        uppercase
-        text-primary/10
-        whitespace-nowrap
-      "
-    >
-      RICHARD MILLE · CARTIER · OMEGA
-    </div> */}
-  </div>
-
-  {/* Foreground content */}
-  <div className="relative z-10 max-w-4xl mx-auto text-offwhite/90 pl-6 md:pl-10">
-    <p className="text-center text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-offwhite/50 mb-4">
-      WHY COLLECTORS TRUST WATCHSTORY
-    </p>
-
-    <h2 className="font-title font-bold text-3xl sm:text-4xl text-center mb-6 text-primary">
-      Dubai's Trusted Source for Luxury Watches
-    </h2>
-    
-    <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
-      WatchStory is built on the principle that{" "}
-      <span className="highlight-keyword">
-        buying or selling a luxury timepiece in Dubai
-      </span>{" "}
-      should feel as rewarding and secure as wearing one. We specialize in{" "}
-      <span className="highlight-keyword">authenticated pre-owned watches</span>{" "}
-      from the world's most desired houses, including{" "}
-      <span className="highlight-keyword">Rolex</span>,{" "}
-      <span className="highlight-keyword">Patek Philippe</span>,{" "}
-      <span className="highlight-keyword">Audemars Piguet</span>, and{" "}
-      <span className="highlight-keyword">Richard Mille</span>. Every watch we acquire
-      is meticulously inspected and verified by our{" "}
-      <span className="highlight-keyword">Swiss-trained experts</span> to ensure its
-      provenance, mechanics, and authenticity are beyond reproach.
-    </p>
-
-    <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
-      As one of the leading luxury watch dealers in the{" "}
-      <span className="highlight-keyword">United Arab Emirates</span>, we bridge the
-      gap between discerning collectors and secure transactions. Our curated
-      collection offers a refined alternative to retail, providing competitive
-      market pricing and immediate availability for investment-grade timepieces.
-      Whether you are looking to{" "}
-      <span className="highlight-keyword">buy a stainless steel icon</span> or{" "}
-      <span className="highlight-keyword">sell a complex grand complication</span>,
-      our process is transparent, insured, and designed around a five-star client
-      experience from Dubai to the rest of the world.
-    </p>
-
-    <p className="mb-0 font-sans text-base sm:text-lg leading-relaxed">
-      We offer{" "}
-      <span className="highlight-keyword">fair, market-based offers</span> and{" "}
-      <span className="highlight-keyword">fast, insured payouts for sellers</span>,
-      and provide a{" "}
-      <span className="highlight-keyword">comprehensive 12-month warranty</span> on
-      every piece for buyers. For us, every watch has a{" "}
-      <span className="highlight-keyword">story</span> — and we make sure your next
-      chapter is written with confidence, discretion, and uncompromising luxury.
-    </p>
-  </div>
-</section>
-{/* --- END SEO CONTENT BLOCK --- */}
-
-
+          <p className="mb-0 font-sans text-base sm:text-lg leading-relaxed">
+            We offer{" "}
+            <span className="highlight-keyword">fair, market-based offers</span> and{" "}
+            <span className="highlight-keyword">fast, insured payouts for sellers</span>,
+            and provide a{" "}
+            <span className="highlight-keyword">comprehensive 12-month warranty</span> on
+            every piece for buyers. For us, every watch has a{" "}
+            <span className="highlight-keyword">story</span> — and we make sure your next
+            chapter is written with confidence, discretion, and uncompromising luxury.
+          </p>
+        </div>
+      </section>
+      {/* --- END SEO CONTENT BLOCK --- */}
 
     </Layout>
   );
