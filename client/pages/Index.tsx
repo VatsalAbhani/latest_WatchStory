@@ -29,6 +29,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 gsap.registerPlugin(ScrollTrigger);
 
 
+
+const isSafariBrowser = (() => {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  return /Safari/.test(ua) && !/Chrome|Chromium|Edg/.test(ua);
+})();
+
+
+
 // [BackgroundVideo Component is here, not shown for brevity]
 interface BackgroundVideoProps {
   srcWebm: string;           
@@ -68,8 +77,15 @@ function BackgroundVideo({
     v.autoplay = true;
 
     const tryPlay = () => v.play().catch(() => {/* ignore */});
-    v.load(); 
-    tryPlay();
+
+   // For Safari, avoid aggressively re-loading on every hook change
+   if (!isSafariBrowser) {
+    v.load();
+  }
+  tryPlay();
+
+
+
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -361,7 +377,7 @@ export default function Index() {
           srcWebm="/hero.av1.webm" 
           srcMp4="/Untitled-design.mp4"         
           mobileSrcWebm="/hero.av1.webm"
-          mobileSrcMp4="/Untitled-design.mp4"   
+          mobileSrcMp4="/Untitled-Design-mobile.mp4"   
           poster="/poster.webp"
           mobilePoster="/poster.webp"
         />
