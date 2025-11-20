@@ -259,6 +259,13 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
 }
 
 
+
+
+.highlight-keyword {
+  opacity: 0;
+}
+
+
 /* --------------------------------------------
    WATCHSTORY BLOG ARTICLE IMAGE STYLING
    -------------------------------------------- */

@@ -64,7 +64,7 @@ export default function AboutPage() {
 
       <AboutJsonLd />
 
-      <section className="ws-container mt-24 pb-8">
+      <section className="ws-container mt-24 pt-16 pb-8">
         <h1 className="font-title text-4xl sm:text-5xl">{title}</h1>
         <p className="text-sm text-offwhite/60 mt-2">
           Dubai, United Arab Emirates
@@ -76,18 +76,19 @@ export default function AboutPage() {
           Founded in Dubai, WatchStory exists for collectors and enthusiasts who believe every watch holds meaning.
           We buy, sell, and advise on fine timepieces with a singular promise: authenticity first, always.
         </p>
+        <br />
         <p>
           Our approach is simple. Verify every detail, document every service, and communicate with complete transparency.
           From modern icons to historic references, we focus on the pieces that stand the test of time.
         </p>
-
+        <br />
         <h2>What We Stand For</h2>
         <ul>
           <li><strong>Authenticity:</strong> every piece inspected, documented, and backed with confidence.</li>
           <li><strong>Transparency:</strong> straight pricing, clear communication, no surprises.</li>
           <li><strong>Service:</strong> friendly, expert guidance whether you are buying or selling.</li>
         </ul>
-
+        <br />
         <h2>Our Promise</h2>
         <p>
           Your trust matters. We treat each transaction with the care of a private collection and the standards of a professional desk.
@@ -97,7 +98,7 @@ export default function AboutPage() {
         <blockquote>
           WatchStory — More than time, a story on your wrist.
         </blockquote>
-
+        <br />
         <h2>Get In Touch</h2>
         <p>
           For valuations, sourcing, or private appointments, reach us at{" "}

@@ -60,7 +60,7 @@ export default function ContactUsPage() {
 
       <ContactJsonLd />
 
-      <section className="ws-container mt-24 pb-8">
+      <section className="ws-container mt-24 pt-16 pb-8">
         <h1 className="font-title text-4xl sm:text-5xl">{title}</h1>
         <p className="text-sm text-offwhite/60 mt-2">Dubai, United Arab Emirates</p>
       </section>
@@ -72,17 +72,17 @@ export default function ContactUsPage() {
           <p>
             Buying, selling, or valuing a watch — our team is here to help with fast, transparent guidance.
           </p>
-
+          <br />
           <h3>Direct lines</h3>
           <ul>
             <li>Email: <a href="mailto:hello@watchstory.ae">info@watchstory.ae</a></li>
             <li>Phone: <a href="tel:+971545056156">+971 54 505 6156</a></li>
             <li>WhatsApp: <a href="https://wa.me/971545056156" target="_blank" rel="noopener noreferrer">Message us</a></li>
           </ul>
-
+          <br />
           <h3>Business hours</h3>
           <p>Mon-Sat, 10:00 - 19:00 (GST)</p>
-
+          <br />
           <h3>Location</h3>
 
 
