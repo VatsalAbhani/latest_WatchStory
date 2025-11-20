@@ -1,5 +1,4 @@
 
-
 // index.tsx
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async"; 
@@ -216,8 +215,8 @@ export default function Index() {
       keywords.forEach((el) => {
         ScrollTrigger.create({
           trigger: el,
-          start: "top 80%",     // when keyword enters view
-          end: "bottom 25%",    // when keyword is nearly out
+          start: "top 60%",     // when keyword enters view
+          end: "bottom 20%",    // when keyword is nearly out
           onEnter: () => el.classList.add("keyword-active"),
           onEnterBack: () => el.classList.add("keyword-active"),
           onLeave: () => el.classList.remove("keyword-active"),
@@ -497,7 +496,7 @@ export default function Index() {
         </div>
 
         {/* Foreground content */}
-        <div className="relative z-10 max-w-4xl mx-auto pl-6 md:pl-10">
+      <div className="relative z-10 max-w-5xl mx-auto pl-6 md:pl-10">
           <p className="text-center text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase  mb-4">
             WHY COLLECTORS TRUST WATCHSTORY
           </p>
@@ -506,7 +505,7 @@ export default function Index() {
             Dubai's Trusted Source for Luxury Watches
           </h2>
           
-          <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
+          <p className="mb-6 font-sans text-base sm:text-lg !leading-[1.8]">
             WatchStory is built on the principle that{" "}
             <span className="highlight-keyword">
               buying or selling a luxury timepiece in Dubai
@@ -523,7 +522,7 @@ export default function Index() {
             provenance, mechanics, and authenticity are beyond reproach.
           </p>
 
-          <p className="mb-6 font-sans text-base sm:text-lg leading-relaxed">
+          <p className="mb-6 font-sans text-base sm:text-lg !leading-[1.8]">
             As one of the leading luxury watch dealers in the{" "}
             <span className="highlight-keyword">United Arab Emirates</span>, we bridge the
             gap between discerning collectors and secure transactions. Our curated
@@ -536,7 +535,7 @@ export default function Index() {
             experience from Dubai to the rest of the world.
           </p>
 
-          <p className="mb-0 font-sans text-base sm:text-lg leading-relaxed">
+          <p className="mb-0 font-sans text-base sm:text-lg !leading-[1.8]">
             We offer{" "}
             <span className="highlight-keyword">fair, market-based offers</span> and{" "}
             <span className="highlight-keyword">fast, insured payouts for sellers</span>,
