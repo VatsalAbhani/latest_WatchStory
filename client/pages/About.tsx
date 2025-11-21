@@ -33,7 +33,8 @@ function AboutJsonLd() {
 
         "sameAs": [
           "https://www.instagram.com/watchstory.uae/",
-          "https://www.linkedin.com/company/watchstoryuae/"
+          "https://www.linkedin.com/company/watchstoryuae/",
+          "https://www.trustpilot.com/review/watchstory.ae"
         ]
     }
 

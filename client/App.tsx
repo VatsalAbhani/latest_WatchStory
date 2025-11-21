@@ -54,21 +54,87 @@ function GlobalJsonLd() {
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "WatchStory Trading LLC",
+    "name": "WatchStory",
     "url": ORIGIN,
     "logo": `${ORIGIN}/F1.png`,
     // add real socials when ready
     "sameAs":[
       "https://www.instagram.com/watchstory.uae/",
-      "https://www.facebook.com/watchstory",
-      "https://www.linkedin.com/company/watchstoryuae/"
+      // "https://www.facebook.com/watchstory",
+      "https://www.linkedin.com/company/watchstoryuae/",
+      "https://www.trustpilot.com/review/watchstory.ae"
+    ],
+
+  
+  "knowsAbout": [
+    "Luxury Watches",
+    "Pre-Owned Watches",
+    "Rolex",
+    "Audemars Piguet",
+    "Patek Philippe",
+    "Richard Mille",
+    "Watch Valuation",
+    "Luxury Watch Authentication",
+    "Sell Luxury Watches in Dubai",
+    "Dubai Watch Market"
+  ]
+  };
+
+
+
+  const localBusiness = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "WatchStory - Luxury Watch Dealer Dubai",
+    "image": `${ORIGIN}/F1.png`,
+    "url": ORIGIN,
+    "telephone": "+971 54 505 6156",
+    "priceRange": "$$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "The Bureau Business Center - Opera Grand, The Residences - Emaar Blvd",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "00000",
+      "addressCountry": "AE"
+    },
+    "areaServed": ["Dubai", "United Arab Emirates"],
+    "currenciesAccepted": "AED, USD",
+    "paymentAccepted": "Bank Transfer, Cash",
+    "itemOffered": {
+      "@type": "Product",
+      "name": "Luxury Watches",
+      "description": "Buy and sell authenticated pre-owned luxury timepieces from Rolex, Patek Philippe, Audemars Piguet, Richard Mille and more."
+    },
+    "knowsAbout": [
+      "Luxury Watches",
+      "Pre-Owned Watches",
+      "Rolex",
+      "Audemars Piguet",
+      "Patek Philippe",
+      "Richard Mille",
+      "Sell Watches in Dubai",
+      "Buy Watches in Dubai"
     ]
   };
 
+
+
+
+
+
   return (
+    
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(website)}</script>
-      <script type="application/ld+json">{JSON.stringify(organization)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(website)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(organization)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(localBusiness)}
+      </script>
     </Helmet>
   );
 }

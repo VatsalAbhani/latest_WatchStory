@@ -424,7 +424,7 @@ export default function Index() {
 
 
       {/* Trust strips - Original, shorter content (Kept as is for now) */}
-      <section className="ws-container mt-28 pb-20 grid grid-cols-1 md:grid-cols-4 gap-6 trust-section">
+      <section className="ws-container mt-28 pb-20 grid grid-cols-1 md:grid-cols-4 gap-6 ">
         <div className=" rounded-lg p-4 md:p-6 bg-card trust-strip">
           <h2 className="font-title font-bold text-lg sm:text-xl md:text-2xl">Buy & Sell Authentic Luxury Watches in Dubai</h2>
           <p className="font-sans text-offwhite/70 mt-2 text-sm">Dubai's trusted shop to Buy and Sell authenticated luxury watches.</p>

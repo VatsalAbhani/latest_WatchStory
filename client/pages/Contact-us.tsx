@@ -9,25 +9,29 @@ function ContactJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "mainEntity": {
+    "name": "Contact WatchStory",
+    "url": `${ORIGIN}/contact`,
+    "about": {
       "@type": "Organization",
       "name": "WatchStory",
       "url": ORIGIN,
-      "logo": `${ORIGIN}/F1.png`,
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "info@watchstory.ae",
-        "telephone": "+971-54-505-6156",
-        "areaServed": "AE",
-        "availableLanguage": ["en", "ar", "hi"]
-      }]
+      "logo": `${ORIGIN}/F1.png`
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+971 54 505 6156",
+      "email": "info@watchstory.ae",
+      "areaServed": "AE",
+      "availableLanguage": ["en"]
     }
   };
 
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(data)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(data)}
+      </script>
     </Helmet>
   );
 }
