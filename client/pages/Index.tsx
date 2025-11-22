@@ -341,7 +341,7 @@ export default function Index() {
       {/* 3. ADD SEO COMPONENT - Now the single source of truth for Title, Description, Canonical */}
       <Seo
         title="Buy & Sell Luxury Watches in Dubai, UAE"
-        description="Shop authenticated pre-owned Rolex, Audemars Piguet, Patek Philippe & more in Dubai. WatchStory is Dubai's trusted watch shop to buy and sell authenticated luxury watches. Get fair, market-based offers and secure, insured transactions."
+        description="Shop authenticated pre-owned Rolex, Audemars Piguet, Patek Philippe & more in the UAE. Dubai's trusted watch shop to buy and sell authenticated luxury watches."
         canonical="/"
       />
       {/* End SEO Component */}
