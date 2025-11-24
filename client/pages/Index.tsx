@@ -231,8 +231,8 @@ export default function Index() {
       keywords.forEach((el) => {
         ScrollTrigger.create({
           trigger: el,
-          start: "top 30%",     // when keyword enters view
-          end: "bottom 20%",    // when keyword is nearly out
+          start: "top 70%",     // when keyword enters view
+          end: "bottom 70%",    // when keyword is nearly out
           onEnter: () => el.classList.add("keyword-active"),
           onEnterBack: () => el.classList.add("keyword-active"),
           onLeave: () => el.classList.remove("keyword-active"),
