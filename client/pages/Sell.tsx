@@ -387,12 +387,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   if (
     !formData.fullName ||
     !formData.brand ||
-    !formData.model ||
-    !formData.reference ||
-    !formData.year ||
-    !formData.askingPrice ||
-    !formData.contactDetail ||
-    !(formData['upload-photos'] && formData['upload-photos'].length > 0)
+    !formData.contactDetail
   ) {
     alert("Please fill in all required fields (marked with *).");
     return;
