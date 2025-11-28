@@ -400,10 +400,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const resp = await fetch('/', { method: 'POST', body });
     // Netlify returns HTML redirect; if OK, send user to success page
     if (resp.ok) {
-      navigate('/success');
+      // Full page navigation so Netlify can serve /success.html
+      window.location.href = '/success';
+      // or: window.location.replace('/success');
     } else {
       alert('Submission failed. Please try again.');
     }
+    
   } catch (err) {
     alert('Network error. Please try again.');
   } finally {
@@ -441,7 +444,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       data-netlify="true"              // 3. Enable Netlify processing
       netlify-honeypot="sell-bot-field"  // 4. Honeypot
       encType="multipart/form-data"    // 5. ESSENTIAL for file uploads
-      action="/success"
+      // action="/success"
       >
 
 {/* --- HIDDEN FIELDS FOR NETLIFY (Note: These inputs are ignored by Netlify's multipart handler, but the form-name is essential) --- */}
