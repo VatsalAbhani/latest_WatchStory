@@ -231,8 +231,8 @@ export default function Index() {
       keywords.forEach((el) => {
         ScrollTrigger.create({
           trigger: el,
-          start: "top 70%",     // when keyword enters view
-          end: "bottom 10%",    // when keyword is nearly out
+          start: "top 60%",     // when keyword enters view
+          end: "bottom 5%",    // when keyword is nearly out
           onEnter: () => el.classList.add("keyword-active"),
           onEnterBack: () => el.classList.add("keyword-active"),
           onLeave: () => el.classList.remove("keyword-active"),
@@ -534,7 +534,7 @@ export default function Index() {
             <span className="highlight-keyword">Audemars Piguet</span>, and{" "}
             <span className="highlight-keyword">Richard Mille</span>. Every watch we acquire
             is meticulously inspected and verified by our{" "}
-            <span className="highlight-keyword">Swiss-trained experts</span> to ensure its
+            <span className="highlight-keyword">trained experts</span> to ensure its
             provenance, mechanics, and authenticity are beyond reproach.
           </p>
 
