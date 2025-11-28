@@ -243,7 +243,7 @@ const getDetailRows = (data: typeof detailsData) => {
           Add to Cart
         </MagneticButton> */}
         <MagneticButton
-        href="https://wa.me/971545056156"
+        href="https://wa.me/971569602690"
           // onClick={handleInquire}
           variant="secondary"
           target="_blank" // <--- Recommended addition

@@ -110,7 +110,7 @@ const handleMouseLeave = () => {
 return (
   <a 
     ref={linkRef}
-    href="https://wa.me/971545056156" // Example Dubai number
+    href="https://wa.me/971569602690" // Example Dubai number
     target="_blank" 
     rel="noreferrer" 
     // The entire <a> tag is the unified hover trigger
@@ -333,7 +333,7 @@ export default function Buy() {
       
       {/* You should replace #LINK_TO_WHATSAPP with your actual WhatsApp link */}
       {/* <a 
-        href="https://wa.me/971545056156"
+        href="https://wa.me/971569602690"
         target="_blank" 
         rel="noopener noreferrer"
         className="inline-block px-8 py-3 bg-green-500 text-white font-bold rounded-lg text-lg hover:bg-green-600 transition duration-300 shadow-xl"

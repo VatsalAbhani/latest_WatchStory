@@ -262,7 +262,7 @@ const handleMouseLeave = () => {
 return (
   <a 
     ref={linkRef}
-    href="https://wa.me/971545056156" // Example Dubai number
+    href="https://wa.me/971569602690" // Example Dubai number
     target="_blank" 
     rel="noreferrer" 
     // The entire <a> tag is the unified hover trigger

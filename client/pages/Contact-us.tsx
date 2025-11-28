@@ -80,8 +80,8 @@ export default function ContactUsPage() {
           <h3>Direct lines</h3>
           <ul>
             <li>Email: <a href="mailto:hello@watchstory.ae">info@watchstory.ae</a></li>
-            <li>Phone: <a href="tel:+971545056156">+971 54 505 6156</a></li>
-            <li>WhatsApp: <a href="https://wa.me/971545056156" target="_blank" rel="noopener noreferrer">Message us</a></li>
+            <li>Phone: <a href="tel:+971569602690">+971 56 960 2690</a></li>
+            <li>WhatsApp: <a href="https://wa.me/971569602690" target="_blank" rel="noopener noreferrer">Message us</a></li>
           </ul>
           <br />
           <h3>Business hours</h3>

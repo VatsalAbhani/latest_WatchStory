@@ -103,7 +103,7 @@
 
 
 //                     <MagneticButton
-//                       href="https://wa.me/971545056156" 
+//                       href="https://wa.me/971569602690" 
 //                       variant="secondary"
 //                       className="text-sm"
 //                       target="_blank" 
@@ -577,7 +577,7 @@ function SlideContent({ watch }: { watch: Watch }) {
 
 
                     <MagneticButton
-                      href="https://wa.me/971545056156" 
+                      href="https://wa.me/971569602690" 
                       variant="secondary"
                       className="text-sm"
                       target="_blank" 

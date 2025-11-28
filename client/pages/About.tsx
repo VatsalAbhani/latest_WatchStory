@@ -104,7 +104,7 @@ export default function AboutPage() {
         <p>
           For valuations, sourcing, or private appointments, reach us at{" "}
           <a href="mailto:hello@watchstory.ae">info@watchstory.ae</a> or{" "}
-          <a href="tel:+971545056156">+971 54 505 6156</a>.
+          <a href="tel:+971569602690">+971 56 960 2690</a>.
         </p>
       </section>
 

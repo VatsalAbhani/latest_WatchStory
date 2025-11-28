@@ -1,119 +1,6 @@
 
 
 
-
-// import { Link, NavLink } from "react-router-dom";
-// import { useStory } from "@/state/story";
-// import { useCart } from "@/state/cart";
-// import { cn } from "@/lib/utils";
-// import React, { useState } from "react";
-
-// const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
-
-// // --- MAXIMALLY SIMPLIFIED CSS-ONLY MenuLink ---
-// function SimpleNavLink({ to, text, onClick }: { to: string; text: string; onClick?: () => void }) {
-//   return (
-//     <NavLink
-//       to={to}
-//       onClick={onClick}
-//       className={({ isActive }) =>
-//         cn("inline-block font-sans font-semibold tracking-wider p-2")
-//       }
-//     >
-//       {({ isActive }) => <span>{isActive ? text.toUpperCase() : text}</span>}
-//     </NavLink>
-//   );
-// }
-
-// export default function TerminalStoryBar() {
-//   const { typedText, dots, currentLineIndex, toggleSound, soundOn } = useStory();
-//   const { count } = useCart();
-
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-//   const closeMenu = () => setIsMenuOpen(false);
-
-//   return (
-//     // ⬇️ Make wrapper full-width, positioned, and relative so the blur strip anchors correctly
-//     <div className="relative z-50 w-full text-white bg-black/30 backdrop-blur-xl text-white border-b border-white/10">
-//       {/* Keep content centered inside ws-container */}
-//       <div className="ws-container relative h-auto sm:h-20 flex items-center justify-between px-4 sm:px-0">
-//         {/* Logo */}
-//         <Link to="/" className="flex items-center ml-[-2] gap-2 font-mono group">
-//           <img
-//             src="/F1.png"
-//             alt="WatchStory Logo"
-//             className="-mt-4 h-48 sm:h-48 w-auto"
-//           />
-//         </Link>
-
-//         {/* Desktop nav */}
-//         <div className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-//           <ul className="flex items-center space-x-10 font-sans text-sm sm:text-lg">
-//             <li><SimpleNavLink to="/buy" text="Buy" /></li>
-//             <li><SimpleNavLink to="/sell" text="Sell" /></li>
-//             <li><SimpleNavLink to="/blog" text="Blog" /></li>
-//           </ul>
-//         </div>
-
-//         {/* Right actions */}
-//         <div className="flex items-center space-x-4">
-//           <a
-//             href="https://wa.me/971545056156"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             aria-label="WhatsApp Enquiry"
-//             className="hover:opacity-80 transition-opacity"
-//           >
-//             <img src={WHATSAPP_ICON_SRC} alt="WhatsApp" className="w-10 h-10 sm:w-12 sm:h-12" />
-//           </a>
-
-//           {/* Mobile toggle (white so it’s visible over video) */}
-//           <button
-//             className="sm:hidden p-2 text-white z-50"
-//             onClick={toggleMenu}
-//             aria-label="Toggle navigation menu"
-//           >
-//             {isMenuOpen ? (
-//               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-//                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-//               </svg>
-//             ) : (
-//               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-//                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-//               </svg>
-//             )}
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Mobile menu */}
-//       <div
-//         className={cn(
-//           "sm:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out shadow-lg",
-//           isMenuOpen ? "translate-x-0" : "-translate-x-full"
-//         )}
-//       >
-//         <div className="flex flex-col items-center justify-start py-8 space-y-4">
-//           <SimpleNavLink to="/buy" text="Buy" onClick={closeMenu} />
-//           <SimpleNavLink to="/sell" text="Sell" onClick={closeMenu} />
-//           <SimpleNavLink to="/blog" text="Blog" onClick={closeMenu} />
-//           <SimpleNavLink to="/about" text="About" onClick={closeMenu} />
-//           <SimpleNavLink to="/contact" text="Contact Us" onClick={closeMenu} />
-//         </div>
-//       </div>
-
-//       {/* Bottom blur to blend into video */}
-//       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 " />
-//     </div>
-//   );
-// }
-
-
-
-
-
-
 // TerminalStoryBar.tsx
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useStory } from "@/state/story";
@@ -221,7 +108,7 @@ export default function TerminalStoryBar({
         {/* Right side */}
         <div className="flex items-center space-x-4">
           <a
-            href="https://wa.me/971545056156"
+            href="https://wa.me/971569602690"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp Enquiry"
