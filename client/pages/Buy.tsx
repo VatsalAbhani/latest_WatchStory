@@ -2,7 +2,11 @@
 //Buy.tsx
 import Layout from "@/components/Layout";
 import ProductCard from "@/components/ProductCard";
-import BuyPageFilter from "@/components/BuyPageFilter";
+import BuyPageFilter, {
+  BrandKey,
+  SortOption,
+  BRANDS,
+} from "@/components/BuyPageFilter";
 import { FEATURED } from "@/lib/data";
 import { useEffect, useState, useMemo, useRef } from "react";
 import { gsap } from "gsap";
@@ -386,3 +390,444 @@ export default function Buy() {
     </Layout>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -----------------------------------------         updated buy page with watches and details
+
+
+// // Buy.tsx
+// import { useMemo, useState, useRef } from "react";
+// import { Link } from "react-router-dom";
+// import Layout from "@/components/Layout";
+// import Seo from "@/components/Seo";
+// import MagneticButton from "@/components/MagneticButton";
+// import BuyPageFilter, {
+//   BRANDS,
+//   BrandKey,
+//   SortOption,
+// } from "@/components/BuyPageFilter";
+// import { FEATURED, Product } from "@/lib/data";
+
+// const WHATSAPP_NUMBER = "971569602690";
+// const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+// // Helper to normalise strings for comparisons
+// const normalize = (value?: string | null) =>
+//   (value ?? "").toLowerCase().trim();
+
+// // List of primary brands we explicitly support in filters
+// const MAIN_BRANDS = [
+//   "rolex",
+//   "audemars piguet",
+//   "richard mille",
+//   "patek philippe",
+//   "cartier",
+//   "omega",
+// ].map((b) => b.toLowerCase());
+
+// export default function Buy() {
+//   const [selectedBrand, setSelectedBrand] = useState<BrandKey>("all");
+//   const [sortOption, setSortOption] = useState<SortOption>("latest");
+
+//   const products = FEATURED as Product[];
+//   const hasAnyWatches = products && products.length > 0;
+
+//   const filteredAndSortedProducts = useMemo(() => {
+//     if (!products || products.length === 0) return [];
+
+//     let list = [...products];
+
+//     // --- BRAND FILTER ---
+//     if (selectedBrand !== "all") {
+//       list = list.filter((product) => {
+//         const brand = normalize(product.brand);
+
+//         if (!brand) return false;
+
+//         if (selectedBrand === "other") {
+//           return !MAIN_BRANDS.includes(brand);
+//         }
+
+//         const selectedLabel = BRANDS.find(
+//           (b) => b.key === selectedBrand
+//         )?.label;
+
+//         if (!selectedLabel) return true;
+
+//         return brand === normalize(selectedLabel);
+//       });
+//     }
+
+//     // --- SORTING ---
+//     list.sort((a, b) => {
+//       const priceA = Number((a as any).price) || 0;
+//       const priceB = Number((b as any).price) || 0;
+//       const yearA = Number((a as any).year) || 0;
+//       const yearB = Number((b as any).year) || 0;
+
+//       switch (sortOption) {
+//         case "price-asc":
+//           return priceA - priceB;
+//         case "price-desc":
+//           return priceB - priceA;
+//         case "latest":
+//         default: {
+//           // Prefer newer year if available
+//           if (yearA && yearB && yearA !== yearB) {
+//             return yearB - yearA;
+//           }
+//           // Fallback: keep original order
+//           const indexA = products.indexOf(a);
+//           const indexB = products.indexOf(b);
+//           return indexA - indexB;
+//         }
+//       }
+//     });
+
+//     return list;
+//   }, [products, selectedBrand, sortOption]);
+
+//   const showCuratingMessage =
+//     !hasAnyWatches || filteredAndSortedProducts.length === 0;
+
+//   return (
+//     <Layout>
+//       <Seo
+//         title="Buy Luxury Watches in Dubai | WatchStory"
+//         description="Explore curated pre-owned Rolex, Audemars Piguet, Patek Philippe, Richard Mille, Cartier, Omega and more at WatchStory, Dubai."
+//       />
+
+//       <main className="mt-24 min-h-screen bg-background">
+//         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+//           {/* Page heading */}
+//           <header className="mb-6 sm:mb-8">
+//             <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground mb-2">
+//               Available Watches
+//             </p>
+//             <h1 className="font-title text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
+//               Curated timepieces for serious collectors
+//             </h1>
+//             <p className="mt-3 max-w-2xl text-sm sm:text-base text-muted-foreground">
+//               Every watch listed here is inspected, authenticated and matched
+//               against current Dubai market data. Browse by brand, sort by price
+//               or recency, and reach out on WhatsApp when you&apos;re ready to
+//               discuss a piece.
+//             </p>
+//           </header>
+
+//           {/* Filters */}
+//           <div className="mb-6 sm:mb-8">
+//             <BuyPageFilter
+//               selectedBrand={selectedBrand}
+//               sortOption={sortOption}
+//               onBrandChange={setSelectedBrand}
+//               onSortChange={setSortOption}
+//             />
+//           </div>
+
+//           {/* Listing / Curating state */}
+//           {showCuratingMessage ? (
+//             <div className="border border-border/40 rounded-2xl bg-card/50 backdrop-blur-sm px-6 py-10 sm:px-8 sm:py-12 text-center">
+//               <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-3">
+//                 Curating Our Collection
+//               </p>
+//               <h2 className="font-title text-xl sm:text-2xl md:text-3xl mb-3">
+//                 Our first releases are being hand-picked.
+//               </h2>
+//               <p className="max-w-xl mx-auto text-sm sm:text-base text-muted-foreground mb-6">
+//                 We are currently curating a small, high-conviction selection of
+//                 Rolex, Audemars Piguet, Patek Philippe, Richard Mille, Cartier
+//                 and other notable houses. If you&apos;d like early access to
+//                 pieces before they go live, send us a message on WhatsApp.
+//               </p>
+//               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+//                 <MagneticButton
+//                   href={`${WHATSAPP_BASE_URL}?text=${encodeURIComponent(
+//                     "Hi WatchStory, I would like to know which watches you currently have available."
+//                   )}`}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   variant="primary"
+//                   className="min-w-[220px] text-sm sm:text-base font-semibold"
+//                 >
+//                   Inquire on WhatsApp
+//                 </MagneticButton>
+//                 <Link
+//                   to="/sell"
+//                   className="text-xs sm:text-sm text-muted-foreground underline-offset-4 hover:underline"
+//                 >
+//                   Looking to sell instead? Start with a free offer.
+//                 </Link>
+//               </div>
+//             </div>
+//           ) : (
+//             <div className="space-y-4 sm:space-y-5">
+//               {filteredAndSortedProducts.map((product) => (
+//                 <BuyWatchCard
+//                   key={(product as any).slug ?? (product as any).id}
+//                   watch={product}
+//                 />
+//               ))}
+//             </div>
+//           )}
+//         </section>
+//       </main>
+//     </Layout>
+//   );
+// }
+
+
+
+// // === WATCH CARD COMPONENT WITH IMAGE SLIDER, SWIPE + PROGRESS ===
+
+// interface BuyWatchCardProps {
+//   watch: Product;
+// }
+
+// function BuyWatchCard({ watch }: BuyWatchCardProps) {
+//   const imagesAny = (watch as any).images as | { urls?: string[] } | undefined;
+//   const imageUrls = imagesAny?.urls?.length ? imagesAny.urls : ["/placeholder-watch.jpg"];
+
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const touchStartX = useRef<number | null>(null);
+
+//   const nextImage = () => {
+//     if (imageUrls.length <= 1) return;
+//     setCurrentIndex((prev) => (prev + 1) % imageUrls.length);
+//   };
+
+//   const prevImage = () => {
+//     if (imageUrls.length <= 1) return;
+//     setCurrentIndex((prev) => (prev - 1 + imageUrls.length) % imageUrls.length);
+//   };
+
+//   const handleTouchStart = (e: any) => {
+//     const touch = e.touches?.[0];
+//     if (!touch) return;
+//     touchStartX.current = touch.clientX;
+//   };
+
+//   const handleTouchEnd = (e: any) => {
+//     if (touchStartX.current === null) return;
+//     const touch = e.changedTouches?.[0];
+//     if (!touch) return;
+
+//     const deltaX = touch.clientX - touchStartX.current;
+//     const threshold = 40; // minimum swipe distance in px
+
+//     if (deltaX > threshold) {
+//       prevImage();
+//     } else if (deltaX < -threshold) {
+//       nextImage();
+//     }
+
+//     touchStartX.current = null;
+//   };
+
+//   const whatsappUrl = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(
+//     `Hi WatchStory, I'm interested in the ${watch.brand} ${watch.model} (${watch.ref}), year ${watch.year}. Is it still available?`
+//   )}`;
+
+//   const detailsPath = `/watch/${(watch as any).slug}`;
+
+//   // Meta line
+//   const metaPieces: string[] = [];
+//   if (watch.year) metaPieces.push(`${watch.year}`);
+//   if ((watch as any).size) metaPieces.push(`${(watch as any).size} mm`);
+
+//   const hasBox = Boolean((watch as any).box);
+//   const hasPapers = Boolean((watch as any).certificate);
+
+//   if (hasBox && hasPapers) metaPieces.push("Full set");
+//   else if (hasBox) metaPieces.push("Box");
+//   else if (hasPapers) metaPieces.push("Papers");
+
+//   if ((watch as any).condition) metaPieces.push(String((watch as any).condition));
+
+//   const metaLine = metaPieces.length > 0 ? metaPieces.join(" · ") : null;
+
+//   return (
+//     <article className="group relative overflow-hidden -mx-4 sm:mx-0 bg-gradient-to-br from-background/95 to-card/90 shadow-sm transition-all duration-500 hover:shadow-lg">
+//       {/* Subtle golden glow line */}
+//       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+//       <div className="flex flex-col sm:flex-row">
+//         {/* LEFT: IMAGE SECTION WITH SLIDER */}
+//         <div className="sm:w-[42%] relative flex flex-col">
+//           <div
+//             className="aspect-[4/5] w-full overflow-hidden bg-muted/30 relative"
+//             onTouchStart={handleTouchStart}
+//             onTouchEnd={handleTouchEnd}
+//           >
+//             {/* MAIN IMAGE */}
+//             <img
+//               key={imageUrls[currentIndex]}
+//               src={imageUrls[currentIndex]}
+//               alt={`${watch.brand} ${watch.model} ${watch.ref}`}
+//               className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04]"
+//               loading="lazy"
+//             />
+
+//             {/* Curated badge inside the image (same style as before) */}
+//             {/* <div className="absolute bottom-2 left-2 flex items-center gap-2">
+//               <span className="inline-block h-px w-6 bg-primary/80 rounded-full" />
+//               <p className="text-[0.65rem] uppercase tracking-[0.22em] text-primary">
+//                 Curated by WatchStory
+//               </p>
+//             </div> */}
+
+//             {/* LEFT ARROW – no bg / no border */}
+//             {imageUrls.length > 1 && (
+//               <button
+//                 type="button"
+//                 onClick={prevImage}
+//                 className="
+//                   absolute left-3 top-1/2 -translate-y-1/2
+//                   h-8 w-8 flex items-center justify-center
+//                   text-primary text-2xl
+//                   opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+//                   transition-opacity duration-300
+//                 "
+//               >
+//                 ‹
+//               </button>
+//             )}
+
+//             {/* RIGHT ARROW – no bg / no border */}
+//             {imageUrls.length > 1 && (
+//               <button
+//                 type="button"
+//                 onClick={nextImage}
+//                 className="
+//                   absolute right-3 top-1/2 -translate-y-1/2
+//                   h-8 w-8 flex items-center justify-center
+//                   text-primary text-2xl
+//                   opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+//                   transition-opacity duration-300
+//                 "
+//               >
+//                 ›
+//               </button>
+//             )}
+
+//             {/* DESKTOP THUMBNAILS ON HOVER (BOTTOM RIGHT) */}
+//             {imageUrls.length > 1 && (
+//               <div
+//                 className="
+//                   hidden sm:flex
+//                   absolute bottom-2 right-2
+//                   gap-1 bg-background/70 backdrop-blur-sm
+//                   px-2 py-1 rounded-full border border-border/40 shadow-sm
+//                   opacity-0 group-hover:opacity-100 transition-opacity duration-300
+//                 "
+//               >
+//                 {imageUrls.map((url, index) => (
+//                   <button
+//                     key={url + index}
+//                     type="button"
+//                     onMouseEnter={() => setCurrentIndex(index)}
+//                     className={`
+//                       h-7 w-7 rounded-md overflow-hidden border
+//                       ${
+//                         index === currentIndex
+//                           ? "border-primary/70"
+//                           : "border-border/40 opacity-70"
+//                       }
+//                     `}
+//                   >
+//                     <img
+//                       src={url}
+//                       alt=""
+//                       className="h-full w-full object-cover"
+//                       loading="lazy"
+//                     />
+//                   </button>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
+
+//           {/* SMALL PROGRESS LINE UNDER IMAGE */}
+//           {imageUrls.length > 1 && (
+//             <div className="mt-1 h-[2px] w-full bg-border/30 overflow-hidden">
+//               <div
+//                 className="h-full bg-primary transition-all duration-300"
+//                 style={{
+//                   width: `${((currentIndex + 1) / imageUrls.length) * 100}%`,
+//                 }}
+//               />
+//             </div>
+//           )}
+//         </div>
+
+//         {/* RIGHT: TEXT DETAILS */}
+//         <div className="sm:w-[58%] p-4 sm:p-5 flex flex-col justify-between gap-3">
+//           <div>
+//             <p className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground mb-1">
+//               {watch.brand}
+//             </p>
+
+//             <h2 className="font-title text-base sm:text-lg md:text-xl font-semibold leading-snug">
+//               {watch.model}
+//             </h2>
+
+//             {watch.ref && (
+//               <p className="text-[0.7rem] text-muted-foreground mt-0.5">
+//                 Ref. {watch.ref}
+//               </p>
+//             )}
+
+//             {metaLine && (
+//               <p className="text-[0.7rem] text-muted-foreground mt-1">
+//                 {metaLine}
+//               </p>
+//             )}
+//           </div>
+
+//           {/* Divider + Price on Request + CTAs */}
+//           <div className="pt-3 border-t border-border/30 flex flex-col gap-3">
+//             <p className="text-[0.8rem] font-medium tracking-wide">
+//               Price on Request
+//             </p>
+
+//             <div className="flex flex-row gap-2">
+//               <MagneticButton
+//                 href={whatsappUrl}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 variant="primary"
+//                 className="flex-1 text-[0.75rem] sm:text-sm font-semibold py-2.5"
+//               >
+//                 Inquire (WhatsApp)
+//               </MagneticButton>
+
+//               <MagneticButton
+//                 href={detailsPath}
+//                 variant="secondary"
+//                 className="flex-1 text-[0.75rem] sm:text-sm font-semibold py-2.5"
+//               >
+//                 View details
+//               </MagneticButton>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
+
