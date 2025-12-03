@@ -232,7 +232,7 @@ export default function Index() {
         ScrollTrigger.create({
           trigger: el,
           start: "top 60%",     // when keyword enters view
-          end: "bottom 5%",    // when keyword is nearly out
+          end: "bottom 20%",    // when keyword is nearly out
           onEnter: () => el.classList.add("keyword-active"),
           onEnterBack: () => el.classList.add("keyword-active"),
           onLeave: () => el.classList.remove("keyword-active"),
