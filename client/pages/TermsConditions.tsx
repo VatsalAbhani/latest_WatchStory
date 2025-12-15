@@ -102,7 +102,7 @@ export default function TermsConditions() {
       </Helmet>
 
 
-<div className="ws-container mt-24 pb-24 max-w-4xl mx-auto">
+<div className="ws-container  mt-24 pt-16 max-w-4xl mx-auto">
         <h1 className="font-title text-5xl mb-2 text-gold">Terms &amp; Conditions</h1>
 
         {/* Visible + machine-readable last-updated */}
