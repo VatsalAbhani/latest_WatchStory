@@ -115,7 +115,25 @@ function GlobalJsonLd() {
       "Richard Mille",
       "Sell Watches in Dubai",
       "Buy Watches in Dubai"
-    ]
+    ],
+
+
+
+  
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "11"
+  }
+
+
+
+
+
+
+
+
+
   };
 
 

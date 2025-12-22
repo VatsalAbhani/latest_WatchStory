@@ -173,7 +173,48 @@ export default function Sell() {
 
         {/* SEO search engine */}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <section className="ws-container mt-24 pt-16 pb-0 md:pb-8 bg-background">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <h1 className="font-title font-normal text-4xl sm:text-5xl max-w-6xl">
         Sell Your Luxury Watch in Dubai - Get an Offer Today
         </h1>
@@ -181,6 +222,15 @@ export default function Sell() {
         <h2 className="font-sans font-light text-base text-offwhite/80 mt-2 max-w-4xl">
         Share your Rolex, Audemars Piguet, Patek Philippe, Cartier or Richard Mille details and receive a fair, market-based offer with fast, secure payout.
         </h2>
+
+
+
+
+
+
+
+
+
 
         <CyclingLines
           className="mt-2 text-2xl sm:text-3xl font-sans"

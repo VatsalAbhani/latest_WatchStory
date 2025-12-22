@@ -17,6 +17,7 @@ import JournalSection from "@/components/JournalSection";
 import HorizontalWatchShowcase from "@/components/HorizontalWatchShowcase";
 import TestHorizontalScroll from "@/components/TestHorizontalScroll";
 import BrandsShowcase from "@/components/BrandsShowcase";
+import ReviewCarousel from "@/components/ReviewCarousel";
 import Seo from "@/components/Seo";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -442,6 +443,79 @@ export default function Index() {
           <p className="font-sans  text-offwhite/70 mt-2 md:mt-4 text-sm">Transparent pricing and insured shipping worldwide.</p>
         </div>
       </section>
+
+
+
+
+
+
+
+
+      <ReviewCarousel
+  reviews={[
+    {
+      name: "Daisyl Longly",
+      text: "Best place to sell in Dubai. Fair, fast, and professional.",
+    },
+    {
+      name: "Bams Pro",
+      text: "Professional team and good expertise in the field. Would definitely recommend!!",
+    },
+    {
+      name: "Stephanie George",
+      text: "Great experience selling my Rolex datejust. Professional office and instant transfer.",
+    },
+    {
+      name: "Leo Shelly",
+      text: "I had an amazing experience buying Rolex with them.They were patient with my questions and the watch is perfect,Honest dealers. Very happy with my purchase.",
+    },
+    {
+      name: "Jashmih Rose",
+      text: "Sold my watch here recently. Professional staff who actually stuck to their WhatsApp quote. Efficient process and payment was sorted immediately.",
+    },
+
+    {
+      name: "Harry Benson",
+      text: "Smooth transaction, Bought an omega speedmaster the team was helpful and delivery was fast. Highly recommended.",
+    },
+
+    {
+      name: "Jacob",
+      text: "I sold my Cartier to them and I must say they are very professional. I received a quote promptly after reaching out through their website and the visit to their office was just as efficient.",
+    },
+
+    {
+      name: "Lizabeth Temi",
+      text: "Professional service. Sourced a specific Cartier Tank for myself Good communication throughout.",
+    },
+
+   
+
+    {
+      name: "David Raymond",
+      text: "had a great experience selling my watch. The valuation was fair, the process was transparent, and payment was completed quickly. Everything went smoothly from start to finish.",
+    },
+  ]}
+/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       {/* Featured Stories - Full Screen Horizontal Showcase */}

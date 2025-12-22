@@ -58,6 +58,8 @@ The redundant Satoshi/Cabinet Grotesk imports have been removed. */
     /* Requested: #f6f4f0 */
     /* --background: 40 25% 95%; */
 
+    --google-star: #fdd663;
+
     --background: 348 100% 100%;
     --foreground: 210 22% 10%; /* Dark text */
 

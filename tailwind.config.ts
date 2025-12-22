@@ -17,20 +17,19 @@ export default {
     extend: {
       fontFamily: {
         // Cooper Black for titles/headings
-        title: ['Domine', ...defaultTheme.fontFamily.serif],
-
-
+        title: ["Domine", ...defaultTheme.fontFamily.serif],
 
         // Bricolage Grotesque for sans-serif (body text)
         // sans: ['"Bricolage Grotesque"', ...defaultTheme.fontFamily.sans],
 
         // Kenau Sans Serif for sans-serif (body text)
-        sans: ['Domine', ...defaultTheme.fontFamily.sans],
+        sans: ["Domine", ...defaultTheme.fontFamily.sans],
 
         // "logo-sans": ['"Kenau Sans Serif"', ...defaultTheme.fontFamily.sans],
       },
-      
+
       colors: {
+        "google-star": "#cfaa3e",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
