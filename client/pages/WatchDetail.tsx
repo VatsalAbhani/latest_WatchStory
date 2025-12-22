@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 // Assuming FEATURED and Product type are imported from a consolidated data file
 import { FEATURED, Product } from "@/lib/data"; 
 import NotFound from "./NotFound";
@@ -121,41 +121,166 @@ const getProductSchema = (watch: Product, routePath: string) => {
 // ----------------------------------------------------------------------
 
 
+
+// function Watch3DView({ embedUrl }: { embedUrl?: string }) {
+//   if (!embedUrl) return null;
+
+//   return (
+//     <div className="mt-8">
+//       <h2 className="font-title text-2xl mb-3">3D View</h2>
+
+//       <div className="relative w-full overflow-hidden rounded-xl border border-border/40 bg-black/5 aspect-video">
+//         <iframe
+//           src={embedUrl}
+//           title="3D Watch View"
+//           className="absolute inset-0 w-full h-full"
+//           loading="lazy"
+//           allow="fullscreen; gyroscope; accelerometer; xr-spatial-tracking"
+//         />
+//       </div>
+
+//       <p className="mt-2 text-sm text-muted-foreground">
+//         Rotate • Zoom • Inspect details
+//       </p>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // --- Local Components for Watch Detail Page ---
 
 function ProductImageGallery({ images }: { images: string[] }) {
-  if (images.length === 0) {
-    return <div className="h-96 bg-gray-200 flex items-center justify-center rounded-lg">Image Not Available</div>;
-  }
+  const imageUrls = images?.length ? images : ["/placeholder-watch.jpg"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const nextImage = () => {
+    if (imageUrls.length <= 1) return;
+    setCurrentIndex((prev) => (prev + 1) % imageUrls.length);
+  };
+
+  const prevImage = () => {
+    if (imageUrls.length <= 1) return;
+    setCurrentIndex((prev) => (prev - 1 + imageUrls.length) % imageUrls.length);
+  };
+
+  const handleTouchStart = (e: any) => {
+    const touch = e.touches?.[0];
+    if (!touch) return;
+    touchStartX.current = touch.clientX;
+  };
+
+  const handleTouchEnd = (e: any) => {
+    if (touchStartX.current === null) return;
+    const touch = e.changedTouches?.[0];
+    if (!touch) return;
+
+    const deltaX = touch.clientX - touchStartX.current;
+    const threshold = 40;
+
+    if (deltaX > threshold) prevImage();
+    else if (deltaX < -threshold) nextImage();
+
+    touchStartX.current = null;
+  };
+
   return (
-    <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
-      <Carousel className="w-full h-full">
-        <CarouselContent>
-          {images.map((image, index) => (
-            <CarouselItem key={index}>
-              <div className="w-full h-full flex justify-center items-center bg-transparent">
-                <img
-                  src={image}
-                  alt={`View ${index + 1}`}
-                  className="object-contain w-full h-full max-h-[70vh]"
-                    loading="lazy"
-                    decoding="async"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        {images.length > 1 && (
+    <div className="relative aspect-[4/5] overflow-hidden rounded-lg  max-h-[90vh] mx-auto">
+      <div
+        className="absolute inset-0"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <img
+          key={imageUrls[currentIndex]}
+          src={imageUrls[currentIndex]}
+          alt={`View ${currentIndex + 1}`}
+          className="h-full w-full object-contain"
+          loading="lazy"
+          decoding="async"
+        />
+
+        {/* EXACT SAME ARROWS AS BUY PAGE */}
+        {imageUrls.length > 1 && (
           <>
-            {/* Custom styled arrows */}
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 size-10  text-white border-white/20 " />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 size-10  text-white border-white/20 " />
+            <button
+              type="button"
+              onClick={prevImage}
+              aria-label="Previous image"
+              className="
+                absolute left-3 top-1/2 -translate-y-1/2
+                h-8 w-8 flex items-center justify-center
+                text-primary text-2xl
+                opacity-70 hover:opacity-100
+    transition-opacity duration-300
+    focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50
+
+    text-[1.75rem] font-light
+    hover:bg-black/10 rounded-full
+
+              "
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              onClick={nextImage}
+              aria-label="Next image"
+              className="
+                absolute right-3 top-1/2 -translate-y-1/2
+                h-8 w-8 flex items-center justify-center
+                text-primary text-2xl
+                opacity-70 hover:opacity-100
+    transition-opacity duration-300
+    focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50
+    
+
+    text-[1.75rem] font-light
+    hover:bg-black/10 rounded-full
+
+
+
+              "
+            >
+              ›
+            </button>
           </>
         )}
-      </Carousel>
+      </div>
+
+      {/* progress line like buy page (optional) */}
+      {/* {imageUrls.length > 1 && (
+        <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-border/30">
+          <div
+            className="h-full bg-primary transition-all duration-300"
+            style={{ width: `${((currentIndex + 1) / imageUrls.length) * 100}%` }}
+          />
+        </div>
+      )} */}
     </div>
   );
 }
+
 
 function ProductDetailsAndSpecs({ watch }: { watch: Product }) {
   const { add } = useCart();
@@ -361,6 +486,9 @@ export default function WatchDetail() {
           {/* Column 1: Image Gallery */}
           <div className="order-2 md:order-1">
             <ProductImageGallery images={watch.images.urls} />
+
+            {/* <Watch3DView embedUrl={(watch as any).model3dEmbedUrl} /> */}
+
           </div>
 
           {/* Column 2: Details and CTA */}

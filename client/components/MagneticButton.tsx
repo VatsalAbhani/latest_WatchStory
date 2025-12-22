@@ -285,6 +285,8 @@ interface MagneticButtonProps {
     // Forward common anchor attributes when used as a link
     target?: string;
     rel?: string;
+    contentClassName?: string;
+
 }
 
 export default function MagneticButton({ 
@@ -295,6 +297,7 @@ export default function MagneticButton({
     className = '',
     target,
     rel,
+    contentClassName = '',
 }: MagneticButtonProps) {
     const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null); 
     const originalTextRef = useRef<HTMLSpanElement>(null);
@@ -448,7 +451,13 @@ gsap.set(allChars, {
             {/* Main Padded Container is the event and layout target */}
             <div 
                 ref={contentRef} // <-- TARGET FOR HOVER EVENTS AND GSAP TWEENS
-                className="relative px-6 py-3 sm:px-8 sm:py-4 overflow-hidden" 
+                className={cn(
+                    "relative overflow-hidden",
+                    // default padding
+                    "px-6 py-3 sm:px-8 sm:py-4",
+                    // allow caller override
+                    contentClassName ?? ''
+                  )} 
             > 
                 
                 {/* 1. Text Flip Container (Fixed height and overflow hidden is crucial) */}

@@ -193,9 +193,9 @@ export default function BuyPageFilter({
           Filter by brand
         </p>
 
-        <div className="flex items-center gap-2 text-[0.65rem] sm:text-xs text-muted-foreground">
+        <div className="flex items-center gap-2 text-[0.5rem] sm:text-xs text-muted-foreground">
           <span className="uppercase tracking-[0.22em] hidden sm:inline">
-            Sort by
+            Sort
           </span>
           <Select
             value={sortOption}

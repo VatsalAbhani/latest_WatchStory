@@ -407,6 +407,18 @@ export default function Buy() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // -----------------------------------------         updated buy page with watches and details
 
 
@@ -425,10 +437,14 @@ export default function Buy() {
 
 // const WHATSAPP_NUMBER = "971569602690";
 // const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+// const WHATSAPP_ICON_SRC = "/whatsapp-icon.png";
 
 // // Helper to normalise strings for comparisons
 // const normalize = (value?: string | null) =>
 //   (value ?? "").toLowerCase().trim();
+
+
+
 
 // // List of primary brands we explicitly support in filters
 // const MAIN_BRANDS = [
@@ -576,7 +592,8 @@ export default function Buy() {
 //               </div>
 //             </div>
 //           ) : (
-//             <div className="space-y-4 sm:space-y-5">
+//             // <div className="space-y-4 sm:space-y-5">
+//             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
 //               {filteredAndSortedProducts.map((product) => (
 //                 <BuyWatchCard
 //                   key={(product as any).slug ?? (product as any).id}
@@ -662,13 +679,13 @@ export default function Buy() {
 //   const metaLine = metaPieces.length > 0 ? metaPieces.join(" · ") : null;
 
 //   return (
-//     <article className="group relative overflow-hidden -mx-4 sm:mx-0 bg-gradient-to-br from-background/95 to-card/90 shadow-sm transition-all duration-500 hover:shadow-lg">
+//     <article className="group relative overflow-hidden  bg-gradient-to-br from-background/95 to-card/90 shadow-sm transition-all duration-500 hover:shadow-lg">
 //       {/* Subtle golden glow line */}
 //       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-//       <div className="flex flex-col sm:flex-row">
+//       <div className="flex flex-col xl:flex-row">
 //         {/* LEFT: IMAGE SECTION WITH SLIDER */}
-//         <div className="sm:w-[42%] relative flex flex-col">
+//         <div className="xl:w-[58%] relative flex flex-col">
 //           <div
 //             className="aspect-[4/5] w-full overflow-hidden bg-muted/30 relative"
 //             onTouchStart={handleTouchStart}
@@ -696,6 +713,7 @@ export default function Buy() {
 //               <button
 //                 type="button"
 //                 onClick={prevImage}
+//                 aria-label="Previous image"
 //                 className="
 //                   absolute left-3 top-1/2 -translate-y-1/2
 //                   h-8 w-8 flex items-center justify-center
@@ -713,6 +731,7 @@ export default function Buy() {
 //               <button
 //                 type="button"
 //                 onClick={nextImage}
+//                 aria-label="Next image"
 //                 className="
 //                   absolute right-3 top-1/2 -translate-y-1/2
 //                   h-8 w-8 flex items-center justify-center
@@ -805,25 +824,32 @@ export default function Buy() {
 //               Price on Request
 //             </p>
 
-//             <div className="flex flex-row gap-2">
-//               <MagneticButton
-//                 href={whatsappUrl}
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 variant="primary"
-//                 className="flex-1 text-[0.75rem] sm:text-sm font-semibold py-2.5"
-//               >
-//                 Inquire (WhatsApp)
-//               </MagneticButton>
+//             <div className="grid grid-cols-2  items-center">
+//   <MagneticButton
+//     href={whatsappUrl}
+//     target="_blank"
+//     rel="noopener noreferrer"
+//     variant="primary"
+//     className="w-full min-w-0 text-center text-[0.68rem] sm:text-[0.72rem] lg:text-[0.90rem] font-semibold leading-tight"
+//   contentClassName="!px-3 !py-2 sm:!px-4 sm:!py-2.5"
+//   > 
+//     Inquire     <span><img 
+//       src={WHATSAPP_ICON_SRC} 
+//       alt="WhatsApp" 
+//       className=" inline-block w-4  h-4 mb-1" 
+//     /></span>
+//   </MagneticButton>
 
-//               <MagneticButton
-//                 href={detailsPath}
-//                 variant="secondary"
-//                 className="flex-1 text-[0.75rem] sm:text-sm font-semibold py-2.5"
-//               >
-//                 View details
-//               </MagneticButton>
-//             </div>
+//   <MagneticButton
+//     href={detailsPath}
+//     variant="secondary"
+//     className="w-full min-w-0 text-center text-[0.68rem] sm:text-[0.72rem] lg:text-[0.90rem] font-semibold leading-tight"
+//     contentClassName="!px-3 !py-2 sm:!px-4 sm:!py-2.5"
+//       >
+//     {/* <span className="xl:hidden">View</span> */}
+//     <span className="hidden xl:inline">Details</span>
+//   </MagneticButton>
+// </div>
 //           </div>
 //         </div>
 //       </div>

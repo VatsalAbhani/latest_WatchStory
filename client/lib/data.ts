@@ -24,6 +24,7 @@ export type Product = {
   size?: string;
   material?: string;
   certificate?: boolean;
+  // model3dEmbedUrl?: string;
 };
 
 
@@ -56,6 +57,12 @@ export const FEATURED: Product[] = [
     material: 'Stainless Steel & White Gold',
     certificate: true,
     box: true,
+
+
+
+
+    // model3dEmbedUrl: "https://poly.cam/capture/509DD2B1-6A2D-4054-9CB7-DD36AC797505/embed",
+
   },
   {
     id: "p2",
