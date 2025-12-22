@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -27,25 +27,21 @@ function Stars({ rating = 5 }: { rating?: number }) {
   );
 }
 
-export default function ReviewCarousel({
-  reviews,
-}: {
-  reviews: Review[];
-}) {
-  const carouselApi = useRef<any>(null);
-
-  useEffect(() => {
-    if (!carouselApi.current) return;
-
-    const interval = setInterval(() => {
-      carouselApi.current.scrollNext();
-    }, 2000); // ⏱️ every 2 seconds
-
-    return () => clearInterval(interval);
-  }, []);
+export default function ReviewCarousel({ reviews }: { reviews: Review[] }) {
+    const [api, setApi] = useState<any>(null);
+  
+    useEffect(() => {
+      if (!api) return;
+  
+      const id = window.setInterval(() => {
+        api.scrollNext();
+      }, 2000);
+  
+      return () => window.clearInterval(id);
+    }, [api]);
 
   return (
-    <section className="ws-container my-16">
+    <section className="ws-container my-8">
       {/* Header */}
       <div className="text-center mb-8">
         {/* <p className="text-sm tracking-widest uppercase text-offwhite/60 mb-2">
@@ -65,10 +61,13 @@ export default function ReviewCarousel({
     <path fill="#EA4335" d="M24 48c6.28 0 11.56-2.08 15.42-5.64l-7.27-5.64c-2.02 1.36-4.6 2.16-8.15 2.16-6.2 0-11.4-4.2-13.32-9.92l-7.98 6.2C6.53 42.62 14.6 48 24 48z"/>
   </svg>
 
+
+
   <span className="text-sm tracking-widest uppercase text-offwhite/60">
     Google Reviews
   </span>
 </div>
+
 
             5.0
         <div className="flex justify-center mb-2">
@@ -82,11 +81,8 @@ export default function ReviewCarousel({
 
       {/* Carousel */}
       <Carousel
-        opts={{
-          loop: true,
-          align: "start",
-        }}
-        setApi={(api) => (carouselApi.current = api)}
+        opts={{ loop: true, align: "start" }}
+        setApi={setApi}
         className="w-full"
       >
         <CarouselContent>
