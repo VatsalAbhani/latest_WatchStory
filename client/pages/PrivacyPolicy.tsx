@@ -15,9 +15,9 @@ export default function PrivacyPolicy() {
       />
       <div className="ws-container mt-24 pt-16 max-w-4xl mx-auto">
         <h1 className="font-title text-5xl mb-4 text-gold">Privacy Policy</h1>
-        <p className="text-offwhite/70 text-sm mb-12">
+        {/* <p className="text-offwhite/70 text-sm mb-12">
           Effective Date: {effectiveDate}
-        </p>
+        </p> */}
 
         <section className="space-y-10 text-offwhite/80">
           
